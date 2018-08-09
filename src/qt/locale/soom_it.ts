@@ -168,7 +168,7 @@
         <translation>Cambia la parola d'ordine</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>Inserisci la vecchia e la nuova parola d'ordine per il portafoglio.</translation>
     </message>
     <message>

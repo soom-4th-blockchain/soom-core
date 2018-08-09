@@ -168,7 +168,7 @@
         <translation>Cambiar contraseña</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>Introduzca la contraseña anterior del monedero y la nueva. </translation>
     </message>
     <message>

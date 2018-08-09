@@ -168,7 +168,7 @@
         <translation>Mudar palavra-passe</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>Insira a antiga e a nova palavra-passe para a carteira.</translation>
     </message>
     <message>

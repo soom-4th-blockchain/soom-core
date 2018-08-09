@@ -156,7 +156,7 @@
         <translation>Ändra lösenfras</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>Skriv in den gamla och den nya lösenfrasen för plånboken.</translation>
     </message>
     <message>

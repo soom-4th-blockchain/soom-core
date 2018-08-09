@@ -192,7 +192,7 @@ void WalletView::setWalletModel(WalletModel *walletModel)
                 this, SLOT(processNewTransaction(QModelIndex,int,int)));
 
         // Ask for passphrase if needed
-        connect(walletModel, SIGNAL(requireUnlock(bool)), this, SLOT(unlockWallet(bool)));
+        connect(walletModel, SIGNAL(requireUnlock()), this, SLOT(unlockWallet()));
 
         // Show progress dialog
         connect(walletModel, SIGNAL(showProgress(QString,int)), this, SLOT(showProgress(QString,int)));

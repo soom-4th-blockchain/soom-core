@@ -47,7 +47,7 @@
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>閉じる(&amp;C)</translation>
+        <translation>閉じる(&amp;L)</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
@@ -59,7 +59,7 @@
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>選択(&amp;C)</translation>
+        <translation>選択(&amp;H)</translation>
     </message>
     <message>
         <source>Sending addresses</source>
@@ -195,7 +195,7 @@
         <translation>パスフレーズの変更</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>ウォレットに使う前のパスワードと新しいパスワードを入力してください。</translation>
     </message>
     <message>
@@ -346,7 +346,7 @@
     </message>
     <message>
         <source>&amp;About Soom Core</source>
-        <translation>&amp;Soom core 情報</translation>
+        <translation>Soom core 情報(&amp;A)</translation>
     </message>
     <message>
         <source>Show information about Soom Core</source>
@@ -402,7 +402,7 @@
     </message>
     <message>
         <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;ウォレットをアンロックする...</translation>
+        <translation>ウォレットをアンロックする(&amp;U)...</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
@@ -410,11 +410,11 @@
     </message>
     <message>
         <source>&amp;Lock Wallet</source>
-        <translation>&amp;ウォレットロック</translation>
+        <translation>ウォレットロック(&amp;L)</translation>
     </message>
     <message>
         <source>Sign &amp;message...</source>
-        <translation>メッセージの署名…(&amp;m)</translation>
+        <translation>メッセージの署名(&amp;M)</translation>
     </message>
     <message>
         <source>Sign messages with your Soom addresses to prove you own them</source>
@@ -438,7 +438,7 @@
     </message>
     <message>
         <source>&amp;Debug console</source>
-        <translation>&amp;デバックコンソール</translation>
+        <translation>デバックコンソール(&amp;D)</translation>
     </message>
     <message>
         <source>Open debugging console</source>
@@ -446,7 +446,7 @@
     </message>
     <message>
         <source>&amp;Network Monitor</source>
-        <translation>&amp;ネットワークモニター</translation>
+        <translation>ネットワークモニター(&amp;N)</translation>
     </message>
     <message>
         <source>Show network monitor</source>
@@ -454,7 +454,7 @@
     </message>
     <message>
         <source>&amp;Peers list</source>
-        <translation>&amp;ピアリスト</translation>
+        <translation>ピアリスト(&amp;P)</translation>
     </message>
     <message>
         <source>Show peers info</source>
@@ -462,7 +462,7 @@
     </message>
     <message>
         <source>Wallet &amp;Repair</source>
-        <translation>ウォレット&amp;復旧</translation>
+        <translation>ウォレット復旧(&amp;R)</translation>
     </message>
     <message>
         <source>Show wallet repair options</source>
@@ -470,7 +470,7 @@
     </message>
     <message>
         <source>Open Wallet &amp;Configuration File</source>
-        <translation>ウォレット構成のファイルを開く</translation>
+        <translation>ウォレット構成のファイルを開く(&amp;C)</translation>
     </message>
     <message>
         <source>Open configuration file</source>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <source>Open &amp;Gateway Configuration File</source>
-        <translation>ゲートウェイの構成ファイルを開く</translation>
+        <translation>ゲートウェイの構成ファイルを開く(&amp;G)</translation>
     </message>
     <message>
         <source>Open Gateway configuration file</source>
@@ -486,7 +486,7 @@
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
-        <translation>自動バックアップファイルを開く</translation>
+        <translation>自動バックアップファイルを開く(&amp;B)</translation>
     </message>
     <message>
         <source>Show automatically created wallet backups</source>
@@ -510,7 +510,7 @@
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>URI を開く…(&amp;U)</translation>
+        <translation>URI を開く(&amp;U)</translation>
     </message>
     <message>
         <source>Open a Soom: URI or payment request</source>
@@ -542,7 +542,7 @@
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;ツール</translation>
+        <translation>ツール(&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -590,15 +590,15 @@
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 時間</numerusform></translation>
+        <translation><numerusform>%n時間</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n 日</numerusform></translation>
+        <translation><numerusform>%n日</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n 週</numerusform></translation>
+        <translation><numerusform>%n週</numerusform></translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -606,7 +606,7 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n 年</numerusform></translation>
+        <translation><numerusform>%n年</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -1159,7 +1159,7 @@
     </message>
     <message>
         <source>Address</source>
-        <translation>のアドレス </translation>
+        <translation>のアドレス</translation>
     </message>
     <message>
         <source>Protocol</source>
@@ -1183,19 +1183,19 @@
     </message>
     <message>
         <source>S&amp;tart alias</source>
-        <translation>&amp;選択されたゲートウェイスタート</translation>
+        <translation>選択されたゲートウェイスタート(&amp;T)</translation>
     </message>
     <message>
         <source>Start &amp;all</source>
-        <translation>&amp;全体スタート</translation>
+        <translation>全体スタート(&amp;A)</translation>
     </message>
     <message>
         <source>Start &amp;MISSING</source>
-        <translation>漏れのゲートウェイスタート</translation>
+        <translation>漏れのゲートウェイスタート(&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Update status</source>
-        <translation>&amp;アップデートの状態</translation>
+        <translation>アップデートの状態(&amp;U)</translation>
     </message>
     <message>
         <source>Status will be updated automatically in (sec):</source>
@@ -1380,7 +1380,7 @@
     </message>
     <message>
         <source>&amp;Start Soom Core on system login</source>
-        <translation>&amp;システムログインの際、Soom Coreスタート</translation>
+        <translation>システムログインの際、Soom Coreスタート(&amp;S)</translation>
     </message>
     <message>
         <source>Automatically open the Soom Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
@@ -1396,7 +1396,7 @@
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
-        <translation>SOCKS5 プロキシ経由で接続する (デフォルトプロキシ):(&amp;C)</translation>
+        <translation>SOCKS5 プロキシ経由で接続する (デフォルトプロキシ)(&amp;C):</translation>
     </message>
     <message>
         <source>Expert</source>
@@ -1458,7 +1458,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
-        <translation>プロキシの IP(&amp;I) :</translation>
+        <translation>プロキシの IP(&amp;I):</translation>
     </message>
     <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
@@ -1502,7 +1502,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>&amp;システムトレイでアイコン隠し。</translation>
+        <translation>システムトレイでアイコン隠し。(&amp;H)</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
@@ -1522,7 +1522,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
-        <translation>閉じる時に最小化(&amp;i)</translation>
+        <translation>閉じる時に最小化(&amp;I)</translation>
     </message>
     <message>
         <source>&amp;Display</source>
@@ -1530,7 +1530,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>User Interface &amp;language:</source>
-        <translation>ユーザインターフェースの言語(&amp;l):</translation>
+        <translation>ユーザインターフェースの言語(&amp;L):</translation>
     </message>
     <message>
         <source>User Interface Theme:</source>
@@ -1906,11 +1906,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>%1 h</source>
-        <translation>%1 h</translation>
+        <translation>%1時間</translation>
     </message>
     <message>
         <source>%1 m</source>
-        <translation>%1 m</translation>
+        <translation>%1分</translation>
     </message>
     <message>
         <source>%1 s</source>
@@ -1921,7 +1921,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ネットワーク</translation>
     </message>
     <message>
-        <source>UNKNOWN</source>
+        <source>unknown</source>
         <translation>不明の</translation>
     </message>
     <message>
@@ -1935,6 +1935,34 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>%1 ms</source>
         <translation>%1ミリ秒</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation><numerusform>%n秒</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation><numerusform>%n分</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n時間</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n日</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n週</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n年</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 と %2</translation>
     </message>
 </context>
 <context>
@@ -2160,7 +2188,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Wallet Repair</source>
-        <translation>&amp;ウォレット復旧</translation>
+        <translation>ウォレット復旧(&amp;W)</translation>
     </message>
     <message>
         <source>Starting Block</source>
@@ -2260,7 +2288,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Disconnect</source>
-        <translation>&amp;接続が切れる</translation>
+        <translation>接続が切れる(&amp;D)</translation>
     </message>
     <message>
         <source>Ban for</source>
@@ -2268,23 +2296,23 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 &amp;時間</translation>
+        <translation>1 時間(&amp;H)</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 &amp;日</translation>
+        <translation>1 日(&amp;D)</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 &amp;週</translation>
+        <translation>1 週(&amp;W)</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 &amp;年</translation>
+        <translation>1 年(&amp;Y)</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
-        <translation>&amp;制限解除</translation>
+        <translation>制限解除(&amp;U)</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -2462,7 +2490,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Save Image...</source>
-        <translation>画像保存…(&amp;S)</translation>
+        <translation>画像保存(&amp;S)</translation>
     </message>
     <message>
         <source>Request payment to %1</source>
@@ -2510,7 +2538,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>閉じる(&amp;C)</translation>
+        <translation>閉じる(&amp;L)</translation>
     </message>
 </context>
 <context>
@@ -2556,7 +2584,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Inputs...</source>
-        <translation>入力…</translation>
+        <translation>入力</translation>
     </message>
     <message>
         <source>automatically selected</source>
@@ -2788,7 +2816,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
-        <translation>&lt;b&gt;(％2個の項目のうち、％１が表示されました)&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;(%2個の項目のうち、%１が表示されました)&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2895,7 +2923,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
-        <translation>&amp;金額から手数料を差し引く</translation>
+        <translation>金額から手数料を差し引く(&amp;U)</translation>
     </message>
     <message>
         <source>Message</source>
@@ -3129,12 +3157,40 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1/オフライン</translation>
     </message>
     <message>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/未検証, %1</translation>
+    </message>
+    <message>
+        <source>in memory pool</source>
+        <translation>メモリプール内</translation>
+    </message>
+    <message>
+        <source>not in memory pool</source>
+        <translation>メモリプールではありません</translation>
+    </message>
+    <message>
+        <source>abandoned</source>
+        <translation>放棄</translation>
+    </message>
+    <message>
         <source>%1/unconfirmed</source>
         <translation>%1/未検証</translation>
     </message>
     <message>
         <source>%1 confirmations</source>
         <translation>%1 確認</translation>
+    </message>
+    <message>
+        <source>verified via InstantSend</source>
+        <translation>直ちに送るで確認済み</translation>
+    </message>
+    <message>
+        <source>InstantSend verification in progress - %1 of %2 signatures</source>
+        <translation>直ちに送る検証中 - ％2つの署名のうち％1個</translation>
+    </message>
+    <message>
+        <source>InstantSend verification failed</source>
+        <translation>直ちに送るの確認に失敗しました</translation>
     </message>
     <message>
         <source>Status</source>

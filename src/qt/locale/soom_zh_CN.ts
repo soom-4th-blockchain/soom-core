@@ -47,7 +47,7 @@
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>关闭(&amp;C)</translation>
+        <translation>关闭(&amp;L)</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
@@ -199,7 +199,7 @@
         <translation>更改密码</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>请输入该钱包的旧密码与新密码。</translation>
     </message>
     <message>
@@ -334,7 +334,7 @@
     </message>
     <message>
         <source>&amp;Gateways</source>
-        <translation>&amp;网关</translation>
+        <translation>网关(&amp;G)</translation>
     </message>
     <message>
         <source>Browse gateways</source>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>&amp;About Soom Core</source>
-        <translation>&amp;关于SOOM核心</translation>
+        <translation>关于SOOM核心(&amp;A)</translation>
     </message>
     <message>
         <source>Show information about Soom Core</source>
@@ -458,7 +458,7 @@
     </message>
     <message>
         <source>&amp;Peers list</source>
-        <translation>&amp;节点列表</translation>
+        <translation>节点列表(&amp;P)</translation>
     </message>
     <message>
         <source>Show peers info</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Wallet &amp;Repair</source>
-        <translation>钱包&amp;修复</translation>
+        <translation>钱包修复(&amp;R)</translation>
     </message>
     <message>
         <source>Show wallet repair options</source>
@@ -490,7 +490,7 @@
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
-        <translation>显示自动备份&amp;</translation>
+        <translation>显示自动备份(&amp;B)</translation>
     </message>
     <message>
         <source>Show automatically created wallet backups</source>
@@ -498,7 +498,7 @@
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>&amp;付款地址 </translation>
+        <translation>付款地址(&amp;S)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -506,7 +506,7 @@
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>&amp;收款地址</translation>
+        <translation>收款地址(&amp;R)</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
@@ -514,7 +514,7 @@
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>打开 &amp;URI...</translation>
+        <translation>打开URI...(&amp;U)</translation>
     </message>
     <message>
         <source>Open a Soom: URI or payment request</source>
@@ -522,7 +522,7 @@
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>&amp;命令行 选项</translation>
+        <translation>命令行 选项(&amp;C)</translation>
     </message>
     <message>
         <source>Show the Soom Core help message to get a list with possible Soom command-line options</source>
@@ -614,7 +614,7 @@
     </message>
     <message>
         <source>%1 behind</source>
-        <translation>落后 %1 </translation>
+        <translation>落后 %1</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -736,7 +736,7 @@
     </message>
     <message>
         <source>Change:</source>
-        <translation>变更: </translation>
+        <translation>变更:</translation>
     </message>
     <message>
         <source>(un)select all</source>
@@ -1325,7 +1325,7 @@
     </message>
     <message>
         <source>Open payment request from URI or file</source>
-        <translation>打开来自URI或文件的付款请求 </translation>
+        <translation>打开来自URI或文件的付款请求</translation>
     </message>
     <message>
         <source>URI:</source>
@@ -1333,11 +1333,11 @@
     </message>
     <message>
         <source>Select payment request file</source>
-        <translation>选择付款请求文件 </translation>
+        <translation>选择付款请求文件</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>选择需要打开的付款请求文件 </translation>
+        <translation>选择需要打开的付款请求文件</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1368,7 +1368,7 @@
     </message>
     <message>
         <source>Number of script &amp;verification threads</source>
-        <translation>脚本&amp;验证 进程数 </translation>
+        <translation>脚本验证 进程数(&amp;V)</translation>
     </message>
     <message>
         <source>(0 = auto, &lt;0 = leave that many cores free)</source>
@@ -1376,7 +1376,7 @@
     </message>
     <message>
         <source>W&amp;allet</source>
-        <translation>&amp;钱包</translation>
+        <translation>钱包(&amp;A)</translation>
     </message>
     <message>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
@@ -1396,7 +1396,7 @@
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
-        <translation>&amp;通过 SOCKS5 代理连接 (默认代理):</translation>
+        <translation>通过 SOCKS5 代理连接 (默认代理)(&amp;C):</translation>
     </message>
     <message>
         <source>Expert</source>
@@ -1420,7 +1420,7 @@
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>启动货币 &amp;控制功能</translation>
+        <translation>启动货币 控制功能(&amp;C)</translation>
     </message>
     <message>
         <source>Show additional tab listing all your gateways in first sub-tab&lt;br/&gt;and all gateways on the network in second sub-tab.</source>
@@ -1436,7 +1436,7 @@
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;选择未经确认的花费</translation>
+        <translation>选择未经确认的花费(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -1454,7 +1454,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
-        <translation>使用 &amp;UPnP 映射端口</translation>
+        <translation>使用 UPnP 映射端口(&amp;U)</translation>
     </message>
     <message>
         <source>Connect to the Soom network through a SOCKS5 proxy.</source>
@@ -1462,7 +1462,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
-        <translation>代理服务器 &amp;IP:</translation>
+        <translation>代理服务器 IP(&amp;I):</translation>
     </message>
     <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
@@ -1542,7 +1542,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;显示金额的单位:</translation>
+        <translation>显示金额的单位(&amp;U):</translation>
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
@@ -1804,7 +1804,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
-        <translation>付款请求文件处理 </translation>
+        <translation>付款请求文件处理</translation>
     </message>
     <message>
         <source>Invalid payment address %1</source>
@@ -1906,26 +1906,26 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>%1 d</source>
-        <translation>%1 天</translation>
+        <translation>%1天</translation>
     </message>
     <message>
         <source>%1 h</source>
-        <translation>%1 小时</translation>
+        <translation>%1小时</translation>
     </message>
     <message>
         <source>%1 m</source>
-        <translation>%1 分钟</translation>
+        <translation>%1分钟</translation>
     </message>
     <message>
         <source>%1 s</source>
-        <translation>%1 秒</translation>
+        <translation>%1秒</translation>
     </message>
     <message>
         <source>NETWORK</source>
         <translation>网络</translation>
     </message>
     <message>
-        <source>UNKNOWN</source>
+        <source>unknown</source>
         <translation>未知</translation>
     </message>
     <message>
@@ -1938,7 +1938,35 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>%1 ms</source>
-        <translation>%1 毫秒</translation>
+        <translation>%1毫秒</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation><numerusform>%n秒</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation><numerusform>%n分钟</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n小时</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n天</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n周</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n年</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 和 %2</translation>
     </message>
 </context>
 <context>
@@ -2084,7 +2112,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Peers</source>
-        <translation>&amp;节点</translation>
+        <translation>节点(&amp;P)</translation>
     </message>
     <message>
         <source>Banned peers</source>
@@ -2164,7 +2192,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Wallet Repair</source>
-        <translation>&amp;钱包修复</translation>
+        <translation>钱包修复(&amp;W)</translation>
     </message>
     <message>
         <source>Starting Block</source>
@@ -2272,19 +2300,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 小时(&amp;h)</translation>
+        <translation>1 小时(&amp;H)</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 天(&amp;d)</translation>
+        <translation>1 天(&amp;D)</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 周(&amp;w)</translation>
+        <translation>1 周(&amp;W)</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 年(&amp;y)</translation>
+        <translation>1 年(&amp;Y)</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
@@ -2443,7 +2471,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Copy message</source>
-        <translation>复制消息 </translation>
+        <translation>复制消息</translation>
     </message>
     <message>
         <source>Copy amount</source>
@@ -2518,7 +2546,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>关闭(&amp;C)</translation>
+        <translation>关闭(&amp;L)</translation>
     </message>
 </context>
 <context>
@@ -2549,7 +2577,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>(no amount)</source>
-        <translation>(无金额) </translation>
+        <translation>(无金额)</translation>
     </message>
 </context>
 <context>
@@ -2564,7 +2592,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Inputs...</source>
-        <translation>输入...</translation>
+        <translation>输入</translation>
     </message>
     <message>
         <source>automatically selected</source>
@@ -2612,7 +2640,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Change:</source>
-        <translation>变更: </translation>
+        <translation>变更:</translation>
     </message>
     <message>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
@@ -3185,6 +3213,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1 / 离线</translation>
     </message>
     <message>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/未确认, %1</translation>
+    </message>
+    <message>
+        <source>in memory pool</source>
+        <translation>在内存池中</translation>
+    </message>
+    <message>
+        <source>not in memory pool</source>
+        <translation>不在内存池中</translation>
+    </message>
+    <message>
+        <source>abandoned</source>
+        <translation>放弃</translation>
+    </message>
+    <message>
         <source>%1/unconfirmed</source>
         <translation>%1/未确认</translation>
     </message>
@@ -3193,24 +3237,16 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1 已确认</translation>
     </message>
     <message>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/下线 (即时支付系统正在认证中 - %2 of %3签名数)</translation>
+        <source>verified via InstantSend</source>
+        <translation>即时支付系统认证失败</translation>
     </message>
     <message>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/已确认 (即时支付系统正在认证中 - %2 of %3签名数)</translation>
+        <source>InstantSend verification in progress - %1 of %2 signatures</source>
+        <translation>即时支付系统正在认证中 - %2个签名的%1</translation>
     </message>
     <message>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/确认完成 (即时支付系统正在认证中 - %2 of %3签名数)</translation>
-    </message>
-    <message>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/下线 (即时支付系统认证失败)</translation>
-    </message>
-    <message>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/已确认 (即时支付系统认证失败)</translation>
+        <source>InstantSend verification failed</source>
+        <translation>即时支付系统认证失败</translation>
     </message>
     <message>
         <source>Status</source>
