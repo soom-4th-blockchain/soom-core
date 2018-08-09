@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Soom
+Comment=Soom P2P Cryptocurrency
+Comment[fr]=Soom, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Soom, eşten eşe kriptografik sanal para birimi
+Exec=soom-qt %u
+Terminal=false
+Type=Application
+Icon=soom128
+MimeType=x-scheme-handler/soom;
+Categories=Office;Finance;

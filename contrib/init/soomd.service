@@ -1,0 +1,22 @@
+[Unit]
+Description=Soom's distributed currency daemon
+After=network.target
+
+[Service]
+User=soomcore
+Group=soomcore
+
+Type=forking
+PIDFile=/var/lib/soomd/soomd.pid
+ExecStart=/usr/bin/soomd -daemon -pid=/var/lib/soomd/soomd.pid \
+-conf=/etc/soomcore/soom.conf -datadir=/var/lib/soomd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

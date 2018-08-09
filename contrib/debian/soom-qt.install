@@ -1,0 +1,6 @@
+usr/local/bin/soom-qt usr/bin
+share/pixmaps/soom32.xpm usr/share/pixmaps
+share/pixmaps/soom16.xpm usr/share/pixmaps
+share/pixmaps/soom128.png usr/share/pixmaps
+debian/soom-qt.desktop usr/share/applications
+debian/soom-qt.protocol usr/share/kde4/services/
