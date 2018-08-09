@@ -1,4 +1,4 @@
-Soom Core version 1.0.0.0
+Soom Core version 1.0.1.0
 ==========================
 
 Release is now available from:
