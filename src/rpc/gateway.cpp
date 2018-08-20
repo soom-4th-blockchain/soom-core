@@ -14,6 +14,7 @@
 #include "gatewayman.h"
 #include "wallet/wallet.h"
 #include "rpc/server.h"
+#include "tinyformat.h"
 #include "util.h"
 #include "utilmoneystr.h"
 
@@ -378,121 +379,105 @@ UniValue gateway(const UniValue& params, bool fHelp)
         secret.MakeNewKey(false);
         std::string genkey;
 		genkey = CBitcoinSecret(secret).ToString();
-		if(genkey.length() <= 0){ // 가용한 privkey가 아닐 경우 fail
+		if(genkey.length() <= 0){ // Unavailable PrivKey
 			throw JSONRPCError(RPC_WALLET_ERROR, "Unavailable PrivKey");
 		}
 		// step3: execute \"outputs\" --> get collateral id & index
         std::vector<COutput> vPossibleCoins;
         pwalletMain->AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_5000);
-		if(!vPossibleCoins.size()){ // 가용한 COIN이 없을 경우 fail
+		if(!vPossibleCoins.size()){ // Unavailable Coins
 			throw JSONRPCError(RPC_WALLET_ERROR, "Unavailable Coins");
 		}
-		char z_temp[512] = {0};
-		COutput& out = *(vPossibleCoins.begin());
-		snprintf(z_temp, 512, "%s %d", out.tx->GetHash().ToString().c_str(), out.i);
-		std::string collateral_str = z_temp;
-		// step4: get localaddr & port (가용한 IP/PORT가 없을 경우 fail)
-		std::string netaddr = "";
-	    {
+		std::string collateral_str;
+		collateral_str = strprintf("%s %d", vPossibleCoins.begin()->tx->GetHash().ToString().c_str(), vPossibleCoins.begin()->i);
+		// step4: get localaddr & port 
+		std::string netaddr;
+		{
 	        LOCK(cs_mapLocalHost);
-	        BOOST_FOREACH(const PAIRTYPE(CNetAddr, LocalServiceInfo) &item, mapLocalHost){
+			for(auto item : mapLocalHost){
 				if(item.first.IsRoutable()){
-					snprintf(z_temp, 512, "%s:%d", item.first.ToString().c_str(), item.second.nPort);
-					netaddr = z_temp;
+					netaddr = strprintf("%s:%d", item.first.ToString().c_str(), item.second.nPort);
 					break;
 				}
-	        }
+			}
 	    }
 		if(!netaddr.length()){
 			throw JSONRPCError(RPC_CLIENT_INVALID_IP_OR_SUBNET, "No Variable Ip/Port");
 		}
 		// step5: file modify (soom.conf)
-	{
-		boost::filesystem::path pathConfigFile(GetArg("-conf", BITCOIN_CONF_FILENAME));
-	    if (!pathConfigFile.is_complete()){
-	        pathConfigFile = GetDataDir(false) / pathConfigFile;
+		boost::filesystem::path pathConfFileOrigin(GetArg("-conf", BITCOIN_CONF_FILENAME));
+		if (!pathConfFileOrigin.is_complete()){
+	        pathConfFileOrigin = GetDataDir(false) / pathConfFileOrigin;
 	    }
-		boost::filesystem::path pathCopyFile(GetArg("-conf", "soom.conf_bak"));
-	    if (!pathCopyFile.is_complete()){
-	        pathCopyFile = GetDataDir(false) / pathCopyFile;
+		boost::filesystem::path pathConfFileCopy(GetArg("-conf", "soom.conf_bak"));
+	    if (!pathConfFileCopy.is_complete()){
+	        pathConfFileCopy = GetDataDir(false) / pathConfFileCopy;
 	    }
-		ifstream fin;
-		ofstream fout;
-		fin.open(pathConfigFile.string());
-		fout.open(pathCopyFile.string());
-		std::string read_str;
+		ifstream fin_conf;
+		ofstream fout_conf;
+		fin_conf.open(pathConfFileOrigin.string());
+		fout_conf.open(pathConfFileCopy.string());
+		std::string readline_conf;
 		std::string except_str1 = "gateway=";
 		std::string except_str2 = "gatewayprivkey=";
-		char buf[1024] = {0};
-		while(!fin.eof()){
-			fin.getline(buf, 1024);
-			read_str = buf;
-			memset(buf, 0x00, strlen(buf));
-			if((read_str.find(except_str1) == std::string::npos)&&(read_str.find(except_str2) == std::string::npos)){
-				fout << read_str << std::endl;
+		while(!fin_conf.eof()){
+			getline(fin_conf, readline_conf);
+			if((readline_conf.find(except_str1) == std::string::npos)&&(readline_conf.find(except_str2) == std::string::npos)){
+				fout_conf << readline_conf << std::endl;
 			}
 		}
 		std::string gw = "gateway=1";
-		fout << gw << std::endl;
+		fout_conf << gw << std::endl;
 		std::string gwprivkey = "gatewayprivkey=";
 		gwprivkey += genkey;
-		fout << gwprivkey << std::endl;
-		fin.close();
-		fout.close();
-		std::string rm_str = "rm -rf ";
-		rm_str += pathConfigFile.string();
-		(void)system(rm_str.c_str());
-		std::string mv_str = "mv ";
-		mv_str += pathCopyFile.string();
-		mv_str += " ";
-		mv_str += pathConfigFile.string();
-		(void)system(mv_str.c_str());
-	}
+		fout_conf << gwprivkey << std::endl;
+		fin_conf.close();
+		fout_conf.close();
+		try {
+	        boost::filesystem::remove(pathConfFileOrigin);
+	    } catch (const boost::filesystem::filesystem_error& e) {
+	        LogPrintf("%s: Unable to remove file: %s\n", __func__, e.what());
+	    }
+		try {
+	        boost::filesystem::rename(pathConfFileCopy, pathConfFileOrigin);
+	    } catch (const boost::filesystem::filesystem_error& e) {
+	        LogPrintf("%s: Unable to rename file: %s\n", __func__, e.what());
+	    }
 		// step6: file modify (gateway.conf)
-	{
-		std::string gwinfo_str = account_name;
-		gwinfo_str += " ";
-		gwinfo_str += netaddr;
-		gwinfo_str += " ";
-		gwinfo_str += genkey;
-		gwinfo_str += " ";
-		gwinfo_str += collateral_str;
-		boost::filesystem::path pathConfigFile(GetArg("-gwconf", "gateway.conf"));
-		if (!pathConfigFile.is_complete()){
-    		pathConfigFile = GetDataDir() / pathConfigFile;
+		std::string gwinfo_str = strprintf("%s %s %s %s", account_name.c_str(), netaddr.c_str(), genkey.c_str(), collateral_str.c_str());
+		boost::filesystem::path pathGwFileOrigin(GetArg("-gwconf", "gateway.conf"));
+		if (!pathGwFileOrigin.is_complete()){
+    		pathGwFileOrigin = GetDataDir() / pathGwFileOrigin;
 		}
-		boost::filesystem::path pathCopyFile(GetArg("-gwconf", "gateway.conf_bak"));
-		if (!pathCopyFile.is_complete()){
-    		pathCopyFile = GetDataDir() / pathCopyFile;
+		boost::filesystem::path pathGwFileCopy(GetArg("-gwconf", "gateway.conf_bak"));
+		if (!pathGwFileCopy.is_complete()){
+    		pathGwFileCopy = GetDataDir() / pathGwFileCopy;
 		}
-		ifstream fin;
-		ofstream fout;
-		fin.open(pathConfigFile.string());
-		fout.open(pathCopyFile.string());
-		std::string read_str;
+		ifstream fin_gw;
+		ofstream fout_gw;
+		fin_gw.open(pathGwFileOrigin.string());
+		fout_gw.open(pathGwFileCopy.string());
+		std::string readline_gw;
 		std::string except_str = "# ";
-		char buf[1024] = {0};
-		while(!fin.eof())
-		{
-			fin.getline(buf, 1024);
-			read_str = buf;
-			memset(buf, 0x00, strlen(buf));
-			if(read_str.find(except_str) != std::string::npos){
-				fout << read_str << std::endl;
+		while(!fin_gw.eof()){
+			getline(fin_gw, readline_gw);
+			if(readline_gw.find(except_str) != std::string::npos){
+				fout_gw << readline_gw << std::endl;
 			}
 		}
-		fout << gwinfo_str << std::endl;
-		fin.close();
-		fout.close();
-		std::string rm_str = "rm -rf ";
-		rm_str += pathConfigFile.string();
-		(void)system(rm_str.c_str());
-		std::string mv_str = "mv ";
-		mv_str += pathCopyFile.string();
-		mv_str += " ";
-		mv_str += pathConfigFile.string();
-		(void)system(mv_str.c_str());
-	}
+		fout_gw << gwinfo_str << std::endl;
+		fin_gw.close();
+		fout_gw.close();
+		try {
+	        boost::filesystem::remove(pathGwFileOrigin);
+	    } catch (const boost::filesystem::filesystem_error& e) {
+	        LogPrintf("%s: Unable to remove file: %s\n", __func__, e.what());
+	    }
+		try {
+	        boost::filesystem::rename(pathGwFileCopy, pathGwFileOrigin);
+	    } catch (const boost::filesystem::filesystem_error& e) {
+	        LogPrintf("%s: Unable to rename file: %s\n", __func__, e.what());
+	    }
 		UniValue returnObj(UniValue::VOBJ);
         returnObj.push_back(Pair("overall", strprintf("Successfully Generate Gateway conf. %d", 1)));
 		return returnObj;
