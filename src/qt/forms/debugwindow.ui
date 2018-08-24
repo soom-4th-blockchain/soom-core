@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tab_info">
       <attribute name="title">
@@ -478,7 +478,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>24</width>
+             <width>35</width>
              <height>24</height>
             </size>
            </property>
@@ -516,7 +516,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>24</width>
+             <width>35</width>
              <height>24</height>
             </size>
            </property>
@@ -554,7 +554,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>24</width>
+             <width>35</width>
              <height>24</height>
             </size>
            </property>
@@ -707,8 +707,8 @@
             <widget class="QPushButton" name="btnClearTrafficGraph">
              <property name="minimumSize">
               <size>
-               <width>60</width>
-               <height>25</height>
+               <width>80</width>
+               <height>28</height>
               </size>
              </property>
              <property name="text">
@@ -734,58 +734,21 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
-               <widget class="Line" name="line">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+               <widget class="QLabel" name="line">
                 <property name="minimumSize">
                  <size>
                   <width>10</width>
-                  <height>0</height>
+                  <height>3</height>
                  </size>
                 </property>
-                <property name="palette">
-                 <palette>
-                  <active>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </active>
-                  <inactive>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </inactive>
-                  <disabled>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </disabled>
-                 </palette>
+                <property name="maximumSize">
+                 <size>
+                  <width>10</width>
+                  <height>3</height>
+                 </size>
                 </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -814,58 +777,21 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
-               <widget class="Line" name="line_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+               <widget class="QLabel" name="line_2">
                 <property name="minimumSize">
                  <size>
                   <width>10</width>
-                  <height>0</height>
+                  <height>3</height>
                  </size>
                 </property>
-                <property name="palette">
-                 <palette>
-                  <active>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>255</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </active>
-                  <inactive>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>255</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </inactive>
-                  <disabled>
-                   <colorrole role="Light">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>255</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </disabled>
-                 </palette>
+                <property name="maximumSize">
+                 <size>
+                  <width>10</width>
+                  <height>3</height>
+                 </size>
                 </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -1484,18 +1410,21 @@
        <string>&amp;Wallet Repair</string>
       </attribute>
       <widget class="QPushButton" name="btn_salvagewallet">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>100</y>
+         <y>360</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>180</width>
-         <height>23</height>
+         <height>28</height>
         </size>
        </property>
        <property name="text">
@@ -1506,15 +1435,15 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>150</y>
+         <y>111</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>180</width>
-         <height>23</height>
+         <height>28</height>
         </size>
        </property>
        <property name="text">
@@ -1525,15 +1454,15 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>200</y>
+         <y>161</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>180</width>
-         <height>23</height>
+         <height>28</height>
         </size>
        </property>
        <property name="text">
@@ -1544,15 +1473,15 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>250</y>
+         <y>211</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>180</width>
-         <height>23</height>
+         <height>28</height>
         </size>
        </property>
        <property name="text">
@@ -1563,15 +1492,15 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>300</y>
+         <y>261</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>180</width>
-         <height>23</height>
+         <height>28</height>
         </size>
        </property>
        <property name="text">
@@ -1601,10 +1530,13 @@
        </property>
       </widget>
       <widget class="QLabel" name="label_repair_salvage">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>90</y>
+         <y>350</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1620,7 +1552,7 @@
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>140</y>
+         <y>101</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1636,7 +1568,7 @@
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>190</y>
+         <y>151</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1652,7 +1584,7 @@
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>240</y>
+         <y>201</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1668,7 +1600,7 @@
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>290</y>
+         <y>251</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1707,10 +1639,16 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>350</y>
+         <y>311</y>
          <width>301</width>
-         <height>23</height>
+         <height>28</height>
         </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>180</width>
+         <height>28</height>
+        </size>
        </property>
        <property name="text">
         <string>Rebuild index</string>
@@ -1720,7 +1658,7 @@
        <property name="geometry">
         <rect>
          <x>330</x>
-         <y>340</y>
+         <y>301</y>
          <width>411</width>
          <height>41</height>
         </rect>
@@ -1761,8 +1699,6 @@
    </slots>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../soom.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

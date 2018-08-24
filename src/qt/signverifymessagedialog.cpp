@@ -35,17 +35,17 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle *platformSt
 
     QString theme = GUIUtil::getThemeName();
 
-#ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
-    ui->signMessageButton_SM->setIcon(QIcon());
-    ui->clearButton_SM->setIcon(QIcon());
-    ui->verifyMessageButton_VM->setIcon(QIcon());
-    ui->clearButton_VM->setIcon(QIcon());
-#else
-    ui->signMessageButton_SM->setIcon(QIcon(":/icons/" + theme + "/edit"));
-    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/remove"));
-    ui->verifyMessageButton_VM->setIcon(QIcon(":/icons/" + theme + "/transaction_0"));
-    ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/remove"));
-#endif
+//#ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
+//    ui->signMessageButton_SM->setIcon(QIcon());
+//    ui->clearButton_SM->setIcon(QIcon());
+//    ui->verifyMessageButton_VM->setIcon(QIcon());
+//    ui->clearButton_VM->setIcon(QIcon());
+//#else
+//    ui->signMessageButton_SM->setIcon(QIcon(":/icons/" + theme + "/edit"));
+//    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/remove"));
+//    ui->verifyMessageButton_VM->setIcon(QIcon(":/icons/" + theme + "/transaction_0"));
+//    ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/remove"));
+//#endif
 
     // These icons are needed on Mac also
     ui->addressBookButton_SM->setIcon(QIcon(":/icons/" + theme + "/drkblue_address-book"));

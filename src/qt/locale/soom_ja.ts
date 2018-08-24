@@ -30,8 +30,8 @@
         <translation>削除(&amp;D)</translation>
     </message>
     <message>
-        <source>Generates QR codes and soom URIs</source>
-        <translation>QRコードとSoom URI生成</translation>
+        <source>Show QR codes and soom URIs</source>
+        <translation>QRコードとSoom URIを表示する</translation>
     </message>
     <message>
         <source>Show &amp;QRCode</source>
@@ -105,6 +105,10 @@
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>トランザクション履歴を %1 へ保存する際にエラーが発生しました。再試行してください。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>AddressTableModel</name>
@@ -119,6 +123,10 @@
     <message>
         <source>(no label)</source>
         <translation>（ラベル無し）</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -136,12 +144,20 @@
         <translation>ラベル</translation>
     </message>
     <message>
+        <source>Copy &amp;Address</source>
+        <translation>アドレスのコピー(&amp;A)</translation>
+    </message>
+    <message>
         <source>&amp;Save Image...</source>
         <translation>画像保存…(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Close</source>
         <translation>閉める(&amp;C)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -259,6 +275,10 @@
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
+        <source>&amp;Yes</source>
+        <translation>はい(&amp;Y)</translation>
+    </message>
+    <message>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
@@ -272,6 +292,10 @@
     <message>
         <source>Banned Until</source>
         <translation>まで制限される</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -565,6 +589,10 @@
         <translation><numerusform>%n 個のSoomネットワークへ接続される</numerusform></translation>
     </message>
     <message>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>ヘザー同期化中（%１%）..．</translation>
+    </message>
+    <message>
         <source>Synchronizing with network...</source>
         <translation>ネットワークに同期中…</translation>
     </message>
@@ -684,6 +712,10 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>ウォレットは&lt;b&gt;暗号化されて、ロックされています&lt;/b&gt;</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ClientModel</name>
@@ -694,6 +726,10 @@
     <message>
         <source>Network Alert</source>
         <translation>ネットワーク警告</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1024,6 +1060,10 @@
         <source>Cannot create data directory here.</source>
         <translation>ここにデータ ディレクトリを作成することはできません。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -1257,6 +1297,18 @@
         <source>Are you sure you want to start MISSING gateways?</source>
         <translation>漏れのゲートウェイを始めますか？</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>はい(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>キャンセル(&amp;C)</translation>
+    </message>
 </context>
 <context>
     <name>ModalOverlay</name>
@@ -1311,6 +1363,10 @@
     <message>
         <source>Unknown. Syncing Headers (%1)...</source>
         <translation>不明。ヘザー同期化中（%１）..．</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1502,7 +1558,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>システムトレイでアイコン隠し。(&amp;H)</translation>
+        <translation>システムトレイでアイコン隠し。</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
@@ -1573,14 +1629,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>オプションをリセット(&amp;R)</translation>
     </message>
     <message>
-        <source>&amp;OK</source>
-        <translation>例え(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation>キャンセル(&amp;C)</translation>
-    </message>
-    <message>
         <source>default</source>
         <translation>デフォルト設定</translation>
     </message>
@@ -1607,6 +1655,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>プロキシアドレスが無効です。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>はい(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>キャンセル(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1779,6 +1839,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>N/A</source>
         <translation>該当事項なし</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1870,6 +1934,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Payment acknowledged</source>
         <translation>支払いは確認しました</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>PeerTableModel</name>
@@ -1889,9 +1957,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Ping</source>
         <translation>Ping</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <source>Error: %1</source>
+        <translation>エラー: %1</translation>
+    </message>
     <message>
         <source>Amount</source>
         <translation>総額</translation>
@@ -1964,6 +2040,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>%1 and %2</source>
         <translation>%1 と %2</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QRImageWidget</name>
@@ -1982,6 +2062,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>PNG Image (*.png)</source>
         <translation>PNG画像ファイル(*.png)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2287,6 +2371,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soom Core RPCコンソールへようこそ。</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>警告: 詐欺師が活動しており、ユーザに対してここにコマンドを入力させることでウォレットの中身を盗もうとしています。コマンドの結果を完全に理解していない限り、このコンソールは利用しないでください。</translation>
+    </message>
+    <message>
         <source>&amp;Disconnect</source>
         <translation>接続が切れる(&amp;D)</translation>
     </message>
@@ -2296,19 +2384,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 時間(&amp;H)</translation>
+        <translation>1時間(&amp;H)</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 日(&amp;D)</translation>
+        <translation>1日(&amp;D)</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 週(&amp;W)</translation>
+        <translation>1週(&amp;W)</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 年(&amp;Y)</translation>
+        <translation>1年(&amp;Y)</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
@@ -2373,6 +2461,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Fetching...</source>
         <translation>取得中…</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2473,6 +2565,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Copy amount</source>
         <translation>総額のコピー</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
@@ -2540,6 +2636,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>C&amp;lose</source>
         <translation>閉じる(&amp;L)</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2570,6 +2670,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>(no amount)</source>
         <translation>（金額なし）</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2870,6 +2974,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>(no label)</source>
         <translation>（ラベル無し）</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>はい(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>キャンセル(&amp;C)</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
@@ -2953,6 +3069,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>アドレス帳に追加するには、このアドレスのラベルを入力します</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2963,6 +3083,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>このウィンドウが消えるまでコンピュータをシャットダウンしないで下さい。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3103,6 +3227,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Message verified.</source>
         <translation>メッセージは検証されました。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>SplashScreen</name>
@@ -3130,12 +3258,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>[testnet]</source>
         <translation>[テストネット]</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
         <translation>KB/s</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3186,7 +3322,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>InstantSend verification in progress - %1 of %2 signatures</source>
-        <translation>直ちに送る検証中 - ％2つの署名のうち％1個</translation>
+        <translation>直ちに送る検証中 - %2つの署名のうち%1個</translation>
     </message>
     <message>
         <source>InstantSend verification failed</source>
@@ -3320,6 +3456,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>false</source>
         <translation>正しくない</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -3330,6 +3470,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>ここでは取引の詳細を表示しています</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -3449,6 +3593,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>残高に追加または削除された総額。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3609,12 +3757,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>to</source>
         <translation>から</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>金額を表示する際の単位。クリックすることで他の単位を選択します。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3623,12 +3779,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>No wallet has been loaded.</source>
         <translation>ウォレットがロードされていません</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
         <translation>コインを送る</translation>
+    </message>
+    <message>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
+        <translation>即時転送においてはまだ高い金額の送金は支援していません。トランザクションは現在%1SOOMに制限されます。</translation>
+    </message>
+    <message>
+        <source>Used way too many inputs (&gt;%1) for this InstantSend transaction, fees could be huge.</source>
+        <translation>この即時転送トランザクションに過度な入力 (&gt;%1)を使うと費用が多く発生します。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3668,6 +3840,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>ウォレット データは正常に%1に保存されました。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -4089,6 +4265,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-checkblocks のブロックの検証レベル (0-4, デフォルト設定: %u)</translation>
     </message>
     <message>
+        <source>Failed to load governance cache from</source>
+        <translation>ガバナンスキャッシュのロードに失敗しました</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway cache from</source>
+        <translation>ゲートウェイキャッシュをロードできませんでした</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway payments cache from</source>
+        <translation>ゲートウェイ支払いキャッシュをロードできませんでした</translation>
+    </message>
+    <message>
         <source>Found enough users, signing ( waiting %s )</source>
         <translation>適切なユーザーを見つけました。署名中（%sの待ち）</translation>
     </message>
@@ -4501,6 +4689,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ゲートウェイと同期化中です...</translation>
     </message>
     <message>
+        <source>Synchronizing gateway payments...</source>
+        <translation>ゲートウェイの支払いを同期化中です...</translation>
+    </message>
+    <message>
         <source>This help message</source>
         <translation>このヘルプ メッセージ</translation>
     </message>
@@ -4577,7 +4769,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>リスン ポートの割当に UPnP を使用 (デフォルト設定: リスン中は1)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>テストのためのネットワークを使用</translation>
     </message>
     <message>
@@ -4683,6 +4875,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>wallet.dat corrupt, salvage failed</source>
         <translation>wallet.dat が壊れ、復旧に失敗しました</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 </TS>

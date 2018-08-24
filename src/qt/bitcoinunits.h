@@ -68,7 +68,7 @@ public:
         SOOM,
         mSOOM,
         uSOOM,
-        tnsoom
+        tnSOOM
     };
 
     enum SeparatorStyle

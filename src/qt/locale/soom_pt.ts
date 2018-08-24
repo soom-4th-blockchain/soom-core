@@ -1851,6 +1851,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Bem-vindo à consola RPC Soom</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>AVISO: Os golpistas estão ativos, dizendo aos usuários para digitar comandos aqui, roubando o conteúdo da carteira. Não use este console sem compreender totalmente o contexto de um comando.</translation>
+    </message>
+    <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
         <translation>Use as setas para cima / baixo para navegar no histórico, e &lt;b&gt;Ctrl-L&lt;/b&gt; para limpar o ecran.</translation>
     </message>
@@ -4143,7 +4147,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Usar UPnP para mapear a porta de entrada (omissão: 1 quando em escuta)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>Usar a rede de testes</translation>
     </message>
     <message>

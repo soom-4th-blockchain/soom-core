@@ -239,11 +239,34 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
 //        progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
-        progressBar->setStyleSheet("QProgressBar { background-color: #bcc9dd; border: 1px solid #fff; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f86c6b, stop: 1 #f86c6b); border-radius: 7px; margin: 0px; }");
+        progressBar->setStyleSheet("QProgressBar { background: #bcc9dd; border: 1px solid #fff; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f86c6b, stop: 1 #f86c6b); border-radius: 7px; margin: 0px; }");
     }
 
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
+
+    const std::string MAIN = "main";
+    const std::string TESTNET = "test";
+    const std::string REGTEST = "regtest";
+
+    std::string chain = ChainNameFromCommandLine();
+    if (chain != MAIN)
+    {
+        QLabel* networkStyles = new QLabel(this);
+        networkStyles->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+        networkStyles->setAlignment(Qt::AlignCenter);
+        networkStyles->setStyleSheet("QLabel { background: #bcc9dd; color: #ffffff; border: 1px solid #fff; border-radius: 7px; padding: 1px; text-align: center; }");
+
+        if (chain == TESTNET)
+        {
+            networkStyles->setText(" TESTNET ");
+//            networkStyles->setToolTip(tr("Use the test chain"));
+        }
+        else    // REGTEST
+            networkStyles->setText(" REGTEST ");
+
+        statusBar()->addWidget(networkStyles);
+    }
     statusBar()->addPermanentWidget(frameBlocks);
 
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
@@ -618,7 +641,7 @@ void BitcoinGUI::createToolBars()
     {
         QToolBar *toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-        toolbar->setStyleSheet("QToolButton { color: #ffffff; } QToolButton:hover { background-color: #4e586d } QToolButton:checked { background-color: rgba(255, 255, 255, 0.1) } QToolButton:pressed { background-color: rgba(255, 255, 255, 0.1) } #tabs { color: #ffffff; background-color: qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #404040, stop: 1 #101010);  }");
+        toolbar->setStyleSheet("QToolButton { color: #ffffff; } QToolButton:hover { background-color: #4e586d } QToolButton:checked { background-color: rgba(255, 255, 255, 0.1) } QToolButton:pressed { background-color: rgba(255, 255, 255, 0.1) } #tabs { color: #ffffff; background-color: qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #404040, stop: 1 #101010); }");
 
         QLabel* coinImage = new QLabel();
         coinImage->setMinimumSize(128, 128);
@@ -837,25 +860,18 @@ void BitcoinGUI::createIconMenu(QMenu *pmenu)
     pmenu->addSeparator();
     pmenu->addAction(sendCoinsMenuAction);
     pmenu->addAction(receiveCoinsMenuAction);
-    pmenu->addSeparator();
+    pmenu->addAction(historyAction);
     pmenu->addAction(signMessageAction);
-    pmenu->addAction(verifyMessageAction);
+    QSettings settings;
+    if (settings.value("fShowGatewaysTab").toBool() && gatewayAction) {
+        pmenu->addAction(gatewayAction);
+    }
     pmenu->addSeparator();
     pmenu->addAction(usedSendingAddressesAction);
-//    pmenu->addAction(usedSendingAddressesMenuAction);
     pmenu->addAction(usedReceivingAddressesAction);
-//    pmenu->addAction(usedReceivingAddressesMenuAction);
     pmenu->addSeparator();
     pmenu->addAction(optionsAction);
-    pmenu->addAction(openInfoAction);
     pmenu->addAction(openRPCConsoleAction);
-    pmenu->addAction(openGraphAction);
-    pmenu->addAction(openPeersAction);
-    pmenu->addAction(openRepairAction);
-    pmenu->addSeparator();
-    pmenu->addAction(openConfEditorAction);
-    pmenu->addAction(openGWConfEditorAction);
-    pmenu->addAction(showBackupsAction);
 #ifndef Q_OS_MAC // This is built-in on Mac
     pmenu->addSeparator();
     pmenu->addAction(quitAction);
@@ -1275,6 +1291,8 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
 
         showNormalIfMinimized();
         QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons, this);
+        mBox.setButtonText(QMessageBox::Ok, tr("&OK"));
+
         int r = mBox.exec();
         if (ret != NULL)
             *ret = r == QMessageBox::Ok;

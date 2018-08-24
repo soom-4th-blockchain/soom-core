@@ -90,11 +90,6 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
-//	  ui->theme->addItem(QString("SOOM-blue"), QVariant("drkblue"));
-//	  ui->theme->addItem(QString("SOOM-light"), QVariant("light"));
-//    ui->theme->addItem(QString("SOOM-light-hires"), QVariant("light-hires"));
-//    ui->theme->addItem(QString("SOOM-Crownium"), QVariant("crownium"));
-//    ui->theme->addItem(QString("SOOM-traditional"), QVariant("trad"));
     
     /* Language selector */
     QDir translations(":translations");
@@ -241,10 +236,14 @@ void OptionsDialog::on_resetButton_clicked()
     if(model)
     {
         // confirmation dialog
-        QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Confirm options reset"),
+        QMessageBox question(QMessageBox::Question, tr("Confirm options reset"),
             tr("Client restart required to activate changes.") + "<br><br>" + tr("Client will be shut down. Do you want to proceed?"),
-            QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
+            QMessageBox::Yes | QMessageBox::Cancel,
+            this);
+        question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+        question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
+        int btnRetVal = question.exec();
         if(btnRetVal == QMessageBox::Cancel)
             return;
 

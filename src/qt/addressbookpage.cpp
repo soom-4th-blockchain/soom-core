@@ -192,6 +192,8 @@ void AddressBookPage::setModel(AddressTableModel *model)
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
     // Select row for newly created address
     connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(selectNewAddress(QModelIndex,int,int)));
+
+    selectionChanged();
 }
 
 void AddressBookPage::setOptionsModel(OptionsModel *optionsModel)
@@ -341,8 +343,10 @@ void AddressBookPage::on_exportButton_clicked()
     writer.addColumn("Address", AddressTableModel::Address, Qt::EditRole);
 
     if(!writer.write()) {
-        QMessageBox::critical(this, tr("Exporting Failed"),
-            tr("There was an error trying to save the address list to %1. Please try again.").arg(filename));
+        QMessageBox critical(QMessageBox::Critical, tr("Exporting Failed"),
+            tr("There was an error trying to save the address list to %1. Please try again.").arg(filename), QMessageBox::Ok, this);
+        critical.setButtonText(QMessageBox::Ok, tr("&OK"));
+        critical.exec();
     }
 }
 

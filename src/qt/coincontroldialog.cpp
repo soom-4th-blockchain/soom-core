@@ -115,6 +115,8 @@ CoinControlDialog::CoinControlDialog(const PlatformStyle *platformStyle, QWidget
 #else
     ui->treeWidget->header()->setSectionsClickable(true);
 #endif
+    ui->treeWidget->header()->setDefaultAlignment(Qt::AlignCenter);
+
     connect(ui->treeWidget->header(), SIGNAL(sectionClicked(int)), this, SLOT(headerSectionClicked(int)));
 
     // ok button

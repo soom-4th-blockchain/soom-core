@@ -907,7 +907,7 @@ QString getThemeName()
     if(!theme.isEmpty()){
         return theme;
     }
-    return QString("drkblue");  
+    return QString("default");
 }
 
 // Open CSS when configured
@@ -922,8 +922,8 @@ QString loadStyleSheet()
 //        cssName = QString(":/css/") + theme;
 //    }
 //    else {
-        cssName = QString(":/css/drkblue");  
-        settings.setValue("theme", "drkblue");
+        cssName = QString(":/css/default");
+        settings.setValue("theme", "default");
 //    }
     
     QFile qFile(cssName);      

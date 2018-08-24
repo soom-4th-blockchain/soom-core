@@ -540,7 +540,11 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Soom Core can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox critical(QMessageBox::Critical, "Runaway exception",
+                         BitcoinGUI::tr("A fatal error occurred. Soom Core can no longer continue safely and will quit.") + QString("\n\n") + message,
+                         QMessageBox::Ok, 0);
+    critical.setButtonText(QMessageBox::Ok, tr("&OK"));
+    critical.exec();
     ::exit(EXIT_FAILURE);
 }
 
@@ -627,15 +631,19 @@ int main(int argc, char *argv[])
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
-        QMessageBox::critical(0, QObject::tr("Soom Core"),
-                              QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
+        QMessageBox critical(QMessageBox::Critical, QObject::tr("Soom Core"),
+                              QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])), QMessageBox::Ok, 0);
+        critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
+        critical.exec();
         return EXIT_FAILURE;
     }
     try {
         ReadConfigFile(mapArgs, mapMultiArgs);
     } catch (const std::exception& e) {
-        QMessageBox::critical(0, QObject::tr("Soom Core"),
-                              QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));
+        QMessageBox critical(QMessageBox::Critical, QObject::tr("Soom Core"),
+                              QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()), QMessageBox::Ok, 0);
+        critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
+        critical.exec();
         return EXIT_FAILURE;
     }
 
@@ -649,7 +657,9 @@ int main(int argc, char *argv[])
     try {
         SelectParams(ChainNameFromCommandLine());
     } catch(std::exception &e) {
-        QMessageBox::critical(0, QObject::tr("Soom Core"), QObject::tr("Error: %1").arg(e.what()));
+        QMessageBox critical(QMessageBox::Critical, QObject::tr("Soom Core"), QObject::tr("Error: %1").arg(e.what()), QMessageBox::Ok, 0);
+        critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
+        critical.exec();
         return EXIT_FAILURE;
     }
 #ifdef ENABLE_WALLET
@@ -670,8 +680,10 @@ int main(int argc, char *argv[])
     /// 7a. parse gateway.conf
     std::string strErr;
     if(!gatewayConfig.read(strErr)) {
-        QMessageBox::critical(0, QObject::tr("Soom Core"),
-                              QObject::tr("Error reading gateway configuration file: %1").arg(strErr.c_str()));
+        QMessageBox critical(QMessageBox::Critical, QObject::tr("Soom Core"),
+                              QObject::tr("Error reading gateway configuration file: %1").arg(strErr.c_str()), QMessageBox::Ok, 0);
+        critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
+        critical.exec();
         return EXIT_FAILURE;
     }
 

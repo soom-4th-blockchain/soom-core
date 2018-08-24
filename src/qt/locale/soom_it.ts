@@ -1757,6 +1757,10 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Benvenuto nella console RPC Soom</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>ATTENZIONE: truffatori sono stati attivi, chiedendo agli utenti di digitare comandi qui, rubando il contenuto del loro portafoglio. Non utilizzare questa console senza comprendere appieno la diramazione di un comando.</translation>
+    </message>
+    <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
         <translation>Usa le frecce direzionali per navigare la cronologia, e &lt;b&gt;Ctrl-L&lt;/b&gt; per cancellarla.</translation>
     </message>
@@ -3591,7 +3595,7 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Usa UPnP per mappare la porta in ascolto (predefinito: 1 when listening)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>Utilizza la rete di prova</translation>
     </message>
     <message>

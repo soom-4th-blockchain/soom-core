@@ -104,3 +104,8 @@ void QRCodeDialog::on_btnSaveAs_clicked()
     if (!fn.isEmpty())
         myImage.scaled(EXPORT_IMAGE_SIZE, EXPORT_IMAGE_SIZE).save(fn);
 }
+
+void QRCodeDialog::on_btnCopyAddress_clicked()
+{
+    GUIUtil::setClipboard(info.address);
+}

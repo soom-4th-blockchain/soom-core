@@ -40,8 +40,8 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>Generates QR codes and soom URIs</source>
-        <translation>Generates QR codes and soom URIs</translation>
+        <source>Show QR codes and soom URIs</source>
+        <translation>Show QR codes and soom URIs</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -168,6 +168,11 @@
         <location line="+2"/>
         <source>Label</source>
         <translation>Label</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Copy &amp;Address</source>
+        <translation>Copy &amp;Address</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2912,6 +2917,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Welcome to the Soom Core RPC console.</translation>
     </message>
     <message>
+        <location line="+2"/>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</translation>
+    </message>
+    <message>
         <location line="+1"/>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
         <translation>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</translation>
@@ -3340,13 +3350,13 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="-488"/>
-        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "total at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "total at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <location line="+33"/>

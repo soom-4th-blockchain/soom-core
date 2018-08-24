@@ -1941,7 +1941,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     uiInterface.InitMessage(_("Loading gateway cache..."));
     CFlatDB<CGatewayMan> flatdb1(strDBName, "magicGatewayCache");
     if(!flatdb1.Load(gwnodeman)) {
-        return InitError(_("Failed to load gateway cache from") + "\n" + (pathDB / strDBName).string());
+        return InitError(_("Failed to load gateway cache from") + " " + (pathDB / strDBName).string());
     }
 
     if(gwnodeman.size()) {
@@ -1949,7 +1949,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         uiInterface.InitMessage(_("Loading gateway payment cache..."));
         CFlatDB<CGatewayPayments> flatdb2(strDBName, "magicGatewayPaymentsCache");
         if(!flatdb2.Load(gwpayments)) {
-            return InitError(_("Failed to load gateway payments cache from") + "\n" + (pathDB / strDBName).string());
+            return InitError(_("Failed to load gateway payments cache from") + " " + (pathDB / strDBName).string());
         }
 
     } else {
@@ -1960,7 +1960,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     uiInterface.InitMessage(_("Loading fulfilled requests cache..."));
     CFlatDB<CNetFulfilledRequestManager> flatdb4(strDBName, "magicFulfilledCache");
     if(!flatdb4.Load(netfulfilledman)) {
-        return InitError(_("Failed to load fulfilled requests cache from") + "\n" + (pathDB / strDBName).string());
+        return InitError(_("Failed to load fulfilled requests cache from") + " " + (pathDB / strDBName).string());
     }
 
     // ********************************************************* Step 11c: update block tip in Soom modules

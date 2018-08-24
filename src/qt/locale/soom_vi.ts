@@ -2208,6 +2208,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Chào mừng đến với bảng điều khiển Soom Core RPC</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>CẢNH BÁO: Những người lừa đảo hay Scammer đã từng đánh lừa và nói với người dùng là hãy gõ những câu lệnh ở đây và ăn cắp nội dung ví của bạn. Đừng sử dụng console nếu như bạn không thực sự hoàn toàn hiểu chi tiết từng câu lệnh và các tham số của nó.</translation>
+    </message>
+    <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
         <translation>Sử dụng các phím mũi tên lên và xuống để xem lịch sử, và &lt;b&gt;Ctrl-L&lt;/b&gt; để xoá màn hình.</translation>
     </message>

@@ -264,11 +264,27 @@ RPCConsole::RPCConsole(const PlatformStyle *platformStyle, QWidget *parent) :
     GUIUtil::restoreWindowGeometry("nRPCConsoleWindow", this->size(), this);
     QString theme = GUIUtil::getThemeName();
 
-    setStyleSheet("QWidget { background-color: #eff3f6; } QPushButton { color: #ffffff; background-color: #3a5998; border-radius: 7px; } QPushButton:hover { background-color: #4e586d } QPushButton:pressed { background-color: rgba(255, 255, 255, 0.1) } QTextEdit { background-color: #ffffff; } QLineEdit { background-color: #ffffff; } QMenu { color: #333; background-color:#bcc9dd; } QMenu::item:selected { color:#ffffff; background-color:#4875b4; } QTableView { background-color: #ffffff; }");
+    setStyleSheet("QWidget { background-color: #eff3f6; } QPushButton { color: #ffffff; background-color: #3a5998; border-radius: 7px; outline: 0; } "
+                  "QPushButton:hover { background-color: #4e586d; } QPushButton:pressed { background-color: #4e586d; } "
+                  "QTextEdit { background-color: #ffffff; } "
+                  "QLineEdit { background-color: #ffffff; } "
+                  "QMenu { color: #333; background-color:#bcc9dd; } QMenu::item:selected { color:#ffffff; background-color:#4875b4; } "
+                  "QTableView { background-color: #ffffff; }");
 
     if (platformStyle->getImagesOnButtons()) {
         ui->openDebugLogfileButton->setIcon(QIcon(":/icons/" + theme + "/export"));
     }
+
+    ui->fontSmallerButton->setStyleSheet("QPushButton { background-color:transparent; } ");
+    ui->fontBiggerButton->setStyleSheet("QPushButton { background-color:transparent; } ");
+    ui->clearButton->setStyleSheet("QPushButton { background-color:transparent; } ");
+    ui->promptIcon->setStyleSheet("QPushButton { background-color:transparent; } ");
+
+    ui->line->setStyleSheet("QLabel { background-color: #00ff00; } ");
+    ui->line_2->setStyleSheet("QLabel { background-color: #ff0000; } ");
+
+//    ui->sldGraphRange->setStyleSheet("QSlider { color: #ffffff; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f); border: 1px solid: #5c5c5; border-radius: 7px; } ");
+
     // Needed on Mac also
     ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
     ui->fontBiggerButton->setIcon(QIcon(":/icons/" + theme + "/fontbigger"));
@@ -287,6 +303,15 @@ RPCConsole::RPCConsole(const PlatformStyle *platformStyle, QWidget *parent) :
     // connect(ui->btn_salvagewallet, SIGNAL(clicked()), this, SLOT(walletSalvage()));
     // Disable salvage option in GUI, it's way too powerful and can lead to funds loss
     ui->btn_salvagewallet->setEnabled(false);
+
+    ui->btn_salvagewallet->setVisible(false);
+    ui->label_repair_salvage->setVisible(false);
+#ifdef Q_OS_WIN
+
+#else   // Q_OS_MAC, linux
+//    ui->tab_repair->setEnabled(false);
+    ui->tabWidget->removeTab(TAB_REPAIR);
+#endif
     connect(ui->btn_rescan, SIGNAL(clicked()), this, SLOT(walletRescan()));
     connect(ui->btn_zapwallettxes1, SIGNAL(clicked()), this, SLOT(walletZaptxes1()));
     connect(ui->btn_zapwallettxes2, SIGNAL(clicked()), this, SLOT(walletZaptxes2()));
@@ -393,15 +418,20 @@ void RPCConsole::setClientModel(ClientModel *model)
 
         // set up peer table
         ui->peerWidget->setModel(model->getPeerTableModel());
-        ui->peerWidget->verticalHeader()->hide();
+//        ui->peerWidget->verticalHeader()->hide();
         ui->peerWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->peerWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->peerWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
         ui->peerWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+        ui->peerWidget->setColumnWidth(PeerTableModel::NetNodeId, NODEID_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Address, ADDRESS_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSION_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
+        ui->peerWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0.5, y2:0.5, stop:0 #3a5998, stop:1 #ffffff); } ");
+                                                    //"selection-background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop: 0 #ff92bb, stop: 1 #ffffff);
+        ui->peerWidget->setGridStyle(Qt::DotLine);
+//        ui->peerWidget->setCornerButtonEnabled(true);
 
         // create peer table context menu actions
         QAction* disconnectAction = new QAction(tr("&Disconnect"), this);
@@ -446,7 +476,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         
         // set up ban table
         ui->banlistWidget->setModel(model->getBanTableModel());
-        ui->banlistWidget->verticalHeader()->hide();
+//        ui->banlistWidget->verticalHeader()->hide();
         ui->banlistWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         ui->banlistWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->banlistWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -454,6 +484,8 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->banlistWidget->setColumnWidth(BanTableModel::Address, BANSUBNET_COLUMN_WIDTH);
         ui->banlistWidget->setColumnWidth(BanTableModel::Bantime, BANTIME_COLUMN_WIDTH);
         ui->banlistWidget->horizontalHeader()->setStretchLastSection(true);
+        ui->banlistWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0.5, y2:0.5, stop:0 #3a5998, stop:1 #ffffff); } ");
+        ui->banlistWidget->setGridStyle(Qt::DotLine);
 
         // create ban table context menu action
         QAction* unbanAction = new QAction(tr("&Unban"), this);
@@ -640,13 +672,18 @@ void RPCConsole::clear(bool clearHistory)
                 "td.message { font-family: %1; font-size: %2; white-space:pre-wrap; } "
                 "td.cmd-request { color: #006060; } "
                 "td.cmd-error { color: red; } "
+                ".secwarning { color: red; }"
                 "b { color: #006060; } "
             ).arg(fixedFontInfo.family(), QString("%1pt").arg(consoleFontSize))
         );
 
     message(CMD_REPLY, (tr("Welcome to the Soom Core RPC console.") + "<br>" +
                         tr("Use up and down arrows to navigate history, and <b>Ctrl-L</b> to clear screen.") + "<br>" +
-                        tr("Type <b>help</b> for an overview of available commands.")), true);
+                        tr("Type <b>help</b> for an overview of available commands.")) +
+                        "<br><span class=\"secwarning\">" +
+                        tr("WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.") +
+                        "</span>",
+                        true);
 }
 
 void RPCConsole::keyPressEvent(QKeyEvent *event)

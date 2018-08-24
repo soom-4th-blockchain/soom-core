@@ -111,7 +111,7 @@
            <widget class="QPushButton" name="pushButtonCoinControl">
             <property name="maximumSize">
              <size>
-              <width>105</width>
+              <width>80</width>
               <height>32</height>
              </size>
             </property>
@@ -647,7 +647,7 @@
         <x>0</x>
         <y>0</y>
         <width>830</width>
-        <height>68</height>
+        <height>72</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
@@ -758,7 +758,7 @@
               <property name="sizeHint" stdset="0">
                <size>
                 <width>1</width>
-                <height>4</height>
+                <height>1</height>
                </size>
               </property>
              </spacer>
@@ -813,13 +813,13 @@
                <widget class="QPushButton" name="buttonChooseFee">
                 <property name="minimumSize">
                  <size>
-                  <width>105</width>
-                  <height>32</height>
+                  <width>0</width>
+                  <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>105</width>
+                  <width>80</width>
                   <height>32</height>
                  </size>
                 </property>
@@ -838,7 +838,7 @@
               <property name="sizeHint" stdset="0">
                <size>
                 <width>1</width>
-                <height>1</height>
+                <height>4</height>
                </size>
               </property>
              </spacer>
@@ -862,13 +862,13 @@
            <widget class="QPushButton" name="buttonMinimizeFee">
             <property name="minimumSize">
              <size>
-              <width>105</width>
-              <height>32</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>105</width>
+              <width>80</width>
               <height>32</height>
              </size>
             </property>
@@ -1383,7 +1383,7 @@
          <property name="maximumSize">
           <size>
            <width>80</width>
-           <height>25</height>
+           <height>32</height>
           </size>
          </property>
          <property name="toolTip">
@@ -1408,15 +1408,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>BitcoinAmountField</class>
+   <extends>QSpinBox</extends>
+   <header>bitcoinamountfield.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>QValidatedLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qvalidatedlineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BitcoinAmountField</class>
-   <extends>QLineEdit</extends>
-   <header>bitcoinamountfield.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

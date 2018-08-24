@@ -3017,7 +3017,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Använd UPnP för att kartlägga avlyssningsporten (standardvärde: 1 vid avlyssning)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>Använd testnätverket</translation>
     </message>
     <message>

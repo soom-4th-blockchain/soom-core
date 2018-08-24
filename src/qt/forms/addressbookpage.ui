@@ -102,7 +102,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>Generates QR codes and soom URIs</string>
+        <string>Show QR codes and soom URIs</string>
        </property>
        <property name="text">
         <string>Show &amp;QRCode</string>

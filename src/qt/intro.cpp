@@ -199,8 +199,10 @@ void Intro::pickDataDirectory()
                 TryCreateDirectory(GUIUtil::qstringToBoostPath(dataDir));
                 break;
             } catch (const fs::filesystem_error&) {
-                QMessageBox::critical(0, tr("Soom Core"),
-                    tr("Error: Specified data directory \"%1\" cannot be created.").arg(dataDir));
+                QMessageBox critical(QMessageBox::Critical, tr("Soom Core"),
+                    tr("Error: Specified data directory \"%1\" cannot be created.").arg(dataDir), QMessageBox::Ok, 0);
+                critical.setButtonText(QMessageBox::Ok, tr("&OK"));
+                critical.exec();
                 /* fall through, back to choosing screen */
             }
         }
@@ -226,7 +228,7 @@ void Intro::setStatus(int status, const QString &message, quint64 bytesAvailable
         break;
     case FreespaceChecker::ST_ERROR:
         ui->errorMessage->setText(tr("Error") + ": " + message);
-        ui->errorMessage->setStyleSheet("QLabel { color: #800000 }");
+        ui->errorMessage->setStyleSheet("QLabel { color: #800000; }");
         break;
     }
     /* Indicate number of bytes available */
@@ -238,7 +240,7 @@ void Intro::setStatus(int status, const QString &message, quint64 bytesAvailable
         if(bytesAvailable < requiredSpace * GB_BYTES)
         {
             freeString += " " + tr("(of %1 GB needed)").arg(requiredSpace);
-            ui->freeSpace->setStyleSheet("QLabel { color: #800000 }");
+            ui->freeSpace->setStyleSheet("QLabel { color: #800000; }");
         } else {
             ui->freeSpace->setStyleSheet("");
         }

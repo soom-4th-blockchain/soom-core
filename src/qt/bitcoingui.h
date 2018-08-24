@@ -34,6 +34,7 @@ class WalletModel;
 class HelpMessageDialog;
 class ModalOverlay;
 class GatewayList;
+class QFrame;
 
 class CWallet;
 

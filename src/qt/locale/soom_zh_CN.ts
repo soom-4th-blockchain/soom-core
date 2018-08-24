@@ -30,8 +30,8 @@
         <translation>删除(&amp;D)</translation>
     </message>
     <message>
-        <source>Generates QR codes and soom URIs</source>
-        <translation>QR码和Soom URI生成</translation>
+        <source>Show QR codes and soom URIs</source>
+        <translation>QR码和Soom URI查看</translation>
     </message>
     <message>
         <source>Show &amp;QRCode</source>
@@ -103,7 +103,11 @@
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>尝试保存地址列表至%1.时发生错误,请重新执行操作.</translation>
+        <translation>尝试保存地址列表至%1.时发生错误,请重新执行操作。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -119,6 +123,10 @@
     <message>
         <source>(no label)</source>
         <translation>(没有标签)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -136,12 +144,20 @@
         <translation>标签</translation>
     </message>
     <message>
+        <source>Copy &amp;Address</source>
+        <translation>复制地址(&amp;A)</translation>
+    </message>
+    <message>
         <source>&amp;Save Image...</source>
         <translation>保存图片(&amp;S)...</translation>
     </message>
     <message>
         <source>&amp;Close</source>
         <translation>关闭(&amp;C)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -263,6 +279,10 @@
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
+        <source>&amp;Yes</source>
+        <translation>是(&amp;Y)</translation>
+    </message>
+    <message>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -276,6 +296,10 @@
     <message>
         <source>Banned Until</source>
         <translation>禁止直到</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -569,6 +593,10 @@
         <translation><numerusform>%n 个运作中的SOOM网路连线</numerusform></translation>
     </message>
     <message>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>同步区块头（%1%）...</translation>
+    </message>
+    <message>
         <source>Synchronizing with network...</source>
         <translation>正在与网络同步...</translation>
     </message>
@@ -688,6 +716,10 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;锁定&lt;/b&gt;状态</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ClientModel</name>
@@ -698,6 +730,10 @@
     <message>
         <source>Network Alert</source>
         <translation>网络警报</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -840,7 +876,7 @@
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
-        <translation>请切换到“列表模式”以使用此功能.</translation>
+        <translation>请切换到“列表模式”以使用此功能。</translation>
     </message>
     <message>
         <source>highest</source>
@@ -920,7 +956,7 @@
     </message>
     <message>
         <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>每笔输入可能会有 +/- %1个duff(s)的偏差.</translation>
+        <translation>每笔输入可能会有 +/- %1个duff(s)的偏差。</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1028,6 +1064,10 @@
         <source>Cannot create data directory here.</source>
         <translation>无法在此创建数据目录。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -1120,7 +1160,7 @@
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>错误:指定的数据目录“%1”无法被创建.</translation>
+        <translation>错误:指定的数据目录“%1”无法被创建。</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1195,7 +1235,7 @@
     </message>
     <message>
         <source>Start &amp;MISSING</source>
-        <translation>开(&amp;M)始启动遗漏</translation>
+        <translation>开始启动遗漏(&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Update status</source>
@@ -1261,6 +1301,18 @@
         <source>Are you sure you want to start MISSING gateways?</source>
         <translation>确定开启所有遗漏的网管吗?</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>是(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>取消(&amp;C)</translation>
+    </message>
 </context>
 <context>
     <name>ModalOverlay</name>
@@ -1314,7 +1366,11 @@
     </message>
     <message>
         <source>Unknown. Syncing Headers (%1)...</source>
-        <translation>未知状态。同步区块头（%1）</translation>
+        <translation>未知状态。同步区块头（%1）...</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1506,7 +1562,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>隐藏系统状态栏（托盘）图标.(&amp;H)</translation>
+        <translation>隐藏系统状态栏（托盘）图标。</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
@@ -1577,14 +1633,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>恢复缺省设置(&amp;R)</translation>
     </message>
     <message>
-        <source>&amp;OK</source>
-        <translation>确定(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation>取消(&amp;C)</translation>
-    </message>
-    <message>
         <source>default</source>
         <translation>默认</translation>
     </message>
@@ -1611,6 +1659,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>提供的代理服务器地址无效。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>是(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>取消(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1721,7 +1781,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>The denominations you submitted to the Gateway.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>您向网关所提交的用以面额化混合的Soom,&lt;br&gt;当其他用户提交相同的面额化Soom数量时,将开始混合.</translation>
+        <translation>您向网关所提交的用以面额化混合的Soom,&lt;br&gt;当其他用户提交相同的面额化Soom数量时,将开始混合。</translation>
     </message>
     <message>
         <source>(Last Message)</source>
@@ -1783,6 +1843,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>N/A</source>
         <translation>不可用</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1816,7 +1880,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
-        <translation>付款请求文件不能读取! 这可能是个无效的付款请求文件.</translation>
+        <translation>付款请求文件不能读取! 这可能是个无效的付款请求文件。</translation>
     </message>
     <message>
         <source>Payment request rejected</source>
@@ -1824,15 +1888,15 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Payment request network doesn't match client network.</source>
-        <translation>付款请求网络与客户端网络不符.</translation>
+        <translation>付款请求网络与客户端网络不符。</translation>
     </message>
     <message>
         <source>Payment request expired.</source>
-        <translation>支付请求已过期.</translation>
+        <translation>支付请求已过期。</translation>
     </message>
     <message>
         <source>Payment request is not initialized.</source>
-        <translation>付款请求没有完成初始化.</translation>
+        <translation>付款请求没有完成初始化。</translation>
     </message>
     <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
@@ -1848,7 +1912,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
-        <translation>付款请求 %1 过大 (%2 位,上限 %3 位).</translation>
+        <translation>付款请求 %1 过大 (%2 位,上限 %3 位)。</translation>
     </message>
     <message>
         <source>Payment request DoS protection</source>
@@ -1874,6 +1938,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Payment acknowledged</source>
         <translation>支付已到账</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>PeerTableModel</name>
@@ -1893,9 +1961,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Ping</source>
         <translation>Ping</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <source>Error: %1</source>
+        <translation>错误: %1</translation>
+    </message>
     <message>
         <source>Amount</source>
         <translation>金额</translation>
@@ -1968,6 +2044,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>%1 and %2</source>
         <translation>%1 和 %2</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QRImageWidget</name>
@@ -1986,6 +2066,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>PNG Image (*.png)</source>
         <translation>PNG图片(*.png)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2120,7 +2204,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Select a peer to view detailed information.</source>
-        <translation>选择一个节点查看详细信息.</translation>
+        <translation>选择一个节点查看详细信息。</translation>
     </message>
     <message>
         <source>Whitelisted</source>
@@ -2228,7 +2312,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>-salvagewallet: Attempt to recover private keys from a corrupt wallet.dat.</source>
-        <translation>-salvagewallet: 尝试从已损坏的钱包文件中找回私钥.</translation>
+        <translation>-salvagewallet: 尝试从已损坏的钱包文件中找回私钥。</translation>
     </message>
     <message>
         <source>Rescan blockchain files</source>
@@ -2236,7 +2320,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>-rescan: Rescan the block chain for missing wallet transactions.</source>
-        <translation>-rescan: 对丢失的钱包交易重新扫描数据块链.</translation>
+        <translation>-rescan: 对丢失的钱包交易重新扫描数据块链。</translation>
     </message>
     <message>
         <source>Recover transactions 1</source>
@@ -2244,7 +2328,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>-zapwallettxes=1: Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
-        <translation>-zapwallettxes=1: 从区块链恢复交易 (保留交易描述信息,例如:账户拥有者).</translation>
+        <translation>-zapwallettxes=1: 从区块链恢复交易 (保留交易描述信息,例如:账户拥有者)。</translation>
     </message>
     <message>
         <source>Recover transactions 2</source>
@@ -2252,7 +2336,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>-zapwallettxes=2: Recover transactions from blockchain (drop meta-data).</source>
-        <translation>-zapwallettxes=2: 从区块链恢复交易 (删除交易描述信息).</translation>
+        <translation>-zapwallettxes=2: 从区块链恢复交易 (删除交易描述信息)。</translation>
     </message>
     <message>
         <source>Upgrade wallet format</source>
@@ -2264,11 +2348,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
-        <translation>下面的按钮将重新启动钱包并使用命令行选项进行修复,解决损坏或丢失的区块链文件/超时的交易问题.</translation>
+        <translation>下面的按钮将重新启动钱包并使用命令行选项进行修复,解决损坏或丢失的区块链文件/超时的交易问题。</translation>
     </message>
     <message>
         <source>Wallet repair options.</source>
-        <translation>钱包修复选项.</translation>
+        <translation>钱包修复选项。</translation>
     </message>
     <message>
         <source>Rebuild index</source>
@@ -2276,7 +2360,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>-reindex: Rebuild block chain index from current blk000??.dat files.</source>
-        <translation>-reindex: 从现在的blk000??.dat文件重新建立数据块链索引.</translation>
+        <translation>-reindex: 从现在的blk000??.dat文件重新建立数据块链索引。</translation>
     </message>
     <message>
         <source>In:</source>
@@ -2291,6 +2375,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>欢迎使用SOOM Coin RPC 控制台。</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>警告: 骗子总是积极地劝说用户在此输入指令, 以窃取用户钱包中的资金. 在没有完全理解各命令行作用前, 请不要使用控制台。</translation>
+    </message>
+    <message>
         <source>&amp;Disconnect</source>
         <translation>斷開連接(&amp;D)</translation>
     </message>
@@ -2300,19 +2388,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 小时(&amp;H)</translation>
+        <translation>1小时(&amp;H)</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 天(&amp;D)</translation>
+        <translation>1天(&amp;D)</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 周(&amp;W)</translation>
+        <translation>1周(&amp;W)</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 年(&amp;Y)</translation>
+        <translation>1年(&amp;Y)</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
@@ -2377,6 +2465,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Fetching...</source>
         <translation>正在读取中...</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2477,6 +2569,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Copy amount</source>
         <translation>复制金额</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
@@ -2548,6 +2644,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>C&amp;lose</source>
         <translation>关闭(&amp;L)</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2578,6 +2678,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>(no amount)</source>
         <translation>(无金额)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2718,13 +2822,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>
 如果自定手续费设定为1000 tnsoom,而交易信息只有250字节的话,那么选择"每千位字节"就只会支付250 tnsoom的手续费,&lt;br&gt;而"至少"会支付1000 tnsoom.
-但如果交易信息大于一千字节,那么两者都要支付千字节费用.</translation>
+但如果交易信息大于一千字节,那么两者都要支付千字节费用。</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "total at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>
 如果自定手续费设定为1000 tnsoom,而交易信息只有250字节的话,那么选择"每千位字节"就只会支付250 tnsoom的手续费,&lt;br&gt;而"总共至少"会支付1000 tnsoom.
-但如果交易信息大于一千字节,那么两者都要支付千字节费用.</translation>
+但如果交易信息大于一千字节,那么两者都要支付千字节费用。</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</source>
@@ -2856,7 +2960,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>A fee %1 times higher than %2 per kB is considered an insanely high fee.</source>
-        <translation>每kB手续费高于%2的 %1倍被认为是非常高的费用.</translation>
+        <translation>每kB手续费高于%2的 %1倍被认为是非常高的费用。</translation>
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
@@ -2900,7 +3004,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Payment request expired.</source>
-        <translation>支付请求已过期.</translation>
+        <translation>支付请求已过期。</translation>
     </message>
     <message>
         <source>Pay only the required fee of %1</source>
@@ -2913,6 +3017,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>(no label)</source>
         <translation>(没有标签)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>是(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>取消(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -2975,7 +3091,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
-        <translation>附加在soom付款协议URI中的信息,会和交易内容一并存储,可供您参考.提示:此信息不会发送到Soom网络上.</translation>
+        <translation>附加在soom付款协议URI中的信息,会和交易内容一并存储,可供您参考.提示:此信息不会发送到Soom网络上。</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
@@ -2997,6 +3113,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>为这个地址输入一个标签，以便将它添加到您的地址簿</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -3007,6 +3127,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>在此窗口消失前不要关闭计算机。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3147,6 +3271,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Message verified.</source>
         <translation>消息验证成功。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>SplashScreen</name>
@@ -3174,12 +3302,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>[testnet]</source>
         <translation>[测试网]</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
         <translation>KB/s</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3376,6 +3512,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>false</source>
         <translation>错误</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -3390,6 +3530,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>&amp;Close</source>
         <translation>关闭(&amp;C)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3496,7 +3640,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Whether or not a watch-only address is involved in this transaction.</source>
-        <translation>决定是否有一个仅限查看的地址参与这次交易.</translation>
+        <translation>决定是否有一个仅限查看的地址参与这次交易。</translation>
     </message>
     <message>
         <source>User-defined intent/purpose of the transaction.</source>
@@ -3509,6 +3653,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>从余额添加或移除的金额。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3673,6 +3821,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>to</source>
         <translation>到</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3680,12 +3832,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>金额显示单位，如需其他单位，请点击。</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>No wallet has been loaded.</source>
         <translation>没有载入钱包。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3695,8 +3855,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>发送Soom</translation>
     </message>
     <message>
-        <source>InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
-        <translation>即时支付功能目前还不支持发送如此高的金额.目前限制在%1 SOOM.</translation>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
+        <translation>即时支付功能目前还不支持发送如此高的金额.目前限制在%1 SOOM。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3736,6 +3900,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>钱包数据成功保存至 %1 。</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3778,7 +3946,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>进入回滚测试模式,它可使用特殊区块链来立刻解出区块.</translation>
+        <translation>进入回滚测试模式,它可使用特殊区块链来立刻解出区块。</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
@@ -3821,8 +3989,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>当没有设定 paytxfee 时, 自动包含可以让交易能在平均 n 个区块内开始确认的手续费 (默认: %u)</translation>
     </message>
     <message>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>即时支付功能需要6步确认，您可以稍后重试。</translation>
+        <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
+        <translation>即时支付功能需要%d步确认，您可以稍后重试。</translation>
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
@@ -3874,15 +4042,15 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>此产品包括了由OpenSSL Project所开发的OpenSSL Toolkit 软件&lt;https://www.openssl.org/&gt;, 和由Eric Young 编写的加密软件, 以及由Thomas Bernard 编写的UPnP软件.</translation>
+        <translation>此产品包括了由OpenSSL Project所开发的OpenSSL Toolkit 软件&lt;https://www.openssl.org/&gt;, 和由Eric Young 编写的加密软件, 以及由Thomas Bernard 编写的UPnP软件。</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer. Soom Core is probably already running.</source>
-        <translation>无法绑定%s此计算机. Soom核心应该已经在运行中了.</translation>
+        <translation>无法绑定%s此计算机. Soom核心应该已经在运行中了。</translation>
     </message>
     <message>
         <source>Unable to locate enough funds for this transaction that are not equal 5000 SOOM.</source>
-        <translation>无法找到足够的资金完成交易,不足5000 SOOM.</translation>
+        <translation>无法找到足够的资金完成交易,不足5000 SOOM。</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -3890,7 +4058,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Warning: -maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
-        <translation>警告: -maxtxfee 设定的金额过高! 这是一次交易就要支付的手续费.</translation>
+        <translation>警告: -maxtxfee 设定的金额过高! 这是一次交易就要支付的手续费。</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3918,7 +4086,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
-        <translation>把来自指定网络或IP地址放进白名单. 这个选项可以设定多次.</translation>
+        <translation>把来自指定网络或IP地址放进白名单. 这个选项可以设定多次。</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
@@ -3974,7 +4142,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message> 
     <message>
         <source>Attempt to recover private keys from a corrupt wallet.dat on startup</source>
-        <translation>尝试从已损坏的钱包文件中找回私钥.</translation>
+        <translation>尝试从已损坏的钱包文件中找回私钥。</translation>
     </message>
     <message>
         <source>Automatically create Tor hidden service (default: %d)</source>
@@ -3990,11 +4158,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Can't find random Gateway.</source>
-        <translation>无法找到随机网关.</translation>
+        <translation>无法找到随机网关。</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
-        <translation>无法在同步过程中进行混淆.</translation>
+        <translation>无法在同步过程中进行混淆。</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
@@ -4058,7 +4226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Entries are full.</source>
-        <translation>词条已满.</translation>
+        <translation>词条已满。</translation>
     </message>
     <message>
         <source>Error initializing block database</source>
@@ -4121,8 +4289,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>建立RPC地址 %s 时发生了一个错误 %u, 正在监听: %s</translation>
     </message>
     <message>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: %s)</source>
-        <translation>激活即时支付,显示锁定交易的确认数(bool, 默认: %s)</translation>
+        <source>Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)</source>
+        <translation>激活即时支付,显示锁定交易的确认数(0-1, 默认: %u)</translation>
     </message>
     <message>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
@@ -4166,7 +4334,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Error connecting to Gateway.</source>
-        <translation>连接到网关时发生错误.</translation>
+        <translation>连接到网关时发生错误。</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet requires newer version of Soom Core</source>
@@ -4183,7 +4351,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Unsupported argument -tor found, use -onion.</source>
         <translation>找到不再支援的 -tor 參數，請改用 -onion 參數。
-找到不支持 -tor 参数, 请改用 -onion 参数.</translation>
+找到不支持 -tor 参数, 请改用 -onion 参数。</translation>
     </message>
     <message>
         <source>Upgrade wallet to latest format on startup</source>
@@ -4192,6 +4360,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>Finalizing transaction.</source>
         <translation>正在完成交易。</translation>
+    </message>
+    <message>
+        <source>Failed to load governance cache from</source>
+        <translation>无法载入治理缓存</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway cache from</source>
+        <translation>无法载入网关缓存</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway payments cache from</source>
+        <translation>无法载入网关付款缓存</translation>
     </message>
     <message>
         <source>Found enough users, signing ( waiting %s )</source>
@@ -4250,7 +4430,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>输入是无效的。</translation>
     </message>
     <message>
-        <source>InstantX options:</source>
+        <source>InstantSend options:</source>
         <translation>即时支付 选项:</translation>
     </message>
     <message>
@@ -4395,7 +4575,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
-        <translation>이미 올바르게 잠겨있습니다.</translation>
+        <translation>이미 올바르게 잠겨있습니다。</translation>
     </message>
     <message>
         <source>Gateway options:</source>
@@ -4459,7 +4639,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Not in the Gateway list.</source>
-        <translation>在网关列表中不存在.</translation>
+        <translation>在网关列表中不存在。</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4587,7 +4767,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Signing timed out.</source>
-        <translation>签名超时.</translation>
+        <translation>签名超时。</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
@@ -4670,12 +4850,16 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>同步分叉...</translation>
     </message>
     <message>
+        <source>Synchronizing gateway payments...</source>
+        <translation>正在同步网关付款资讯...</translation>
+    </message>
+    <message>
         <source>This help message</source>
         <translation>此帮助信息</translation>
     </message>
     <message>
         <source>This is experimental software.</source>
-        <translation>这是一款实验软件.</translation>
+        <translation>这是一款实验软件。</translation>
     </message>
     <message>
         <source>This is intended for regression testing tools and app development.</source>
@@ -4727,7 +4911,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Transmitting final transaction.</source>
-        <translation>正在传输最终交易.</translation>
+        <translation>正在传输最终交易。</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
@@ -4762,7 +4946,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>使用通用随插即用协定来设定对应的服务连接埠(默认:1为监听中)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>使用测试网络</translation>
     </message>
     <message>
@@ -4808,11 +4992,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation>警告: 忽略了不再支持的 -benchmark 参数, 请改用 -debug=bench.</translation>
+        <translation>警告: 忽略了不再支持的 -benchmark 参数, 请改用 -debug=bench。</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation>警告: 忽略了不再支持的 -debugnet 参数, 请改用 -debug=net.</translation>
+        <translation>警告: 忽略了不再支持的 -debugnet 参数, 请改用 -debug=net。</translation>
     </message>
     <message>
         <source>Will retry...</source>
@@ -4824,7 +5008,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Your entries added successfully.</source>
-        <translation>您的词条也添加成功.</translation>
+        <translation>您的词条也添加成功。</translation>
     </message>
     <message>
         <source>Your transaction was accepted into the pool!</source>
@@ -4845,6 +5029,10 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>wallet.dat corrupt, salvage failed</source>
         <translation>钱包数据损坏，恢复失败</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 </TS>

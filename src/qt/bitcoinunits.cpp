@@ -22,7 +22,7 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
     unitlist.append(SOOM);
     unitlist.append(mSOOM);
     unitlist.append(uSOOM);
-    unitlist.append(tnsoom);
+    unitlist.append(tnSOOM);
     return unitlist;
 }
 
@@ -33,7 +33,7 @@ bool BitcoinUnits::valid(int unit)
     case SOOM:
     case mSOOM:
     case uSOOM:
-    case tnsoom:
+    case tnSOOM:
         return true;
     default:
         return false;
@@ -49,7 +49,7 @@ QString BitcoinUnits::name(int unit)
             case SOOM: return QString("SOOM");
             case mSOOM: return QString("mSOOM");
             case uSOOM: return QString::fromUtf8("μSOOM");
-            case tnsoom: return QString("tnsoom");
+            case tnSOOM: return QString("tnSOOM");
             default: return QString("???");
         }
     }
@@ -60,7 +60,7 @@ QString BitcoinUnits::name(int unit)
             case SOOM: return QString("tSOOM");
             case mSOOM: return QString("mtSOOM");
             case uSOOM: return QString::fromUtf8("μtSOOM");
-            case tnsoom: return QString("ttnsoom");
+            case tnSOOM: return QString("ttnSOOM");
             default: return QString("???");
         }
     }
@@ -75,7 +75,7 @@ QString BitcoinUnits::description(int unit)
             case SOOM: return QString("Soom");
             case mSOOM: return QString("Milli-Soom (1 / 1" THIN_SP_UTF8 "000)");
             case uSOOM: return QString("Micro-Soom (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case tnsoom: return QString("Ten Nano-Soom (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case tnSOOM: return QString("Ten Nano-Soom (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -86,7 +86,7 @@ QString BitcoinUnits::description(int unit)
             case SOOM: return QString("TestSooms");
             case mSOOM: return QString("Milli-TestSoom (1 / 1" THIN_SP_UTF8 "000)");
             case uSOOM: return QString("Micro-TestSoom (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case tnsoom: return QString("Ten Nano-TestSoom (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case tnSOOM: return QString("Ten Nano-TestSoom (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -99,7 +99,7 @@ qint64 BitcoinUnits::factor(int unit)
     case SOOM:  return 100000000;
     case mSOOM: return 100000;
     case uSOOM: return 100;
-    case tnsoom: return 1;
+    case tnSOOM: return 1;
     default:   return 100000000;
     }
 }
@@ -111,7 +111,7 @@ int BitcoinUnits::decimals(int unit)
     case SOOM: return 8;
     case mSOOM: return 5;
     case uSOOM: return 2;
-    case tnsoom: return 0;
+    case tnSOOM: return 0;
     default: return 0;
     }
 }

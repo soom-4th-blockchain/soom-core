@@ -43,7 +43,7 @@ GatewayList::GatewayList(const PlatformStyle *platformStyle, QWidget *parent) :
 
     int columnAliasWidth = 100;
     int columnAddressWidth = 200;
-    int columnProtocolWidth = 60;
+    int columnProtocolWidth = 80;
     int columnStatusWidth = 80;
     int columnActiveWidth = 130;
     int columnLastSeenWidth = 130;
@@ -340,11 +340,14 @@ void GatewayList::on_startButton_clicked()
     }
 
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm gateway start"),
+    QMessageBox question(QMessageBox::Question, tr("Confirm gateway start"),
         tr("Are you sure you want to start gateway %1?").arg(QString::fromStdString(strAlias)),
         QMessageBox::Yes | QMessageBox::Cancel,
-        QMessageBox::Cancel);
+        this);
+    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
+    int retval = question.exec();
     if(retval != QMessageBox::Yes) return;
 
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
@@ -364,11 +367,14 @@ void GatewayList::on_startButton_clicked()
 void GatewayList::on_startAllButton_clicked()
 {
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm all gateways start"),
+    QMessageBox question(QMessageBox::Question, tr("Confirm all gateways start"),
         tr("Are you sure you want to start ALL gateways?"),
         QMessageBox::Yes | QMessageBox::Cancel,
-        QMessageBox::Cancel);
+        this);
+    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
+    int retval = question.exec();
     if(retval != QMessageBox::Yes) return;
 
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
@@ -388,18 +394,22 @@ void GatewayList::on_startAllButton_clicked()
 void GatewayList::on_startMissingButton_clicked()
 {
     if(!gatewaySync.IsGatewayListSynced()) {
-        QMessageBox::critical(this, tr("Command is not available right now"),
-            tr("You can't use this command until gateway list is synced"));
+        QMessageBox critical(QMessageBox::Critical, tr("Command is not available right now"),
+            tr("You can't use this command until gateway list is synced"), QMessageBox::Ok, this);
+        critical.setButtonText(QMessageBox::Ok, tr("&OK"));
+        critical.exec();
         return;
     }
 
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this,
-        tr("Confirm missing gateways start"),
+    QMessageBox question(QMessageBox::Question, tr("Confirm missing gateways start"),
         tr("Are you sure you want to start MISSING gateways?"),
         QMessageBox::Yes | QMessageBox::Cancel,
-        QMessageBox::Cancel);
+        this);
+    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
+    int retval = question.exec();
     if(retval != QMessageBox::Yes) return;
 
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();

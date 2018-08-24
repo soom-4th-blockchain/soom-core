@@ -1847,6 +1847,10 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Bienvenido a la consola RPC de Soom</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>ADVERTENCIA: Estafadores han estado activos, diciendo a los usuarios que escriban comandos aquí, robando el contenido de sus monederos. No use esta consola sin un completo entendimiento de la ramificación de un comando.</translation>
+    </message>
+    <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
         <translation>Use las flechas arriba y abajo para navegar por el historial y &lt;b&gt;Control+L&lt;/b&gt; para vaciar la pantalla.</translation>
     </message>
@@ -2239,8 +2243,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Añadir &amp;Destinatario</translation>
     </message>
     <message>
-        <source>InstantX</source>
-        <translation>InstantX</translation>
+        <source>InstantSend</source>
+        <translation>InstantSend</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -2649,16 +2653,16 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>en conflicto</translation>
     </message>
     <message>
-        <source>%1/offline (verified via instantx)</source>
-        <translation>%1 desconectado (comprobado por instantx)</translation>
+        <source>%1/offline (verified via InstantSend)</source>
+        <translation>%1 desconectado (comprobado por InstantSend)</translation>
     </message>
     <message>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation>%1/confirmado (comprobado por instantx)</translation>
+        <source>%1/confirmed (verified via InstantSend)</source>
+        <translation>%1/confirmado (comprobado por InstantSend)</translation>
     </message>
     <message>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation>%1 confirmaciones (comprobado por instantx)</translation>
+        <source>%1 confirmations (verified via InstantSend)</source>
+        <translation>%1 confirmaciones (comprobado por InstantSend)</translation>
     </message>
     <message>
         <source>%1/offline</source>
@@ -2673,24 +2677,24 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1 confirmaciones</translation>
     </message>
     <message>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/desconectado (Verificación de InstantX en curso - %2 de %3 firmas)</translation>
+        <source>%1/offline (InstantSend verification in progress - %2 of %3 signatures)</source>
+        <translation>%1/desconectado (Verificación de InstantSend en curso - %2 de %3 firmas)</translation>
     </message>
     <message>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/confirmada (Verificación de InstantX en curso - %2 de %3 firmas)</translation>
+        <source>%1/confirmed (InstantSend verification in progress - %2 of %3 signatures )</source>
+        <translation>%1/confirmada (Verificación de InstantSend en curso - %2 de %3 firmas)</translation>
     </message>
     <message>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 confirmaciones (Verificación de InstantX en curso - %2 de %3 firmas)</translation>
+        <source>%1 confirmations (InstantSend verification in progress - %2 of %3 signatures)</source>
+        <translation>%1 confirmaciones (Verificación de InstantSend en curso - %2 de %3 firmas)</translation>
     </message>
     <message>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/desconectado (Falló la verificación de InstantX)</translation>
+        <source>%1/offline (InstantSend verification failed)</source>
+        <translation>%1/desconectado (Falló la verificación de InstantSend)</translation>
     </message>
     <message>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/confirmada (Falló la verificación de InstantX)</translation>
+        <source>%1/confirmed (InstantSend verification failed)</source>
+        <translation>%1/confirmada (Falló la verificación de InstantSend)</translation>
     </message>
     <message>
         <source>Status</source>
@@ -3103,8 +3107,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Enviar Soom</translation>
     </message>
     <message>
-        <source>InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
-        <translation>InstantX aún no soporta el envío de valores tan elevados. Las transacciones están limitadas actualmente a %1 SOOM.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
+        <translation>InstantSend aún no soporta el envío de valores tan elevados. Las transacciones están limitadas actualmente a %1 SOOM.</translation>
     </message>
 </context>
 <context>
@@ -3181,8 +3185,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>En este modo -genproclimit controla cuántos bloques se generan de inmediato.</translation>
     </message>
     <message>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX requiere entradas con al menos 6 confirmaciones, puede que neesite esperar unos pocos minutos y volver a intentarlo.</translation>
+        <source>InstantSend requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
+        <translation>InstantSend requiere entradas con al menos 6 confirmaciones, puede que neesite esperar unos pocos minutos y volver a intentarlo.</translation>
     </message>
     <message>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
@@ -3426,8 +3430,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Distribuido bajo la licencia de software MIT, vea el archivo COPYING adjunto o &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
     </message>
     <message>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: %s)</source>
-        <translation>Activar InstantX, mostrar las confirmaciones de transacciones bloqueadas (booleano, predeterminado: %s)</translation>
+        <source>Enable InstantSend, show confirmations for locked transactions (bool, default: %s)</source>
+        <translation>Activar InstantSend, mostrar las confirmaciones de transacciones bloqueadas (booleano, predeterminado: %s)</translation>
     </message>
     <message>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
@@ -3700,8 +3704,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "Alerta de Soom" admin@foo.com
         <translation>La entrada no es válida.</translation>
     </message>
     <message>
-        <source>InstantX options:</source>
-        <translation>Opciones de InstantX:</translation>
+        <source>InstantSend options:</source>
+        <translation>Opciones de InstantSend:</translation>
     </message>
     <message>
         <source>Insufficient funds.</source>
@@ -4248,7 +4252,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "Alerta de Soom" admin@foo.com
         <translation>Usar UPnP para asignar el puerto de escucha (predeterminado: 1 al escuchar)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>Usar la red de pruebas</translation>
     </message>
     <message>

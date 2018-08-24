@@ -4360,7 +4360,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX изисква средства с поне %d потвърждения, може да се наложи да почакате няколко минути и да опитате отново.</translation>
+        <translation>InstantSend изисква средства с поне %d потвърждения, може да се наложи да почакате няколко минути и да опитате отново.</translation>
     </message>
     <message>
         <source>Maintain a full address index, used to query for the balance, txids and unspent outputs for addresses (default: %u)</source>

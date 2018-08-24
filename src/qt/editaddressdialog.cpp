@@ -112,24 +112,40 @@ void EditAddressDialog::accept()
             // No changes were made during edit operation. Just reject.
             break;
         case AddressTableModel::INVALID_ADDRESS:
-            QMessageBox::warning(this, windowTitle(),
+        {
+            QMessageBox warning(QMessageBox::Warning, windowTitle(),
                 tr("The entered address \"%1\" is not a valid Soom address.").arg(ui->addressEdit->text()),
-                QMessageBox::Ok, QMessageBox::Ok);
+                QMessageBox::Ok, this);
+            warning.setButtonText(QMessageBox::Ok, tr("&OK"));
+            warning.exec();
+        }
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:
-            QMessageBox::warning(this, windowTitle(),
+        {
+            QMessageBox warning2(QMessageBox::Warning, windowTitle(),
                 tr("The entered address \"%1\" is already in the address book.").arg(ui->addressEdit->text()),
-                QMessageBox::Ok, QMessageBox::Ok);
+                QMessageBox::Ok, this);
+            warning2.setButtonText(QMessageBox::Ok, tr("&OK"));
+            warning2.exec();
+        }
             break;
         case AddressTableModel::WALLET_UNLOCK_FAILURE:
-            QMessageBox::critical(this, windowTitle(),
+        {
+            QMessageBox critical(QMessageBox::Critical, windowTitle(),
                 tr("Could not unlock wallet."),
-                QMessageBox::Ok, QMessageBox::Ok);
+                QMessageBox::Ok, this);
+            critical.setButtonText(QMessageBox::Ok, tr("&OK"));
+            critical.exec();
+        }
             break;
         case AddressTableModel::KEY_GENERATION_FAILURE:
-            QMessageBox::critical(this, windowTitle(),
+        {
+            QMessageBox critical2(QMessageBox::Critical, windowTitle(),
                 tr("New key generation failed."),
-                QMessageBox::Ok, QMessageBox::Ok);
+                QMessageBox::Ok, this);
+            critical2.setButtonText(QMessageBox::Ok, tr("&OK"));
+            critical2.exec();
+        }
             break;
 
         }

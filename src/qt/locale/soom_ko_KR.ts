@@ -3,19 +3,19 @@
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>주소 및 라벨을 수정하려면 마우스 오른쪽 버튼을 클릭해 주십시오.</translation>
+        <translation>지갑 주소 및 라벨을 수정하려면 마우스 오른쪽 버튼을 클릭해 주십시오.</translation>
     </message>
     <message>
         <source>Create a new address</source>
-        <translation>새로운 주소 만들기</translation>
+        <translation>새 주소 만들기</translation>
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>생성(&amp;N)</translation>
+        <translation>새 항목(&amp;N)</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>현재 선택된 주소를 복사합니다.</translation>
+        <translation>현재 선택한 주소를 복사하기</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,15 +23,15 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>현재 선택된 주소를 목록에서 삭제합니다.</translation>
+        <translation>현재 선택한 주소를 리스트에서 삭제하기</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
         <translation>삭제(&amp;D)</translation>
     </message>
     <message>
-        <source>Generates QR codes and soom URIs</source>
-        <translation>QR 코드 및 Soom URI 생성</translation>
+        <source>Show QR codes and soom URIs</source>
+        <translation>QR 코드와 Soom URI 보기</translation>
     </message>
     <message>
         <source>Show &amp;QRCode</source>
@@ -51,11 +51,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>전송할 주소를 선택해 주십시오.</translation>
+        <translation>코인을 보내실 주소를 선택해 주십시오.</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>전송받을 주소를 선택해 주십시오.</translation>
+        <translation>코인을 받으실 주소를 선택해 주십시오.</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>보낼 주소</translation>
+        <translation>보내는 주소</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
@@ -71,11 +71,11 @@
     </message>
     <message>
         <source>These are your Soom addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>이 주소들은 전송할 Soom 주소입니다. 송금하기 전 항상 금액과 전송할 주소를 확인해 주십시오.</translation>
+        <translation>이 주소들은 보내는 Soom 주소입니다. 코인을 보내기 전에 잔고와 받는 주소를 확인해 주십시오.</translation>
     </message>
     <message>
         <source>These are your Soom addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>이 주소들은 전송받을 Soom 주소입니다. 각 거래별로 새로운 입금 주소를 사용하는 것이 좋습니다.</translation>
+        <translation>이 주소들은 받을 수 있는 Soom 주소입니다. 각 거래별로 새로운 주소 사용을 권장합니다.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -87,15 +87,15 @@
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>수정(&amp;E)</translation>
+        <translation>편집(&amp;E)</translation>
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>주소록 내보내기</translation>
+        <translation>주소 리스트 내보내기</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>콤마로 구분된 파일 (*.csv)</translation>
+        <translation>쉼표로 구분된 파일 (*.csv)</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
@@ -103,7 +103,11 @@
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>%1 에 주소 목록을 저장하는 동안 오류가 발생하였습니다. 다시 시도해 주십시오.</translation>
+        <translation>%1에 주소 리스트를 저장하는 동안 오류가 발생했습니다. 다시 시도해 주십시오.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -118,7 +122,11 @@
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(표시 없음)</translation>
+        <translation>(라벨 없음)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -136,12 +144,20 @@
         <translation>라벨</translation>
     </message>
     <message>
+        <source>Copy &amp;Address</source>
+        <translation>주소 복사(&amp;A)</translation>
+    </message>
+    <message>
         <source>&amp;Save Image...</source>
         <translation>이미지 저장(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Close</source>
         <translation>닫기(&amp;C)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -160,7 +176,7 @@
     </message>
     <message>
         <source>Repeat new passphrase</source>
-        <translation>새로운 암호 확인</translation>
+        <translation>새로운 암호 재확인</translation>
     </message>
     <message>
         <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
@@ -172,7 +188,7 @@
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>지갑에 새로운 암호를 입력해 주십시오. &lt;br/&gt;&lt;b&gt;10자리 이상의 임의의 문자&lt;/b&gt; 또는, &lt;b&gt;8개 이상의 단어&lt;/b&gt;로 구성된 암호를 입력해 주십시오.</translation>
+        <translation>지갑에 새로운 암호를 입력해 주십시오. &lt;br/&gt;&lt;b&gt;열 개 이상의 무작위 문자&lt;/b&gt; 또는, &lt;b&gt;여덟 개 이상의 단어&lt;/b&gt;로 구성된 암호를 입력해 주십시오.</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
@@ -180,7 +196,7 @@
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>이 작업은 지갑의 암호를 풀어 지갑을 잠금해제를 진행해야 합니다.</translation>
+        <translation>이 작업은 지갑 잠금해제를 위해 사용자 지갑의 암호가 필요합니다.</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
@@ -188,7 +204,7 @@
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>이 작업은 지갑 암호화 해제를 하셔야 가능합니다.</translation>
+        <translation>이 작업은 지갑을 해독하기 위해 사용자 지갑의 암호가 필요합니다.</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
@@ -200,15 +216,15 @@
     </message>
     <message>
         <source>Enter the old passphrase and new passphrase to the wallet.</source>
-        <translation>지갑에 사용할 이전 암호와 새로운 암호를 입력해 주십시오.</translation>
+        <translation>지갑의 기존 암호와 새로운 암호를 입력해 주십시오.</translation>
     </message>
     <message>
         <source>Confirm wallet encryption</source>
-        <translation>지갑 암호화 확인</translation>
+        <translation>지갑 암호화 승인</translation>
     </message>
     <message>
         <source>Soom will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your SOOMs from being stolen by malware infecting your computer.</source>
-        <translation>Soom은 이제 암호화 프로세스를 마치기 위해 닫힐 것입니다. 지갑을 암호화하더라도 맬웨어로 인한 SOOMs의 도난당하는 것을 완벽하게 보호할 수는 없습니다.</translation>
+        <translation>Soom은 이제 암호화 처리 과정을 끝내기 위해 종료합니다. 지갑을 암호화하더라도 맬웨어로 인한 SOOMs의 도난당하는 것을 완벽하게 보호할 수는 없습니다.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -216,7 +232,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SOOM&lt;/b&gt;!</source>
-        <translation>경고: 지갑 암호화 후 암호를 분실하게 되면 &lt;b&gt;모든 SOOM을 잃게 됩니다&lt;/b&gt;!</translation>
+        <translation>경고: 지갑 암호화 후 비밀번호를 분실하게 되면 &lt;b&gt;모든 SOOM을 잃어버릴 수 있습니다&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -224,7 +240,7 @@
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>중요: 이전에 지갑 파일로 백업한 경우 지갑 파일을 암호화 된 지갑 파일로 대체해야 합니다. 보안상 문제로, 암호화되지 않은 지갑 파일의 이전 백업은 새롭게 암호화 된 지갑을 사용하게 되면 쓸모없게 될 것입니다.</translation>
+        <translation>중요: 이전에 지갑 파일을 백업한 경우 새로 생성한 암호화 된 지갑 파일로 교체됩니다. 보안상 이유로 암호화하지 않은 지갑 파일의 이전 백업은 새롭게 암호화 된 지갑을 사용하게 되면 사용할 수 없게 되니 이른 시일 내에 새로 암호화된 지갑을 사용하시기 바랍니다.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -252,7 +268,7 @@
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>지갑 암호가 변경되었습니다.</translation>
+        <translation>지갑 암호가 성공적으로 변경되었습니다.</translation>
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
@@ -263,6 +279,10 @@
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
+        <source>&amp;Yes</source>
+        <translation>예(&amp;Y)</translation>
+    </message>
+    <message>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
@@ -271,11 +291,15 @@
     <name>BanTableModel</name>
     <message>
         <source>IP/Netmask</source>
-        <translation>IP/넷마스크</translation>
+        <translation>IP주소/넷마스크</translation>
     </message>
     <message>
         <source>Banned Until</source>
-        <translation>까지 제한됨</translation>
+        <translation>계정 정지 제한 시간</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -318,7 +342,7 @@
     </message>
     <message>
         <source>Request payments (generates QR codes and soom: URIs)</source>
-        <translation>결제 요청 (QR 코드 및 soom: URI 생성)</translation>
+        <translation>결제 요청 (QR 코드와 SOOM이 생성됩니다: URIs)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -330,7 +354,7 @@
     </message>
     <message>
         <source>&amp;Message</source>
-        <translation>메세지(&amp;M)</translation>
+        <translation>메시지(&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Gateways</source>
@@ -342,7 +366,7 @@
     </message>
     <message>
         <source>E&amp;xit</source>
-        <translation>종료(&amp;X)</translation>
+        <translation>나가기(&amp;X)</translation>
     </message>
     <message>
         <source>Quit application</source>
@@ -366,11 +390,11 @@
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>옵션(&amp;O)...</translation>
+        <translation>환경설정(&amp;O)...</translation>
     </message>
     <message>
         <source>Modify configuration options for Soom</source>
-        <translation>Soom에 대한 구성 옵션 수정</translation>
+        <translation>Soom 설정 옵션 수정</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -418,19 +442,19 @@
     </message>
     <message>
         <source>Sign &amp;message...</source>
-        <translation>메세지 서명(&amp;M)...</translation>
+        <translation>메시지 서명(&amp;M)...</translation>
     </message>
     <message>
         <source>Sign messages with your Soom addresses to prove you own them</source>
-        <translation>Soom 주소로 메세지에 서명하여 소유하고 있음을 증명하십시오.</translation>
+        <translation>소유하고 있음을 증명하기 위해 Soom 주소에 서명하기</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
-        <translation>메세지 확인(&amp;V)...</translation>
+        <translation>메시지 검증(&amp;V)...</translation>
     </message>
     <message>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
-        <translation>메세지가 지정된 Soom 주소로 서명되었는지 확인합니다.</translation>
+        <translation>메시지가 지정된 Soom 주소로 서명되었는지 확인합니다.</translation>
     </message>
     <message>
         <source>&amp;Information</source>
@@ -442,7 +466,7 @@
     </message>
     <message>
         <source>&amp;Debug console</source>
-        <translation>디버그 콘솔(&amp;D)</translation>
+        <translation>디버깅 콘솔(&amp;D)</translation>
     </message>
     <message>
         <source>Open debugging console</source>
@@ -458,7 +482,7 @@
     </message>
     <message>
         <source>&amp;Peers list</source>
-        <translation>피어 목록(&amp;P)</translation>
+        <translation>피어 리스트(&amp;P)</translation>
     </message>
     <message>
         <source>Show peers info</source>
@@ -498,11 +522,11 @@
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>보낼 주소(&amp;S)...</translation>
+        <translation>보내는 주소(&amp;S)...</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
-        <translation>전송된 주소 및 라벨 목록 표시</translation>
+        <translation>사용된 보내는 주소 및 라벨 리스트 표시</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
@@ -510,7 +534,7 @@
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>입금된 주소 및 라벨 목록 표시</translation>
+        <translation>사용된 받는 주소 및 라벨 리스트 표시</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
@@ -522,15 +546,15 @@
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>명령행 옵션(&amp;C)</translation>
+        <translation>명령줄 옵션(&amp;C)</translation>
     </message>
     <message>
         <source>Show the Soom Core help message to get a list with possible Soom command-line options</source>
-        <translation>Soom 코어 도움말 메세지를 표시하여 사용 가능한 Soom 명령행 옵션 목록 표시</translation>
+        <translation>사용 가능한 Soom 명령줄 옵션 리스트를 가져오기 위해 Soom 코어 도움말 메시지 표시</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n 블록의 거래내역 확인됨</numerusform></translation>
+        <translation><numerusform>%n블록의 거래내역이 처리됨.</numerusform></translation>
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
@@ -573,24 +597,20 @@
         <translation>암호를 사용하여 개인 키 암호화 및 암호해제</translation>
     </message>
     <message>
-        <source>&amp;Blockchain explorer</source>
-        <translation>블록체인 탐색기(&amp;B)</translation>
-    </message>
-    <message>
-        <source>Block explorer window</source>
-        <translation>블록 탐색 창</translation>
-    </message>
-    <message>
         <source>Soom Core client</source>
         <translation>Soom 코어 클라이언트</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Soom network</source>
-        <translation><numerusform>%n 개의 Soom 네트워크에 연결됨</numerusform></translation>
+        <translation><numerusform>%n개의 Soom 네트워크에 연결됨</numerusform></translation>
+    </message>
+    <message>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>헤더 동기화 중 (%1%)...</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
-        <translation>네트워크 동기화중...</translation>
+        <translation>네트워크 동기화 중...</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -606,7 +626,7 @@
     </message>
     <message>
         <source>Up to date</source>
-        <translation>최신 정보</translation>
+        <translation>현재까지</translation>
     </message>
     <message>
         <source>Connecting to peers...</source>
@@ -642,11 +662,11 @@
     </message>
     <message>
         <source>Last received block was generated %1 ago.</source>
-        <translation>마지막으로 받은 블록이 %1 전에 생성되었습니다.</translation>
+        <translation>마지막으로 받은 블록이 %1전에 생성되었습니다.</translation>
     </message>
     <message>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>이후의 거래는 아직 표시되지 않습니다.</translation>
+        <translation>이후의 거래들은 아직 표시되지 않습니다.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -716,36 +736,9 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>지갑은 &lt;b&gt;암호화&lt;/b&gt;되어 있으며 현재 &lt;b&gt;잠겨 있습니다&lt;/b&gt;</translation>
     </message>
-</context>
-<context>
-    <name>BlockExplorer</name>
     <message>
-        <source>Blockchain Explorer</source>
-        <translation>블록체인 탐색기</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>뒤로</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>앞으로</translation>
-    </message>
-    <message>
-        <source>Address / Block / Transaction</source>
-        <translation>주소 / 블록 / 거래</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>검색</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>텍스트라벨</translation>
-    </message>
-    <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (soom.conf).</source>
-        <translation>모든 거래가 표시되지는 않습니다. 모든 거래을 보려면 구성 파일 (soom.conf)에 txindex = 1을 설정해야합니다.</translation>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -758,6 +751,10 @@
         <source>Network Alert</source>
         <translation>네트워크 알림</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -767,11 +764,11 @@
     </message>
     <message>
         <source>Bytes:</source>
-        <translation>바이트 수:</translation>
+        <translation>바이트:</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>금액:</translation>
+        <translation>거래액:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -787,11 +784,11 @@
     </message>
     <message>
         <source>Dust:</source>
-        <translation>현금:</translation>
+        <translation>Dust:</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>이후 수수료:</translation>
+        <translation>수수료 차감 후:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -811,7 +808,7 @@
     </message>
     <message>
         <source>List mode</source>
-        <translation>목록 모드</translation>
+        <translation>리스트 모드</translation>
     </message>
     <message>
         <source>(1 locked)</source>
@@ -891,15 +888,15 @@
     </message>
     <message>
         <source>Copy dust</source>
-        <translation>현금 복사</translation>
+        <translation>dust 복사</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>변경 복사</translation>
+        <translation>잔돈 복사</translation>
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
-        <translation>이 기능을 사용하려면 "목록 모드"로 전환하십시오.</translation>
+        <translation>이 기능을 사용하려면 "리스트 모드"로 전환하십시오.</translation>
     </message>
     <message>
         <source>highest</source>
@@ -983,11 +980,11 @@
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(표시 없음)</translation>
+        <translation>(라벨 없음)</translation>
     </message>
     <message>
         <source>change from %1 (%2)</source>
-        <translation>%1 (%2)에서 변경</translation>
+        <translation>%1에서 변경 (%2)</translation>
     </message>
     <message>
         <source>(change)</source>
@@ -1014,7 +1011,7 @@
     </message>
     <message>
         <source>The label associated with this address list entry</source>
-        <translation>이 주소 목록과 관련된 라벨</translation>
+        <translation>주소 리스트와 관련된 라벨입니다</translation>
     </message>
     <message>
         <source>&amp;Address</source>
@@ -1022,7 +1019,7 @@
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>이 주소 목록과 관련된 주소입니다. 주소를 보낼 때만 수정할 수 있습니다.</translation>
+        <translation>주소 리스트에서 선택한 주소입니다. 주소를 보낼 때만 수정할 수 있습니다.</translation>
     </message>
     <message>
         <source>New receiving address</source>
@@ -1042,11 +1039,11 @@
     </message>
     <message>
         <source>The entered address "%1" is not a valid Soom address.</source>
-        <translation>입력된 주소 "%1"는 올바른 Soom 주소가 아닙니다.</translation>
+        <translation>입력한 주소 "%1"(은)는 올바른 Soom 주소가 아닙니다.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
-        <translation>입력한 주소 "%1"는 이미 주소록에 등록 되있습니다.</translation>
+        <translation>입력한 주소 "%1"(은)는 이미 주소록에 등록되어 있습니다.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1054,7 +1051,7 @@
     </message>
     <message>
         <source>New key generation failed.</source>
-        <translation>새로운 키 생성에 실패하였습니다.</translation>
+        <translation>새로운 키 생성에 실패했습니다.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1077,7 +1074,7 @@
     </message>
     <message>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
-        <translation>디렉터리가 이미 존재합니다. 여기에 새로운 디렉터리를 만들려면 %1을 추가해 주십시오.</translation>
+        <translation>디렉터리가 이미 존재합니다. 여기에 새로운 디렉터리를 만들려면 %1을(를) 추가해 주십시오.</translation>
     </message>
     <message>
         <source>Path already exists, and is not a directory.</source>
@@ -1086,6 +1083,10 @@
     <message>
         <source>Cannot create data directory here.</source>
         <translation>여기에 디렉터리를 만들 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1108,7 +1109,7 @@
     </message>
     <message>
         <source>Command-line options</source>
-        <translation>명령행 옵션</translation>
+        <translation>명령줄 옵션</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -1116,7 +1117,7 @@
     </message>
     <message>
         <source>command-line options</source>
-        <translation>명령행 옵션</translation>
+        <translation>명령줄 옵션</translation>
     </message>
     <message>
         <source>UI Options:</source>
@@ -1179,7 +1180,7 @@
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>오류: 지정된 데이터 디렉터리 "%1"을 생성할 수 없습니다.</translation>
+        <translation>오류: 지정된 데이터 디렉터리 "%1"을(를) 생성할 수 없습니다.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1274,11 +1275,11 @@
     </message>
     <message>
         <source>Filter List:</source>
-        <translation>필터 목록:</translation>
+        <translation>필터 리스트:</translation>
     </message>
     <message>
         <source>Filter gateway list</source>
-        <translation>필터 게이트웨이 목록</translation>
+        <translation>필터 게이트웨이 리스트</translation>
     </message>
     <message>
         <source>Node Count:</source>
@@ -1294,7 +1295,7 @@
     </message>
     <message>
         <source>Are you sure you want to start gateway %1?</source>
-        <translation>게이트웨이 %1을 시작하시겠습니까?</translation>
+        <translation>게이트웨이 %1을(를) 시작하시겠습니까?</translation>
     </message>
     <message>
         <source>Confirm all gateways start</source>
@@ -1310,7 +1311,7 @@
     </message>
     <message>
         <source>You can't use this command until gateway list is synced</source>
-        <translation>게이트웨이 목록이 동기화 될 때까지 이 명령을 사용할 수 없습니다.</translation>
+        <translation>게이트웨이 리스트가 동기화 될 때까지 이 명령을 사용할 수 없습니다.</translation>
     </message>
     <message>
         <source>Confirm missing gateways start</source>
@@ -1319,6 +1320,18 @@
     <message>
         <source>Are you sure you want to start MISSING gateways?</source>
         <translation>누락된 게이트웨이를 시작하시겠습니까?</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>예(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1375,6 +1388,10 @@
         <source>Unknown. Syncing Headers (%1)...</source>
         <translation>알 수 없음. 헤더 동기화 중 (%1)...</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
@@ -1411,7 +1428,7 @@
     <name>OptionsDialog</name>
     <message>
         <source>Options</source>
-        <translation>옵션</translation>
+        <translation>환경설정</translation>
     </message>
     <message>
         <source>&amp;Main</source>
@@ -1439,7 +1456,7 @@
     </message>
     <message>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
-        <translation>확인되지 않은 변경사항을 사용하지 않도록 설정하면 해당 거래에 하나 이상의 확인이 진행되야&lt;br/&gt;거래에 변경사항을 적용할 수 있습니다.&lt;br/&gt;또한 이것은 잔액 계산 방식에도 영향을 줍니다.</translation>
+        <translation>검증되지 않은 잔돈 쓰기를 비활성화하면 거래가 1회 이상 검증되기 전까지&lt;br/&gt;거래의 잔돈을 사용할 수 없습니다.&lt;br/&gt;또한 이것은 잔액 계산 방식에도 영향을 줍니다.</translation>
     </message>
     <message>
         <source>&amp;Start Soom Core on system login</source>
@@ -1447,7 +1464,7 @@
     </message>
     <message>
         <source>Automatically open the Soom Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>라우터에서 Soom 코어 클라이언트 포트를 자동으로 엽니다. 이 기능은 라우터가 UPnP를 지원하고 활성화 된 경우에만 사용할 수 있습니다.</translation>
+        <translation>라우터에서 Soom 코어 클라이언트 포트를 자동으로 엽니다.&lt;br&gt;이 기능은 라우터가 UPnP를 지원하고 활성화 된 경우에만 사용할 수 있습니다.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1463,7 +1480,7 @@
     </message>
     <message>
         <source>Expert</source>
-        <translation>전문적</translation>
+        <translation>전문가 설정</translation>
     </message>
     <message>
         <source>This setting determines the amount of individual gateways that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
@@ -1495,7 +1512,7 @@
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
-        <translation>확인되지 않은 변경사항 전송(&amp;S)</translation>
+        <translation>확인되지 않은 잔돈 전송(&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -1503,7 +1520,7 @@
     </message>
     <message>
         <source>The user interface language can be set here. This setting will take effect after restarting Soom Core.</source>
-        <translation>사용자 인터페이스 언어를 설정할 수 있습니다. 이 설정은 Soom 코어를 다시 시작한 후에 적용됩니다.</translation>
+        <translation>사용자 인터페이스 언어를 설정할 수 있습니다.&lt;br/&gt;이 설정은 Soom 코어를 다시 시작한 후에 적용됩니다.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1569,7 +1586,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>시스템 트레이에서 아이콘을 숨깁니다.(&amp;H)</translation>
+        <translation>시스템 트레이에서 아이콘을 숨깁니다.</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
@@ -1585,7 +1602,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
-        <translation>창 닫기 시 프로그램을 종료하지 않고 최소화하기. 이 옵션을 사용하면 메뉴에서 종료를 선택해야 프로그램이 종료됩니다.</translation>
+        <translation>창 닫기 시 프로그램을 종료하지 않고 최소화하기.&lt;br&gt;이 옵션을 사용하면 메뉴에서 종료를 선택해야 프로그램이 종료됩니다.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
@@ -1621,7 +1638,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>거래 탭에 컨텍스트 메뉴 항목으로 표시되는 서드파티 URL (예: 블록 탐색)&lt;br/&gt;URL의 %s 는 거래 해시로 대체됩니다. 여러 개의 URL은 | 세로 막대로 구분됩니다.</translation>
+        <translation>거래 탭에 컨텍스트 메뉴 항목으로 표시되는 서드파티 URL (예: 블록 탐색)&lt;br/&gt;URL의 %s(은)는 거래 해시로 대체됩니다. 여러 개의 URL은 | 세로 막대로 구분됩니다.</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1629,23 +1646,15 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>위의 옵션을 무시하는 활성 명령행 옵션:</translation>
+        <translation>명령줄 옵션 활성화는 위의 옵션들을 대체합니다:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>모든 클라이언트 옵션을 기본값으로 재설정.</translation>
+        <translation>모든 클라이언트 옵션을 기본값으로 재설정</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
         <translation>옵션 재설정(&amp;R)</translation>
-    </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation>확인(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation>취소(&amp;C)</translation>
     </message>
     <message>
         <source>default</source>
@@ -1661,7 +1670,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>Client restart required to activate changes.</source>
-        <translation>변경 사항을 적용하려면 클라이언트를 다시 시작해야합니다.</translation>
+        <translation>변경 사항을 적용하려면 클라이언트를 다시 시작해야 합니다.</translation>
     </message>
     <message>
         <source>Client will be shut down. Do you want to proceed?</source>
@@ -1669,11 +1678,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>This change would require a client restart.</source>
-        <translation>이 변경은 클라이언트가 재시작 되야 적용됩니다.</translation>
+        <translation>이 변경 사항 적용을 위해 프로그램 재시작이 필요합니다.</translation>
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
-        <translation>프록시 주소가 잘못되었습니다.</translation>
+        <translation>지정한 프록시 주소가 잘못되었습니다.</translation>
     </message>
     <message>
         <source>The supplied proxy port is invalid.</source>
@@ -1682,6 +1691,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <source>The supplied proxy settings are invalid.</source>
         <translation>제공된 프록시 설정이 유효하지 않습니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>예(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1724,7 +1745,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
-        <translation>표시된 정보가 오래되었을 수 있습니다. 연결이 완료되면 지갑이 Soom 네트워크와 자동으로 동기화될 예정이지만, 아직 해당 프로세스가 완료되지 않았습니다.</translation>
+        <translation>표시된 정보가 오래되었을 수 있습니다.&lt;br&gt;연결이 완료되면 지갑이 Soom 네트워크와 자동으로 동기화될 예정이지만,&lt;br&gt;아직 해당 프로세스가 완료되지 않았습니다.</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
@@ -1796,11 +1817,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <source>The denominations you submitted to the Gateway.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>게이트웨이에 제출한 금액,&lt;br&gt;믹싱하려면 다른 사용자가 동일한 금액을 제출해야합니다.</translation>
+        <translation>게이트웨이에 제출한 금액,&lt;br&gt;믹싱하려면 다른 사용자가 동일한 금액을 제출해야 합니다.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
-        <translation>(마지막 메세지)</translation>
+        <translation>(마지막 메시지)</translation>
     </message>
     <message>
         <source>Try Mix</source>
@@ -1854,7 +1875,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message numerus="yes">
         <source>%n Rounds</source>
-        <translation><numerusform>%n 주기</numerusform></translation>
+        <translation><numerusform>%n주기</numerusform></translation>
     </message>
     <message>
         <source>Not enough compatible inputs to anonymize &lt;span style='color:red;'&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style='color:red;'&gt;%2&lt;/span&gt; instead</source>
@@ -1890,13 +1911,11 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message>
         <source>To disable AutoMint add 'enablezeromint=0' in soom.conf.</source>
-        <translation>자동생성 기능을 사용하지 않으시려면, soom.conf 화일에 enablezeromint=0 를 추가하십시오.</translation>
+        <translation>자동생성 기능을 사용하지 않으시려면, soom.conf 화일에 'enablezeromint = 0'을 추가하십시오.</translation>
     </message>
     <message>
-        <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf</source>
-        <translation>자동 저장 기능이 현재 사용 중지되었습니다 .
-자동 변환을 사용하려면 tupotx.conf에서 'enablezeromint = 0'에서 'enablezeromint = 1'로 변경하십시오.</translation>
+        <source>AutoMint is currently disabled. To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf</source>
+        <translation>자동 저장 기능이 현재 사용 중지되었습니다.&lt;br&gt;자동 변환을 사용하려면 tupotx.conf에서 'enablezeromint = 0'에서 'enablezeromint = 1'로 변경하십시오.</translation>
     </message>
     <message>
         <source>Mixed</source>
@@ -1910,6 +1929,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>N/A</source>
         <translation>해당사항 없음</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1919,7 +1942,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Cannot start soom: click-to-pay handler</source>
-        <translation>Soom을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
+        <translation>Soom을 시작할 수 없습니다: 지급 처리를 클릭하십시오</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1963,11 +1986,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>커스텀 결제 스크립트에 대한 확인되지 않은 결제 요청은 지원되지 않습니다.</translation>
+        <translation>임의로 변경한 결제 스크립트에 대한 확인되지 않은 결제 요청은 지원되지 않습니다.</translation>
     </message>
     <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>%1 이하의 결제 요청 금액은 너무 적습니다(현금으로 간주됨).</translation>
+        <translation>%1 이하의 결제 요청 금액은 너무 적습니다(불필요한 금액으로 간주됨).</translation>
     </message>
     <message>
         <source>Refund from %1</source>
@@ -1975,7 +1998,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
-        <translation>결제 요청 금액 %1은 너무 큽니다 (%2 바이트, %3 바이트 허용).</translation>
+        <translation>결제 요청 금액 %1(은)는 너무 큽니다 (%2바이트, %3바이트 허용).</translation>
     </message>
     <message>
         <source>Payment request DoS protection</source>
@@ -1991,7 +2014,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Bad response from server %1</source>
-        <translation>%1 서버로 부터 응답 없음</translation>
+        <translation>%1 서버로부터 응답 없음</translation>
     </message>
     <message>
         <source>Network request error</source>
@@ -1999,18 +2022,22 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Payment acknowledged</source>
-        <translation>결제 확인 됨</translation>
+        <translation>결제 확인됨</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>PeerTableModel</name>
     <message>
         <source>NodeId</source>
-        <translation>노드 아이디</translation>
+        <translation>노드 Id</translation>
     </message>
     <message>
         <source>Node/Service</source>
-        <translation>노드 /서비스</translation>
+        <translation>노드 / 서비스</translation>
     </message>
     <message>
         <source>User Agent</source>
@@ -2020,9 +2047,17 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>Ping</source>
         <translation>핑</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <source>Error: %1</source>
+        <translation>에러: %1</translation>
+    </message>
     <message>
         <source>Amount</source>
         <translation>금액</translation>
@@ -2095,6 +2130,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>%1 and %2</source>
         <translation>%1 그리고 %2</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>QRImageWidget</name>
@@ -2113,6 +2152,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>PNG Image (*.png)</source>
         <translation>PNG 형식 이미지 (*.png)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2207,7 +2250,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Open the Soom Core debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Soom 코어 디버그 로그 파일을 현재 데이터 디렉터리에서 엽니다. 대용량 로그 파일일 경우 수 초가 걸릴 수 있습니다.</translation>
+        <translation>Soom 코어 디버그 로그 파일을 현재 데이터 디렉터리에서 엽니다.&lt;br&gt;대용량 로그 파일일 경우 수 초가 걸릴 수 있습니다.</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -2247,11 +2290,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Select a peer to view detailed information.</source>
-        <translation>자세한 정보를 보기 위해 피어를 선택하십시오.</translation>
+        <translation>자세한 정보를 보려면 피어를 선택하십시오.</translation>
     </message>
     <message>
         <source>Whitelisted</source>
-        <translation>허용목록</translation>
+        <translation>허용리스트</translation>
     </message>
     <message>
         <source>Direction</source>
@@ -2407,7 +2450,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>-reindex: Rebuild block chain index from current blk000??.dat files.</source>
-        <translation>-reindex: 현재 blk000??.dat로 부터 블록체인 인덱스 재작성</translation>
+        <translation>-reindex: 현재 blk000??.dat로 부터 블록체인 인덱스 재생성</translation>
     </message>
     <message>
         <source>In:</source>
@@ -2422,6 +2465,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <translation>Soom 코어 RPC 콘솔에 오신 것을 환영합니다.</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
+        <translation>경고: 사기꾼이 사용자에게 여기에 명령을 입력하게 하여 지갑 내용을 훔칠수 있다는 사실을 알려드립니다. 명령어를 완전히 이해하지 못한다면 콘솔을 사용하지 마십시오.</translation>
+    </message>
+    <message>
         <source>&amp;Disconnect</source>
         <translation>연결이 끊어짐(&amp;D)</translation>
     </message>
@@ -2431,19 +2478,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 시간(&amp;H)</translation>
+        <translation>1시간(&amp;H)</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 일(&amp;D)</translation>
+        <translation>1일(&amp;D)</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 주(&amp;W)</translation>
+        <translation>1주(&amp;W)</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 년(&amp;Y)</translation>
+        <translation>1년(&amp;Y)</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
@@ -2455,11 +2502,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>This needs quite some time and downloads a lot of data.&lt;br&gt;&lt;br&gt;</source>
-        <translation>이것은 상당한 시간을 필요로하며 많은 양의 데이터를 다운로드합니다.</translation>
+        <translation>이것은 상당한 시간을 필요로 하며 많은 양의 데이터를 다운로드합니다.</translation>
     </message>
     <message>
         <source>Your transactions and funds will be visible again after the download has completed.&lt;br&gt;&lt;br&gt;</source>
-        <translation>다운로드가 완료되면 거래와 자금이 다시 표시됩니다 .12</translation>
+        <translation>다운로드가 완료되면 거래와 자금이 다시 표시됩니다.</translation>
     </message>
     <message>
         <source>Do you want to continue?.&lt;br&gt;</source>
@@ -2525,6 +2572,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
@@ -2538,19 +2589,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>&amp;Message</source>
-        <translation>메세지(&amp;M)</translation>
+        <translation>메시지(&amp;M)</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
-        <translation>새로운 수신 주소와 연결할 선택적 라벨.</translation>
+        <translation>새로운 수신 주소와 연결할 임의의 라벨</translation>
     </message>
     <message>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
-        <translation>요청이 열릴 때 표시되는 결제 요청에 첨부할 선택적 메세지 입니다. 참고: Soom 네트워크를 통한 결제는 메세지가 전송되지 않습니다.</translation>
+        <translation>요청이 있을 때 표시되는 결제 요청에 첨부할 임의의 메시지입니다.&lt;br&gt;참고: Soom 네트워크를 통한 결제는 메시지가 전송되지 않습니다.</translation>
     </message>
     <message>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
-        <translation>요청이 열릴 때 표시되는 결제 요청에 첨부할 선택적 메세지 입니다.&lt;br&gt;참고: Soom 네트워크를 통한 결제는 메세지가 전송되지 않습니다.</translation>
+        <translation>요청이 있을 때 표시되는 결제 요청에 첨부할 임의의 메시지입니다.&lt;br&gt;참고: Soom 네트워크를 통한 결제는 메시지가 전송되지 않습니다.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -2574,11 +2625,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Request payments (generates QR codes and soom: URIs)</source>
-        <translation>결제 요청 (QR 코드 및 soom: URI 생성)</translation>
+        <translation>결제 요청 (QR 코드와 SOOM이 생성됩니다: URIs)</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>모든 입력 양식 지우기.</translation>
+        <translation>모든 입력 양식 지우기</translation>
     </message>
     <message>
         <source>Clear</source>
@@ -2594,19 +2645,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>선택한 요청을 표시합니다 (항목을 두 번 클릭하는 것과 동일)</translation>
+        <translation>선택한 요청을 표시하기 (더블 클릭으로 항목을 표시할 수 있습니다)</translation>
     </message>
     <message>
         <source>Show</source>
-        <translation>표시</translation>
+        <translation>보기</translation>
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>선택한 항목을 목록에서 제거하십시오</translation>
+        <translation>리스트에서 선택한 항목을 삭제합니다</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>제거</translation>
+        <translation>삭제</translation>
     </message>
     <message>
         <source>Copy URI</source>
@@ -2618,11 +2669,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy message</source>
-        <translation>메세지 복사</translation>
+        <translation>메시지 복사</translation>
     </message>
     <message>
         <source>Copy amount</source>
         <translation>금액 복사</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2669,7 +2724,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Message</source>
-        <translation>메세지</translation>
+        <translation>메시지</translation>
     </message>
     <message>
         <source>InstantSend</source>
@@ -2685,15 +2740,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>URI 결과가 너무 길면, 라벨 / 메세지의 텍스트를 줄입니다.</translation>
+        <translation>URI 결과가 너무 깁니다, 라벨 / 메시지의 텍스트를 줄이십시오.</translation>
     </message>
     <message>
         <source>Error encoding URI into QR Code.</source>
-        <translation>URI를 QR 코드로 인코딩하는 도중 오류가 발생하였습니다.</translation>
+        <translation>URI를 QR 코드로 인코딩하는 도중 오류가 발생했습니다.</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
         <translation>닫기(&amp;L)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -2708,7 +2767,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Message</source>
-        <translation>메세지</translation>
+        <translation>메시지</translation>
     </message>
     <message>
         <source>Amount</source>
@@ -2716,22 +2775,26 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(표시 없음)</translation>
+        <translation>(라벨 없음)</translation>
     </message>
     <message>
         <source>(no message)</source>
-        <translation>(메세지 없음)</translation>
+        <translation>(메시지 없음)</translation>
     </message>
     <message>
         <source>(no amount)</source>
-        <translation>(금액 없음)</translation>
+        <translation>(거래액 없음)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>코인 전송</translation>
+        <translation>코인 보내기</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -2743,11 +2806,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>automatically selected</source>
-        <translation>코인 자동으로 선택됨</translation>
+        <translation>자동 선택</translation>
     </message>
     <message>
         <source>Insufficient funds!</source>
-        <translation>자금이 충분하지 않습니다!</translation>
+        <translation>자금이 부족합니다!</translation>
     </message>
     <message>
         <source>Quantity:</source>
@@ -2755,11 +2818,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Bytes:</source>
-        <translation>바이트 수:</translation>
+        <translation>바이트:</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>금액</translation>
+        <translation>거래액:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -2775,7 +2838,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Dust:</source>
-        <translation>현금:</translation>
+        <translation>Dust:</translation>
     </message>
     <message>
         <source>no</source>
@@ -2783,7 +2846,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>이후 수수료:</translation>
+        <translation>수수료 차감 후:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -2791,11 +2854,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
-        <translation>이 옵션이 활성화되었지만, 변경 주소가 비어있거나 유효하지 않은 경우 변경사항은 새로 생성된 주소로 전송됩니다.</translation>
+        <translation>이 옵션이 활성화되면 잔돈 주소가 비어있거나 유효하지 않은 경우&lt;br&gt;잔돈은 새로 생성된 주소로 전송됩니다.</translation>
     </message>
     <message>
         <source>Custom change address</source>
-        <translation>커스텀 주소 변경</translation>
+        <translation>주소 변경</translation>
     </message>
     <message>
         <source>Split UTXO</source>
@@ -2819,7 +2882,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>collapse fee-settings</source>
-        <translation>간단한 수수료 설정</translation>
+        <translation>수수료 설정 접기</translation>
     </message>
     <message>
         <source>InstantSend</source>
@@ -2847,11 +2910,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Custom:</source>
-        <translation>맞춤 설정:</translation>
+        <translation>사용자 정의:</translation>
     </message>
     <message>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
-        <translation>(스마트 수수료가 아직 초기화 되지 않았습니다. 일반적으로 몇 블록이 지나야 됩니다...)</translation>
+        <translation>(스마트 수수료가 아직 초기화 되지 않았습니다. 블록 분석이 완전하게 끝날때 까지 기다려주십시오...)</translation>
     </message>
     <message>
         <source>Confirmation time:</source>
@@ -2863,11 +2926,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>거래가 250바이트 인 경우 사용자 지정 수수료가 1000 tnsoom로 설정되고,&lt;br&gt;1000 tnsoom 안에는 최소 "킬로바이트당" 250 tnsoom 만 지불합니다. 1 킬로바이트보다 큰 거래의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <translation>거래가 250바이트 인 경우 사용자 지정 수수료가 1000 tnsoom로 설정되고,&lt;br&gt;1000 tnsoom 안에는 최소 "킬로바이트당" 250 tnsoom 만 지불합니다.&lt;br&gt;1킬로바이트보다 큰 거래의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then "per kilobyte" only pays 250 tnsoom in fee,&lt;br&gt;while "total at least" pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>거래가 250바이트 인 경우 사용자 지정 수수료가 1000 tnsoom로 설정되고,&lt;br&gt;1000 tnsoom 안에는 전체에서 최소 "킬로바이트당" 250 tnsoom 만 지불합니다. 1 킬로바이트보다 큰 거래의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <translation>거래가 250바이트 인 경우 사용자 지정 수수료가 1000 tnsoom로 설정되고,&lt;br&gt;1000 tnsoom 안에는 전체에서 최소 "킬로바이트당" 250 tnsoom 만 지불합니다.&lt;br&gt;1킬로바이트보다 큰 거래의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</source>
@@ -2895,7 +2958,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Confirm the send action</source>
-        <translation>전송 작업 확인</translation>
+        <translation>전송 승인</translation>
     </message>
     <message>
         <source>S&amp;end</source>
@@ -2903,19 +2966,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>모든 입력 양식 지우기.</translation>
+        <translation>모든 입력 양식 지우기</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>전체 지우기(&amp;A)</translation>
+        <translation>모두 지우기(&amp;A)</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
-        <translation>한번에 여러 곳 전송</translation>
+        <translation>다수의 수령인들에게 한번에 보내기</translation>
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>받는 사람 추가(&amp;R)</translation>
+        <translation>수령인 추가(&amp;R)</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -2927,7 +2990,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>금액 복사</translation>
+        <translation>거래액 복사</translation>
     </message>
     <message>
         <source>Copy fee</source>
@@ -2935,11 +2998,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>이용 수수료 복사</translation>
+        <translation>수수료 이후 복사</translation>
     </message>
     <message>
         <source>Copy bytes</source>
-        <translation>Bytes 복사</translation>
+        <translation>bytes 복사</translation>
     </message>
     <message>
         <source>Copy priority</source>
@@ -2947,11 +3010,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy dust</source>
-        <translation>현금 복사</translation>
+        <translation>dust 복사</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>변경 복사</translation>
+        <translation>잔돈 복사</translation>
     </message>
     <message>
         <source>using</source>
@@ -2990,7 +3053,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;= %2</source>
-        <translation>총 금액: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;= %2</translation>
+        <translation>총액: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;= %2</translation>
     </message>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
@@ -3006,27 +3069,27 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>%n 개의 블록 내에서 확인을 시작할 것으로 추정됨.</numerusform></translation>
+        <translation><numerusform>%n개의 블록 내에서 승인이 시작될 것으로 추정됩니다.</numerusform></translation>
     </message>
     <message>
         <source>The recipient address is not valid, please recheck.</source>
-        <translation>수신자 주소가 유효하지 않습니다. 다시 확인해 주십시오.</translation>
+        <translation>수령인 주소가 유효하지 않습니다. 다시 확인해 주십시오.</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>지불 할 금액은 0보다 커야합니다.</translation>
+        <translation>지불하는 금액은 0보다 커야합니다.</translation>
     </message>
     <message>
         <source>The amount exceeds your balance.</source>
-        <translation>입력한 금액이 잔액을 초과합니다.</translation>
+        <translation>잔액을 초과하였습니다.</translation>
     </message>
     <message>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>%1 거래 수수료가 포함되면 현재 잔액을 초과합니다.</translation>
+        <translation>%1의 거래 수수료를 포함하면 현재 잔액을 초과합니다.</translation>
     </message>
     <message>
         <source>Duplicate address found: addresses should only be used once each.</source>
-        <translation>중복된 주소를 발견했습니다. 각 주소는 한 번씩만 보낼 수 있습니다.</translation>
+        <translation>중복된 주소 발견: 한번에 하나의 주소에만 보낼 수 있습니다.</translation>
     </message>
     <message>
         <source>Transaction creation failed!</source>
@@ -3034,11 +3097,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>거래가 거부되었습니다! 지갑에 있는 코인 중 일부가 이미 사용된 경우일 수 있습니다. wallet.dat 사본을 사용하고 코인을 이미 사용하고 현재 여기에 표시되지 않은 경우에 이런 현상이 발생할 수 있습니다.</translation>
+        <translation>거래가 거부되었습니다! 지갑에 있는 코인 중 일부가 이미 사용된 경우일 수 있습니다.&lt;br&gt;wallet.dat 사본을 사용하고 코인을 이미 사용하고 현재 여기에 표시되지 않은 경우에 이런 현상이 발생할 수 있습니다.</translation>
     </message>
     <message>
         <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>오류: 현재 지갑이 익명 처리를 위해 잠금해제 되어 있습니다. 익명화 및 스테이킹 전용을 해제하시고 다시 시도하십시오.</translation>
+        <translation>오류: 현재 지갑이 익명 처리를 위해 잠금해제 되어 있습니다.&lt;br&gt;익명화 및 스테이킹 전용을 해제하시고 다시 시도하십시오.</translation>
     </message>
     <message>
         <source>Error: The wallet was unlocked only to anonymize coins. Unlock canceled.</source>
@@ -3054,30 +3117,42 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Warning: Unknown change address</source>
-        <translation>경고: 알 수 없는 변경 주소</translation>
+        <translation>경고: 알려지지 않은 주소 변경</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(표시 없음)</translation>
+        <translation>(라벨 없음)</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>예(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
         <source>This is a normal payment.</source>
-        <translation>이것은 일반 결제입니다.</translation>
+        <translation>이것은 정상적인 결제입니다</translation>
     </message>
     <message>
         <source>Pay &amp;To</source>
-        <translation>지불 대상(&amp;T)</translation>
+        <translation>송금할 대상(&amp;T)</translation>
     </message>
     <message>
         <source>The Soom address to send the payment to</source>
-        <translation>전송할 Soom 주소</translation>
+        <translation>Soom 주소로 송금됩니다</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
-        <translation>이전에 사용한 주소 선택</translation>
+        <translation>이전에 사용한 주소를 선택하십시오</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -3085,7 +3160,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>클립보드에서 주소 붙여 넣기</translation>
+        <translation>클립보드에서 주소 붙여넣기</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -3101,7 +3176,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>이 주소의 라벨을 입력하여 사용된 주소 목록에 추가하십시오</translation>
+        <translation>이 주소의 라벨을 입력하여 사용된 주소 리스트에 추가하십시오</translation>
     </message>
     <message>
         <source>A&amp;mount</source>
@@ -3109,31 +3184,31 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>수수료는 송금액에서 차감됩니다. 수령인은 금액 필드에 입력하는 것보다 적은 금액의 Soom을 받게됩니다.여러 명의 수신자가 선택되면 요금도 균등하게 분배됩니다.</translation>
+        <translation>수수료는 송금되는 금액에서 차감됩니다.&lt;br&gt;수령인은 금액 필드에 입력하는 것보다 적은 금액의 Soom을 받게됩니다.&lt;br&gt;여러 명의 수신자가 선택되면 요금도 균등하게 분배됩니다.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
-        <translation>금액에서 수수료 빼기(&amp;U)</translation>
+        <translation>송금액에서 수수료 공제(&amp;U)</translation>
     </message>
     <message>
         <source>Message</source>
-        <translation>메세지</translation>
+        <translation>메시지</translation>
     </message>
     <message>
         <source>A message that was attached to the Soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
-        <translation>참조용으로 거래와 함께 기록되는 Soom: URI에 첨부된 메세지입니다. 참고: 이 메세지는 Soom 네트워크를 통해 전송되지 않습니다.</translation>
+        <translation>Soom에 첨부된 메시지: 참고용으로 거래와 함께 저장될 URI. 메모: 이 메시지는 Soom 네트워크로 전송되지 않습니다.</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
-        <translation>확인되지 않은 지불 요청입니다.</translation>
+        <translation>인증되지 않은 지불 요청입니다.</translation>
     </message>
     <message>
         <source>This is an authenticated payment request.</source>
-        <translation>확인된 지불 요청입니다.</translation>
+        <translation>인증된 지불 요청입니다.</translation>
     </message>
     <message>
         <source>Pay To:</source>
-        <translation>지불 대상:</translation>
+        <translation>송금할 대상:</translation>
     </message>
     <message>
         <source>Memo:</source>
@@ -3142,6 +3217,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>주소록에 추가하려면 이 주소의 라벨을 입력해 주십시오.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3154,28 +3233,32 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>이 창이 사라질 때까지 컴퓨터를 종료하지 마십시오.</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>서명 - 서명 / 메세지 검증</translation>
+        <translation>서명 - 싸인 / 메시지 확인</translation>
     </message>
     <message>
         <source>&amp;Sign Message</source>
-        <translation>메세지 서명(&amp;S)</translation>
+        <translation>메시지 서명(&amp;S)</translation>
     </message>
     <message>
         <source>You can sign messages/agreements with your addresses to prove you can receive Soom sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>자신의 주소로 메세지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의해 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>
+        <translation>자신의 주소로 메시지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의해 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>        
     </message>
     <message>
         <source>The Soom address to sign the message with</source>
-        <translation>메세지를 서명하기 위한 Soom 주소</translation>
+        <translation>메시지를 서명한 Soom 주소</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
-        <translation>이전에 사용한 주소 선택</translation>
+        <translation>이전에 사용한 주소를 선택하십시오</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -3183,7 +3266,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>클립보드에서 주소 붙여 넣기</translation>
+        <translation>클립보드에서 주소 붙여넣기</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -3191,7 +3274,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Enter the message you want to sign here</source>
-        <translation>서명할 메세지를 입력해 주십시오</translation>
+        <translation>여기에 서명할 메시지를 입력해 주십시오</translation>
     </message>
     <message>
         <source>Signature</source>
@@ -3199,51 +3282,51 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy the current signature to the system clipboard</source>
-        <translation>현재 서명을 시스템 클립 보드에 복사</translation>
+        <translation>현재 서명을 시스템 클립보드에 복사</translation>
     </message>
     <message>
         <source>Sign the message to prove you own this Soom address</source>
-        <translation>이 Soom 주소를 소유하고 있다는 것을 증명하기 위해 메세지에 서명하십시오</translation>
+        <translation>이 Soom 주소를 소유하고 있다는 것을 증명하기 위해 메시지에 서명하십시오</translation>
     </message>
     <message>
         <source>The Soom address the message was signed with</source>
-        <translation>메세지에 서명된 Soom 주소</translation>
+        <translation>메시지의 서명에 사용된 Soom 주소</translation>
     </message>
     <message>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
-        <translation>메세지가 지정된 Soom 주소로 서명되었는지 확인해 주십시오</translation>
+        <translation>메시지가 지정된 Soom 주소로 서명되었는지 확인해 주십시오</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
-        <translation>서명 메세지(&amp;M)</translation>
+        <translation>메시지 서명(&amp;M)</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
-        <translation>모든 서명 메세지 입력 지우기</translation>
+        <translation>메시지 필드의 모든 서명 재설정</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>전체 지우기(&amp;A)</translation>
+        <translation>모두 지우기(&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Verify Message</source>
-        <translation>메세지 확인(&amp;V)</translation>
+        <translation>메시지 검증(&amp;V)</translation>
     </message>
     <message>
         <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>메세지를 확인하기 위해 수신인의 주소, 메세지 (줄 바꿈, 공백, 탭 등을 정확하게 복사해 주십시오) 및 서명을 입력하십시오. 중간자 공격에 주의해서 서명을 입력해 주십시오. 이것은 서명 당사자가 그 주소로 받는 것을 증명할 뿐이며, 어떤 거래의 발송인을 증명할 수는 없습니다!</translation>
+        <translation>메시지를 검증하기 위해 수신인의 주소, 메시지 (줄 바꿈, 공백, 탭 등을 정확하게 복사해 주십시오) 및 서명을 입력하십시오. 중간자 공격에 주의해서 서명을 입력해 주십시오. 이것은 서명 당사자가 그 주소로 받는 것을 증명할 뿐이며, 어떤 거래의 발송인을 증명할 수는 없습니다!</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
-        <translation>메세지 확인(&amp;M)</translation>
+        <translation>메시지 검증(&amp;M)</translation>
     </message>
     <message>
         <source>Reset all verify message fields</source>
-        <translation>모든 확인 메세지 영역 지우기</translation>
+        <translation>모든 검증 메시지 필드 재설정</translation>
     </message>
     <message>
         <source>Click "Sign Message" to generate signature</source>
-        <translation>"서명 메세지"를 클릭하여 서명 생성</translation>
+        <translation>서명을 만들려면 "메시지 서명"을 누르십시오</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -3251,11 +3334,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Please check the address and try again.</source>
-        <translation>주소를 다시 확인해 주십시오.</translation>
+        <translation>주소를 확인하고 다시 시도하십시오.</translation>
     </message>
     <message>
         <source>The entered address does not refer to a key.</source>
-        <translation>입력한 주소가 키를 참조하지 않습니다.</translation>
+        <translation>입력한 주소는 키에서 참조하지 않습니다.</translation>
     </message>
     <message>
         <source>Wallet unlock was cancelled.</source>
@@ -3267,15 +3350,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Message signing failed.</source>
-        <translation>메세지 서명 실패.</translation>
+        <translation>메시지 서명에 실패했습니다.</translation>
     </message>
     <message>
         <source>Message signed.</source>
-        <translation>서명된 메세지.</translation>
+        <translation>메시지를 서명했습니다.</translation>
     </message>
     <message>
         <source>The signature could not be decoded.</source>
-        <translation>서명을 디코딩 할 수 없습니다.</translation>
+        <translation>서명을 해독할 수 없습니다.</translation>
     </message>
     <message>
         <source>Please check the signature and try again.</source>
@@ -3283,15 +3366,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>The signature did not match the message digest.</source>
-        <translation>서명이 메세지 요약과 일치하지 않습니다.</translation>
+        <translation>서명이 메시지 요약과 일치하지 않습니다.</translation>
     </message>
     <message>
         <source>Message verification failed.</source>
-        <translation>메세지 확인에 실패하였습니다.</translation>
+        <translation>메시지 검증에 실패했습니다.</translation>
     </message>
     <message>
         <source>Message verified.</source>
-        <translation>메세지 확인 됨.</translation>
+        <translation>메시지를 검증했습니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3320,6 +3407,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>[testnet]</source>
         <translation>[테스트넷]</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
@@ -3327,16 +3418,20 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>KB/s</source>
         <translation>KB/s</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n 블록 더 열기</numerusform></translation>
+        <translation><numerusform>%n개의 더 많은 블록 열기</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
-        <translation>%1까지 열기</translation>
+        <translation>%1까지 열림</translation>
     </message>
     <message>
         <source>conflicted</source>
@@ -3348,15 +3443,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>0/unconfirmed, %1</source>
-        <translation>0/미확인, %1</translation>
+        <translation>0/미승인, %1</translation>
     </message>
     <message>
         <source>in memory pool</source>
-        <translation>메모리 풀 내</translation>
+        <translation>메모리 풀 안에 있음</translation>
     </message>
     <message>
         <source>not in memory pool</source>
-        <translation>메모리 풀 외</translation>
+        <translation>메모리 풀 안에 없음</translation>
     </message>
     <message>
         <source>abandoned</source>
@@ -3364,7 +3459,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>%1/unconfirmed</source>
-        <translation>%1/미확인 됨</translation>
+        <translation>%1/미확인</translation>
     </message>
     <message>
         <source>%1 confirmations</source>
@@ -3392,7 +3487,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message numerus="yes">
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, %n 노드를 통해 브로드캐스트 됨</numerusform></translation>
+        <translation><numerusform>, %n노드를 통해 브로드캐스트됨</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
@@ -3404,11 +3499,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Generated</source>
-        <translation>생성 된</translation>
+        <translation>생성됨</translation>
     </message>
     <message>
         <source>From</source>
-        <translation>From</translation>
+        <translation>보낸 곳</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -3416,7 +3511,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>To</source>
-        <translation>대상</translation>
+        <translation>받은 곳</translation>
     </message>
     <message>
         <source>own address</source>
@@ -3432,11 +3527,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Credit</source>
-        <translation>크레딧</translation>
+        <translation>입금액</translation>
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>%n 블록안에 생성됨</numerusform></translation>
+        <translation><numerusform>%n개의 더 많은 블록 내 완료됨</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3444,15 +3539,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Debit</source>
-        <translation>인출액</translation>
+        <translation>출금액</translation>
     </message>
     <message>
         <source>Total debit</source>
-        <translation>총 인출액</translation>
+        <translation>총 출금액</translation>
     </message>
     <message>
         <source>Total credit</source>
-        <translation>총 크레딧</translation>
+        <translation>총 입금액</translation>
     </message>
     <message>
         <source>Transaction fee</source>
@@ -3460,15 +3555,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Net amount</source>
-        <translation>순수액</translation>
+        <translation>총 거래액</translation>
     </message>
     <message>
         <source>Message</source>
-        <translation>메세지</translation>
+        <translation>메시지</translation>
     </message>
     <message>
         <source>Comment</source>
-        <translation>코멘트</translation>
+        <translation>설명</translation>
     </message>
     <message>
         <source>Transaction ID</source>
@@ -3476,7 +3571,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Transaction total size</source>
-        <translation>거래 전체 크기</translation>
+        <translation>거래 총 크기</translation>
     </message>
     <message>
         <source>Output index</source>
@@ -3488,7 +3583,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>생성된 코인은 사용되기 전 %1 블록이 완료되야 합니다. 이 블록을 생성하면 네트워크에 브로드캐스팅되어 블록체인에 추가 됩니다. 체인이 실패한 경우 "승인되지 않음"으로 바뀌어 사용할 수 없습니다. 다른 노드가 당신과 겹쳐서 몇 초 이내 블록을 생성하면 때때로 이런 일이 발생할 수 있습니다.</translation>
+        <translation>신규 채굴된 코인이 사용되기 위해서는 %1개의 블록이 완료되야 합니다. 블록을 생성할 때 네트워크에 브로드캐스팅되어 블록체인에 추가됩니다. 블록체인에 포함되지 못하고 실패하게 되면 "미승인"으로 바뀌어 사용할 수 없습니다. 다른 노드가 비슷한 시간대에 동시에 블록을 생성할 때 때때로 이런 일이 발생할 수 있습니다.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3504,7 +3599,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Amount</source>
-        <translation>금액</translation>
+        <translation>거래액</translation>
     </message>
     <message>
         <source>true</source>
@@ -3513,6 +3608,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>false</source>
         <translation>거부</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3524,6 +3623,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>이 창은 거래에 대한 자세한 설명을 보여줍니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -3538,7 +3641,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Type</source>
-        <translation>분류</translation>
+        <translation>종류</translation>
     </message>
     <message>
         <source>Address / Label</source>
@@ -3546,11 +3649,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n 블록 더 열기</numerusform></translation>
+        <translation><numerusform>%n개의 더 많은 블록 열기</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
-        <translation>%1까지 열기</translation>
+        <translation>%1까지 열림</translation>
     </message>
     <message>
         <source>Offline</source>
@@ -3558,7 +3661,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Unconfirmed</source>
-        <translation>미확인 됨</translation>
+        <translation>미확인</translation>
     </message>
     <message>
         <source>Abandoned</source>
@@ -3566,19 +3669,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>확인 중 (%2 중 %1 확인 중)</translation>
+        <translation>승인 중 (%2 중 %1 승인)</translation>
     </message>
     <message>
         <source>Confirmed (%1 confirmations)</source>
-        <translation>확인 됨 (%1 확인)</translation>
+        <translation>승인됨 (%1 확인)</translation>
     </message>
     <message>
         <source>Conflicted</source>
-        <translation>충돌 됨</translation>
+        <translation>충돌됨</translation>
     </message>
     <message>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>완료되지 않음 (%1 확인, %2 이후 사용 가능)</translation>
+        <translation>완료되지 않음 (%1 승인, %2 이후 사용 가능)</translation>
     </message>
     <message>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
@@ -3590,7 +3693,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Received with</source>
-        <translation>수신 됨</translation>
+        <translation>받은 주소</translation>
     </message>
     <message>
         <source>Gateway Reward</source>
@@ -3598,11 +3701,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Received from</source>
-        <translation>수신됨</translation>
+        <translation>보낸 주소</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>대상 전송</translation>
+        <translation>보낸 주소</translation>
     </message>
     <message>
         <source>Orphan Block - Generated but not accepted. This does not impact your holdings.</source>
@@ -3626,19 +3729,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(표시 없음)</translation>
+        <translation>(라벨 없음)</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>거래 상태. 이 영역에 마우스를 올리면 승인 수가 표시됩니다.</translation>
+        <translation>거래 상황. 이 영역에 마우스를 올리면 검증 횟수가 표시됩니다.</translation>
     </message>
     <message>
         <source>Date and time that the transaction was received.</source>
-        <translation>거래가 수신된 날짜와 시간.</translation>
+        <translation>거래가 이루어진 날짜와 시간</translation>
     </message>
     <message>
         <source>Type of transaction.</source>
-        <translation>거래 유형.</translation>
+        <translation>거래 종류</translation>
     </message>
     <message>
         <source>Whether or not a watch-only address is involved in this transaction.</source>
@@ -3646,7 +3749,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>User-defined intent/purpose of the transaction.</source>
-        <translation>거래의 사용자 정의 의도/목적</translation>
+        <translation>거래에 대한 사용자 정의 의도/목적</translation>
     </message>
     <message>
         <source>Destination address of transaction.</source>
@@ -3654,7 +3757,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>잔액에서 제거되거나 추가된 금액.</translation>
+        <translation>변경된 잔액</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3689,19 +3796,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Most Common</source>
-        <translation>기본적인</translation>
+        <translation>기본 거래</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>수신됨</translation>
+        <translation>받은 주소</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>대상 전송</translation>
+        <translation>보낸 주소</translation>
     </message>
     <message>
         <source>To yourself</source>
-        <translation>자신에게</translation>
+        <translation>자기 거래</translation>
     </message>
     <message>
         <source>Mined</source>
@@ -3717,7 +3824,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Min amount</source>
-        <translation>최소 금액</translation>
+        <translation>최소 거래액</translation>
     </message>
     <message>
         <source>Abandon transaction</source>
@@ -3733,7 +3840,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>금액 복사</translation>
+        <translation>거래액 복사</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
@@ -3773,19 +3880,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Show transaction details</source>
-        <translation>거래 세부 정보 표시</translation>
+        <translation>거래 세부 정보 보기</translation>
     </message>
     <message>
         <source>Export Transaction History</source>
-        <translation>거래 내역 내보내기</translation>
+        <translation>거래 기록 내보내기</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>콤마로 구분된 파일 (*.csv)</translation>
+        <translation>쉼표로 구분된 파일 (*.csv)</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>확정</translation>
+        <translation>확인됨</translation>
     </message>
     <message>
         <source>Watch-only</source>
@@ -3797,7 +3904,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Type</source>
-        <translation>분류</translation>
+        <translation>종류</translation>
     </message>
     <message>
         <source>Label</source>
@@ -3817,7 +3924,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>거래 기록을 %1로 저장하는 동안 오류가 발생하였습니다.</translation>
+        <translation>거래 기록을 %1로 저장하는 동안 오류가 발생했습니다.</translation>
     </message>
     <message>
         <source>Exporting Successful</source>
@@ -3835,26 +3942,50 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>to</source>
         <translation>대상</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
-        <translation>금액을 표시할 단위. 다른 단위를 선택하려면 클릭해 주십시오.</translation>
+        <translation>거래액을 표시할 단위. 다른 단위를 선택하려면 클릭해 주십시오.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>No wallet has been loaded.</source>
-        <translation>지갑이 로드되지 않았습니다.</translation>
+        <translation>지갑 불러오기에 실패했습니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>코인 전송</translation>
+        <translation>코인 보내기</translation>
+    </message>
+    <message>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
+        <translation>즉시 전송은 아직 많은 금액 보내기가 지원하지 않습니다. 거래는 현재 %1 SOOM으로 제한됩니다.</translation>
+    </message>
+    <message>
+        <source>Used way too many inputs (&gt;%1) for this InstantSend transaction, fees could be huge.</source>
+        <translation>이 즉시 전송 거래에 너무 많은 입력 (&gt;%1)을 사용하면 비용이 많이 듭니다.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -3895,6 +4026,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <source>The wallet data was successfully saved to %1.</source>
         <translation>지갑 데이터가 %1에 성공적으로 저장되었습니다.</translation>
     </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
+    </message>
 </context>
 <context>
     <name>soom-core</name>
@@ -3920,15 +4055,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
-        <translation>계산된 누산기 체크포인트는 블록 인덱스에 의해 기록되는 것이 아닙니다.</translation>
+        <translation>계산된 어큐뮬레이터 체크포인트는 블록 인덱스에 의해 기록되는 것이 아닙니다.</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. Soom Core is probably already running.</source>
-        <translation>&lt;translation&gt;잠겨진 데이터 디렉터리 %s 를 가져올 수 없습니다. Soom 코어는 이미 실행 중입니다.</translation>
+        <translation>잠겨진 데이터 디렉터리 %s(을)를 가져올 수 없습니다. Soom 코어는 이미 실행 중입니다.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
-        <translation>최종 budget 투표 자동 작동 값을 변경합니다. mode=auto: 오직 내가 생성한 budget과 최종 budget이 정확히 일치할때 투표합니다. (string, 기본값: 자동)</translation>
+        <translation>최종 budget 투표 자동 작동 값을 변경합니다. mode=auto: 오직 내가 생성한 budget과 최종 budget이 정확히 일치할 때 투표합니다. (mode 기본값: auto)</translation>
     </message>
     <message>
         <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:%u)</source>
@@ -3948,7 +4083,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
-        <translation>올바른 개인키로 spork 관리 기능을 사용 가능</translation>
+        <translation>올바른 개인키로 스포크 관리 기능을 사용 가능</translation>
     </message>
     <message>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
@@ -3956,7 +4091,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>오류: 오는 연결들을 수신하는데 실패했습니다.(수신 중 오류 반환됨 %s)</translation>
+        <translation>오류: 오는 연결들을 수신하는데 실패했습니다.(수신 중 오류 %s 반환됨)</translation>
     </message>
     <message>
         <source>Error: The transaction is larger than the maximum allowed transaction size!</source>
@@ -3968,15 +4103,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>관련된 경고 또는 포크가 길어질 경우 명령을 실행하십시오. (명령 내 %s 는 메세지로 대체 되었습니다)</translation>
+        <translation>관련된 경고 또는 포크가 길어질 경우 명령을 실행하십시오. (명령 내 %s(은)는 메시지로 대체 되었습니다)</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>지갑 거래가 변경될 경우 명령을 실행하십시오.(명령 내 %s 는 TxID로 대체 되었습니다)</translation>
+        <translation>지갑 거래가 변경될 경우 명령을 실행하십시오.(명령 내 %s(은)는 TxID로 대체 되었습니다)</translation>
     </message>
     <message>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>최고 블록이 변경될 경우 명령을 실행하십시오 (명령 내 %s 는 블록 해시로 대체 되었습니다)</translation>
+        <translation>최고 블록이 변경될 경우 명령을 실행하십시오 (명령 내 %s(은)는 블록 해시로 대체 되었습니다)</translation>
     </message>
     <message>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
@@ -3989,6 +4124,14 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation>이것보다 작은 수수료 (%s/kB)는 거래 생성 수수료가 없는 것으로 간주됩니다 (기본값: %s)</translation>
+    </message>
+    <message>
+        <source>InstantSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 SOOM.</source>
+        <translation>즉시 전송은 아직 높은 금액을 보내는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 SOOM으로 제한됩니다.</translation>
+    </message>
+    <message>
+        <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
+        <translation>즉시 전송은 최소 %d개의 확인이 필요하므로 몇 분 후에 다시 시도해야 할 수 있습니다.</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4012,7 +4155,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>-maxtxfee=&lt;amount&gt;에 대한 잘못된 금액: '%s' (거래 정지를 막을려면 적어도 %s의 최소 릴레이 수수료가 있어야 합니다)</translation>
+        <translation>-maxtxfee=&lt;amount&gt;에 대한 유효하지 않은 금액: '%s' (거래 정지를 막으려면 적어도 %s의 최소 릴레이 수수료가 있어야 합니다)</translation>
     </message>
     <message>
         <source>Keep the specified amount available for spending at all times (default: 0)</source>
@@ -4044,7 +4187,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>DNS 검색을 통한 피어 주소 쿼리, 주소가 부족할 경우 (-connect 아닌 이상 기본값:1)</translation>
+        <translation>DNS 검색을 통한 피어 주소 쿼리, 주소가 부족할 경우 (기본값: 1 -connect가 아닐 경우)</translation>
     </message>
     <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
@@ -4064,11 +4207,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>스크립트 허용 스레드의 개수를 설정합니다. (%u 에서 %d, 0 = 자동, &lt;0 = 충분한 코어들을 남겨두십시오, 기본값: %d)</translation>
+        <translation>스크립트 허용 스레드의 개수를 설정합니다. (%u에서 %d, 0 = 자동, &lt;0 = 충분한 코어들을 남겨두십시오, 기본값: %d)</translation>
     </message>
     <message>
         <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>활성화 시에 코인 생성을 위한 스레드 숫자를 설정합니다 (-1= 모든 코어, 기본값: %d)</translation>
+        <translation>활성화 시에 코인 생성을 위한 스레드 숫자를 설정합니다 (-1 = 모든 코어, 기본값: %d)</translation>
     </message>
     <message>
         <source>Show N confirmations for a successfully locked transaction (0-9999, default: %u)</source>
@@ -4084,19 +4227,19 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Unable to bind to %s on this computer. Soom Core is probably already running.</source>
-        <translation>이 컴퓨터를 %s 로 지정하는것은 불가능합니다. Soom 코어는 이미 실행 중입니다.</translation>
+        <translation>이 컴퓨터를 %s로 지정하는것은 불가능합니다. Soom 코어는 이미 실행 중입니다.</translation>
     </message>
     <message>
         <source>Unable to locate enough funds for this transaction that are not equal 25000 SOOM.</source>
-        <translation>거래에 대한 충분한 금액을 찾을 수 없습니다. 25000 SOOM과 같지 않음</translation>
+        <translation>25000 SOOM과 같지 않은 거래에 대한 충분한 금액을 찾을 수 없습니다.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
-        <translation>Tor hidden services를 통하여 피어에게 도달하기 위해 독립된 SOCKS5 프록시를 사용합니다(기본값: %s)</translation>
+        <translation>Tor hidden services를 통하여 피어에게 도달하기 위해 독립된 SOCKS5 프록시를 사용합니다 (기본값: %s)</translation>
     </message>
     <message>
         <source>Warning: -maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
-        <translation>경고: -maxrtxfee가 매우 높게 설정 되었습니다! 이렇게 큰 수수료는 단 한번의 단일 거래에 지불될 수도 있습니다.</translation>
+        <translation>경고: -maxrtxfee가 매우 높게 설정 되었습니다! 하나의 거래에 너무 큰 수수료가 지불 됩니다.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4108,11 +4251,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>경고: 네트워크가 완전히 동의하지 않는 것 같습니다! 일부 마이너에 문제가 발생한 것으로 보입니다.</translation>
+        <translation>경고: 네트워크가 완전히 동의하지 않는 것 같습니다! 일부 채굴자들에게 문제가 있는 것으로 보입니다.</translation>
     </message>
     <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>경고: 우리의 피어들과 완벽하게 일치하지 않습니다! 업그레이드 또는 다른 노드들의 업그레이드가 필요할 수 있습니다.</translation>
+        <translation>경고: 현재 버전이 다른 노드들과 완벽하게 일치하지 않습니다! 업그레이드 또는 다른 노드들의 업그레이드가 필요할 수 있습니다.</translation>
     </message>
     <message>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
@@ -4120,15 +4263,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>경고: wallet.dat에 손상된 데이터가 복구되었습니다. 본래 wallet.dat은 wallet으로 저장되었습니다. {timestamp}.bak %s; 잔액 또는 거래가 올바르지 않은 경우 백업에서 복원해야합니다.</translation>
+        <translation>경고: wallet.dat에 손상된 데이터가 복구되었습니다. 본래 wallet.dat은 wallet으로 저장되었습니다. {timestamp}.bak %s; 잔액 또는 거래가 올바르지 않은 경우 백업에서 복원해야 합니다.</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
-        <translation>주어진 넷마스크 또는 IP 주소로부터 허용목록 피어가 연결되고 있습니다. 여러 번 지정될 수 있습니다.</translation>
+        <translation>주어진 넷마스크 또는 IP 주소로부터 허용리스트 피어가 연결되고 있습니다. 여러 번 지정될 수 있습니다.</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
-        <translation>허용목록 피어들은 DoS가 금지될 수 없으며 거래가 이미 메모리 풀에 있을지라도 그들의 거래는 항상 중계됩니다. 예를들면 게이트웨이 같은 것에 유용</translation>
+        <translation>허용리스트 피어들은 DoS가 금지될 수 없으며 거래가 이미 메모리 풀에 있을지라도 그들의 거래는 항상 중계됩니다. 예를들면 게이트웨이 같은 것에 유용</translation>
     </message>
     <message>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
@@ -4136,7 +4279,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>(%d could be used only on mainnet)</source>
-        <translation>(%d 은 메인넷에서만 사용될 수 있습니다)</translation>
+        <translation>(%d은 메인넷에서만 사용될 수 있습니다)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4148,15 +4291,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>(must be %d for mainnet)</source>
-        <translation>(메인넷 일경우 %d)</translation>
+        <translation>(메인넷일 경우 %d)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
-        <translation> command line 과 JSON-RPC 적용</translation>
+        <translation> command line과 JSON-RPC 적용</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>외부에서의 접속을 허용 (1 -프록시 또는 -연결이 없을 경우 기본값)</translation>
+        <translation>외부에서의 접속을 허용 (기본값: 1 -proxy 또는 -connect가 유효하지 않을 경우)</translation>
     </message>
     <message>
         <source>Accept public REST requests (default: %u)</source>
@@ -4192,7 +4335,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Calculating missing accumulators...</source>
-        <translation>누락된 누산기 계산중...</translation>
+        <translation>누락된 어큐뮬레이터 계산중...</translation>
     </message>
     <message>
         <source>Can't denominate: no compatible inputs left.</source>
@@ -4212,15 +4355,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Cannot resolve -bind address: '%s'</source>
-        <translation>주소를 변환할 수 없습니다 주소 -bind: '%s'</translation>
+        <translation>주소를 확인할 수 없습니다 주소 -bind: '%s'</translation>
     </message>
     <message>
         <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>주소를 변환할 수 없습니다 -externalip 주소: '%s'</translation>
+        <translation>주소를 확인할 수 없습니다 -externalip 주소: '%s'</translation>
     </message>
     <message>
         <source>Cannot resolve -whitebind address: '%s'</source>
-        <translation>해결할 수 없습니다 -whitebind 주소: '%s'</translation>
+        <translation>주소를 확인할 수 없습니다 -whitebind 주소: '%s'</translation>
     </message>
     <message>
         <source>Cannot write default address</source>
@@ -4256,11 +4399,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Copyright (C) 2017-%i The Soom Core Developers</source>
-        <translation>Copyright (C) 2017-%i Soom 코어 개발자</translation>
+        <translation>Copyright (C) 2017-%i Soom 코어 개발자들</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
-        <translation>손상된 블록 데이터베이스가 발견되었습니다</translation>
+        <translation>손상된 블록 데이터베이스가 감지되었습니다</translation>
     </message>
     <message>
         <source>Could not parse gateway.conf</source>
@@ -4284,7 +4427,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
-        <translation>자신의 IP 주소를 찾습니다 (기본값: 1 수신중이거나 -externalip 또는 -proxy가 없을 경우)</translation>
+        <translation>자신의 IP 주소를 찾습니다 (기본값: 1 수신 중이거나 -externalip 또는 -proxy가 유효하지 않을 경우)</translation>
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
@@ -4292,7 +4435,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>
-        <translation>블록 데이터베이스를 다시 작성하시기를 원하십니까?</translation>
+        <translation>블록 데이터베이스를 다시 생성하시겠습니까?</translation>
     </message>
     <message>
         <source>Done loading</source>
@@ -4320,7 +4463,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Error initializing wallet database environment %s!</source>
-        <translation>지갑 데이터베이스 환경  %s 을 초기화하는 중 오류가 발생했습니다!</translation>
+        <translation>지갑 데이터베이스 환경 %s을(를) 초기화하는 중 오류가 발생했습니다!</translation>
     </message>
     <message>
         <source>Error loading block database</source>
@@ -4376,7 +4519,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>어떠한 포트에서도 수신하는 것에 실패했습니다. 원하신다면 -listen=0 을 사용하십시오.</translation>
+        <translation>어떠한 포트에서도 수신하는 것에 실패했습니다. 원하신다면 '-listen = 0'을 사용하십시오.</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
@@ -4384,11 +4527,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Failed to calculate accumulator checkpoint</source>
-        <translation>누산기 체크 포인트를 계산하지 못했습니다.</translation>
+        <translation>어큐뮬레이터 체크 포인트를 계산하지 못했습니다.</translation>
     </message>
     <message>
         <source>Failed to read block</source>
-        <translation>블록을 받아오는데 실패했습니다.</translation>
+        <translation>블록을 불러오는데 실패했습니다.</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4407,8 +4550,24 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
         <translation>-checkblocks 블록의 검증 수준 (0-4 기본값: % u)</translation>
     </message>
     <message>
+        <source>Failed to load fulfilled requests cache from</source>
+        <translation>(으)로부터 충족된 요청 캐시를 불러오는데 실패했습니다</translation>
+    </message>
+    <message>
+        <source>Failed to load governance cache from</source>
+        <translation>(으)로부터 governance 캐시를 불러오는데 실패했습니다</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway cache from</source>
+        <translation>(으)로부터 게이트웨이 캐시를 불러오는데 실패했습니다</translation>
+    </message>
+    <message>
+        <source>Failed to load gateway payments cache from</source>
+        <translation>(으)로부터 게이트웨이 결제 캐시를 불러오는데 실패했습니다</translation>
+    </message>
+    <message>
         <source>Found enough users, signing ( waiting %s )</source>
-        <translation>충분한 사용자를 찾았습니다, 서명 중 ( %s 기다리는 중 )</translation>
+        <translation>충분한 사용자를 찾았습니다, 서명 중 (%s 기다리는 중)</translation>
     </message>
     <message>
         <source>Found enough users, signing ...</source>
@@ -4420,7 +4579,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
-        <translation>시작할 때 검사할 블록의 수 (기본값: %u, 0=모두)</translation>
+        <translation>시작할 때 검사할 블록의 수 (기본값: %u, 0 = 모두)</translation>
     </message>
     <message>
         <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
@@ -4448,7 +4607,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>잘못되었거나 블록을 찾지 못하였습니다. 네트워크에 대한 잘못된 데이터 디렉터리 문제?</translation>
+        <translation>잘못되었거나 블록을 찾지 못했습니다. 네트워크에 대한 잘못된 데이터 디렉터리 문제?</translation>
     </message>
     <message>
         <source>Information</source>
@@ -4456,7 +4615,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Initialization sanity check failed. Soom Core is shutting down.</source>
-        <translation>초기화 정확성 검사에 실패 했습니다. Soom 코어가 종료됩니다.</translation>
+        <translation>무결성 확인 초기화에 실패 했습니다. Soom 코어가 종료됩니다.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -4484,15 +4643,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>-minrelaytxfee=&lt;amount&gt;; 에 대한 유효하지 않은 값: '%s'</translation>
+        <translation>-minrelaytxfee=&lt;amount&gt; 에 대한 유효하지 않은 값: '%s'</translation>
     </message>
     <message>
         <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>-mintxfee=&lt;amount&gt;; 에 대한 유효하지 않은 값: '%s'</translation>
+        <translation>-mintxfee=&lt;amount&gt; 에 대한 유효하지 않은 값: '%s'</translation>
     </message>
     <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>-paytxfee=&lt;amount&gt; 에 대한 유효하지 않은 값: '%s' (적어도 %s 가 필요합니다)</translation>
+        <translation>-paytxfee=&lt;amount&gt; 에 대한 유효하지 않은 값: '%s' (적어도 %s(이)가 필요합니다)</translation>
     </message>
     <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
@@ -4500,11 +4659,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>-reservebalance=&lt;amount&gt;에 대한 금액이 유효하지 않은 값</translation>
+        <translation>-reservebalance=&lt;amount&gt;에 대한 유효하지 않은 금액</translation>
     </message>
     <message>
         <source>Invalid amount</source>
-        <translation>잘못된 수량</translation>
+        <translation>유효하지 않은 금액</translation>
     </message>
     <message>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
@@ -4532,7 +4691,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Percentage of automatically minted Soomcoin  (1-100, default: %u)</source>
-        <translation>자동생성 Soomcoin 비율 (1-100, default: %u)</translation>
+        <translation>자동생성 Soomcoin 비율 (1-100, 기본값: %u)</translation>
     </message>
     <message>
         <source>mints deleted</source>
@@ -4548,7 +4707,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Disable all Soom specific functionality (Gateways, Soomcoin, Budgeting) (0-1, default: %u)</source>
-        <translation>Soom의 모든 특정 기능들을 비활성화합니다(게이트웨이, 난독화, Budgeting) (0-1, 기본값: %u)</translation>
+        <translation>Soom의 모든 특정 기능들을 비활성화합니다 (게이트웨이, 난독화, Budgeting) (0-1, 기본값: %u)</translation>
     </message>
     <message>
         <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
@@ -4560,7 +4719,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Preferred Denomination for automatically minted Soomcoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
-        <translation>자동생성 Soomcoin 선호 표기 (1/5/10/50/100/500/1000/5000) 0 사용안됨, 기본값: %u)</translation>
+        <translation>자동생성 Soomcoin 선호 표기 (1/5/10/50/100/500/1000/5000, 0 사용안됨, 기본값: %u)</translation>
     </message>
     <message>
         <source>Attempt to force blockchain corruption recovery</source>
@@ -4568,7 +4727,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>CoinSpend: Accumulator witness does not verify</source>
-        <translation>CoinSpend: 누산기가 제대로 작동하지 않았습니다.</translation>
+        <translation>CoinSpend: 어큐뮬레이터가 제대로 작동하지 않았습니다.</translation>
     </message>
     <message>
         <source>Display the stake modifier calculations in the debug.log file.</source>
@@ -4576,7 +4735,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Display verbose coin stake messages in the debug.log file.</source>
-        <translation>debug.log 에 코인 stake 메세지를 자세히 기록</translation>
+        <translation>debug.log 에 코인 stake 메시지를 자세히 기록</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>
@@ -4608,7 +4767,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Failed to create backup %s!</source>
-        <translation>%s 백업을 생성하지 못했습니다!</translation>
+        <translation>%s백업을 생성하지 못했습니다!</translation>
     </message>
     <message>
         <source>Failed to create backup, error: %s</source>
@@ -4680,7 +4839,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Loading sporks...</source>
-        <translation>sporks 로딩 중...</translation>
+        <translation>스포크 로딩 중...</translation>
     </message>
     <message>
         <source>Loading wallet... (%3.2f %%)</source>
@@ -4708,7 +4867,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
-        <translation>최대 &lt;n&gt; 연결을 피어들과 유지합니다. (기본값: %u)</translation>
+        <translation>최대 &lt;n&gt; 연결을 피어들과 유지합니다 (기본값: %u)</translation>
     </message>
     <message>
         <source>Gateway options:</source>
@@ -4744,7 +4903,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Need address because change is not exact</source>
-        <translation>잔돈을 받을 주소가 필요합니다.</translation>
+        <translation>잔돈을 받을 주소가 필요합니다</translation>
     </message>
     <message>
         <source>Need to specify a port with -whitebind: '%s'</source>
@@ -4784,7 +4943,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Not in the Gateway list.</source>
-        <translation>게이트웨이 목록에 없습니다.</translation>
+        <translation>게이트웨이 리스트에 없습니다.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: 10)</source>
@@ -4828,11 +4987,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>&lt;n&gt;개의 네트워크 메세지마다 무작위로 1개 삭제</translation>
+        <translation>&lt;n&gt;개의 네트워크 메시지마다 무작위로 1개 삭제</translation>
     </message>
     <message>
         <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>&lt;n&gt;개의 네트워크 메세지마다 무작위로 1 퍼즈</translation>
+        <translation>&lt;n&gt;개의 네트워크 메시지마다 무작위로 1 퍼즈</translation>
     </message>
     <message>
         <source>Rebuild block chain index from current blk000??.dat files</source>
@@ -4844,7 +5003,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Reindex the accumulator database</source>
-        <translation>누산기 데이터베이스 다시 색인화</translation>
+        <translation>어큐뮬레이터 데이터베이스 다시 색인화</translation>
     </message>
     <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
@@ -4900,7 +5059,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
-        <translation>키 풀 크기를 &lt;n&gt; 로 설정합니다 (기본값: %u)</translation>
+        <translation>키 풀 크기를 &lt;n&gt;로 설정합니다 (기본값: %u)</translation>
     </message>
     <message>
         <source>Set maximum block size in bytes (default: %d)</source>
@@ -4932,7 +5091,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>클라이언트 시작 시에 debug.log 파일을 축소시킵니다 (기본값:1 아닐경우 -debug)</translation>
+        <translation>클라이언트 시작 시에 debug.log 파일을 축소시킵니다 (기본값: 1 -debug가 유효하지 않을 경우)</translation>
     </message>
     <message>
         <source>Signing failed.</source>
@@ -4944,7 +5103,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Signing transaction failed</source>
-        <translation>거래 인증 실패</translation>
+        <translation>거래 서명하는 것에 실패하였습니다.</translation>
     </message>
     <message>
         <source>Specify configuration file (default: %s)</source>
@@ -4996,11 +5155,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Submitted to gateway, waiting for more entries ( %u / %d ) %s</source>
-        <translation>게이트웨이에 제출했습니다, 남은 항목들 기다리는 중 ( %u / %d ) %s</translation>
+        <translation>게이트웨이에 제출했습니다, 남은 항목들 기다리는 중 (%u / %d) %s</translation>
     </message>
     <message>
         <source>Submitted to gateway, waiting in queue %s</source>
-        <translation>게이트웨이에 제출했습니다, 대기열을 기다리는 중 %s</translation>
+        <translation>게이트웨이에 제출했습니다, 대기열 %s(을)를 기다리는 중</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -5028,7 +5187,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Synchronizing sporks...</source>
-        <translation>sporks와 동기화 중입니다...</translation>
+        <translation>스포크와 동기화 중입니다...</translation>
+    </message>
+    <message>
+        <source>Synchronizing gateway payments...</source>
+        <translation>게이트웨이 결제정보를 동기화 중입니다...</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -5048,15 +5211,15 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>This help message</source>
-        <translation>도움말 메세지입니다</translation>
+        <translation>도움말 메시지입니다</translation>
     </message>
     <message>
         <source>This is experimental software.</source>
-        <translation>이것은 실험용 소프트웨어입니다.</translation>
+        <translation>이 프로그램은 경험에 의해 누적된 소프트웨어입니다.</translation>
     </message>
     <message>
         <source>This is intended for regression testing tools and app development.</source>
-        <translation>이것은 리그레션 테스팅 및 앱 개발을 위해 만들어졌습니다.</translation>
+        <translation>이 소프트웨어는 리그레션 테스팅 및 앱 개발을 위해 만들어졌습니다.</translation>
     </message>
     <message>
         <source>This is not a Gateway.</source>
@@ -5108,7 +5271,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Transaction too large for fee policy</source>
-        <translation>수수료 정책에 비해 거래가 너무 많습니다</translation>
+        <translation>수수료 정책에 비해 거래가 너무 큽니다</translation>
     </message>
     <message>
         <source>Transaction too large</source>
@@ -5128,11 +5291,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>이 컴퓨터에서 %s 로 바인드할 수 없습니다 (바인드 반환 오류 %s)</translation>
+        <translation>이 컴퓨터에서 %s로 바인드할 수 없습니다 (바인드 반환 오류 %s)</translation>
     </message>
     <message>
         <source>Unable to sign spork message, wrong key?</source>
-        <translation>스포크 메세지를 인증할 수 없습니다, 키를 확인해 주십시오</translation>
+        <translation>스포크 메시지를 인증할 수 없습니다, 키를 확인해 주십시오</translation>
     </message>
     <message>
         <source>Unable to find transaction containing mint</source>
@@ -5144,7 +5307,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>-onlynet: '%s' 에 알 수 없는 네트워크가 지정되었습니다</translation>
+        <translation>-onlynet: '%s'에 알 수 없는 네트워크가 지정되었습니다</translation>
     </message>
     <message>
         <source>Unknown state: id = %u</source>
@@ -5152,7 +5315,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Upgrade wallet to latest format</source>
-        <translation>지갑을 최신 포맷으로 업그레이드합니다</translation>
+        <translation>지갑을 최신 포맷으로 업그레이드 합니다</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -5160,14 +5323,14 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
-        <translation>수신 포트를 매핑하려면 UPnP를 사용하십시오 (기본값: 1 수신 상태일 때)</translation>
+        <translation>수신 포트를 매핑하려면 UPnP를 사용하십시오 (기본값: 1 수신 상태 또는 -proxy가 유효하지 않을 경우)</translation>
     </message>
     <message>
         <source>Use a custom max chain reorganization depth (default: %u)</source>
         <translation>맞춤 최대 체인 재구성 깊이 사용 (기본값: %u)</translation>
     </message>
     <message>
-        <source>Use the test network</source>
+        <source>Use the test chain</source>
         <translation>테스트 네트워크를 사용합니다</translation>
     </message>
     <message>
@@ -5184,7 +5347,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Wallet %s resides outside data directory %s</source>
-        <translation>지갑 %s 가 데이터 디렉터리 외부에 존재합니다 %s</translation>
+        <translation>지갑 %s(이)가 데이터 디렉터리 %s 외부에 존재합니다</translation>
     </message>
     <message>
         <source>Wallet is locked.</source>
@@ -5212,11 +5375,11 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation>경고: 지원하지 않는 인수 -benchmark 무시됨 -debug=bench를 사용하십시오.</translation>
+        <translation>경고: 지원하지 않는 인수 -benchmark 무시됨, '-debug = bench'를 사용하십시오.</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation>경고: 지원하지 않는 인수 -debugnet 무시됨 -debug=net를 사용하십시오.</translation>
+        <translation>경고: 지원하지 않는 인수 -debugnet 무시됨, '-debug = net'을 사용하십시오.</translation>
     </message>
     <message>
         <source>Will retry...</source>
@@ -5228,7 +5391,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>-treindex를 변경하려면 -reindex를 사용하여 데이터베이스를 다시 빌드해야합니다.</translation>
+        <translation>-treindex를 변경하려면 -reindex를 사용하여 데이터베이스를 다시 빌드해야 합니다</translation>
     </message>
     <message>
         <source>Your entries added successfully.</source>
@@ -5253,6 +5416,10 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in soom.conf<
     <message>
         <source>wallet.dat corrupt, salvage failed</source>
         <translation>wallet.dat 파일이 손상되어 복구에 실패했습니다</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 </TS>

@@ -395,11 +395,14 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     questionString.append(tr("<b>(%1 of %2 entries displayed)</b>").arg(displayedEntries).arg(messageEntries));
 
     // Display message box
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm send coins"),
+    QMessageBox question(QMessageBox::Question, tr("Confirm send coins"),
         questionString.arg(formatted.join("<br />")),
         QMessageBox::Yes | QMessageBox::Cancel,
-        QMessageBox::Cancel);
+        this);
+    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
+    int retval = question.exec();
     if(retval != QMessageBox::Yes)
     {
         fNewRecipientAllowed = true;
