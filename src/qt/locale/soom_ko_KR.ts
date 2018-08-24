@@ -617,6 +617,14 @@
         <translation>디스크에서 블록 가져오기...</translation>
     </message>
     <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>디스크 블록 색인...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>디스크 블록 처리 중...</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>디스크 블록 재색인...</translation>
     </message>

@@ -601,6 +601,14 @@
         <translation>ディスクからブロックをインポートしています…</translation>
     </message>
     <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>ディスクブロックインデックス…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>ディスクブロック処理中…</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>ディスク上のブロックのインデックスを再作成中…</translation>
     </message>

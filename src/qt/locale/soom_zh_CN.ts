@@ -605,6 +605,14 @@
         <translation>正在从磁盘导入数据块...</translation>
     </message>
     <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>正在为磁碟里的区块重建索引...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>正在处理磁碟里的区块资料...</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>正在为数据块建立索引...</translation>
     </message>

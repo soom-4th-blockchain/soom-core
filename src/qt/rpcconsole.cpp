@@ -428,7 +428,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSION_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
-        ui->peerWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0.5, y2:0.5, stop:0 #3a5998, stop:1 #ffffff); } ");
+        ui->peerWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #ffffff, stop:1 #ffffff); } ");
                                                     //"selection-background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop: 0 #ff92bb, stop: 1 #ffffff);
         ui->peerWidget->setGridStyle(Qt::DotLine);
 //        ui->peerWidget->setCornerButtonEnabled(true);
@@ -484,7 +484,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->banlistWidget->setColumnWidth(BanTableModel::Address, BANSUBNET_COLUMN_WIDTH);
         ui->banlistWidget->setColumnWidth(BanTableModel::Bantime, BANTIME_COLUMN_WIDTH);
         ui->banlistWidget->horizontalHeader()->setStretchLastSection(true);
-        ui->banlistWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0.5, y2:0.5, stop:0 #3a5998, stop:1 #ffffff); } ");
+        ui->banlistWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #ffffff, stop:1 #ffffff); } ");
         ui->banlistWidget->setGridStyle(Qt::DotLine);
 
         // create ban table context menu action
