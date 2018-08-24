@@ -1,4 +1,4 @@
-Soom Core 1.0.0.0
+Soom Core 1.0.1.0
 =====================
 
 This is the official reference wallet for Soom digital currency and comprises the backbone of the Soom peer-to-peer network. You can [download Soom Core](http://foutrhblockchain.org/downloads/) or [build it yourself](#building) using the guides below.
