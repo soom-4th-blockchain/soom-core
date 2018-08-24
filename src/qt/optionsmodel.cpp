@@ -132,14 +132,9 @@ void OptionsModel::Init(bool resetSettings)
 
     if (!settings.contains("fListen"))
         settings.setValue("fListen", DEFAULT_LISTEN);
-//#/ start jhhong fix options 180731
-#if 1
-	addOverriddenOption("-listen");
-#else
-	if (!SoftSetBoolArg("-listen", settings.value("fListen").toBool()))
+    if (!SoftSetBoolArg("-listen", settings.value("fListen").toBool()))
         addOverriddenOption("-listen");
-#endif
-//@/ start jhhong fix options
+
     if (!settings.contains("fUseProxy"))
         settings.setValue("fUseProxy", false);
     if (!settings.contains("addrProxy"))

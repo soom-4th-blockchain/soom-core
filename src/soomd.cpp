@@ -140,28 +140,6 @@ bool AppInit(int argc, char* argv[])
             exit(EXIT_FAILURE);
         }
 #ifndef WIN32
-//#/ start jhhong fix options 180731
-#if 1
-		fDaemon = true;
-		fprintf(stdout, "Soom Core server starting\n");
-
-        // Daemonize
-        pid_t pid = fork();
-        if (pid < 0)
-        {
-            fprintf(stderr, "Error: fork() returned %d errno %d\n", pid, errno);
-            return false;
-        }
-        if (pid > 0) // Parent process, pid is child process id
-        {
-            return true;
-        }
-        // Child process falls through to rest of initialization
-
-        pid_t sid = setsid();
-        if (sid < 0)
-            fprintf(stderr, "Error: setsid() returned %d errno %d\n", sid, errno);
-#else
         fDaemon = GetBoolArg("-daemon", false);
         if (fDaemon)
         {
@@ -184,8 +162,6 @@ bool AppInit(int argc, char* argv[])
             if (sid < 0)
                 fprintf(stderr, "Error: setsid() returned %d errno %d\n", sid, errno);
         }
-#endif
-//@/ start jhhong fix options
 #endif
         SoftSetBoolArg("-server", true);
 

@@ -213,7 +213,7 @@ static bool InitHTTPAllowList()
     LookupHost("::1", localv6, false);
     rpc_allow_subnets.push_back(CSubNet(localv4, 8));      // always allow IPv4 local subnet
     rpc_allow_subnets.push_back(CSubNet(localv6));         // always allow IPv6 localhost
-	if (mapMultiArgs.count("-rpcallowip")) {
+    if (mapMultiArgs.count("-rpcallowip")) {
         const std::vector<std::string>& vAllow = mapMultiArgs["-rpcallowip"];
         BOOST_FOREACH (std::string strAllow, vAllow) {
             CSubNet subnet;
@@ -227,22 +227,6 @@ static bool InitHTTPAllowList()
             rpc_allow_subnets.push_back(subnet);
         }
     }
-//#/ start jhhong fix options 180731
-	else {
-		std::string strAllow = "127.0.0.1/255.255.255.0";
-		CSubNet subnet;
-        LookupSubNet(strAllow.c_str(), subnet);
-        if (!subnet.IsValid()) {
-            uiInterface.ThreadSafeMessageBox(
-                strprintf("Invalid -rpcallowip subnet specification: %s. Valid are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24).", strAllow),
-                "", CClientUIInterface::MSG_ERROR);
-			printf("<%s():%d>\n", __FUNCTION__, __LINE__);
-            return false;
-        }
-        rpc_allow_subnets.push_back(subnet);
-    }
-//@/ start jhhong fix options
-    
     std::string strAllowed;
     BOOST_FOREACH (const CSubNet& subnet, rpc_allow_subnets)
         strAllowed += subnet.ToString() + " ";
