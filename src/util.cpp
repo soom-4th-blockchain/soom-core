@@ -639,11 +639,14 @@ void createConf()       //Automatic soom.conf generation
             //+  randomStrGen(5)
             + std::string("\nrpcpassword=x") 
             //+ randomStrGen(15)
+//#/ start jhhong createConf 180828
+			+ std::string("\nrpcallowip=127.0.0.1") 
+//@/ end jhhong createConf
             + std::string(nodes);
 
     pConf.close();
 }
-//@/ start jhhong createConf
+//@/ end jhhong createConf
 
 void ReadConfigFile(map<string, string>& mapSettingsRet,
                     map<string, vector<string> >& mapMultiSettingsRet)
