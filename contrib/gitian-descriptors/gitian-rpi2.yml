@@ -18,7 +18,7 @@ packages:
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
 - "url": "https://github.com/soom-4th-blockchain/soom-core.git"
-  "dir": "soom"
+  "dir": "soom-core"
 files:
 - "raspberrypi-tools.tar.gz"
 script: |
@@ -67,7 +67,7 @@ script: |
   done
   export PATH=${WRAP_DIR}:${PATH}
 
-  cd soom
+  cd soom-core
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
