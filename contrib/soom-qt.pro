@@ -8,6 +8,7 @@ FORMS += \
     ../src/qt/forms/helpmessagedialog.ui \
     ../src/qt/forms/intro.ui \
     ../src/qt/forms/gatewaylist.ui \
+    ../src/qt/forms/qrcodedialog.ui \
     ../src/qt/forms/openuridialog.ui \
     ../src/qt/forms/optionsdialog.ui \
     ../src/qt/forms/overviewpage.ui \
