@@ -1,3 +1,2 @@
-debian/manpages/soomd.1
-debian/manpages/soom.conf.5
-debian/manpages/soom-cli.1
+doc/man/soomd.1
+doc/man/soom-cli.1

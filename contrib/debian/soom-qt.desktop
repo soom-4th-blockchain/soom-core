@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=Soom
 Comment=Soom P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Soom peer-to-peer Netzwerk
 Comment[fr]=Soom, monnaie virtuelle cryptographique pair à pair
 Comment[tr]=Soom, eşten eşe kriptografik sanal para birimi
 Exec=soom-qt %u
