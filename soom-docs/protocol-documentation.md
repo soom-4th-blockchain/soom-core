@@ -1,4 +1,4 @@
-Protocol Documentation - 1.0.1
+Protocol Documentation - 1.0.2
 =====================================
 
 This document describes the protocol extensions for all additional functionality build into the Soom protocol. This doesn't include any of the Bitcoin protocol, which has been left intact in the Soom project. For more information about the core protocol, please see https://en.bitcoin.it/w/index.php?title#Protocol_documentation&action#edit
@@ -16,7 +16,7 @@ CScript => uchar[]
 Bitcoin Outpoint https://bitcoin.org/en/glossary/outpoint
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 32 | hash | uint256 | Hash of transactional output which is being referenced
 | 4 | n | uint32_t | Index of transaction which is being referenced
 
@@ -26,7 +26,7 @@ Bitcoin Outpoint https://bitcoin.org/en/glossary/outpoint
 Bitcoin Input https://bitcoin.org/en/glossary/input
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 36 | prevout | [COutPoint](#coutpoint) | The previous output from an existing transaction, in the form of an unspent output
 | 1+ | script length | var_int | The length of the signature script
 | ? | script | CScript | The script which is validated for this input to be spent
@@ -37,19 +37,19 @@ Bitcoin Input https://bitcoin.org/en/glossary/input
 Bitcoin Output https://bitcoin.org/en/glossary/output
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 8 | nValue | int64_t | Transfered value
 | ? | scriptPubKey | CScript | The script for indicating what conditions must be fulfilled for this output to be further spent
 
 ### CTransaction
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 4 | nVersion | int32_t | Transaction data format version
 | 1+ | tx_in count | var_int | Number of Transaction inputs
-| 41+ | vin | [CTxIn](#ctxin) | A list of 1 or more transaction inputs
+| 41+ | vin | [CTxIn](#ctxin)[] | A list of 1 or more transaction inputs
 | 1+ | tx_out count | var_int | Number of Transaction outputs
-| 9+ | vout | [CTxOut](#ctxout) | A list of 1 or more transaction outputs
+| 9+ | vout | [CTxOut](#ctxout)[] | A list of 1 or more transaction outputs
 | 4 | nLockTime | uint32_t | The block number or timestamp at which this transaction is unlocked
 
 ### CPubKey
@@ -57,13 +57,13 @@ Bitcoin Output https://bitcoin.org/en/glossary/output
 Bitcoin Public Key https://bitcoin.org/en/glossary/public-key
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 33-65 | vch | char[] | The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair.
 
 ### CService
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 16 | IP | CNetAddr | IP Address
 | 2 | Port | uint16 | IP Port
 
@@ -76,15 +76,15 @@ CGatewayBroadcast
 Whenever a gateway comes online or a client is syncing, they will send this message which describes the gateway entry and how to validate messages from it.
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 5000 SOOM
+| ---------- | ----------- | --------- | ---------- |
+| 36 | outpoint | [COutPoint](#coutpoint) | The unspent output which is holding 5000 SOOM
 | # | addr | [CService](#cservice) | IPv4 address of the gateway
 | 33-65 | pubKeyCollateralAddress | [CPubKey](#cpubkey) | CPubKey of the main 5000 SOOM unspent output
 | 33-65 | pubKeyGateway | [CPubKey](#cpubkey) | CPubKey of the secondary signing key (For all other messaging other than announce message)
 | 71-73 | sig | char[] | Signature of this message (verifiable via pubKeyCollateralAddress)
 | 8 | sigTime | int64_t | Time which the signature was created
 | 4 | nProtocolVersion | int | The protocol version of the gateway
-| # | lastPing | CGatewayPing | The last known ping of the gateway
+| # | lastPing | CGatewayPing(#gwping---gwp) | The last known ping of the gateway
 
 ### GWPING - "gwp"
 
@@ -93,11 +93,14 @@ CGatewayPing
 Every few minutes, gateways ping the network with a message that propagates the whole network.
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 41 | vin | [CTxIn](#ctxin) | The unspent output of the gateway which is signing the message
+| ---------- | ----------- | --------- | --------- |
+| 36 | gatewayOutpoint | [COutPoint](#coutpoint) | The unspent output of the gateway which is signing the message
 | 32 | blockHash | uint256 | Current chaintip blockhash minus 12
 | 8 | sigTime | int64_t | Signature time for this ping
 | 71-73 | vchSig | char[] | Signature of this message by gateway (verifiable via pubKeyGateway)
+| 1 | fSentinelIsCurrent | bool | true if last sentinel ping was current
+| 4 | nSentinelVersion | uint32_t | The version of Sentinel running on the gateway which is signing the message
+| 4 | nDaemonVersion | uint32_t | The version of soomd of the gateway which is signing the message (i.e. CLIENT_VERSION)
 
 ### GATEWAYPAYMENTVOTE - "gww"
 
@@ -106,8 +109,8 @@ CGatewayPaymentVote
 When a new block is found on the network, a gateway quorum will be determined and those 10 selected gateways will issue a gateway payment vote message to pick the next winning node.
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 41 | vinGateway | [CTxIn](#ctxin) | The unspent output of the gateway which is signing the message
+| ---------- | ----------- | --------- | ---------- |
+| 36 | gatewayOutpoint | [COutPoint](#coutpoint) | The unspent output of the gateway which is signing the message
 | 4 | nBlockHeight | int | The blockheight which the payee should be paid
 | ? | payeeAddress | CScript | The address to pay to
 | 71-73 | sig | char[] | Signature of the gateway which is signing the message
@@ -140,11 +143,11 @@ Spork
 Spork
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 4 | nSporkID | int | 
-| 8 | nValue | int64_t | 
-| 8 | nTimeSigned | int64_t | 
-| 66* | vchSig | char[] | Unclear if 66 is the correct size, but this is what it appears to be in most cases
+| ---------- | ----------- | --------- | ---------- |
+| 4 | nSporkID | int | |
+| 8 | nValue | int64_t | |
+| 8 | nTimeSigned | int64_t | |
+| 66* | vchSig | char[] | Unclear if 66 is the correct size, but this is what it appears to be in most cases |
 
 #### Defined Sporks (per src/sporks.h)
  
@@ -152,10 +155,12 @@ Spork
 | ---------- | ---------- | ----------- | ----------- |
 | 10001 | 2 | INSTANTSEND_ENABLED | Turns on and off InstantSend network wide
 | 10002 | 3 | INSTANTSEND_BLOCK_FILTERING | Turns on and off InstantSend block filtering
-| 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 2000 soom)
+| 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 5000 soom)
+| 10005 | 6 | NEW_SIGS | Turns on and off new signature format for Dash-specific messages
 | 10007 | 8 | GATEWAY_PAYMENT_ENFORCEMENT | Requires gateways to be paid by miners when blocks are processed
 | 10009 | 10 | GATEWAY_PAY_UPDATED_NODES | Only current protocol version gateway's will be paid (not older nodes)
 | 10011 | 12 | RECONSIDER_BLOCKS |
+| 10013 | 14 | REQUIRE_SENTINEL_FLAG | Only gateway's running sentinel will be paid 
 
 ## Undocumented messages
 
@@ -170,9 +175,9 @@ Gateway Payment Block
 Gateway Verify
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 41 | vin1 | [CTxIn](#ctxin) | The unspent output which is holding 5000 SOOM for gateway 1
-| 41 | vin2 | [CTxIn](#ctxin) | The unspent output which is holding 5000 SOOM for gateway 2
+| ---------- | ----------- | --------- | ---------- |
+| 36 | gatewayOutpoint1 | [COutPoint](#coutpoint) | The unspent output which is holding 5000 SOOM for gateway 1
+| 36 | gatewayOutpoint2 | [COutPoint](#coutpoint) | The unspent output which is holding 5000 SOOM for gateway 2
 | # | addr | [CService](#cservice) | IPv4 address / port of the gateway
 | 4 | nonce | int | Nonce
 | 4 | nBlockHeight | int | The blockheight
@@ -186,15 +191,15 @@ Gateway List/Entry Sync
 Get Gateway list or specific entry
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 5000 SOOM
+| ---------- | ----------- | --------- | ---------- |
+| 36 | gatewayOutpoint | [COutPoint](#coutpoint) | The unspent output which is holding 5000 SOOM
 
 ### SYNCSTATUSCOUNT - "ssc"
 
 Sync Status Count
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
+| ---------- | ----------- | --------- | ---------- |
 | 4 | nItemID | int | Gateway Sync Item ID
 | 4 | nCount | int | Gateway Sync Count
 
@@ -210,6 +215,7 @@ Sync Status Count
 Gateway Payment Sync
 
 | Field Size | Field Name | Data type | Description |
-| ---------- | ----------- | --------- | -------- |
-| 4 | nGwCount | int |
+| ---------- | ----------- | --------- | ---------- |
+| 4 | nGwCount | int | | (DEPRECATED)
 
+*NOTE: There are no fields in this mesasge starting from protocol 70209*
