@@ -1,27 +1,5 @@
-Building Soom Core
+Building Soom
+=============
 
-After you install the usual build tools and C++ development tools,
-Soom Core also needs some build dependencies which are not always provided
-by default by the OS package manager
-(in particular BerkeleyDB 4.8 for building with wallet support).
-
-Before trying to build, be sure to read one of these files,
-depending on your environment:
-
-  doc/build-unix.md
-  doc/build-openbsd.md
-  doc/build-osx.md
-  doc/build-windows.md
-
-After installing the needed dependencies,
-use the autogen script to prepare the build environment.
-
-    ./autogen.sh
-    ./configure
-    make
-
-Always verify the signatures and checksums.
-
-See doc/build-*.md for instructions on building soomd,
-the intended-for-services, no-graphical-interface,
-reference implementation of Soom.
+See doc/build-*.md for instructions on building the various
+elements of the Soom Core reference implementation of Soom.
