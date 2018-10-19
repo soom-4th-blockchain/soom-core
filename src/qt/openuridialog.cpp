@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2013 The Bitcoin Core developers
+// Copyright (c) 2011-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -10,7 +10,6 @@
 #include "walletmodel.h"
 
 #include <QUrl>
-#include <QGraphicsDropShadowEffect>
 #include <QtWidgets/QDialogButtonBox>
 
 OpenURIDialog::OpenURIDialog(QWidget *parent) :
@@ -18,12 +17,6 @@ OpenURIDialog::OpenURIDialog(QWidget *parent) :
     ui(new Ui::OpenURIDialog)
 {
     ui->setupUi(this);
-
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-    shadow->setBlurRadius(9.0);
-    shadow->setColor(QColor(0, 0, 0, 160));
-    shadow->setOffset(4.0);
-    ui->label_2->setGraphicsEffect(shadow);
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));

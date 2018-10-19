@@ -11,8 +11,6 @@
 #include <QAbstractListModel>
 #include <QString>
 
-#define COMMA_SP_CP 0x2c
-
 // U+2009 THIN SPACE = UTF-8 E2 80 89
 //#define REAL_THIN_SP_CP 0x2009
 //#define REAL_THIN_SP_UTF8 "\xE2\x80\x89"
@@ -22,7 +20,6 @@
 #define REAL_THIN_SP_CP 0x201A
 #define REAL_THIN_SP_UTF8 "\xE2\x80\x9A"
 #define REAL_THIN_SP_HTML "&#8218;" // "&sbquo;"
-
 
 // U+200A HAIR SPACE = UTF-8 E2 80 8A
 #define HAIR_SP_CP 0x200A

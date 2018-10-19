@@ -8,6 +8,7 @@
 
 #include "activegateway.h"
 #include "clientmodel.h"
+#include "clientversion.h"
 #include "init.h"
 #include "guiutil.h"
 #include "gateway-sync.h"
@@ -42,8 +43,8 @@ GatewayList::GatewayList(const PlatformStyle *platformStyle, QWidget *parent) :
     ui->startButton->setEnabled(false);
 
     int columnAliasWidth = 100;
-    int columnAddressWidth = 200;
-    int columnProtocolWidth = 80;
+    int columnAddressWidth = 180;
+    int columnProtocolWidth = 90;
     int columnStatusWidth = 80;
     int columnActiveWidth = 130;
     int columnLastSeenWidth = 130;
@@ -109,17 +110,20 @@ void GatewayList::StartAlias(std::string strAlias)
     std::string strStatusHtml;
     strStatusHtml += "<center>Alias: " + strAlias;
 
-    BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+    for (const auto& gwe : gatewayConfig.getEntries()) {
         if(gwe.getAlias() == strAlias) {
             std::string strError;
             CGatewayBroadcast gwb;
 
             bool fSuccess = CGatewayBroadcast::Create(gwe.getIp(), gwe.getPrivKey(), gwe.getTxHash(), gwe.getOutputIndex(), strError, gwb);
 
+            int nDoS;
+            if (fSuccess && !gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDoS, *g_connman)) {
+                strError = "Failed to verify MNB";
+                fSuccess = false;
+            }
             if(fSuccess) {
                 strStatusHtml += "<br>Successfully started gateway.";
-                gwnodeman.UpdateGatewayList(gwb, *g_connman);
-                gwb.Relay(*g_connman);
             } else {
                 strStatusHtml += "<br>Failed to start gateway.<br>Error: " + strError;
             }
@@ -141,7 +145,7 @@ void GatewayList::StartAll(std::string strCommand)
     int nCountFailed = 0;
     std::string strFailedHtml;
 
-    BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+    for (const auto& gwe : gatewayConfig.getEntries()) {
         std::string strError;
         CGatewayBroadcast gwb;
 
@@ -156,16 +160,19 @@ void GatewayList::StartAll(std::string strCommand)
 
         bool fSuccess = CGatewayBroadcast::Create(gwe.getIp(), gwe.getPrivKey(), gwe.getTxHash(), gwe.getOutputIndex(), strError, gwb);
 
+        int nDoS;
+        if (fSuccess && !gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDoS, *g_connman)) {
+            strError = "Failed to verify MNB";
+            fSuccess = false;
+        }
+
         if(fSuccess) {
             nCountSuccessful++;
-            gwnodeman.UpdateGatewayList(gwb, *g_connman);
-            gwb.Relay(*g_connman);
         } else {
             nCountFailed++;
             strFailedHtml += "\nFailed to start " + gwe.getAlias() + ". Error: " + strError;
         }
     }
-    pwalletMain->Lock();
 
     std::string returnObj;
     returnObj = strprintf("Successfully started %d gateways, failed to start %d, total %d", nCountSuccessful, nCountFailed, nCountFailed + nCountSuccessful);
@@ -235,8 +242,13 @@ void GatewayList::updateMyNodeList(bool fForce)
     if(nSecondsTillUpdate > 0 && !fForce) return;
     nTimeMyListUpdated = GetTime();
 
-    ui->tableWidgetGateways->setSortingEnabled(false);
-    BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+    // Find selected row
+    QItemSelectionModel* selectionModel = ui->tableWidgetMyGateways->selectionModel();
+    QModelIndexList selected = selectionModel->selectedRows();
+    int nSelectedRow = selected.count() ? selected.at(0).row() : 0;
+
+    ui->tableWidgetMyGateways->setSortingEnabled(false);
+    for (const auto& gwe : gatewayConfig.getEntries()) {
         int32_t nOutputIndex = 0;
         if(!ParseInt32(gwe.getOutputIndex(), &nOutputIndex)) {
             continue;
@@ -244,7 +256,8 @@ void GatewayList::updateMyNodeList(bool fForce)
 
         updateMyGatewayInfo(QString::fromStdString(gwe.getAlias()), QString::fromStdString(gwe.getIp()), COutPoint(uint256S(gwe.getTxHash()), nOutputIndex));
     }
-    ui->tableWidgetGateways->setSortingEnabled(true);
+    ui->tableWidgetMyGateways->selectRow(nSelectedRow);
+    ui->tableWidgetMyGateways->setSortingEnabled(true);
 
     // reset "timer"
     ui->secondsLabel->setText("0");

@@ -159,6 +159,9 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     shadow2->setOffset(4.0);
     ui->label_5->setGraphicsEffect(shadow2);
 
+    ui->lineSpendableBalance->setStyleSheet("QLabel { background-color: #717496; min-height:2px; } ");
+    ui->lineWatchBalance->setStyleSheet("QLabel { background-color: #717496; min-height:2px; } ");
+
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
 }
@@ -228,12 +231,12 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
     if (!showWatchOnly){
         ui->labelWatchImmature->hide();
     }
-    else{
-        ui->labelBalance->setIndent(20);
-        ui->labelUnconfirmed->setIndent(20);
-        ui->labelImmature->setIndent(20);
-        ui->labelTotal->setIndent(20);
-    }
+//    else{
+//        ui->labelBalance->setIndent(20);
+//        ui->labelUnconfirmed->setIndent(20);
+//        ui->labelImmature->setIndent(20);
+//        ui->labelTotal->setIndent(20);
+//    }
 }
 
 void OverviewPage::setClientModel(ClientModel *model)
@@ -294,7 +297,9 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
     ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
 }
-void OverviewPage::SetupTransactionList(int nNumItems) {
+
+void OverviewPage::SetupTransactionList(int nNumItems)
+{
     ui->listTransactions->setMinimumHeight(nNumItems * (DECORATION_SIZE + 2));
 
     if(walletModel && walletModel->getOptionsModel()) {
@@ -305,7 +310,7 @@ void OverviewPage::SetupTransactionList(int nNumItems) {
         filter->setDynamicSortFilter(true);
         filter->setSortRole(Qt::EditRole);
         filter->setShowInactive(false);
-        filter->sort(TransactionTableModel::Status, Qt::DescendingOrder);
+        filter->sort(TransactionTableModel::Date, Qt::DescendingOrder);
 
         ui->listTransactions->setModel(filter.get());
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);

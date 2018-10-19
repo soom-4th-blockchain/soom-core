@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2013 The Bitcoin Core developers
+// Copyright (c) 2011-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -14,11 +14,11 @@
 #include <QtWidgets>
 #include <QtWidgets/QDialogButtonBox>
 
-EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
+EditAddressDialog::EditAddressDialog(Mode _mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditAddressDialog),
     mapper(0),
-    mode(mode),
+    mode(_mode),
     model(0)
 {
     ui->setupUi(this);
@@ -55,13 +55,13 @@ EditAddressDialog::~EditAddressDialog()
     delete ui;
 }
 
-void EditAddressDialog::setModel(AddressTableModel *model)
+void EditAddressDialog::setModel(AddressTableModel *_model)
 {
-    this->model = model;
-    if(!model)
+    this->model = _model;
+    if(!_model)
         return;
 
-    mapper->setModel(model);
+    mapper->setModel(_model);
     mapper->addMapping(ui->labelEdit, AddressTableModel::Label);
     mapper->addMapping(ui->addressEdit, AddressTableModel::Address);
 }
@@ -159,8 +159,8 @@ QString EditAddressDialog::getAddress() const
     return address;
 }
 
-void EditAddressDialog::setAddress(const QString &address)
+void EditAddressDialog::setAddress(const QString &_address)
 {
-    this->address = address;
-    ui->addressEdit->setText(address);
+    this->address = _address;
+    ui->addressEdit->setText(_address);
 }

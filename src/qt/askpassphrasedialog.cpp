@@ -3,6 +3,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#if defined(HAVE_CONFIG_H)
+#include "config/soom-config.h"
+#endif
+
 #include "askpassphrasedialog.h"
 #include "ui_askpassphrasedialog.h"
 
@@ -16,10 +20,10 @@
 #include <QPushButton>
 #include <QtWidgets/QDialogButtonBox>
 
-AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
+AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AskPassphraseDialog),
-    mode(mode),
+    mode(_mode),
     model(0),
     fCapsLock(false)
 {
@@ -83,9 +87,9 @@ AskPassphraseDialog::~AskPassphraseDialog()
     delete ui;
 }
 
-void AskPassphraseDialog::setModel(WalletModel *model)
+void AskPassphraseDialog::setModel(WalletModel *_model)
 {
-    this->model = model;
+    this->model = _model;
 }
 
 void AskPassphraseDialog::accept()
@@ -127,19 +131,35 @@ void AskPassphraseDialog::accept()
             {
                 if(model->setWalletEncrypted(true, newpass1))
                 {
-                    QMessageBox warning(QMessageBox::Warning, tr("Wallet encrypted"),
+                    if (model->hdEnabled()) {
+                        QMessageBox warning(QMessageBox::Warning, tr("Wallet encrypted"),
                                          "<qt>" +
-                                         tr("Soom Core will close now to finish the encryption process. "
+                                         tr("%1 will close now to finish the encryption process. "
                                          "Remember that encrypting your wallet cannot fully protect "
-                                         "your sooms from being stolen by malware infecting your computer.") +
+                                         "your funds from being stolen by malware infecting your computer.").arg(tr(PACKAGE_NAME)) +
+                                         "<br><br><b>" +
+                                         tr("IMPORTANT: Any previous backups you have made of your wallet file "
+                                         "should be replaced with the newly generated, encrypted wallet file. "
+                                         "Previous backups of the unencrypted wallet file contain the same HD seed and "
+                                         "still have full access to all your funds just like the new, encrypted wallet.") +
+                                         "</b></qt>", QMessageBox::Ok, this);
+                        warning.setButtonText(QMessageBox::Ok, tr("&OK"));
+                        warning.exec();
+                    } else {
+                        QMessageBox warning(QMessageBox::Warning, tr("Wallet encrypted"),
+                                         "<qt>" +
+                                         tr("%1 will close now to finish the encryption process. "
+                                         "Remember that encrypting your wallet cannot fully protect "
+                                         "your funds from being stolen by malware infecting your computer.").arg(tr(PACKAGE_NAME)) +
                                          "<br><br><b>" +
                                          tr("IMPORTANT: Any previous backups you have made of your wallet file "
                                          "should be replaced with the newly generated, encrypted wallet file. "
                                          "For security reasons, previous backups of the unencrypted wallet file "
                                          "will become useless as soon as you start using the new, encrypted wallet.") +
                                          "</b></qt>", QMessageBox::Ok, this);
-                    warning.setButtonText(QMessageBox::Ok, tr("&OK"));
-                    warning.exec();
+                        warning.setButtonText(QMessageBox::Ok, tr("&OK"));
+                        warning.exec();
+                    }
                     QApplication::quit();
                 }
                 else
