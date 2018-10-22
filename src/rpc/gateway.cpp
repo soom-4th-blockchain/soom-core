@@ -5,6 +5,7 @@
 
 #include "activegateway.h"
 #include "base58.h"
+#include "clientversion.h"
 #include "init.h"
 #include "netbase.h"
 #include "validation.h"
@@ -22,16 +23,20 @@
 #include <iomanip>
 #include <univalue.h>
 
+UniValue gatewaylist(const JSONRPCRequest& request);
+
+bool EnsureWalletIsAvailable(bool avoidException);
 #ifdef ENABLE_WALLET
 void EnsureWalletIsUnlocked();
 #endif // ENABLE_WALLET
 
 
-UniValue gateway(const UniValue& params, bool fHelp)
+
+UniValue gateway(const JSONRPCRequest& request)
 {
     std::string strCommand;
-    if (params.size() >= 1) {
-        strCommand = params[0].get_str();
+    if (request.params.size() >= 1) {
+        strCommand = request.params[0].get_str();
     }
 
 #ifdef ENABLE_WALLET
@@ -39,14 +44,13 @@ UniValue gateway(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "DEPRECATED, please use start-all instead");
 #endif // ENABLE_WALLET
 
-    if (fHelp  ||
+    if (request.fHelp  ||
         (
 #ifdef ENABLE_WALLET
-            strCommand != "start-alias" && strCommand != "start-all" && strCommand != "start-missing" &&
+         strCommand != "start-alias" && strCommand != "start-all" && strCommand != "start-missing" &&
          strCommand != "start-disabled" && strCommand != "outputs" &&
 #endif // ENABLE_WALLET
          strCommand != "list" && strCommand != "list-conf" && strCommand != "count" &&
-         strCommand != "genconf" &&/* hong: */
          strCommand != "debug" && strCommand != "current" && strCommand != "winner" && strCommand != "winners" && strCommand != "genkey" &&
          strCommand != "connect" && strCommand != "status"))
             throw std::runtime_error(
@@ -55,7 +59,7 @@ UniValue gateway(const UniValue& params, bool fHelp)
                 "\nArguments:\n"
                 "1. \"command\"        (string or set of strings, required) The command to execute\n"
                 "\nAvailable commands:\n"
-                "  count        - Print number of all known gateways (optional: 'enabled', 'all', 'qualify')\n"
+                "  count        - Get information about number of gateways  (DEPRECATED options: 'total', 'enabled', 'qualify', 'all')\n"
                 "  current      - Print info on current gateway winner to be paid the next block (calculated locally)\n"
                 "  genkey       - Generate new gatewayprivkey\n"
 #ifdef ENABLE_WALLET
@@ -72,28 +76,29 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
     if (strCommand == "list")
     {
-        UniValue newParams(UniValue::VARR);
+        JSONRPCRequest newRequest = request;
+        newRequest.params.setArray();
         // forward params but skip "list"
-        for (unsigned int i = 1; i < params.size(); i++) {
-            newParams.push_back(params[i]);
+        for (unsigned int i = 1; i < request.params.size(); i++) {
+            newRequest.params.push_back(request.params[i]);
         }
-        return gatewaylist(newParams, fHelp);
+        return gatewaylist(newRequest);
     }
 
     if(strCommand == "connect")
     {
-        if (params.size() < 2)
+        if (request.params.size() < 2)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Gateway address required");
 
-        std::string strAddress = params[1].get_str();
+        std::string strAddress = request.params[1].get_str();
 
         CService addr;
         if (!Lookup(strAddress.c_str(), addr, 0, false))
             throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Incorrect gateway address %s", strAddress));
 
         // TODO: Pass CConnman instance somehow and don't use global variable.
-        CNode *pnode = g_connman->ConnectNode(CAddress(addr, NODE_NETWORK), NULL);
-        if(!pnode)
+        g_connman->OpenGatewayConnection(CAddress(addr, NODE_NETWORK));
+        if (!g_connman->IsConnected(CAddress(addr, NODE_NETWORK), CConnman::AllNodes))
             throw JSONRPCError(RPC_INTERNAL_ERROR, strprintf("Couldn't connect to gateway %s", strAddress));
 
         return "successfully connected";
@@ -101,27 +106,40 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
     if (strCommand == "count")
     {
-        if (params.size() > 2)
+        if (request.params.size() > 2)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Too many parameters");
-
-        if (params.size() == 1)
-            return gwnodeman.size();
-
-        std::string strMode = params[1].get_str();
-
-        if (strMode == "enabled")
-            return gwnodeman.CountEnabled();
 
         int nCount;
         gateway_info_t gwInfo;
         gwnodeman.GetNextGatewayInQueueForPayment(true, nCount, gwInfo);
 
+        int total = gwnodeman.size();
+        int enabled = gwnodeman.CountEnabled();
+
+        if (request.params.size() == 1) {
+            UniValue obj(UniValue::VOBJ);
+
+            obj.push_back(Pair("total", total));
+            obj.push_back(Pair("enabled", enabled));
+            obj.push_back(Pair("qualify", nCount));
+
+            return obj;
+        }
+
+        std::string strMode = request.params[1].get_str();
+
+        if (strMode == "total")
+            return total;
+
+        if (strMode == "enabled")
+            return enabled;
+
         if (strMode == "qualify")
             return nCount;
 
         if (strMode == "all")
-            return strprintf("Total: %d ( Enabled: %d / Qualify: %d)",
-                gwnodeman.size(), gwnodeman.CountEnabled(), nCount);
+            return strprintf("Total: %d (Enabled: %d / Qualify: %d)",
+                total, enabled, nCount);
     }
 
     if (strCommand == "current" || strCommand == "winner")
@@ -144,8 +162,8 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
         obj.push_back(Pair("height",        nHeight));
         obj.push_back(Pair("IP:port",       gwInfo.addr.ToString()));
-        obj.push_back(Pair("protocol",      (int64_t)gwInfo.nProtocolVersion));
-        obj.push_back(Pair("outpoint",      gwInfo.vin.prevout.ToStringShort()));
+        obj.push_back(Pair("protocol",      gwInfo.nProtocolVersion));
+        obj.push_back(Pair("outpoint",      gwInfo.outpoint.ToStringShort()));
         obj.push_back(Pair("payee",         CBitcoinAddress(gwInfo.pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen",      gwInfo.nTimeLastPing));
         obj.push_back(Pair("activeseconds", gwInfo.nTimeLastPing - gwInfo.sigTime));
@@ -155,7 +173,10 @@ UniValue gateway(const UniValue& params, bool fHelp)
 #ifdef ENABLE_WALLET
     if (strCommand == "start-alias")
     {
-        if (params.size() < 2)
+        if (!EnsureWalletIsAvailable(request.fHelp))
+            return NullUniValue;
+
+        if (request.params.size() < 2)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Please specify an alias");
 
         {
@@ -163,14 +184,14 @@ UniValue gateway(const UniValue& params, bool fHelp)
             EnsureWalletIsUnlocked();
         }
 
-        std::string strAlias = params[1].get_str();
+        std::string strAlias = request.params[1].get_str();
 
         bool fFound = false;
 
         UniValue statusObj(UniValue::VOBJ);
         statusObj.push_back(Pair("alias", strAlias));
 
-        BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+        for (const auto& gwe : gatewayConfig.getEntries()) {
             if(gwe.getAlias() == strAlias) {
                 fFound = true;
                 std::string strError;
@@ -178,14 +199,16 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
                 bool fResult = CGatewayBroadcast::Create(gwe.getIp(), gwe.getPrivKey(), gwe.getTxHash(), gwe.getOutputIndex(), strError, gwb);
 
+                int nDoS;
+                if (fResult && !gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDoS, *g_connman)) {
+                    strError = "Failed to verify GWB";
+                    fResult = false;
+                }
+
                 statusObj.push_back(Pair("result", fResult ? "successful" : "failed"));
-                if(fResult) {
-                    gwnodeman.UpdateGatewayList(gwb, *g_connman);
-                    gwb.Relay(*g_connman);
-                } else {
+                if(!fResult) {
                     statusObj.push_back(Pair("errorMessage", strError));
                 }
-             
                 break;
             }
         }
@@ -201,6 +224,9 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
     if (strCommand == "start-all" || strCommand == "start-missing" || strCommand == "start-disabled")
     {
+        if (!EnsureWalletIsAvailable(request.fHelp))
+            return NullUniValue;
+
         {
             LOCK(pwalletMain->cs_wallet);
             EnsureWalletIsUnlocked();
@@ -214,11 +240,10 @@ UniValue gateway(const UniValue& params, bool fHelp)
         int nFailed = 0;
 
         UniValue resultsObj(UniValue::VOBJ);
-
-        BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+        for (const auto& gwe : gatewayConfig.getEntries()) {
             std::string strError;
 
-            COutPoint outpoint = COutPoint(uint256S(gwe.getTxHash()), uint32_t(atoi(gwe.getOutputIndex().c_str())));
+            COutPoint outpoint = COutPoint(uint256S(gwe.getTxHash()), (uint32_t)atoi(gwe.getOutputIndex()));
             CGateway gw;
             bool fFound = gwnodeman.Get(outpoint, gw);
             CGatewayBroadcast gwb;
@@ -228,14 +253,18 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
             bool fResult = CGatewayBroadcast::Create(gwe.getIp(), gwe.getPrivKey(), gwe.getTxHash(), gwe.getOutputIndex(), strError, gwb);
 
+            int nDoS;
+            if (fResult && !gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDoS, *g_connman)) {
+                strError = "Failed to verify GWB";
+                fResult = false;
+            }
+
             UniValue statusObj(UniValue::VOBJ);
             statusObj.push_back(Pair("alias", gwe.getAlias()));
             statusObj.push_back(Pair("result", fResult ? "successful" : "failed"));
 
             if (fResult) {
                 nSuccessful++;
-                gwnodeman.UpdateGatewayList(gwb, *g_connman);
-                gwb.Relay(*g_connman);
             } else {
                 nFailed++;
                 statusObj.push_back(Pair("errorMessage", strError));
@@ -243,7 +272,6 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
             resultsObj.push_back(Pair("status", statusObj));
         }
-    
 
         UniValue returnObj(UniValue::VOBJ);
         returnObj.push_back(Pair("overall", strprintf("Successfully started %d gateways, failed to start %d, total %d", nSuccessful, nFailed, nSuccessful + nFailed)));
@@ -265,8 +293,8 @@ UniValue gateway(const UniValue& params, bool fHelp)
     {
         UniValue resultObj(UniValue::VOBJ);
 
-        BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
-            COutPoint outpoint = COutPoint(uint256S(gwe.getTxHash()), uint32_t(atoi(gwe.getOutputIndex().c_str())));
+        for (const auto& gwe : gatewayConfig.getEntries()) {
+            COutPoint outpoint = COutPoint(uint256S(gwe.getTxHash()), (uint32_t)atoi(gwe.getOutputIndex()));
             CGateway gw;
             bool fFound = gwnodeman.Get(outpoint, gw);
 
@@ -287,12 +315,15 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
 #ifdef ENABLE_WALLET
     if (strCommand == "outputs") {
+        if (!EnsureWalletIsAvailable(request.fHelp))
+            return NullUniValue;
+
         // Find possible candidates
         std::vector<COutput> vPossibleCoins;
         pwalletMain->AvailableCoins(vPossibleCoins, true, NULL, false, ONLY_5000);
 
         UniValue obj(UniValue::VOBJ);
-        BOOST_FOREACH(COutput& out, vPossibleCoins) {
+        for (const auto& out : vPossibleCoins) {
             obj.push_back(Pair(out.tx->GetHash().ToString(), strprintf("%d", out.i)));
         }
 
@@ -302,7 +333,7 @@ UniValue gateway(const UniValue& params, bool fHelp)
 
     if (strCommand == "status")
     {
-        if (!fGateWay)
+        if (!fGatewayMode)
             throw JSONRPCError(RPC_INTERNAL_ERROR, "This is not a gateway");
 
         UniValue gwObj(UniValue::VOBJ);
@@ -333,15 +364,15 @@ UniValue gateway(const UniValue& params, bool fHelp)
         int nLast = 10;
         std::string strFilter = "";
 
-        if (params.size() >= 2) {
-            nLast = atoi(params[1].get_str());
+        if (request.params.size() >= 2) {
+            nLast = atoi(request.params[1].get_str());
         }
 
-        if (params.size() == 3) {
-            strFilter = params[2].get_str();
+        if (request.params.size() == 3) {
+            strFilter = request.params[2].get_str();
         }
 
-        if (params.size() > 3)
+        if (request.params.size() > 3)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'gateway winners ( \"count\" \"filter\" )'");
 
         UniValue obj(UniValue::VOBJ);
@@ -357,11 +388,11 @@ UniValue gateway(const UniValue& params, bool fHelp)
 	// hong: 
 	if (strCommand == "genconf")
 	{
-		if (params.size() < 2){
+		if (request.params.size() < 2){
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Gateway account required");
 		}
-		std::string account_name = params[1].get_str();
-		map<CTxDestination, CAddressBookData>::iterator mi;
+		std::string account_name = request.params[1].get_str();
+		std::map<CTxDestination, CAddressBookData>::iterator mi;
 		for(mi = pwalletMain->mapAddressBook.begin(); mi != pwalletMain->mapAddressBook.end(); mi++){
 			if((*mi).second.name == account_name){
 				break;
@@ -371,7 +402,7 @@ UniValue gateway(const UniValue& params, bool fHelp)
 			throw JSONRPCError(RPC_INVALID_PARAMETER, "Gateway account is invalid!");
 		}
 		// step1: check balance
-		if(pwalletMain->GetBalance() < (SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT*COIN)){ // 가용한 balance가 없을 경우 fail
+		if(pwalletMain->GetBalance() < (5000*COIN)){ // 가용한 balance가 없을 경우 fail
 			throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds (SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT)");
 		}
 		// step2: execute \"genkey\" --> get privkey
@@ -413,8 +444,8 @@ UniValue gateway(const UniValue& params, bool fHelp)
 	    if (!pathConfFileCopy.is_complete()){
 	        pathConfFileCopy = GetDataDir(false) / pathConfFileCopy;
 	    }
-		ifstream fin_conf;
-		ofstream fout_conf;
+		std::ifstream fin_conf;
+		std::ofstream fout_conf;
 		fin_conf.open(pathConfFileOrigin.string());
 		fout_conf.open(pathConfFileCopy.string());
 		std::string readline_conf;
@@ -453,8 +484,8 @@ UniValue gateway(const UniValue& params, bool fHelp)
 		if (!pathGwFileCopy.is_complete()){
     		pathGwFileCopy = GetDataDir() / pathGwFileCopy;
 		}
-		ifstream fin_gw;
-		ofstream fout_gw;
+		std::ifstream fin_gw;
+		std::ofstream fout_gw;
 		fin_gw.open(pathGwFileOrigin.string());
 		fout_gw.open(pathGwFileCopy.string());
 		std::string readline_gw;
@@ -486,35 +517,37 @@ UniValue gateway(const UniValue& params, bool fHelp)
     return NullUniValue;
 }
 
-UniValue gatewaylist(const UniValue& params, bool fHelp)
+UniValue gatewaylist(const JSONRPCRequest& request)
 {
-    std::string strMode = "status";
+    std::string strMode = "json";
     std::string strFilter = "";
 
-    if (params.size() >= 1) strMode = params[0].get_str();
-    if (params.size() == 2) strFilter = params[1].get_str();
+    if (request.params.size() >= 1) strMode = request.params[0].get_str();
+    if (request.params.size() == 2) strFilter = request.params[1].get_str();
 
-    if (fHelp || (
-                strMode != "activeseconds" && strMode != "addr" && strMode != "full" && strMode != "info" &&
+    if (request.fHelp || (
+                strMode != "activeseconds" && strMode != "addr" && strMode != "daemon" && strMode != "full" && strMode != "info" && strMode != "json" &&
                 strMode != "lastseen" && strMode != "lastpaidtime" && strMode != "lastpaidblock" &&
                 strMode != "protocol" && strMode != "payee" && strMode != "pubkey" &&
-                strMode != "rank" && strMode != "status"))
+                strMode != "rank" && strMode != "sentinel" && strMode != "status"))
     {
         throw std::runtime_error(
                 "gatewaylist ( \"mode\" \"filter\" )\n"
                 "Get a list of gateways in different modes\n"
                 "\nArguments:\n"
-                "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
+                "1. \"mode\"      (string, optional/required to use filter, defaults = json) The mode to run list in\n"
                 "2. \"filter\"    (string, optional) Filter results. Partial match by outpoint by default in all modes,\n"
                 "                                    additional matches in some modes are also available\n"
                 "\nAvailable modes:\n"
                 "  activeseconds  - Print number of seconds gateway recognized by the network as enabled\n"
                 "                   (since latest issued \"gateway start/start-many/start-alias\")\n"
                 "  addr           - Print ip address associated with a gateway (can be additionally filtered, partial match)\n"
+                "  daemon         - Print daemon version of a gateway (can be additionally filtered, exact match)\n"
                 "  full           - Print info in format 'status protocol payee lastseen activeseconds lastpaidtime lastpaidblock IP'\n"
                 "                   (can be additionally filtered, partial match)\n"
-                "  info           - Print info in format 'status protocol payee lastseen activeseconds IP'\n"
+                "  info           - Print info in format 'status protocol payee lastseen activeseconds sentinelversion sentinelstate IP'\n"
                 "                   (can be additionally filtered, partial match)\n"
+                "  json           - Print info in JSON format (can be additionally filtered, partial match)\n"
                 "  lastpaidblock  - Print the last block height a node was paid on the network\n"
                 "  lastpaidtime   - Print the last time a node was paid on the network\n"
                 "  lastseen       - Print timestamp of when a gateway was last seen on the network\n"
@@ -523,12 +556,13 @@ UniValue gatewaylist(const UniValue& params, bool fHelp)
                 "  protocol       - Print protocol of a gateway (can be additionally filtered, exact match)\n"
                 "  pubkey         - Print the gateway (not collateral) public key\n"
                 "  rank           - Print rank of a gateway based on current block\n"
-                "  status         - Print gateway status: PRE_ENABLED / ENABLED / EXPIRED / WATCHDOG_EXPIRED / NEW_START_REQUIRED /\n"
+                "  sentinel       - Print sentinel version of a gateway (can be additionally filtered, exact match)\n"
+                "  status         - Print gateway status: PRE_ENABLED / ENABLED / EXPIRED / SENTINEL_PING_EXPIRED / NEW_START_REQUIRED /\n"
                 "                   UPDATE_REQUIRED / POSE_BAN / OUTPOINT_SPENT (can be additionally filtered, partial match)\n"
                 );
     }
 
-    if (strMode == "full" || strMode == "lastpaidtime" || strMode == "lastpaidblock") {
+    if (strMode == "full" || strMode == "json" || strMode == "lastpaidtime" || strMode == "lastpaidblock") {
         CBlockIndex* pindex = NULL;
         {
             LOCK(cs_main);
@@ -541,14 +575,14 @@ UniValue gatewaylist(const UniValue& params, bool fHelp)
     if (strMode == "rank") {
         CGatewayMan::rank_pair_vec_t vGatewayRanks;
         gwnodeman.GetGatewayRanks(vGatewayRanks);
-        BOOST_FOREACH(PAIRTYPE(int, CGateway)& s, vGatewayRanks) {
-            std::string strOutpoint = s.second.vin.prevout.ToStringShort();
+        for (const auto& rankpair : vGatewayRanks) {
+            std::string strOutpoint = rankpair.second.outpoint.ToStringShort();
             if (strFilter !="" && strOutpoint.find(strFilter) == std::string::npos) continue;
-            obj.push_back(Pair(strOutpoint, s.first));
+            obj.push_back(Pair(strOutpoint, rankpair.first));
         }
     } else {
         std::map<COutPoint, CGateway> mapGateways = gwnodeman.GetFullGatewayMap();
-        for (auto& gwpair : mapGateways) {
+        for (const auto& gwpair : mapGateways) {
             CGateway gw = gwpair.second;
             std::string strOutpoint = gwpair.first.ToStringShort();
             if (strMode == "activeseconds") {
@@ -559,6 +593,16 @@ UniValue gatewaylist(const UniValue& params, bool fHelp)
                 if (strFilter !="" && strAddress.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos) continue;
                 obj.push_back(Pair(strOutpoint, strAddress));
+            } else if (strMode == "daemon") {
+                std::string strDaemon = gw.lastPing.nDaemonVersion > DEFAULT_DAEMON_VERSION ? FormatVersion(gw.lastPing.nDaemonVersion) : "Unknown";
+                if (strFilter !="" && strDaemon.find(strFilter) == std::string::npos &&
+                    strOutpoint.find(strFilter) == std::string::npos) continue;
+                obj.push_back(Pair(strOutpoint, strDaemon));
+            } else if (strMode == "sentinel") {
+                std::string strSentinel = gw.lastPing.nSentinelVersion > DEFAULT_SENTINEL_VERSION ? SafeIntVersionToString(gw.lastPing.nSentinelVersion) : "Unknown";
+                if (strFilter !="" && strSentinel.find(strFilter) == std::string::npos &&
+                    strOutpoint.find(strFilter) == std::string::npos) continue;
+                obj.push_back(Pair(strOutpoint, strSentinel));
             } else if (strMode == "full") {
                 std::ostringstream streamFull;
                 streamFull << std::setw(18) <<
@@ -582,11 +626,42 @@ UniValue gatewaylist(const UniValue& params, bool fHelp)
                                CBitcoinAddress(gw.pubKeyCollateralAddress.GetID()).ToString() << " " <<
                                (int64_t)gw.lastPing.sigTime << " " << std::setw(8) <<
                                (int64_t)(gw.lastPing.sigTime - gw.sigTime) << " " <<                               
+                               SafeIntVersionToString(gw.lastPing.nSentinelVersion) << " "  <<
+                               (gw.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " <<
                                gw.addr.ToString();
                 std::string strInfo = streamInfo.str();
                 if (strFilter !="" && strInfo.find(strFilter) == std::string::npos &&
                     strOutpoint.find(strFilter) == std::string::npos) continue;
                 obj.push_back(Pair(strOutpoint, strInfo));
+            } else if (strMode == "json") {
+                std::ostringstream streamInfo;
+                streamInfo <<  gw.addr.ToString() << " " <<
+                               CBitcoinAddress(gw.pubKeyCollateralAddress.GetID()).ToString() << " " <<
+                               gw.GetStatus() << " " <<
+                               gw.nProtocolVersion << " " <<
+                               gw.lastPing.nDaemonVersion << " " <<
+                               SafeIntVersionToString(gw.lastPing.nSentinelVersion) << " " <<
+                               (gw.lastPing.fSentinelIsCurrent ? "current" : "expired") << " " <<
+                               (int64_t)gw.lastPing.sigTime << " " <<
+                               (int64_t)(gw.lastPing.sigTime - gw.sigTime) << " " <<
+                               gw.GetLastPaidTime() << " " <<
+                               gw.GetLastPaidBlock();
+                std::string strInfo = streamInfo.str();
+                if (strFilter !="" && strInfo.find(strFilter) == std::string::npos &&
+                    strOutpoint.find(strFilter) == std::string::npos) continue;
+                UniValue objGW(UniValue::VOBJ);
+                objGW.push_back(Pair("address", gw.addr.ToString()));
+                objGW.push_back(Pair("payee", CBitcoinAddress(gw.pubKeyCollateralAddress.GetID()).ToString()));
+                objGW.push_back(Pair("status", gw.GetStatus()));
+                objGW.push_back(Pair("protocol", gw.nProtocolVersion));
+                objGW.push_back(Pair("daemonversion", gw.lastPing.nDaemonVersion > DEFAULT_DAEMON_VERSION ? FormatVersion(gw.lastPing.nDaemonVersion) : "Unknown"));
+                objGW.push_back(Pair("sentinelversion", gw.lastPing.nSentinelVersion > DEFAULT_SENTINEL_VERSION ? SafeIntVersionToString(gw.lastPing.nSentinelVersion) : "Unknown"));
+                objGW.push_back(Pair("sentinelstate", (gw.lastPing.fSentinelIsCurrent ? "current" : "expired")));
+                objGW.push_back(Pair("lastseen", (int64_t)gw.lastPing.sigTime));
+                objGW.push_back(Pair("activeseconds", (int64_t)(gw.lastPing.sigTime - gw.sigTime)));
+                objGW.push_back(Pair("lastpaidtime", gw.GetLastPaidTime()));
+                objGW.push_back(Pair("lastpaidblock", gw.GetLastPaidBlock()));
+                obj.push_back(Pair(strOutpoint, objGW));
             } else if (strMode == "lastpaidblock") {
                 if (strFilter !="" && strOutpoint.find(strFilter) == std::string::npos) continue;
                 obj.push_back(Pair(strOutpoint, gw.GetLastPaidBlock()));
@@ -605,7 +680,7 @@ UniValue gatewaylist(const UniValue& params, bool fHelp)
             } else if (strMode == "protocol") {
                 if (strFilter !="" && strFilter != strprintf("%d", gw.nProtocolVersion) &&
                     strOutpoint.find(strFilter) == std::string::npos) continue;
-                obj.push_back(Pair(strOutpoint, (int64_t)gw.nProtocolVersion));
+                obj.push_back(Pair(strOutpoint, gw.nProtocolVersion));
             } else if (strMode == "pubkey") {
                 if (strFilter !="" && strOutpoint.find(strFilter) == std::string::npos) continue;
                 obj.push_back(Pair(strOutpoint, HexStr(gw.pubKeyGateway)));
@@ -637,13 +712,13 @@ bool DecodeHexVecGwb(std::vector<CGatewayBroadcast>& vecGwb, std::string strHexG
     return true;
 }
 
-UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
+UniValue gatewaybroadcast(const JSONRPCRequest& request)
 {
     std::string strCommand;
-    if (params.size() >= 1)
-        strCommand = params[0].get_str();
+    if (request.params.size() >= 1)
+        strCommand = request.params[0].get_str();
 
-    if (fHelp  ||
+    if (request.fHelp  ||
         (
 #ifdef ENABLE_WALLET
             strCommand != "create-alias" && strCommand != "create-all" &&
@@ -666,11 +741,14 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
 #ifdef ENABLE_WALLET
     if (strCommand == "create-alias")
     {
+        if (!EnsureWalletIsAvailable(request.fHelp))
+            return NullUniValue;
+
         // wait for reindex and/or import to finish
         if (fImporting || fReindex)
             throw JSONRPCError(RPC_INTERNAL_ERROR, "Wait for reindex and/or import to finish");
 
-        if (params.size() < 2)
+        if (request.params.size() < 2)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Please specify an alias");
 
         {
@@ -679,14 +757,14 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
         }
 
         bool fFound = false;
-        std::string strAlias = params[1].get_str();
+        std::string strAlias = request.params[1].get_str();
 
         UniValue statusObj(UniValue::VOBJ);
         std::vector<CGatewayBroadcast> vecGwb;
 
         statusObj.push_back(Pair("alias", strAlias));
 
-        BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+        for (const auto& gwe : gatewayConfig.getEntries()) {
             if(gwe.getAlias() == strAlias) {
                 fFound = true;
                 std::string strError;
@@ -699,7 +777,7 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
                     vecGwb.push_back(gwb);
                     CDataStream ssVecGwb(SER_NETWORK, PROTOCOL_VERSION);
                     ssVecGwb << vecGwb;
-                    statusObj.push_back(Pair("hex", HexStr(ssVecGwb.begin(), ssVecGwb.end())));
+                    statusObj.push_back(Pair("hex", HexStr(ssVecGwb)));
                 } else {
                     statusObj.push_back(Pair("errorMessage", strError));
                 }
@@ -718,6 +796,9 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
 
     if (strCommand == "create-all")
     {
+        if (!EnsureWalletIsAvailable(request.fHelp))
+            return NullUniValue;
+
         // wait for reindex and/or import to finish
         if (fImporting || fReindex)
             throw JSONRPCError(RPC_INTERNAL_ERROR, "Wait for reindex and/or import to finish");
@@ -727,17 +808,13 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
             EnsureWalletIsUnlocked();
         }
 
-        // hcdo 180625 remove not used 
-        //std::vector<CGatewayConfig::CGatewayEntry> gwEntries;
-        //gwEntries = gatewayConfig.getEntries();
-
         int nSuccessful = 0;
         int nFailed = 0;
 
         UniValue resultsObj(UniValue::VOBJ);
         std::vector<CGatewayBroadcast> vecGwb;
 
-        BOOST_FOREACH(CGatewayConfig::CGatewayEntry gwe, gatewayConfig.getEntries()) {
+        for (const auto& gwe : gatewayConfig.getEntries()) {
             std::string strError;
             CGatewayBroadcast gwb;
 
@@ -771,12 +848,12 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
 
     if (strCommand == "decode")
     {
-        if (params.size() != 2)
+        if (request.params.size() != 2)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Correct usage is 'gatewaybroadcast decode \"hexstring\"'");
 
         std::vector<CGatewayBroadcast> vecGwb;
 
-        if (!DecodeHexVecGwb(vecGwb, params[1].get_str()))
+        if (!DecodeHexVecGwb(vecGwb, request.params[1].get_str()))
             throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Gateway broadcast message decode failed");
 
         int nSuccessful = 0;
@@ -784,12 +861,12 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
         int nDos = 0;
         UniValue returnObj(UniValue::VOBJ);
 
-        BOOST_FOREACH(CGatewayBroadcast& gwb, vecGwb) {
+        for (const auto& gwb : vecGwb) {
             UniValue resultObj(UniValue::VOBJ);
 
             if(gwb.CheckSignature(nDos)) {
                 nSuccessful++;
-                resultObj.push_back(Pair("outpoint", gwb.vin.prevout.ToStringShort()));
+                resultObj.push_back(Pair("outpoint", gwb.outpoint.ToStringShort()));
                 resultObj.push_back(Pair("addr", gwb.addr.ToString()));
                 resultObj.push_back(Pair("pubKeyCollateralAddress", CBitcoinAddress(gwb.pubKeyCollateralAddress.GetID()).ToString()));
                 resultObj.push_back(Pair("pubKeyGateway", CBitcoinAddress(gwb.pubKeyGateway.GetID()).ToString()));
@@ -798,7 +875,7 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
                 resultObj.push_back(Pair("protocolVersion", gwb.nProtocolVersion));
 
                 UniValue lastPingObj(UniValue::VOBJ);
-                lastPingObj.push_back(Pair("outpoint", gwb.lastPing.vin.prevout.ToStringShort()));
+                lastPingObj.push_back(Pair("outpoint", gwb.lastPing.gatewayOutpoint.ToStringShort()));
                 lastPingObj.push_back(Pair("blockHash", gwb.lastPing.blockHash.ToString()));
                 lastPingObj.push_back(Pair("sigTime", gwb.lastPing.sigTime));
                 lastPingObj.push_back(Pair("vchSig", EncodeBase64(&gwb.lastPing.vchSig[0], gwb.lastPing.vchSig.size())));
@@ -819,40 +896,31 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
 
     if (strCommand == "relay")
     {
-        if (params.size() < 2 || params.size() > 3)
-            throw JSONRPCError(RPC_INVALID_PARAMETER,   "gatewaybroadcast relay \"hexstring\" ( fast )\n"
+        if (request.params.size() < 2 || request.params.size() > 3)
+            throw JSONRPCError(RPC_INVALID_PARAMETER,   "gatewaybroadcast relay \"hexstring\"\n"
                                                         "\nArguments:\n"
-                                                        "1. \"hex\"      (string, required) Broadcast messages hex string\n"
-                                                        "2. fast       (string, optional) If none, using safe method\n");
+                                                        "1. \"hex\"      (string, required) Broadcast messages hex string\n");
 
         std::vector<CGatewayBroadcast> vecGwb;
 
-        if (!DecodeHexVecGwb(vecGwb, params[1].get_str()))
+        if (!DecodeHexVecGwb(vecGwb, request.params[1].get_str()))
             throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Gateway broadcast message decode failed");
 
         int nSuccessful = 0;
         int nFailed = 0;
-        bool fSafe = params.size() == 2;
         UniValue returnObj(UniValue::VOBJ);
 
         // verify all signatures first, bailout if any of them broken
-        BOOST_FOREACH(CGatewayBroadcast& gwb, vecGwb) {
+        for (const auto& gwb : vecGwb) {
             UniValue resultObj(UniValue::VOBJ);
 
-            resultObj.push_back(Pair("outpoint", gwb.vin.prevout.ToStringShort()));
+            resultObj.push_back(Pair("outpoint", gwb.outpoint.ToStringShort()));
             resultObj.push_back(Pair("addr", gwb.addr.ToString()));
 
             int nDos = 0;
             bool fResult;
             if (gwb.CheckSignature(nDos)) {
-                if (fSafe) {
-                    fResult = gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDos, *g_connman);
-                } else {
-                    gwnodeman.UpdateGatewayList(gwb, *g_connman);
-                    gwb.Relay(*g_connman);
-                    fResult = true;
-                }
-          
+                fResult = gwnodeman.CheckGwbAndUpdateGatewayList(NULL, gwb, nDos, *g_connman);
             } else fResult = false;
 
             if(fResult) {
@@ -874,3 +942,37 @@ UniValue gatewaybroadcast(const UniValue& params, bool fHelp)
     return NullUniValue;
 }
 
+UniValue sentinelping(const JSONRPCRequest& request)
+{
+    if (request.fHelp || request.params.size() != 1) {
+        throw std::runtime_error(
+            "sentinelping version\n"
+            "\nSentinel ping.\n"
+            "\nArguments:\n"
+            "1. version           (string, required) Sentinel version in the form \"x.x.x\"\n"
+            "\nResult:\n"
+            "state                (boolean) Ping result\n"
+            "\nExamples:\n"
+            + HelpExampleCli("sentinelping", "1.0.2")
+            + HelpExampleRpc("sentinelping", "1.0.2")
+        );
+    }
+
+    activeGateway.UpdateSentinelPing(StringVersionToInt(request.params[0].get_str()));
+    return true;
+}
+
+static const CRPCCommand commands[] =
+{ //  category              name                      actor (function)         okSafe argNames
+  //  --------------------- ------------------------  -----------------------  ------ ----------
+    { "soom",               "gateway",                &gateway,                true,  {} },
+    { "soom",               "gatewaylist",            &gatewaylist,            true,  {} },
+    { "soom",               "gatewaybroadcast",       &gatewaybroadcast,       true,  {} },
+    { "soom",               "sentinelping",           &sentinelping,           true,  {} },
+};
+
+void RegisterGatewayRPCCommands(CRPCTable &t)
+{
+    for (unsigned int vcidx = 0; vcidx < ARRAYLEN(commands); vcidx++)
+        t.appendCommand(commands[vcidx].name, &commands[vcidx]);
+}
