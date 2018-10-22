@@ -5,6 +5,7 @@
 
 #include "activegateway.h"
 #include "base58.h"
+#include "clientversion.h"
 #include "init.h"
 #include "netbase.h"
 #include "gateway.h"
@@ -43,8 +44,7 @@ CGateway::CGateway(const CGateway& other) :
 
 CGateway::CGateway(const CGatewayBroadcast& gwb) :
     gateway_info_t{ gwb.nActiveState, gwb.nProtocolVersion, gwb.sigTime,
-                       gwb.vin.prevout, gwb.addr, gwb.pubKeyCollateralAddress, gwb.pubKeyGateway,
-                       gwb.sigTime /*nTimeLastWatchdogVote*/},
+                       gwb.outpoint, gwb.addr, gwb.pubKeyCollateralAddress, gwb.pubKeyGateway},
     lastPing(gwb.lastPing),
     vchSig(gwb.vchSig)
 {}
@@ -65,12 +65,12 @@ bool CGateway::UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman)
     nPoSeBanHeight = 0;
     nTimeLastChecked = 0;
     int nDos = 0;
-    if(gwb.lastPing == CGatewayPing() || (gwb.lastPing != CGatewayPing() && gwb.lastPing.CheckAndUpdate(this, true, nDos, connman))) {
+    if(!gwb.lastPing || (gwb.lastPing && gwb.lastPing.CheckAndUpdate(this, true, nDos, connman))) {
         lastPing = gwb.lastPing;
         gwnodeman.mapSeenGatewayPing.insert(std::make_pair(lastPing.GetHash(), lastPing));
     }
     // if it matches our Gateway privkey...
-    if(fGateWay && pubKeyGateway == activeGateway.pubKeyGateway) {
+    if(fGatewayMode && pubKeyGateway == activeGateway.pubKeyGateway) {
         nPoSeBanScore = -GATEWAY_POSE_BAN_MAX_SCORE;
         if(nProtocolVersion == PROTOCOL_VERSION) {
             // ... and PROTOCOL_VERSION, then we've been remotely activated ...
@@ -90,21 +90,21 @@ bool CGateway::UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman)
 // the proof of work for that block. The further away they are the better, the furthest will win the election
 // and get paid this block
 //
-arith_uint256 CGateway::CalculateScore(const uint256& blockHash)
+arith_uint256 CGateway::CalculateScore(const uint256& blockHash) const
 {
     // Deterministically calculate a "score" for a Gateway based on any given (block)hash
     CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
-    ss << vin.prevout << nCollateralMinConfBlockHash << blockHash;
+    ss << outpoint << nCollateralMinConfBlockHash << blockHash;
     return UintToArith256(ss.GetHash());
 }
 
-CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint)
+CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey)
 {
     int nHeight;
-    return CheckCollateral(outpoint, nHeight);
+    return CheckCollateral(outpoint, pubkey, nHeight);
 }
 
-CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, int& nHeightRet)
+CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet)
 {
     AssertLockHeld(cs_main);
 
@@ -117,12 +117,17 @@ CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, 
         return COLLATERAL_INVALID_AMOUNT;
     }
 
+    if(pubkey == CPubKey() || coin.out.scriptPubKey != GetScriptForDestination(pubkey.GetID())) {
+        return COLLATERAL_INVALID_PUBKEY;
+    }
+
     nHeightRet = coin.nHeight;
     return COLLATERAL_OK;
 }
 
 void CGateway::Check(bool fForce)
 {
+    AssertLockHeld(cs_main);
     LOCK(cs);
 
     if(ShutdownRequested()) return;
@@ -130,20 +135,17 @@ void CGateway::Check(bool fForce)
     if(!fForce && (GetTime() - nTimeLastChecked < GATEWAY_CHECK_SECONDS)) return;
     nTimeLastChecked = GetTime();
 
-    LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state\n", vin.prevout.ToStringShort(), GetStateString());
+    LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state\n", outpoint.ToStringShort(), GetStateString());
 
     //once spent, stop doing the checks
     if(IsOutpointSpent()) return;
 
     int nHeight = 0;
     if(!fUnitTest) {
-        TRY_LOCK(cs_main, lockMain);
-        if(!lockMain) return;
-
-        CollateralStatus err = CheckCollateral(vin.prevout);
-        if (err == COLLATERAL_UTXO_NOT_FOUND) {
+        Coin coin;
+        if(!GetUTXOCoin(outpoint, coin)) {
             nActiveState = GATEWAY_OUTPOINT_SPENT;
-            LogPrint("gateway", "CGateway::Check -- Failed to find Gateway UTXO, gateway=%s\n", vin.prevout.ToStringShort());
+            LogPrint("gateway", "CGateway::Check -- Failed to find Gateway UTXO, gateway=%s\n", outpoint.ToStringShort());
             return;
         }
 
@@ -155,18 +157,18 @@ void CGateway::Check(bool fForce)
         // Otherwise give it a chance to proceed further to do all the usual checks and to change its state.
         // Gateway still will be on the edge and can be banned back easily if it keeps ignoring gwverify
         // or connect attempts. Will require few gwverify messages to strengthen its position in gw list.
-        LogPrintf("CGateway::Check -- Gateway %s is unbanned and back in list now\n", vin.prevout.ToStringShort());
+        LogPrintf("CGateway::Check -- Gateway %s is unbanned and back in list now\n", outpoint.ToStringShort());
         DecreasePoSeBanScore();
     } else if(nPoSeBanScore >= GATEWAY_POSE_BAN_MAX_SCORE) {
         nActiveState = GATEWAY_POSE_BAN;
         // ban for the whole payment cycle
         nPoSeBanHeight = nHeight + gwnodeman.size();
-        LogPrintf("CGateway::Check -- Gateway %s is banned till block %d now\n", vin.prevout.ToStringShort(), nPoSeBanHeight);
+        LogPrintf("CGateway::Check -- Gateway %s is banned till block %d now\n", outpoint.ToStringShort(), nPoSeBanHeight);
         return;
     }
 
     int nActiveStatePrev = nActiveState;
-    bool fOurGateway = fGateWay && activeGateway.pubKeyGateway == pubKeyGateway;
+    bool fOurGateway = fGatewayMode && activeGateway.pubKeyGateway == pubKeyGateway;
 
                    // gateway doesn't meet payment protocol requirements ...
     bool fRequireUpdate = nProtocolVersion < gwpayments.GetMinGatewayPaymentsProto() ||
@@ -176,7 +178,7 @@ void CGateway::Check(bool fForce)
     if(fRequireUpdate) {
         nActiveState = GATEWAY_UPDATE_REQUIRED;
         if(nActiveStatePrev != nActiveState) {
-            LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
+            LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
         }
         return;
     }
@@ -186,8 +188,8 @@ void CGateway::Check(bool fForce)
 
     if(fWaitForPing && !fOurGateway) {
         // ...but if it was already expired before the initial check - return right away
-        if(IsExpired() || IsWatchdogExpired() || IsNewStartRequired()) {
-            LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state, waiting for ping\n", vin.prevout.ToStringShort(), GetStateString());
+        if(IsExpired() || IsSentinelPingExpired() || IsNewStartRequired()) {
+            LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state, waiting for ping\n", outpoint.ToStringShort(), GetStateString());
             return;
         }
     }
@@ -198,21 +200,7 @@ void CGateway::Check(bool fForce)
         if(!IsPingedWithin(GATEWAY_NEW_START_REQUIRED_SECONDS)) {
             nActiveState = GATEWAY_NEW_START_REQUIRED;
             if(nActiveStatePrev != nActiveState) {
-                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
-            }
-            return;
-        }
-
-        bool fWatchdogActive = gatewaySync.IsSynced() && gwnodeman.IsWatchdogActive();
-        bool fWatchdogExpired = (fWatchdogActive && ((GetAdjustedTime() - nTimeLastWatchdogVote) > GATEWAY_WATCHDOG_MAX_SECONDS));
-
-        LogPrint("gateway", "CGateway::Check -- outpoint=%s, nTimeLastWatchdogVote=%d, GetAdjustedTime()=%d, fWatchdogExpired=%d\n",
-                vin.prevout.ToStringShort(), nTimeLastWatchdogVote, GetAdjustedTime(), fWatchdogExpired);
-
-        if(fWatchdogExpired) {
-            nActiveState = GATEWAY_WATCHDOG_EXPIRED;
-            if(nActiveStatePrev != nActiveState) {
-                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
+                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
             }
             return;
         }
@@ -220,39 +208,59 @@ void CGateway::Check(bool fForce)
         if(!IsPingedWithin(GATEWAY_EXPIRATION_SECONDS)) {
             nActiveState = GATEWAY_EXPIRED;
             if(nActiveStatePrev != nActiveState) {
-                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
+                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
+            }
+            return;
+        }
+
+        // part 1: expire based on soomd ping
+        bool fSentinelPingActive = gatewaySync.IsSynced() && gwnodeman.IsSentinelPingActive();
+        bool fSentinelPingExpired = fSentinelPingActive && !IsPingedWithin(GATEWAY_SENTINEL_PING_MAX_SECONDS);
+        LogPrint("gateway", "CGateway::Check -- outpoint=%s, GetAdjustedTime()=%d, fSentinelPingExpired=%d\n",
+                outpoint.ToStringShort(), GetAdjustedTime(), fSentinelPingExpired);
+
+        if(fSentinelPingExpired) {
+            nActiveState = GATEWAY_SENTINEL_PING_EXPIRED;
+            if(nActiveStatePrev != nActiveState) {
+                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
             }
             return;
         }
     }
 
-    if(lastPing.sigTime - sigTime < GATEWAY_MIN_GWP_SECONDS) {
-        nActiveState = GATEWAY_PRE_ENABLED;
-        if(nActiveStatePrev != nActiveState) {
-            LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
+    // We require GWs to be in PRE_ENABLED until they either start to expire or receive a ping and go into ENABLED state
+    // Works on mainnet/testnet only and not the case on regtest.
+    if (Params().NetworkIDString() != CBaseChainParams::REGTEST) {
+        if (lastPing.sigTime - sigTime < GATEWAY_MIN_GWP_SECONDS) {
+            nActiveState = GATEWAY_PRE_ENABLED;
+            if (nActiveStatePrev != nActiveState) {
+                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
+            }
+            return;
         }
-        return;
+    }
+
+    if(!fWaitForPing || fOurGateway) {
+        // part 2: expire based on sentinel info
+        bool fSentinelPingActive = gatewaySync.IsSynced() && gwnodeman.IsSentinelPingActive();
+        bool fSentinelPingExpired = fSentinelPingActive && !lastPing.fSentinelIsCurrent;
+
+        LogPrint("gateway", "CGateway::Check -- outpoint=%s, GetAdjustedTime()=%d, fSentinelPingExpired=%d\n",
+                outpoint.ToStringShort(), GetAdjustedTime(), fSentinelPingExpired);
+
+        if(fSentinelPingExpired) {
+            nActiveState = GATEWAY_SENTINEL_PING_EXPIRED;
+            if(nActiveStatePrev != nActiveState) {
+                LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
+            }
+            return;
+        }
     }
 
     nActiveState = GATEWAY_ENABLED; // OK
     if(nActiveStatePrev != nActiveState) {
-        LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", vin.prevout.ToStringShort(), GetStateString());
+        LogPrint("gateway", "CGateway::Check -- Gateway %s is in %s state now\n", outpoint.ToStringShort(), GetStateString());
     }
-}
-
-bool CGateway::IsInputAssociatedWithPubkey()
-{
-    CScript payee;
-    payee = GetScriptForDestination(pubKeyCollateralAddress.GetID());
-
-    CTransaction tx;
-    uint256 hash;
-    if(GetTransaction(vin.prevout.hash, tx, Params().GetConsensus(), hash, true)) {
-        BOOST_FOREACH(CTxOut out, tx.vout)
-            if(out.nValue == 5000*COIN && out.scriptPubKey == payee) return true;
-    }
-
-    return false;
 }
 
 bool CGateway::IsValidNetAddr()
@@ -268,7 +276,7 @@ bool CGateway::IsValidNetAddr(CService addrIn)
             (addrIn.IsIPv4() && IsReachable(addrIn) && addrIn.IsRoutable());
 }
 
-gateway_info_t CGateway::GetInfo()
+gateway_info_t CGateway::GetInfo() const
 {
     gateway_info_t info{*this};
     info.nTimeLastPing = lastPing.sigTime;
@@ -284,10 +292,10 @@ std::string CGateway::StateToString(int nStateIn)
         case GATEWAY_EXPIRED:                return "EXPIRED";
         case GATEWAY_OUTPOINT_SPENT:         return "OUTPOINT_SPENT";
         case GATEWAY_UPDATE_REQUIRED:        return "UPDATE_REQUIRED";
-        case GATEWAY_WATCHDOG_EXPIRED:       return "WATCHDOG_EXPIRED";
+        case GATEWAY_SENTINEL_PING_EXPIRED:  return "SENTINEL_PING_EXPIRED";
         case GATEWAY_NEW_START_REQUIRED:     return "NEW_START_REQUIRED";
         case GATEWAY_POSE_BAN:               return "POSE_BAN";
-        default:                                return "UNKNOWN";
+        default:                             return "UNKNOWN";
     }
 }
 
@@ -309,7 +317,7 @@ void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBac
     const CBlockIndex *BlockReading = pindex;
 
     CScript gwpayee = GetScriptForDestination(pubKeyCollateralAddress.GetID());
-    // LogPrint("gateway", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s\n", vin.prevout.ToStringShort());
+    // LogPrint("gwpayments", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s\n", outpoint.ToStringShort());
 
     LOCK(cs_mapGatewayBlocks);
 
@@ -318,16 +326,16 @@ void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBac
             gwpayments.mapGatewayBlocks[BlockReading->nHeight].HasPayeeWithVotes(gwpayee, 2))
         {
             CBlock block;
-            if(!ReadBlockFromDisk(block, BlockReading, Params().GetConsensus())) // shouldn't really happen
-                continue;
+            if(!ReadBlockFromDisk(block, BlockReading, Params().GetConsensus())) 
+                continue; // shouldn't really happen
 
-            CAmount nGatewayPayment = GetGatewayPayment(BlockReading->nHeight, block.vtx[0].GetValueOut());
+            CAmount nGatewayPayment = GetGatewayPayment(BlockReading->nHeight, block.vtx[0]->GetValueOut());
 
-            BOOST_FOREACH(CTxOut txout, block.vtx[0].vout)
+            for (const auto& txout : block.vtx[0]->vout)
                 if(gwpayee == txout.scriptPubKey && nGatewayPayment == txout.nValue) {
                     nBlockLastPaid = BlockReading->nHeight;
                     nTimeLastPaid = BlockReading->nTime;
-                    LogPrint("gateway", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- found new %d\n", vin.prevout.ToStringShort(), nBlockLastPaid);
+                    LogPrint("gwpayments", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- found new %d\n", outpoint.ToStringShort(), nBlockLastPaid);
                     return;
                 }
         }
@@ -338,11 +346,11 @@ void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBac
 
     // Last payment for this gateway wasn't found in latest gwpayments blocks
     // or it was found in gwpayments blocks but wasn't found in the blockchain.
-    // LogPrint("gateway", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- keeping old %d\n", vin.prevout.ToStringShort(), nBlockLastPaid);
+    // LogPrint("gwpayments", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- keeping old %d\n", outpoint.ToStringShort(), nBlockLastPaid);
 }
 
 #ifdef ENABLE_WALLET
-bool CGatewayBroadcast::Create(std::string strService, std::string strKeyGateway, std::string strTxHash, std::string strOutputIndex, std::string& strErrorRet, CGatewayBroadcast &gwbRet, bool fOffline)
+bool CGatewayBroadcast::Create(const std::string& strService, const std::string& strKeyGateway, const std::string& strTxHash, const std::string& strOutputIndex, std::string& strErrorRet, CGatewayBroadcast &gwbRet, bool fOffline)
 {
     COutPoint outpoint;
     CPubKey pubKeyCollateralAddressNew;
@@ -357,8 +365,8 @@ bool CGatewayBroadcast::Create(std::string strService, std::string strKeyGateway
         return false;
     };
 
-    //need correct blocks to send ping
-    if (!fOffline && !gatewaySync.IsBlockchainSynced())
+    // Wait for sync to finish because gwb simply won't be relayed otherwise
+    if (!fOffline && !gatewaySync.IsSynced())
         return Log("Sync in progress. Must wait until sync is complete to start Gateway");
 
     if (!CMessageSigner::GetKeysFromSecret(strKeyGateway, keyGatewayNew, pubKeyGatewayNew))
@@ -372,12 +380,12 @@ bool CGatewayBroadcast::Create(std::string strService, std::string strKeyGateway
         return Log(strprintf("Invalid address %s for gateway.", strService));
 	if(!fLocalGateWay)
     {		
-	    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-	    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-	        if (service.GetPort() != mainnetDefaultPort)
-	            return Log(strprintf("Invalid port %u for gateway %s, only %d is supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
-	    } else if (service.GetPort() == mainnetDefaultPort)
-	        return Log(strprintf("Invalid port %u for gateway %s, %d is the only supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
+    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        if (service.GetPort() != mainnetDefaultPort)
+            return Log(strprintf("Invalid port %u for gateway %s, only %d is supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
+    } else if (service.GetPort() == mainnetDefaultPort)
+        return Log(strprintf("Invalid port %u for gateway %s, %d is the only supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
 	}
     return Create(outpoint, service, keyCollateralAddressNew, pubKeyCollateralAddressNew, keyGatewayNew, pubKeyGatewayNew, strErrorRet, gwbRet);
 }
@@ -420,29 +428,31 @@ bool CGatewayBroadcast::SimpleCheck(int& nDos)
 {
     nDos = 0;
 
+    AssertLockHeld(cs_main);
+
     // make sure addr is valid
     if(!IsValidNetAddr()) {
         LogPrintf("CGatewayBroadcast::SimpleCheck -- Invalid addr, rejected: gateway=%s  addr=%s\n",
-                    vin.prevout.ToStringShort(), addr.ToString());
+                    outpoint.ToStringShort(), addr.ToString());
         return false;
     }
 
     // make sure signature isn't in the future (past is OK)
     if (sigTime > GetAdjustedTime() + 60 * 60) {
-        LogPrintf("CGatewayBroadcast::SimpleCheck -- Signature rejected, too far into the future: gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrintf("CGatewayBroadcast::SimpleCheck -- Signature rejected, too far into the future: gateway=%s\n", outpoint.ToStringShort());
         nDos = 1;
         return false;
     }
 
     // empty ping or incorrect sigTime/unknown blockhash
-    if(lastPing == CGatewayPing() || !lastPing.SimpleCheck(nDos)) {
+    if(!lastPing || !lastPing.SimpleCheck(nDos)) {
         // one of us is probably forked or smth, just mark it as expired and check the rest of the rules
         nActiveState = GATEWAY_EXPIRED;
     }
 
     if(nProtocolVersion < gwpayments.GetMinGatewayPaymentsProto()) {
-        LogPrintf("CGatewayBroadcast::SimpleCheck -- ignoring outdated Gateway: gateway=%s  nProtocolVersion=%d\n", vin.prevout.ToStringShort(), nProtocolVersion);
-        return false;
+        LogPrintf("CGatewayBroadcast::SimpleCheck -- outdated Gateway: gateway=%s  nProtocolVersion=%d\n", outpoint.ToStringShort(), nProtocolVersion);
+        nActiveState = GATEWAY_UPDATE_REQUIRED;
     }
 
     CScript pubkeyScript;
@@ -463,17 +473,12 @@ bool CGatewayBroadcast::SimpleCheck(int& nDos)
         return false;
     }
 
-    if(!vin.scriptSig.empty()) {
-        LogPrintf("CGatewayBroadcast::SimpleCheck -- Ignore Not Empty ScriptSig %s\n",vin.ToString());
-        nDos = 100;
-        return false;
-    }
 	if(!fLocalGateWay)
     {
-	    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-	    if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
-	        if(addr.GetPort() != mainnetDefaultPort) return false;
-	    } else if(addr.GetPort() == mainnetDefaultPort) return false;
+    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        if(addr.GetPort() != mainnetDefaultPort) return false;
+    } else if(addr.GetPort() == mainnetDefaultPort) return false;
 	}
     return true;
 }
@@ -481,6 +486,8 @@ bool CGatewayBroadcast::SimpleCheck(int& nDos)
 bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
 {
     nDos = 0;
+
+    AssertLockHeld(cs_main);
 
     if(pgw->sigTime == sigTime && !fRecovery) {
         // mapSeenGatewayBroadcast in CGatewayMan::CheckGwbAndUpdateGatewayList should filter legit duplicates
@@ -492,7 +499,7 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
     // unless someone is doing something fishy
     if(pgw->sigTime > sigTime) {
         LogPrintf("CGatewayBroadcast::Update -- Bad sigTime %d (existing broadcast is at %d) for Gateway %s %s\n",
-                      sigTime, pgw->sigTime, vin.prevout.ToStringShort(), addr.ToString());
+                      sigTime, pgw->sigTime, outpoint.ToStringShort(), addr.ToString());
         return false;
     }
 
@@ -500,24 +507,24 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
 
     // gateway is banned by PoSe
     if(pgw->IsPoSeBanned()) {
-        LogPrintf("CGatewayBroadcast::Update -- Banned by PoSe, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrintf("CGatewayBroadcast::Update -- Banned by PoSe, gateway=%s\n", outpoint.ToStringShort());
         return false;
     }
 
     // IsVnAssociatedWithPubkey is validated once in CheckOutpoint, after that they just need to match
     if(pgw->pubKeyCollateralAddress != pubKeyCollateralAddress) {
-        LogPrintf("CGatewayBroadcast::Update -- Got mismatched pubKeyCollateralAddress and vin\n");
+        LogPrintf("CGatewayBroadcast::Update -- Got mismatched pubKeyCollateralAddress and outpoint\n");
         nDos = 33;
         return false;
     }
 
     if (!CheckSignature(nDos)) {
-        LogPrintf("CGatewayBroadcast::Update -- CheckSignature() failed, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrintf("CGatewayBroadcast::Update -- CheckSignature() failed, gateway=%s\n", outpoint.ToStringShort());
         return false;
     }
 
     // if ther was no gateway broadcast recently or if it matches our Gateway privkey...
-    if(!pgw->IsBroadcastedWithin(GATEWAY_MIN_GWB_SECONDS) || (fGateWay && pubKeyGateway == activeGateway.pubKeyGateway)) {
+    if(!pgw->IsBroadcastedWithin(GATEWAY_MIN_GWB_SECONDS) || (fGatewayMode && pubKeyGateway == activeGateway.pubKeyGateway)) {
         // take the newest entry
         LogPrintf("CGatewayBroadcast::Update -- Got UPDATED Gateway entry: addr=%s\n", addr.ToString());
         if(pgw->UpdateFromNewBroadcast(*this, connman)) {
@@ -532,127 +539,163 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
 
 bool CGatewayBroadcast::CheckOutpoint(int& nDos)
 {
-    // we are a gateway with the same vin (i.e. already activated) and this gwb is ours (matches our Gateway privkey)
+    // we are a gateway with the same outpoint (i.e. already activated) and this gwb is ours (matches our Gateway privkey)
     // so nothing to do here for us
-    if(fGateWay && vin.prevout == activeGateway.outpoint && pubKeyGateway == activeGateway.pubKeyGateway) {
+    if(fGatewayMode && outpoint == activeGateway.outpoint && pubKeyGateway == activeGateway.pubKeyGateway) {
         return false;
     }
 
-    if (!CheckSignature(nDos)) {
-        LogPrintf("CGatewayBroadcast::CheckOutpoint -- CheckSignature() failed, gateway=%s\n", vin.prevout.ToStringShort());
+    AssertLockHeld(cs_main);
+
+    int nHeight;
+    CollateralStatus err = CheckCollateral(outpoint, pubKeyCollateralAddress, nHeight);
+    if (err == COLLATERAL_UTXO_NOT_FOUND) {
+        LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Failed to find Gateway UTXO, gateway=%s\n", outpoint.ToStringShort());
         return false;
     }
 
-    {
-        TRY_LOCK(cs_main, lockMain);
-        if(!lockMain) {
-            // not gwb fault, let it to be checked again later
-            LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Failed to aquire lock, addr=%s", addr.ToString());
-            gwnodeman.mapSeenGatewayBroadcast.erase(GetHash());
-            return false;
-        }
-
-        int nHeight;
-        CollateralStatus err = CheckCollateral(vin.prevout, nHeight);
-        if (err == COLLATERAL_UTXO_NOT_FOUND) {
-            LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Failed to find Gateway UTXO, gateway=%s\n", vin.prevout.ToStringShort());
-            return false;
-        }
-
-        if (err == COLLATERAL_INVALID_AMOUNT) {
-            LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO should have 5000 SOOM, gateway=%s\n", vin.prevout.ToStringShort());
-            return false;
-        }
-
-        if(chainActive.Height() - nHeight + 1 < Params().GetConsensus().nGatewayMinimumConfirmations) {
-            LogPrintf("CGatewayBroadcast::CheckOutpoint -- Gateway UTXO must have at least %d confirmations, gateway=%s\n",
-                    Params().GetConsensus().nGatewayMinimumConfirmations, vin.prevout.ToStringShort());
-            // maybe we miss few blocks, let this gwb to be checked again later
-            gwnodeman.mapSeenGatewayBroadcast.erase(GetHash());
-            return false;
-        }
-        // remember the hash of the block where gateway collateral had minimum required confirmations
-        nCollateralMinConfBlockHash = chainActive[nHeight + Params().GetConsensus().nGatewayMinimumConfirmations - 1]->GetBlockHash();
-    }
-
-    LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO verified\n");
-
-    // make sure the input that was signed in gateway broadcast message is related to the transaction
-    // that spawned the Gateway - this is expensive, so it's only done once per Gateway
-    if(!IsInputAssociatedWithPubkey()) {
-        LogPrintf("CGatewayMan::CheckOutpoint -- Got mismatched pubKeyCollateralAddress and vin\n");
+    if (err == COLLATERAL_INVALID_AMOUNT) {
+        LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO should have 5000 SOOM, gateway=%s\n", outpoint.ToStringShort());
         nDos = 33;
         return false;
     }
 
-    // verify that sig time is legit in past
-    // should be at least not earlier than block when 5000 SOOM tx got nGatewayMinimumConfirmations
-    uint256 hashBlock = uint256();
-    CTransaction tx2;
-    GetTransaction(vin.prevout.hash, tx2, Params().GetConsensus(), hashBlock, true);
-    {
-        LOCK(cs_main);
-        BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
-        if (mi != mapBlockIndex.end() && (*mi).second) {
-            CBlockIndex* pGWIndex = (*mi).second; // block for 5000 SOOM tx -> 1 confirmation
-            CBlockIndex* pConfIndex = chainActive[pGWIndex->nHeight + Params().GetConsensus().nGatewayMinimumConfirmations - 1]; // block where tx got nGatewayMinimumConfirmations
-            if(pConfIndex->GetBlockTime() > sigTime) {
-                LogPrintf("CGatewayBroadcast::CheckOutpoint -- Bad sigTime %d (%d conf block is at %d) for Gateway %s %s\n",
-                          sigTime, Params().GetConsensus().nGatewayMinimumConfirmations, pConfIndex->GetBlockTime(), vin.prevout.ToStringShort(), addr.ToString());
-                return false;
-            }
-        }
+    if(err == COLLATERAL_INVALID_PUBKEY) {
+        LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO should match pubKeyCollateralAddress, gateway=%s\n", outpoint.ToStringShort());
+        nDos = 33;
+        return false;
     }
 
+    if(chainActive.Height() - nHeight + 1 < Params().GetConsensus().nGatewayMinimumConfirmations) {
+        LogPrintf("CGatewayBroadcast::CheckOutpoint -- Gateway UTXO must have at least %d confirmations, gateway=%s\n",
+                Params().GetConsensus().nGatewayMinimumConfirmations, outpoint.ToStringShort());
+        // UTXO is legit but has not enough confirmations.
+        // Maybe we miss few blocks, let this gwb be checked again later.
+        gwnodeman.mapSeenGatewayBroadcast.erase(GetHash());
+        return false;
+    }
+
+    LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO verified\n");
+
+    // Verify that sig time is legit, should be at least not earlier than the timestamp of the block
+    // at which collateral became nGatewayMinimumConfirmations blocks deep.
+    // NOTE: this is not accurate because block timestamp is NOT guaranteed to be 100% correct one.
+    CBlockIndex* pRequiredConfIndex = chainActive[nHeight + Params().GetConsensus().nGatewayMinimumConfirmations - 1]; // block where tx got nGatewayMinimumConfirmations
+    if(pRequiredConfIndex->GetBlockTime() > sigTime) {
+        LogPrintf("CGatewayBroadcast::CheckOutpoint -- Bad sigTime %d (%d conf block is at %d) for Gateway %s %s\n",
+                  sigTime, Params().GetConsensus().nGatewayMinimumConfirmations, pRequiredConfIndex->GetBlockTime(), outpoint.ToStringShort(), addr.ToString());
+        return false;
+    }
+
+    if (!CheckSignature(nDos)) {
+        LogPrintf("CGatewayBroadcast::CheckOutpoint -- CheckSignature() failed, gateway=%s\n", outpoint.ToStringShort());
+        return false;
+    }
+
+    // remember the block hash when collateral for this gateway had minimum required confirmations
+    nCollateralMinConfBlockHash = pRequiredConfIndex->GetBlockHash();
+
     return true;
+}
+
+uint256 CGatewayBroadcast::GetHash() const
+{
+    // Note: doesn't match serialization
+
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    ss << outpoint << uint8_t{} << 0xffffffff; // adding dummy values here to match old hashing format
+    ss << pubKeyCollateralAddress;
+    ss << sigTime;
+    return ss.GetHash();
+}
+
+uint256 CGatewayBroadcast::GetSignatureHash() const
+{
+    // TODO: replace with "return SerializeHash(*this);" after migration to 70209
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    ss << outpoint;
+    ss << addr;
+    ss << pubKeyCollateralAddress;
+    ss << pubKeyGateway;
+    ss << sigTime;
+    ss << nProtocolVersion;
+    return ss.GetHash();
 }
 
 bool CGatewayBroadcast::Sign(const CKey& keyCollateralAddress)
 {
     std::string strError;
-    std::string strMessage;
 
     sigTime = GetAdjustedTime();
 
-    strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
-                    pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
-                    boost::lexical_cast<std::string>(nProtocolVersion);
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
 
-    if(!CMessageSigner::SignMessage(strMessage, vchSig, keyCollateralAddress)) {
-        LogPrintf("CGatewayBroadcast::Sign -- SignMessage() failed\n");
-        return false;
-    }
+        if (!CHashSigner::SignHash(hash, keyCollateralAddress, vchSig)) {
+            LogPrintf("CGatewayBroadcast::Sign -- SignHash() failed\n");
+            return false;
+        }
 
-    if(!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)) {
-        LogPrintf("CGatewayBroadcast::Sign -- VerifyMessage() failed, error: %s\n", strError);
-        return false;
+        if (!CHashSigner::VerifyHash(hash, pubKeyCollateralAddress, vchSig, strError)) {
+            LogPrintf("CGatewayBroadcast::Sign -- VerifyMessage() failed, error: %s\n", strError);
+            return false;
+        }
+    } else {
+        std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
+                        pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
+                        boost::lexical_cast<std::string>(nProtocolVersion);
+
+        if (!CMessageSigner::SignMessage(strMessage, vchSig, keyCollateralAddress)) {
+            LogPrintf("CGatewayBroadcast::Sign -- SignMessage() failed\n");
+            return false;
+        }
+
+        if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)) {
+            LogPrintf("CGatewayBroadcast::Sign -- VerifyMessage() failed, error: %s\n", strError);
+            return false;
+        }
     }
 
     return true;
 }
 
-bool CGatewayBroadcast::CheckSignature(int& nDos)
+bool CGatewayBroadcast::CheckSignature(int& nDos) const
 {
-    std::string strMessage;
     std::string strError = "";
     nDos = 0;
 
-    strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
-                    pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
-                    boost::lexical_cast<std::string>(nProtocolVersion);
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
 
-    LogPrint("gateway", "CGatewayBroadcast::CheckSignature -- strMessage: %s  pubKeyCollateralAddress address: %s  sig: %s\n", strMessage, CBitcoinAddress(pubKeyCollateralAddress.GetID()).ToString(), EncodeBase64(&vchSig[0], vchSig.size()));
+        if (!CHashSigner::VerifyHash(hash, pubKeyCollateralAddress, vchSig, strError)) {
+            // maybe it's in old format
+            std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
+                            pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
+                            boost::lexical_cast<std::string>(nProtocolVersion);
 
-    if(!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)){
-        LogPrintf("CGatewayBroadcast::CheckSignature -- Got bad Gateway announce signature, error: %s\n", strError);
-        nDos = 100;
-        return false;
+            if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)){
+                // nope, not in old format either
+                LogPrintf("CGatewayBroadcast::CheckSignature -- Got bad Gateway announce signature, error: %s\n", strError);
+                nDos = 100;
+                return false;
+            }
+        }
+    } else {
+        std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
+                        pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
+                        boost::lexical_cast<std::string>(nProtocolVersion);
+
+        if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)){
+            LogPrintf("CGatewayBroadcast::CheckSignature -- Got bad Gateway announce signature, error: %s\n", strError);
+            nDos = 100;
+            return false;
+        }
     }
 
     return true;
 }
 
-void CGatewayBroadcast::Relay(CConnman& connman)
+void CGatewayBroadcast::Relay(CConnman& connman) const
 {
     // Do not relay until fully synced
     if(!gatewaySync.IsSynced()) {
@@ -664,48 +707,107 @@ void CGatewayBroadcast::Relay(CConnman& connman)
     connman.RelayInv(inv);
 }
 
+uint256 CGatewayPing::GetHash() const
+{
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        // TODO: replace with "return SerializeHash(*this);" after migration to 70209
+        ss << gatewayOutpoint;
+        ss << blockHash;
+        ss << sigTime;
+        ss << fSentinelIsCurrent;
+        ss << nSentinelVersion;
+        ss << nDaemonVersion;
+    } else {
+        // Note: doesn't match serialization
+
+        ss << gatewayOutpoint << uint8_t{} << 0xffffffff; // adding dummy values here to match old hashing format
+        ss << sigTime;
+    }
+    return ss.GetHash();
+}
+
+uint256 CGatewayPing::GetSignatureHash() const
+{
+    return GetHash();
+}
+
 CGatewayPing::CGatewayPing(const COutPoint& outpoint)
 {
     LOCK(cs_main);
     if (!chainActive.Tip() || chainActive.Height() < 12) return;
 
-    vin = CTxIn(outpoint);
+    gatewayOutpoint = outpoint;
     blockHash = chainActive[chainActive.Height() - 12]->GetBlockHash();
     sigTime = GetAdjustedTime();
+    nDaemonVersion = CLIENT_VERSION;
 }
 
 bool CGatewayPing::Sign(const CKey& keyGateway, const CPubKey& pubKeyGateway)
 {
     std::string strError;
-    std::string strGateWaySignMessage;
-    
+
     sigTime = GetAdjustedTime();
-    std::string strMessage = vin.ToString() + blockHash.ToString() + boost::lexical_cast<std::string>(sigTime);
 
-    if(!CMessageSigner::SignMessage(strMessage, vchSig, keyGateway)) {
-        LogPrintf("CGatewayPing::Sign -- SignMessage() failed\n");
-        return false;
-    }
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
 
-    if(!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
-        LogPrintf("CGatewayPing::Sign -- VerifyMessage() failed, error: %s\n", strError);
-        return false;
+        if (!CHashSigner::SignHash(hash, keyGateway, vchSig)) {
+            LogPrintf("CGatewayPing::Sign -- SignHash() failed\n");
+            return false;
+        }
+
+        if (!CHashSigner::VerifyHash(hash, pubKeyGateway, vchSig, strError)) {
+            LogPrintf("CGatewayPing::Sign -- VerifyHash() failed, error: %s\n", strError);
+            return false;
+        }
+    } else {
+        std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
+                    boost::lexical_cast<std::string>(sigTime);
+
+        if (!CMessageSigner::SignMessage(strMessage, vchSig, keyGateway)) {
+            LogPrintf("CGatewayPing::Sign -- SignMessage() failed\n");
+            return false;
+        }
+
+        if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+            LogPrintf("CGatewayPing::Sign -- VerifyMessage() failed, error: %s\n", strError);
+            return false;
+        }
     }
 
     return true;
 }
 
-bool CGatewayPing::CheckSignature(CPubKey& pubKeyGateway, int &nDos)
+bool CGatewayPing::CheckSignature(const CPubKey& pubKeyGateway, int &nDos) const 
 {   
-    std::string strMessage = vin.ToString() + blockHash.ToString() + boost::lexical_cast<std::string>(sigTime);
     std::string strError = "";
     nDos = 0;
 
-    if(!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
-        LogPrintf("CGatewayPing::CheckSignature -- Got bad Gateway ping signature, gateway=%s, error: %s\n", vin.prevout.ToStringShort(), strError);
-        nDos = 33;
-        return false;
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
+
+        if (!CHashSigner::VerifyHash(hash, pubKeyGateway, vchSig, strError)) {
+            std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
+                        boost::lexical_cast<std::string>(sigTime);
+
+            if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+                LogPrintf("CGatewayPing::CheckSignature -- Got bad Gateway ping signature, gateway=%s, error: %s\n", gatewayOutpoint.ToStringShort(), strError);
+                nDos = 33;
+                return false;
+            }
+        }
+    } else {
+        std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
+                    boost::lexical_cast<std::string>(sigTime);
+
+        if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+            LogPrintf("CGatewayPing::CheckSignature -- Got bad Gateway ping signature, gateway=%s, error: %s\n", gatewayOutpoint.ToStringShort(), strError);
+            nDos = 33;
+            return false;
+        }
     }
+
     return true;
 }
 
@@ -715,7 +817,7 @@ bool CGatewayPing::SimpleCheck(int& nDos)
     nDos = 0;
 
     if (sigTime > GetAdjustedTime() + 60 * 60) {
-        LogPrintf("CGatewayPing::SimpleCheck -- Signature rejected, too far into the future, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrintf("CGatewayPing::SimpleCheck -- Signature rejected, too far into the future, gateway=%s\n", gatewayOutpoint.ToStringShort());
         nDos = 1;
         return false;
     }
@@ -724,18 +826,20 @@ bool CGatewayPing::SimpleCheck(int& nDos)
         AssertLockHeld(cs_main);
         BlockMap::iterator mi = mapBlockIndex.find(blockHash);
         if (mi == mapBlockIndex.end()) {
-            LogPrint("gateway", "CGatewayPing::SimpleCheck -- Gateway ping is invalid, unknown block hash: gateway=%s blockHash=%s\n", vin.prevout.ToStringShort(), blockHash.ToString());
+            LogPrint("gateway", "CGatewayPing::SimpleCheck -- Gateway ping is invalid, unknown block hash: gateway=%s blockHash=%s\n", gatewayOutpoint.ToStringShort(), blockHash.ToString());
             // maybe we stuck or forked so we shouldn't ban this node, just fail to accept this ping
             // TODO: or should we also request this block?
             return false;
         }
     }
-    LogPrint("gateway", "CGatewayPing::SimpleCheck -- Gateway ping verified: gateway=%s  blockHash=%s  sigTime=%d\n", vin.prevout.ToStringShort(), blockHash.ToString(), sigTime);
+    LogPrint("gateway", "CGatewayPing::SimpleCheck -- Gateway ping verified: gateway=%s  blockHash=%s  sigTime=%d\n", gatewayOutpoint.ToStringShort(), blockHash.ToString(), sigTime);
     return true;
 }
 
 bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nDos, CConnman& connman)
 {
+    AssertLockHeld(cs_main);
+
     // don't ban by default
     nDos = 0;
 
@@ -744,39 +848,38 @@ bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nD
     }
 
     if (pgw == NULL) {
-        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Couldn't find Gateway entry, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Couldn't find Gateway entry, gateway=%s\n", gatewayOutpoint.ToStringShort());
         return false;
     }
 
     if(!fFromNewBroadcast) {
         if (pgw->IsUpdateRequired()) {
-            LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- gateway protocol is outdated, gateway=%s\n", vin.prevout.ToStringShort());
+            LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- gateway protocol is outdated, gateway=%s\n", gatewayOutpoint.ToStringShort());
             return false;
         }
 
         if (pgw->IsNewStartRequired()) {
-            LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- gateway is completely expired, new start is required, gateway=%s\n", vin.prevout.ToStringShort());
+            LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- gateway is completely expired, new start is required, gateway=%s\n", gatewayOutpoint.ToStringShort());
             return false;
         }
     }
 
     {
-        LOCK(cs_main);
         BlockMap::iterator mi = mapBlockIndex.find(blockHash);
         if ((*mi).second && (*mi).second->nHeight < chainActive.Height() - 24) {
-            LogPrintf("CGatewayPing::CheckAndUpdate -- Gateway ping is invalid, block hash is too old: gateway=%s  blockHash=%s\n", vin.prevout.ToStringShort(), blockHash.ToString());
+            LogPrintf("CGatewayPing::CheckAndUpdate -- Gateway ping is invalid, block hash is too old: gateway=%s  blockHash=%s\n", gatewayOutpoint.ToStringShort(), blockHash.ToString());
             // nDos = 1;
             return false;
         }
     }
 
-    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- New ping: gateway=%s  blockHash=%s  sigTime=%d\n", vin.prevout.ToStringShort(), blockHash.ToString(), sigTime);
+    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- New ping: gateway=%s  blockHash=%s  sigTime=%d\n", gatewayOutpoint.ToStringShort(), blockHash.ToString(), sigTime);
 
-    // LogPrintf("gwping - Found corresponding gw for vin: %s\n", vin.prevout.ToStringShort());
+    // LogPrintf("gwping - Found corresponding gw for outpoint: %s\n", gatewayOutpoint.ToStringShort());
     // update only if there is no known ping for this gateway or
     // last ping was more then GATEWAY_MIN_GWP_SECONDS-60 ago comparing to this one
     if (pgw->IsPingedWithin(GATEWAY_MIN_GWP_SECONDS - 60, sigTime)) {
-        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping arrived too early, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping arrived too early, gateway=%s\n", gatewayOutpoint.ToStringShort());
         //nDos = 1; //disable, this is happening frequently and causing banned peers
         return false;
     }
@@ -789,12 +892,12 @@ bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nD
     // (NOTE: assuming that GATEWAY_EXPIRATION_SECONDS/2 should be enough to finish gw list sync)
     if(!gatewaySync.IsGatewayListSynced() && !pgw->IsPingedWithin(GATEWAY_EXPIRATION_SECONDS/2)) {
         // let's bump sync timeout
-        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- bumping sync timeout, gateway=%s\n", vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- bumping sync timeout, gateway=%s\n", gatewayOutpoint.ToStringShort());
         gatewaySync.BumpAssetLastTime("CGatewayPing::CheckAndUpdate");
     }
 
     // let's store this ping as the last one
-    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping accepted, gateway=%s\n", vin.prevout.ToStringShort());
+    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping accepted, gateway=%s\n", gatewayOutpoint.ToStringShort());
     pgw->lastPing = *this;
 
     // and update gwnodeman.mapSeenGatewayBroadcast.lastPing which is probably outdated
@@ -807,9 +910,9 @@ bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nD
     // force update, ignoring cache
     pgw->Check(true);
     // relay ping for nodes in ENABLED/EXPIRED/WATCHDOG_EXPIRED state only, skip everyone else
-    if (!pgw->IsEnabled() && !pgw->IsExpired() && !pgw->IsWatchdogExpired()) return false;
+    if (!pgw->IsEnabled() && !pgw->IsExpired() && !pgw->IsSentinelPingExpired()) return false;
 
-    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping acceepted and relayed, gateway=%s\n", vin.prevout.ToStringShort());
+    LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Gateway ping acceepted and relayed, gateway=%s\n", gatewayOutpoint.ToStringShort());
     Relay(connman);
 
     return true;
@@ -827,9 +930,3 @@ void CGatewayPing::Relay(CConnman& connman)
     connman.RelayInv(inv);
 }
 
-
-void CGateway::UpdateWatchdogVoteTime(uint64_t nVoteTime)
-{
-    LOCK(cs);
-    nTimeLastWatchdogVote = (nVoteTime == 0) ? GetAdjustedTime() : nVoteTime;
-}

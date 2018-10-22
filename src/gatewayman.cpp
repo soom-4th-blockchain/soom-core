@@ -5,34 +5,40 @@
 
 #include "activegateway.h"
 #include "addrman.h"
+#include "alert.h"
+#include "clientversion.h"
 #include "gateway-payments.h"
 #include "gateway-sync.h"
 #include "gatewayman.h"
 #include "messagesigner.h"
 #include "netfulfilledman.h"
+#include "netmessagemaker.h"
 #include "script/standard.h"
+#include "ui_interface.h"
 #include "util.h"
+#include "warnings.h"
 
 /** Gateway manager */
 CGatewayMan gwnodeman;
 
-const std::string CGatewayMan::SERIALIZATION_VERSION_STRING = "CGatewayMan-Version-7";
+const std::string CGatewayMan::SERIALIZATION_VERSION_STRING = "CGatewayMan-Version-8";
+const int CGatewayMan::LAST_PAID_SCAN_BLOCKS = 100;
 
 struct CompareLastPaidBlock
 {
-    bool operator()(const std::pair<int, CGateway*>& t1,
-                    const std::pair<int, CGateway*>& t2) const
+    bool operator()(const std::pair<int, const CGateway*>& t1,
+                    const std::pair<int, const CGateway*>& t2) const
     {
-        return (t1.first != t2.first) ? (t1.first < t2.first) : (t1.second->vin < t2.second->vin);
+        return (t1.first != t2.first) ? (t1.first < t2.first) : (t1.second->outpoint < t2.second->outpoint);
     }
 };
 
 struct CompareScoreGW
 {
-    bool operator()(const std::pair<arith_uint256, CGateway*>& t1,
-                    const std::pair<arith_uint256, CGateway*>& t2) const
+    bool operator()(const std::pair<arith_uint256, const CGateway*>& t1,
+                    const std::pair<arith_uint256, const CGateway*>& t2) const
     {
-        return (t1.first != t2.first) ? (t1.first < t2.first) : (t1.second->vin < t2.second->vin);
+        return (t1.first != t2.first) ? (t1.first < t2.first) : (t1.second->outpoint < t2.second->outpoint);
     }
 };
 
@@ -46,30 +52,29 @@ struct CompareByAddr
     }
 };
 
-CGatewayMan::CGatewayMan()
-: cs(),
-  mapGateways(),
-  mAskedUsForGatewayList(),
-  mWeAskedForGatewayList(),
-  mWeAskedForGatewayListEntry(),
-  mWeAskedForVerification(),
-  mGwbRecoveryRequests(),
-  mGwbRecoveryGoodReplies(),
-  listScheduledGwbRequestConnections(),
-  nLastWatchdogVoteTime(0),
-  mapSeenGatewayBroadcast(),
-  mapSeenGatewayPing()
+CGatewayMan::CGatewayMan():
+    cs(),
+    mapGateways(),
+    mAskedUsForGatewayList(),
+    mWeAskedForGatewayList(),
+    mWeAskedForGatewayListEntry(),
+    mWeAskedForVerification(),
+    mGwbRecoveryRequests(),
+    mGwbRecoveryGoodReplies(),
+    listScheduledGwbRequestConnections(),
+    nLastSentinelPingTime(0),
+    mapSeenGatewayBroadcast(),
+    mapSeenGatewayPing()
 {}
 
 bool CGatewayMan::Add(CGateway &gw)
 {
     LOCK(cs);
 
-    if (Has(gw.vin.prevout)) return false;
+    if (Has(gw.outpoint)) return false;
 
     LogPrint("gateway", "CGatewayMan::Add -- Adding new Gateway: addr=%s, %i now\n", gw.addr.ToString(), size() + 1);
-    mapGateways[gw.vin.prevout] = gw;
-    
+    mapGateways[gw.outpoint] = gw;
     return true;
 }
 
@@ -77,30 +82,37 @@ void CGatewayMan::AskForGW(CNode* pnode, const COutPoint& outpoint, CConnman& co
 {
     if(!pnode) return;
 
+    CNetMsgMaker msgMaker(pnode->GetSendVersion());
     LOCK(cs);
 
-    std::map<COutPoint, std::map<CNetAddr, int64_t> >::iterator it1 = mWeAskedForGatewayListEntry.find(outpoint);
+    CService addrSquashed = Params().AllowMultiplePorts() ? (CService)pnode->addr : CService(pnode->addr, 0);
+    auto it1 = mWeAskedForGatewayListEntry.find(outpoint);
     if (it1 != mWeAskedForGatewayListEntry.end()) {
-        std::map<CNetAddr, int64_t>::iterator it2 = it1->second.find(pnode->addr);
+        auto it2 = it1->second.find(addrSquashed);
         if (it2 != it1->second.end()) {
             if (GetTime() < it2->second) {
                 // we've asked recently, should not repeat too often or we could get banned
                 return;
             }
             // we asked this node for this outpoint but it's ok to ask again already
-            LogPrintf("CGatewayMan::AskForGW -- Asking same peer %s for missing gateway entry again: %s\n", pnode->addr.ToString(), outpoint.ToStringShort());
+            LogPrintf("CGatewayMan::AskForGW -- Asking same peer %s for missing gateway entry again: %s\n", addrSquashed.ToString(), outpoint.ToStringShort());
         } else {
             // we already asked for this outpoint but not this node
-            LogPrintf("CGatewayMan::AskForGW -- Asking new peer %s for missing gateway entry: %s\n", pnode->addr.ToString(), outpoint.ToStringShort());
+            LogPrintf("CGatewayMan::AskForGW -- Asking new peer %s for missing gateway entry: %s\n", addrSquashed.ToString(), outpoint.ToStringShort());
         }
     } else {
         // we never asked any node for this outpoint
-        LogPrintf("CGatewayMan::AskForGW -- Asking peer %s for missing gateway entry for the first time: %s\n", pnode->addr.ToString(), outpoint.ToStringShort());
+        LogPrintf("CGatewayMan::AskForGW -- Asking peer %s for missing gateway entry for the first time: %s\n", addrSquashed.ToString(), outpoint.ToStringShort());
     }
-    mWeAskedForGatewayListEntry[outpoint][pnode->addr] = GetTime() + GWEG_UPDATE_SECONDS;
+    mWeAskedForGatewayListEntry[outpoint][addrSquashed] = GetTime() + GWEG_UPDATE_SECONDS;
 
-    connman.PushMessage(pnode, NetMsgType::GWEG, CTxIn(outpoint));
+    if (pnode->GetSendVersion() == 70208) {
+        connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, CTxIn(outpoint)));
+    } else {
+        connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, outpoint));
+    }
 }
+
 
 bool CGatewayMan::PoSeBan(const COutPoint &outpoint)
 {
@@ -116,11 +128,12 @@ bool CGatewayMan::PoSeBan(const COutPoint &outpoint)
 
 void CGatewayMan::Check()
 {
-    LOCK(cs);
-
-    LogPrint("gateway", "CGatewayMan::Check -- nLastWatchdogVoteTime=%d, IsWatchdogActive()=%d\n", nLastWatchdogVoteTime, IsWatchdogActive());
+    LOCK2(cs_main, cs);
+    LogPrint("gateway", "CGatewayMan::Check -- nLastSentinelPingTime=%d, IsSentinelPingActive()=%d\n", nLastSentinelPingTime, IsSentinelPingActive());
 
     for (auto& gwpair : mapGateways) {
+        // NOTE: internally it checks only every GATEWAY_CHECK_SECONDS seconds
+        // since the last time, so expect some GWs to skip this
         gwpair.second.Check();
     }
 }
@@ -157,15 +170,15 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
                 // and finally remove it from the list
               
                 mapGateways.erase(it++);
-               
             } else {
                 bool fAsk = (nAskForGwbRecovery > 0) &&
                             gatewaySync.IsSynced() &&
                             it->second.IsNewStartRequired() &&
-                            !IsGwbRecoveryRequested(hash);
+                            !IsGwbRecoveryRequested(hash) &&
+                            !IsArgSet("-connect");
                 if(fAsk) {
                     // this gw is in a non-recoverable state and we haven't asked other nodes yet
-                    std::set<CNetAddr> setRequested;
+                    std::set<CService> setRequested;
                     // calulate only once and only when it's needed
                     if(vecGatewayRanks.empty()) {
                         int nRandomBlockHeight = GetRandInt(nCachedBlockHeight);
@@ -201,13 +214,13 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
                 // all nodes we asked should have replied now
                 if(itGwbReplies->second.size() >= GWB_RECOVERY_QUORUM_REQUIRED) {
                     // majority of nodes we asked agrees that this gw doesn't require new gwb, reprocess one of new gwbs
-                    LogPrint("gateway", "CGatewayMan::CheckAndRemove -- reprocessing gwb, gateway=%s\n", itGwbReplies->second[0].vin.prevout.ToStringShort());
+                    LogPrint("gateway", "CGatewayMan::CheckAndRemove -- reprocessing gwb, gateway=%s\n", itGwbReplies->second[0].outpoint.ToStringShort());
                     // mapSeenGatewayBroadcast.erase(itGwbReplies->first);
                     int nDos;
                     itGwbReplies->second[0].fRecovery = true;
                     CheckGwbAndUpdateGatewayList(NULL, itGwbReplies->second[0], nDos, connman);
                 }
-                LogPrint("gateway", "CGatewayMan::CheckAndRemove -- removing gwb recovery reply, gateway=%s, size=%d\n", itGwbReplies->second[0].vin.prevout.ToStringShort(), (int)itGwbReplies->second.size());
+                LogPrint("gateway", "CGatewayMan::CheckAndRemove -- removing gwb recovery reply, gateway=%s, size=%d\n", itGwbReplies->second[0].outpoint.ToStringShort(), (int)itGwbReplies->second.size());
                 mGwbRecoveryGoodReplies.erase(itGwbReplies++);
             } else {
                 ++itGwbReplies;
@@ -218,7 +231,7 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
         // no need for cm_main below
         LOCK(cs);
 
-        std::map<uint256, std::pair< int64_t, std::set<CNetAddr> > >::iterator itGwbRequest = mGwbRecoveryRequests.begin();
+        auto itGwbRequest = mGwbRecoveryRequests.begin();
         while(itGwbRequest != mGwbRecoveryRequests.end()){
             // Allow this gwb to be re-verified again after GWB_RECOVERY_RETRY_SECONDS seconds
             // if gw is still in GATEWAY_NEW_START_REQUIRED state.
@@ -230,7 +243,7 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
         }
 
         // check who's asked for the Gateway list
-        std::map<CNetAddr, int64_t>::iterator it1 = mAskedUsForGatewayList.begin();
+        auto it1 = mAskedUsForGatewayList.begin();
         while(it1 != mAskedUsForGatewayList.end()){
             if((*it1).second < GetTime()) {
                 mAskedUsForGatewayList.erase(it1++);
@@ -250,9 +263,9 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
         }
 
         // check which Gateways we've asked for
-        std::map<COutPoint, std::map<CNetAddr, int64_t> >::iterator it2 = mWeAskedForGatewayListEntry.begin();
+        auto it2 = mWeAskedForGatewayListEntry.begin();
         while(it2 != mWeAskedForGatewayListEntry.end()){
-            std::map<CNetAddr, int64_t>::iterator it3 = it2->second.begin();
+            auto it3 = it2->second.begin();
             while(it3 != it2->second.end()){
                 if(it3->second < GetTime()){
                     it2->second.erase(it3++);
@@ -267,7 +280,7 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
             }
         }
 
-        std::map<CNetAddr, CGatewayVerification>::iterator it3 = mWeAskedForVerification.begin();
+        auto it3 = mWeAskedForVerification.begin();
         while(it3 != mWeAskedForVerification.end()){
             if(it3->second.nBlockHeight < nCachedBlockHeight - MAX_POSE_BLOCKS) {
                 mWeAskedForVerification.erase(it3++);
@@ -302,8 +315,6 @@ void CGatewayMan::CheckAndRemove(CConnman& connman)
 
         LogPrintf("CGatewayMan::CheckAndRemove -- %s\n", ToString());
     }
-
-   
 }
 
 void CGatewayMan::Clear()
@@ -315,7 +326,7 @@ void CGatewayMan::Clear()
     mWeAskedForGatewayListEntry.clear();
     mapSeenGatewayBroadcast.clear();
     mapSeenGatewayPing.clear();
-    nLastWatchdogVoteTime = 0;
+    nLastSentinelPingTime = 0;
 }
 
 int CGatewayMan::CountGateways(int nProtocolVersion)
@@ -324,7 +335,7 @@ int CGatewayMan::CountGateways(int nProtocolVersion)
     int nCount = 0;
     nProtocolVersion = nProtocolVersion == -1 ? gwpayments.GetMinGatewayPaymentsProto() : nProtocolVersion;
 
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         if(gwpair.second.nProtocolVersion < nProtocolVersion) continue;
         nCount++;
     }
@@ -338,7 +349,7 @@ int CGatewayMan::CountEnabled(int nProtocolVersion)
     int nCount = 0;
     nProtocolVersion = nProtocolVersion == -1 ? gwpayments.GetMinGatewayPaymentsProto() : nProtocolVersion;
 
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         if(gwpair.second.nProtocolVersion < nProtocolVersion || !gwpair.second.IsEnabled()) continue;
         nCount++;
     }
@@ -365,21 +376,27 @@ int CGatewayMan::CountByIP(int nNetworkType)
 
 void CGatewayMan::GwegUpdate(CNode* pnode, CConnman& connman)
 {
+    CNetMsgMaker msgMaker(pnode->GetSendVersion());
     LOCK(cs);
 
+    CService addrSquashed = Params().AllowMultiplePorts() ? (CService)pnode->addr : CService(pnode->addr, 0);
     if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
         if(!(pnode->addr.IsRFC1918() || pnode->addr.IsLocal())) {
-            std::map<CNetAddr, int64_t>::iterator it = mWeAskedForGatewayList.find(pnode->addr);
+            auto it = mWeAskedForGatewayList.find(addrSquashed);
             if(it != mWeAskedForGatewayList.end() && GetTime() < (*it).second) {
-                LogPrintf("CGatewayMan::GwegUpdate -- we already asked %s for the list; skipping...\n", pnode->addr.ToString());
+                LogPrintf("CGatewayMan::GwegUpdate -- we already asked %s for the list; skipping...\n", addrSquashed.ToString());
                 return;
             }
         }
     }
 
-    connman.PushMessage(pnode, NetMsgType::GWEG, CTxIn());
+    if (pnode->GetSendVersion() == 70208) {
+        connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, CTxIn()));
+    } else {
+        connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, COutPoint()));
+    }
     int64_t askAgain = GetTime() + GWEG_UPDATE_SECONDS;
-    mWeAskedForGatewayList[pnode->addr] = askAgain;
+    mWeAskedForGatewayList[addrSquashed] = askAgain;
 
     LogPrint("gateway", "CGatewayMan::GwegUpdate -- asked %s for the list\n", pnode->addr.ToString());
 }
@@ -418,7 +435,7 @@ bool CGatewayMan::GetGatewayInfo(const COutPoint& outpoint, gateway_info_t& gwIn
 bool CGatewayMan::GetGatewayInfo(const CPubKey& pubKeyGateway, gateway_info_t& gwInfoRet)
 {
     LOCK(cs);
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         if (gwpair.second.pubKeyGateway == pubKeyGateway) {
             gwInfoRet = gwpair.second.GetInfo();
             return true;
@@ -430,7 +447,7 @@ bool CGatewayMan::GetGatewayInfo(const CPubKey& pubKeyGateway, gateway_info_t& g
 bool CGatewayMan::GetGatewayInfo(const CScript& payee, gateway_info_t& gwInfoRet)
 {
     LOCK(cs);
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         CScript scriptCollateralAddress = GetScriptForDestination(gwpair.second.pubKeyCollateralAddress.GetID());
         if (scriptCollateralAddress == payee) {
             gwInfoRet = gwpair.second.GetInfo();
@@ -467,7 +484,7 @@ bool CGatewayMan::GetNextGatewayInQueueForPayment(int nBlockHeight, bool fFilter
     // Need LOCK2 here to ensure consistent locking order because the GetBlockHash call below locks cs_main
     LOCK2(cs_main,cs);
 
-    std::vector<std::pair<int, CGateway*> > vecGatewayLastPaid;
+    std::vector<std::pair<int, const CGateway*> > vecGatewayLastPaid;
 
     /*
         Make a vector with all of the last paid times
@@ -475,7 +492,7 @@ bool CGatewayMan::GetNextGatewayInQueueForPayment(int nBlockHeight, bool fFilter
 
     int nGwCount = CountGateways();
 
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         if(!gwpair.second.IsValidForPayment()) continue;
 
         //check protocol version
@@ -514,8 +531,8 @@ bool CGatewayMan::GetNextGatewayInQueueForPayment(int nBlockHeight, bool fFilter
     int nTenthNetwork = nGwCount/10;
     int nCountTenth = 0;
     arith_uint256 nHighest = 0;
-    CGateway *pBestGateway = NULL;
-    BOOST_FOREACH (PAIRTYPE(int, CGateway*)& s, vecGatewayLastPaid){
+    const CGateway *pBestGateway = NULL;
+    for (const auto& s : vecGatewayLastPaid) {
         arith_uint256 nScore = s.second->CalculateScore(blockHash);
         if(nScore > nHighest){
             nHighest = nScore;
@@ -543,29 +560,29 @@ gateway_info_t CGatewayMan::FindRandomNotInVec(const std::vector<COutPoint> &vec
     if(nCountNotExcluded < 1) return gateway_info_t();
 
     // fill a vector of pointers
-    std::vector<CGateway*> vpGatewaysShuffled;
-    for (auto& gwpair : mapGateways) {
+    std::vector<const CGateway*> vpGatewaysShuffled;
+    for (const auto& gwpair : mapGateways) {
         vpGatewaysShuffled.push_back(&gwpair.second);
     }
 
-    InsecureRand insecureRand;
+    FastRandomContext insecure_rand;
     // shuffle pointers
-    std::random_shuffle(vpGatewaysShuffled.begin(), vpGatewaysShuffled.end(), insecureRand);
+    std::random_shuffle(vpGatewaysShuffled.begin(), vpGatewaysShuffled.end(), insecure_rand);
     bool fExclude;
 
     // loop through
-    BOOST_FOREACH(CGateway* pgw, vpGatewaysShuffled) {
+    for (const auto& pgw : vpGatewaysShuffled) {
         if(pgw->nProtocolVersion < nProtocolVersion || !pgw->IsEnabled()) continue;
         fExclude = false;
-        BOOST_FOREACH(const COutPoint &outpointToExclude, vecToExclude) {
-            if(pgw->vin.prevout == outpointToExclude) {
+        for (const auto& outpointToExclude : vecToExclude) {
+            if(pgw->outpoint == outpointToExclude) {
                 fExclude = true;
                 break;
             }
         }
         if(fExclude) continue;
         // found the one not in vecToExclude
-        LogPrint("gateway", "CGatewayMan::FindRandomNotInVec -- found, gateway=%s\n", pgw->vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayMan::FindRandomNotInVec -- found, gateway=%s\n", pgw->outpoint.ToStringShort());
         return pgw->GetInfo();
     }
 
@@ -586,7 +603,7 @@ bool CGatewayMan::GetGatewayScores(const uint256& nBlockHash, CGatewayMan::score
         return false;
 
     // calculate scores
-    for (auto& gwpair : mapGateways) {
+    for (const auto& gwpair : mapGateways) {
         if (gwpair.second.nProtocolVersion >= nMinProtocol) {
             vecGatewayScoresRet.push_back(std::make_pair(gwpair.second.CalculateScore(nBlockHash), &gwpair.second));
         }
@@ -617,9 +634,9 @@ bool CGatewayMan::GetGatewayRank(const COutPoint& outpoint, int& nRankRet, int n
         return false;
 
     int nRank = 0;
-    for (auto& scorePair : vecGatewayScores) {
+    for (const auto& scorePair : vecGatewayScores) {
         nRank++;
-        if(scorePair.second->vin.prevout == outpoint) {
+        if(scorePair.second->outpoint == outpoint) {
             nRankRet = nRank;
             return true;
         }
@@ -649,7 +666,7 @@ bool CGatewayMan::GetGatewayRanks(CGatewayMan::rank_pair_vec_t& vecGatewayRanksR
         return false;
 
     int nRank = 0;
-    for (auto& scorePair : vecGatewayScores) {
+    for (const auto& scorePair : vecGatewayScores) {
         nRank++;
         vecGatewayRanksRet.push_back(std::make_pair(nRank, *scorePair.second));
     }
@@ -697,8 +714,49 @@ std::pair<CService, std::set<uint256> > CGatewayMan::PopScheduledGwbRequestConne
     return std::make_pair(pairFront.first, setResult);
 }
 
+void CGatewayMan::ProcessPendingGwbRequests(CConnman& connman)
+{
+    std::pair<CService, std::set<uint256> > p = PopScheduledGwbRequestConnection();
+    if (!(p.first == CService() || p.second.empty())) {
+        if (connman.IsGatewayOrDisconnectRequested(p.first)) return;
+        mapPendingGWB.insert(std::make_pair(p.first, std::make_pair(GetTime(), p.second)));
+        connman.AddPendingGateway(p.first);
+    }
 
-void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+    std::map<CService, std::pair<int64_t, std::set<uint256> > >::iterator itPendingGWB = mapPendingGWB.begin();
+    while (itPendingGWB != mapPendingGWB.end()) {
+        bool fDone = connman.ForNode(itPendingGWB->first, [&](CNode* pnode) {
+            // compile request vector
+            std::vector<CInv> vToFetch;
+            std::set<uint256>& setHashes = itPendingGWB->second.second;
+            std::set<uint256>::iterator it = setHashes.begin();
+            while(it != setHashes.end()) {
+                if(*it != uint256()) {
+                    vToFetch.push_back(CInv(MSG_GATEWAY_ANNOUNCE, *it));
+                    LogPrint("gateway", "-- asking for gwb %s from addr=%s\n", it->ToString(), pnode->addr.ToString());
+                }
+                ++it;
+            }
+
+            // ask for data
+            CNetMsgMaker msgMaker(pnode->GetSendVersion());
+            connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
+            return true;
+        });
+
+        int64_t nTimeAdded = itPendingGWB->second.first;
+        if (fDone || (GetTime() - nTimeAdded > 15)) {
+            if (!fDone) {
+                LogPrint("gateway", "CGatewayMan::%s -- failed to connect to %s\n", __func__, itPendingGWB->first.ToString());
+            }
+            mapPendingGWB.erase(itPendingGWB++);
+        } else {
+            ++itPendingGWB;
+        }
+    }
+    LogPrint("gateway", "%s -- mapPendingGWB size: %d\n", __func__, mapPendingGWB.size());
+}
+void CGatewayMan::ProcessMessage(CNode* pfrom,const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(fLiteMode) return; // disable all Soom specific functionality
 
@@ -711,7 +769,7 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
 
         if(!gatewaySync.IsBlockchainSynced()) return;
 
-        LogPrint("gateway", "GWANNOUNCE -- Gateway announce, gateway=%s\n", gwb.vin.prevout.ToStringShort());
+        LogPrint("gateway", "GWANNOUNCE -- Gateway announce, gateway=%s\n", gwb.outpoint.ToStringShort());
 
         int nDos = 0;
 
@@ -719,6 +777,7 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
             // use announced Gateway as a peer
             connman.AddNewAddress(CAddress(gwb.addr, NODE_NETWORK), pfrom->addr, 2*60*60);
         } else if(nDos > 0) {
+            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), nDos);
         }
 
@@ -733,7 +792,7 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
 
         if(!gatewaySync.IsBlockchainSynced()) return;
 
-        LogPrint("gateway", "GWPING -- Gateway ping, gateway=%s\n", gwp.vin.prevout.ToStringShort());
+        LogPrint("gateway", "GWPING -- Gateway ping, gateway=%s\n", gwp.gatewayOutpoint.ToStringShort());
 
         // Need LOCK2 here to ensure consistent locking order because the CheckAndUpdate call below locks cs_main
         LOCK2(cs_main, cs);
@@ -741,10 +800,13 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
         if(mapSeenGatewayPing.count(nHash)) return; //seen
         mapSeenGatewayPing.insert(std::make_pair(nHash, gwp));
 
-        LogPrint("gateway", "GWPING -- Gateway ping, gateway=%s new\n", gwp.vin.prevout.ToStringShort());
+        LogPrint("gateway", "GWPING -- Gateway ping, gateway=%s new\n", gwp.gatewayOutpoint.ToStringShort());
 
         // see if we have this Gateway
-        CGateway* pgw = Find(gwp.vin.prevout);
+        CGateway* pgw = Find(gwp.gatewayOutpoint);
+
+        if(pgw && gwp.fSentinelIsCurrent)
+            UpdateLastSentinelPingTime();
         
         // too late, new GWANNOUNCE is required
         if(pgw && pgw->IsNewStartRequired()) return;
@@ -762,7 +824,7 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
 
         // something significant is broken or gw is unknown,
         // we might have to ask for a gateway entry once
-        AskForGW(pfrom, gwp.vin.prevout, connman);
+        AskForGW(pfrom, gwp.gatewayOutpoint, connman);
 
     } else if (strCommand == NetMsgType::GWEG) { //Get Gateway list or specific entry
         // Ignore such requests until we are fully synced.
@@ -770,65 +832,27 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
         // but this is a heavy one so it's better to finish sync first.
         if (!gatewaySync.IsSynced()) return;
 
-        CTxIn vin;
-        vRecv >> vin;
+        COutPoint gatewayOutpoint;
 
-        LogPrint("gateway", "GWEG -- Gateway list, gateway=%s\n", vin.prevout.ToStringShort());
-
-        LOCK(cs);
-
-        if(vin == CTxIn()) { //only should ask for this once
-            //local network
-            bool isLocal = (pfrom->addr.IsRFC1918() || pfrom->addr.IsLocal());
-
-            if(!isLocal && Params().NetworkIDString() == CBaseChainParams::MAIN) {
-                std::map<CNetAddr, int64_t>::iterator it = mAskedUsForGatewayList.find(pfrom->addr);
-                if (it != mAskedUsForGatewayList.end() && it->second > GetTime()) {
-                    Misbehaving(pfrom->GetId(), 34);
-                    LogPrintf("GWEG -- peer already asked me for the list, peer=%d\n", pfrom->id);
-                    return;
-                }
-                int64_t askAgain = GetTime() + GWEG_UPDATE_SECONDS;
-                mAskedUsForGatewayList[pfrom->addr] = askAgain;
-            }
-        } //else, asking for a specific node which is ok
-
-        int nInvCount = 0;
-
-        for (auto& gwpair : mapGateways) {
-            if (vin != CTxIn() && vin != gwpair.second.vin) continue; // asked for specific vin but we are not there yet
-            if (gwpair.second.addr.IsRFC1918() || gwpair.second.addr.IsLocal()) continue; // do not send local network gateway
-            if (gwpair.second.IsUpdateRequired()) continue; // do not send outdated gateways
-
-            LogPrint("gateway", "GWEG -- Sending Gateway entry: gateway=%s  addr=%s\n", gwpair.first.ToStringShort(), gwpair.second.addr.ToString());
-            CGatewayBroadcast gwb = CGatewayBroadcast(gwpair.second);
-            CGatewayPing gwp = gwpair.second.lastPing;
-            uint256 hashGWB = gwb.GetHash();
-            uint256 hashGWP = gwp.GetHash();
-            pfrom->PushInventory(CInv(MSG_GATEWAY_ANNOUNCE, hashGWB));
-            pfrom->PushInventory(CInv(MSG_GATEWAY_PING, hashGWP));
-            nInvCount++;
-
-            mapSeenGatewayBroadcast.insert(std::make_pair(hashGWB, std::make_pair(GetTime(), gwb)));
-            mapSeenGatewayPing.insert(std::make_pair(hashGWP, gwp));
-
-            if (vin.prevout == gwpair.first) {
-                LogPrintf("GWEG -- Sent 1 Gateway inv to peer %d\n", pfrom->id);
-                return;
-            }
+        if (pfrom->nVersion == 70208) {
+            CTxIn vin;
+            vRecv >> vin;
+            gatewayOutpoint = vin.prevout;
+        } else {
+            vRecv >> gatewayOutpoint;
         }
 
-        if(vin == CTxIn()) {
-            connman.PushMessage(pfrom, NetMsgType::SYNCSTATUSCOUNT, GATEWAY_SYNC_LIST, nInvCount);
-            LogPrintf("GWEG -- Sent %d Gateway invs to peer %d\n", nInvCount, pfrom->id);
-            return;
+        LogPrint("gateway", "GWEG -- Gateway list, gateway=%s\n", gatewayOutpoint.ToStringShort());
+
+        if(gatewayOutpoint.IsNull()) {
+            SyncAll(pfrom, connman);
+        } else {
+            SyncSingle(pfrom, gatewayOutpoint, connman);
         }
-        // smth weird happen - someone asked us for vin we have no idea about?
-        LogPrint("gateway", "GWEG -- No invs sent to peer %d\n", pfrom->id);
 
     } else if (strCommand == NetMsgType::GWVERIFY) { // Gateway Verify
 
-        // Need LOCK2 here to ensure consistent locking order because the all functions below call GetBlockHash which locks cs_main
+        // Need LOCK2 here to ensure consistent locking order because all functions below call GetBlockHash which locks cs_main
         LOCK2(cs_main, cs);
 
         CGatewayVerification gwv;
@@ -851,19 +875,87 @@ void CGatewayMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStr
     }
 }
 
+void CGatewayMan::SyncSingle(CNode* pnode, const COutPoint& outpoint, CConnman& connman)
+{
+    // do not provide any data until our node is synced
+    if (!gatewaySync.IsSynced()) return;
+
+    LOCK(cs);
+
+    auto it = mapGateways.find(outpoint);
+
+    if(it != mapGateways.end()) {
+        if (it->second.addr.IsRFC1918() || it->second.addr.IsLocal()) return; // do not send local network gateway
+        // NOTE: send gateway regardless of its current state, the other node will need it to verify old votes.
+        LogPrint("gateway", "CGatewayMan::%s -- Sending Gateway entry: gateway=%s  addr=%s\n", __func__, outpoint.ToStringShort(), it->second.addr.ToString());
+        PushGwegInvs(pnode, it->second);
+        LogPrintf("CGatewayMan::%s -- Sent 1 Gateway inv to peer=%d\n", __func__, pnode->id);
+    }
+}
+
+void CGatewayMan::SyncAll(CNode* pnode, CConnman& connman)
+{
+    // do not provide any data until our node is synced
+    if (!gatewaySync.IsSynced()) return;
+
+    // local network
+    bool isLocal = (pnode->addr.IsRFC1918() || pnode->addr.IsLocal());
+
+    CService addrSquashed = Params().AllowMultiplePorts() ? (CService)pnode->addr : CService(pnode->addr, 0);
+    // should only ask for this once
+    if(!isLocal && Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        LOCK2(cs_main, cs);
+        auto it = mAskedUsForGatewayList.find(addrSquashed);
+        if (it != mAskedUsForGatewayList.end() && it->second > GetTime()) {
+            Misbehaving(pnode->GetId(), 34);
+            LogPrintf("CGatewayMan::%s -- peer already asked me for the list, peer=%d\n", __func__, pnode->id);
+            return;
+        }
+        int64_t askAgain = GetTime() + GWEG_UPDATE_SECONDS;
+        mAskedUsForGatewayList[addrSquashed] = askAgain;
+    }
+
+    int nInvCount = 0;
+
+    LOCK(cs);
+
+    for (const auto& gwpair : mapGateways) {
+        if (gwpair.second.addr.IsRFC1918() || gwpair.second.addr.IsLocal()) continue; // do not send local network gateway
+        // NOTE: send gateway regardless of its current state, the other node will need it to verify old votes.
+        LogPrint("gateway", "CGatewayMan::%s -- Sending Gateway entry: gateway=%s  addr=%s\n", __func__, gwpair.first.ToStringShort(), gwpair.second.addr.ToString());
+        PushGwegInvs(pnode, gwpair.second);
+        nInvCount++;
+    }
+
+    connman.PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::SYNCSTATUSCOUNT, GATEWAY_SYNC_LIST, nInvCount));
+    LogPrintf("CGatewayMan::%s -- Sent %d Gateway invs to peer=%d\n", __func__, nInvCount, pnode->id);
+}
+
+void CGatewayMan::PushGwegInvs(CNode* pnode, const CGateway& gw)
+{
+    AssertLockHeld(cs);
+
+    CGatewayBroadcast gwb(gw);
+    CGatewayPing gwp = gwb.lastPing;
+    uint256 hashGWB = gwb.GetHash();
+    uint256 hashGWP = gwp.GetHash();
+    pnode->PushInventory(CInv(MSG_GATEWAY_ANNOUNCE, hashGWB));
+    pnode->PushInventory(CInv(MSG_GATEWAY_PING, hashGWP));
+    mapSeenGatewayBroadcast.insert(std::make_pair(hashGWB, std::make_pair(GetTime(), gwb)));
+    mapSeenGatewayPing.insert(std::make_pair(hashGWP, gwp));
+}
+
 // Verification of gateways via unique direct requests.
 
 void CGatewayMan::DoFullVerificationStep(CConnman& connman)
 {
-    if(activeGateway.outpoint == COutPoint()) return;
+    if(activeGateway.outpoint.IsNull()) return;
     if(!gatewaySync.IsSynced()) return;
 
     rank_pair_vec_t vecGatewayRanks;
     GetGatewayRanks(vecGatewayRanks, nCachedBlockHeight - 1, MIN_POSE_PROTO_VERSION);
 
-    // Need LOCK2 here to ensure consistent locking order because the SendVerifyRequest call below locks cs_main
-    // through GetHeight() signal in ConnectNode
-    LOCK2(cs_main, cs);
+    LOCK(cs);
 
     int nCount = 0;
 
@@ -871,14 +963,14 @@ void CGatewayMan::DoFullVerificationStep(CConnman& connman)
     int nRanksTotal = (int)vecGatewayRanks.size();
 
     // send verify requests only if we are in top MAX_POSE_RANK
-    std::vector<std::pair<int, CGateway> >::iterator it = vecGatewayRanks.begin();
+    rank_pair_vec_t::iterator it = vecGatewayRanks.begin();
     while(it != vecGatewayRanks.end()) {
         if(it->first > MAX_POSE_RANK) {
             LogPrint("gateway", "CGatewayMan::DoFullVerificationStep -- Must be in top %d to send verify request\n",
                         (int)MAX_POSE_RANK);
             return;
         }
-        if(it->second.vin.prevout == activeGateway.outpoint) {
+        if(it->second.outpoint == activeGateway.outpoint) {
             nMyRank = it->first;
             LogPrint("gateway", "CGatewayMan::DoFullVerificationStep -- Found self at rank %d/%d, verifying up to %d gateways\n",
                         nMyRank, nRanksTotal, (int)MAX_POSE_CONNECTIONS);
@@ -895,8 +987,8 @@ void CGatewayMan::DoFullVerificationStep(CConnman& connman)
     int nOffset = MAX_POSE_RANK + nMyRank - 1;
     if(nOffset >= (int)vecGatewayRanks.size()) return;
 
-    std::vector<CGateway*> vSortedByAddr;
-    for (auto& gwpair : mapGateways) {
+    std::vector<const CGateway*> vSortedByAddr;
+    for (const auto& gwpair : mapGateways) {
         vSortedByAddr.push_back(&gwpair.second);
     }
 
@@ -909,14 +1001,14 @@ void CGatewayMan::DoFullVerificationStep(CConnman& connman)
                         it->second.IsPoSeVerified() ? "verified" : "",
                         it->second.IsPoSeVerified() && it->second.IsPoSeBanned() ? " and " : "",
                         it->second.IsPoSeBanned() ? "banned" : "",
-                        it->second.vin.prevout.ToStringShort(), it->second.addr.ToString());
+                        it->second.outpoint.ToStringShort(), it->second.addr.ToString());
             nOffset += MAX_POSE_CONNECTIONS;
             if(nOffset >= (int)vecGatewayRanks.size()) break;
             it += MAX_POSE_CONNECTIONS;
             continue;
         }
         LogPrint("gateway", "CGatewayMan::DoFullVerificationStep -- Verifying gateway %s rank %d/%d address %s\n",
-                    it->second.vin.prevout.ToStringShort(), it->first, nRanksTotal, it->second.addr.ToString());
+                    it->second.outpoint.ToStringShort(), it->first, nRanksTotal, it->second.addr.ToString());
         if(SendVerifyRequest(CAddress(it->second.addr, NODE_NETWORK), vSortedByAddr, connman)) {
             nCount++;
             if(nCount >= MAX_POSE_CONNECTIONS) break;
@@ -953,7 +1045,7 @@ void CGatewayMan::CheckSameAddr()
 
         sort(vSortedByAddr.begin(), vSortedByAddr.end(), CompareByAddr());
 
-        BOOST_FOREACH(CGateway* pgw, vSortedByAddr) {
+        for (const auto& pgw : vSortedByAddr) {
             // check only (pre)enabled gateways
             if(!pgw->IsEnabled() && !pgw->IsPreEnabled()) continue;
             // initial step
@@ -981,13 +1073,13 @@ void CGatewayMan::CheckSameAddr()
     }
 
     // ban duplicates
-    BOOST_FOREACH(CGateway* pgw, vBan) {
-        LogPrintf("CGatewayMan::CheckSameAddr -- increasing PoSe ban score for gateway %s\n", pgw->vin.prevout.ToStringShort());
+    for (auto& pgw : vBan) {
+        LogPrintf("CGatewayMan::CheckSameAddr -- increasing PoSe ban score for gateway %s\n", pgw->outpoint.ToStringShort());
         pgw->IncreasePoSeBanScore();
     }
 }
 
-bool CGatewayMan::SendVerifyRequest(const CAddress& addr, const std::vector<CGateway*>& vSortedByAddr, CConnman& connman)
+bool CGatewayMan::SendVerifyRequest(const CAddress& addr, const std::vector<const CGateway*>& vSortedByAddr, CConnman& connman)
 {
     if(netfulfilledman.HasFulfilledRequest(addr, strprintf("%s", NetMsgType::GWVERIFY)+"-request")) {
         // we already asked for verification, not a good idea to do this too often, skip it
@@ -995,26 +1087,53 @@ bool CGatewayMan::SendVerifyRequest(const CAddress& addr, const std::vector<CGat
         return false;
     }
 
-    CNode* pnode = connman.ConnectNode(addr, NULL, true);
-    if(pnode == NULL) {
-        LogPrintf("CGatewayMan::SendVerifyRequest -- can't connect to node to verify it, addr=%s\n", addr.ToString());
-        return false;
-    }
+    if (connman.IsGatewayOrDisconnectRequested(addr)) return false;
 
-    netfulfilledman.AddFulfilledRequest(addr, strprintf("%s", NetMsgType::GWVERIFY)+"-request");
+    connman.AddPendingGateway(addr);
     // use random nonce, store it and require node to reply with correct one later
     CGatewayVerification gwv(addr, GetRandInt(999999), nCachedBlockHeight - 1);
-    mWeAskedForVerification[addr] = gwv;
+    LOCK(cs_mapPendingGWV);
+    mapPendingGWV.insert(std::make_pair(addr, std::make_pair(GetTime(), gwv)));
     LogPrintf("CGatewayMan::SendVerifyRequest -- verifying node using nonce %d addr=%s\n", gwv.nonce, addr.ToString());
-    connman.PushMessage(pnode, NetMsgType::GWVERIFY, gwv);
-
     return true;
+}
+
+void CGatewayMan::ProcessPendingGwvRequests(CConnman& connman)
+{
+    LOCK(cs_mapPendingGWV);
+
+    std::map<CService, std::pair<int64_t, CGatewayVerification> >::iterator itPendingGWV = mapPendingGWV.begin();
+
+    while (itPendingGWV != mapPendingGWV.end()) {
+        bool fDone = connman.ForNode(itPendingGWV->first, [&](CNode* pnode) {
+            netfulfilledman.AddFulfilledRequest(pnode->addr, strprintf("%s", NetMsgType::GWVERIFY)+"-request");
+            // use random nonce, store it and require node to reply with correct one later
+            mWeAskedForVerification[pnode->addr] = itPendingGWV->second.second;
+            LogPrint("gateway", "-- verifying node using nonce %d addr=%s\n", itPendingGWV->second.second.nonce, pnode->addr.ToString());
+            CNetMsgMaker msgMaker(pnode->GetSendVersion()); // TODO this gives a warning about version not being set (we should wait for VERSION exchange)
+            connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWVERIFY, itPendingGWV->second.second));
+            return true;
+        });
+
+        int64_t nTimeAdded = itPendingGWV->second.first;
+        if (fDone || (GetTime() - nTimeAdded > 15)) {
+            if (!fDone) {
+                LogPrint("gateway", "CGatewayMan::%s -- failed to connect to %s\n", __func__, itPendingGWV->first.ToString());
+            }
+            mapPendingGWV.erase(itPendingGWV++);
+        } else {
+            ++itPendingGWV;
+        }
+    }
+    LogPrint("gateway", "%s -- mapPendingGWV size: %d\n", __func__, mapPendingGWV.size());
 }
 
 void CGatewayMan::SendVerifyReply(CNode* pnode, CGatewayVerification& gwv, CConnman& connman)
 {
+    AssertLockHeld(cs_main);
+
     // only gateways can sign this, why would someone ask regular node?
-    if(!fGateWay) {
+    if(!fGatewayMode) {
         // do not ban, malicious node might be using my IP
         // and trying to confuse the node which tries to verify it
         return;
@@ -1033,26 +1152,43 @@ void CGatewayMan::SendVerifyReply(CNode* pnode, CGatewayVerification& gwv, CConn
         return;
     }
 
-    std::string strMessage = strprintf("%s%d%s", activeGateway.service.ToString(false), gwv.nonce, blockHash.ToString());
-
-    if(!CMessageSigner::SignMessage(strMessage, gwv.vchSig1, activeGateway.keyGateway)) {
-        LogPrintf("GatewayMan::SendVerifyReply -- SignMessage() failed\n");
-        return;
-    }
-
     std::string strError;
 
-    if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, gwv.vchSig1, strMessage, strError)) {
-        LogPrintf("GatewayMan::SendVerifyReply -- VerifyMessage() failed, error: %s\n", strError);
-        return;
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = gwv.GetSignatureHash1(blockHash);
+
+        if(!CHashSigner::SignHash(hash, activeGateway.keyGateway, gwv.vchSig1)) {
+            LogPrintf("CGatewayMan::SendVerifyReply -- SignHash() failed\n");
+            return;
+        }
+
+        if (!CHashSigner::VerifyHash(hash, activeGateway.pubKeyGateway, gwv.vchSig1, strError)) {
+            LogPrintf("CGatewayMan::SendVerifyReply -- VerifyHash() failed, error: %s\n", strError);
+            return;
+        }
+    } else {
+        std::string strMessage = strprintf("%s%d%s", activeGateway.service.ToString(false), gwv.nonce, blockHash.ToString());
+
+        if(!CMessageSigner::SignMessage(strMessage, gwv.vchSig1, activeGateway.keyGateway)) {
+            LogPrintf("GatewayMan::SendVerifyReply -- SignMessage() failed\n");
+            return;
+        }
+
+        if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, gwv.vchSig1, strMessage, strError)) {
+            LogPrintf("GatewayMan::SendVerifyReply -- VerifyMessage() failed, error: %s\n", strError);
+            return;
+        }
     }
 
-    connman.PushMessage(pnode, NetMsgType::GWVERIFY, gwv);
+    CNetMsgMaker msgMaker(pnode->GetSendVersion());
+    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWVERIFY, gwv));
     netfulfilledman.AddFulfilledRequest(pnode->addr, strprintf("%s", NetMsgType::GWVERIFY)+"-reply");
 }
 
 void CGatewayMan::ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv)
 {
+    AssertLockHeld(cs_main);
+
     std::string strError;
 
     // did we even ask for it? if that's the case we should have matching fulfilled request
@@ -1097,10 +1233,20 @@ void CGatewayMan::ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv)
 
         CGateway* prealGateway = NULL;
         std::vector<CGateway*> vpGatewaysToBan;
+
+        uint256 hash1 = gwv.GetSignatureHash1(blockHash);
         std::string strMessage1 = strprintf("%s%d%s", pnode->addr.ToString(false), gwv.nonce, blockHash.ToString());
+
         for (auto& gwpair : mapGateways) {
             if(CAddress(gwpair.second.addr, NODE_NETWORK) == pnode->addr) {
-                if(CMessageSigner::VerifyMessage(gwpair.second.pubKeyGateway, gwv.vchSig1, strMessage1, strError)) {
+                bool fFound = false;
+                if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+                    fFound = CHashSigner::VerifyHash(hash1, gwpair.second.pubKeyGateway, gwv.vchSig1, strError);
+                    // we don't care about gwv with signature in old format
+                } else {
+                    fFound = CMessageSigner::VerifyMessage(gwpair.second.pubKeyGateway, gwv.vchSig1, strMessage1, strError);
+                }
+                if (fFound) {
                     // found it!
                     prealGateway = &gwpair.second;
                     if(!gwpair.second.IsPoSeVerified()) {
@@ -1109,24 +1255,39 @@ void CGatewayMan::ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv)
                     netfulfilledman.AddFulfilledRequest(pnode->addr, strprintf("%s", NetMsgType::GWVERIFY)+"-done");
 
                     // we can only broadcast it if we are an activated gateway
-                    if(activeGateway.outpoint == COutPoint()) continue;
+                    if(activeGateway.outpoint.IsNull()) continue;
                     // update ...
                     gwv.addr = gwpair.second.addr;
-                    gwv.vin1 = gwpair.second.vin;
-                    gwv.vin2 = CTxIn(activeGateway.outpoint);
-                    std::string strMessage2 = strprintf("%s%d%s%s%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString(),
-                                            gwv.vin1.prevout.ToStringShort(), gwv.vin2.prevout.ToStringShort());
+                    gwv.gatewayOutpoint1 = gwpair.second.outpoint;
+                    gwv.gatewayOutpoint2 = activeGateway.outpoint;
                     // ... and sign it
-                    if(!CMessageSigner::SignMessage(strMessage2, gwv.vchSig2, activeGateway.keyGateway)) {
-                        LogPrintf("GatewayMan::ProcessVerifyReply -- SignMessage() failed\n");
-                        return;
-                    }
-
                     std::string strError;
 
-                    if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, gwv.vchSig2, strMessage2, strError)) {
-                        LogPrintf("GatewayMan::ProcessVerifyReply -- VerifyMessage() failed, error: %s\n", strError);
-                        return;
+                    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+                        uint256 hash2 = gwv.GetSignatureHash2(blockHash);
+
+                        if(!CHashSigner::SignHash(hash2, activeGateway.keyGateway, gwv.vchSig2)) {
+                            LogPrintf("GatewayMan::ProcessVerifyReply -- SignHash() failed\n");
+                            return;
+                        }
+
+                        if(!CHashSigner::VerifyHash(hash2, activeGateway.pubKeyGateway, gwv.vchSig2, strError)) {
+                            LogPrintf("GatewayMan::ProcessVerifyReply -- VerifyHash() failed, error: %s\n", strError);
+                            return;
+                        }
+                    } else {
+                        std::string strMessage2 = strprintf("%s%d%s%s%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString(),
+                                                gwv.gatewayOutpoint1.ToStringShort(), gwv.gatewayOutpoint2.ToStringShort());
+
+                        if(!CMessageSigner::SignMessage(strMessage2, gwv.vchSig2, activeGateway.keyGateway)) {
+                            LogPrintf("GatewayMan::ProcessVerifyReply -- SignMessage() failed\n");
+                            return;
+                        }
+
+                        if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, gwv.vchSig2, strMessage2, strError)) {
+                            LogPrintf("GatewayMan::ProcessVerifyReply -- VerifyMessage() failed, error: %s\n", strError);
+                            return;
+                        }
                     }
 
                     mWeAskedForVerification[pnode->addr] = gwv;
@@ -1147,12 +1308,12 @@ void CGatewayMan::ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv)
             return;
         }
         LogPrintf("CGatewayMan::ProcessVerifyReply -- verified real gateway %s for addr %s\n",
-                    prealGateway->vin.prevout.ToStringShort(), pnode->addr.ToString());
+                    prealGateway->outpoint.ToStringShort(), pnode->addr.ToString());
         // increase ban score for everyone else
-        BOOST_FOREACH(CGateway* pgw, vpGatewaysToBan) {
+        for (const auto& pgw : vpGatewaysToBan) {
             pgw->IncreasePoSeBanScore();
             LogPrint("gateway", "CGatewayMan::ProcessVerifyReply -- increased PoSe ban score for %s addr %s, new score %d\n",
-                        prealGateway->vin.prevout.ToStringShort(), pnode->addr.ToString(), pgw->nPoSeBanScore);
+                        prealGateway->outpoint.ToStringShort(), pnode->addr.ToString(), pgw->nPoSeBanScore);
         }
         if(!vpGatewaysToBan.empty())
             LogPrintf("CGatewayMan::ProcessVerifyReply -- PoSe score increased for %d fake gateways, addr %s\n",
@@ -1162,6 +1323,8 @@ void CGatewayMan::ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv)
 
 void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerification& gwv)
 {
+    AssertLockHeld(cs_main);
+
     std::string strError;
 
     if(mapSeenGatewayVerification.find(gwv.GetHash()) != mapSeenGatewayVerification.end()) {
@@ -1177,9 +1340,9 @@ void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerificatio
         return;
     }
 
-    if(gwv.vin1.prevout == gwv.vin2.prevout) {
-        LogPrint("gateway", "CGatewayMan::ProcessVerifyBroadcast -- ERROR: same vins %s, peer=%d\n",
-                    gwv.vin1.prevout.ToStringShort(), pnode->id);
+    if(gwv.gatewayOutpoint1 == gwv.gatewayOutpoint2) {
+        LogPrint("gateway", "CGatewayMan::ProcessVerifyBroadcast -- ERROR: same outpoints %s, peer=%d\n",
+                    gwv.gatewayOutpoint1.ToStringShort(), pnode->id);
         // that was NOT a good idea to cheat and verify itself,
         // ban the node we received such message from
         Misbehaving(pnode->id, 100);
@@ -1195,34 +1358,30 @@ void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerificatio
 
     int nRank;
 
-    if (!GetGatewayRank(gwv.vin2.prevout, nRank, gwv.nBlockHeight, MIN_POSE_PROTO_VERSION)) {
+    if (!GetGatewayRank(gwv.gatewayOutpoint2, nRank, gwv.nBlockHeight, MIN_POSE_PROTO_VERSION)) {
         LogPrint("gateway", "CGatewayMan::ProcessVerifyBroadcast -- Can't calculate rank for gateway %s\n",
-                    gwv.vin2.prevout.ToStringShort());
+                    gwv.gatewayOutpoint2.ToStringShort());
         return;
     }
 
     if(nRank > MAX_POSE_RANK) {
         LogPrint("gateway", "CGatewayMan::ProcessVerifyBroadcast -- Gateway %s is not in top %d, current rank %d, peer=%d\n",
-                    gwv.vin2.prevout.ToStringShort(), (int)MAX_POSE_RANK, nRank, pnode->id);
+                    gwv.gatewayOutpoint2.ToStringShort(), (int)MAX_POSE_RANK, nRank, pnode->id);
         return;
     }
 
     {
         LOCK(cs);
 
-        std::string strMessage1 = strprintf("%s%d%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString());
-        std::string strMessage2 = strprintf("%s%d%s%s%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString(),
-                                gwv.vin1.prevout.ToStringShort(), gwv.vin2.prevout.ToStringShort());
-
-        CGateway* pgw1 = Find(gwv.vin1.prevout);
+        CGateway* pgw1 = Find(gwv.gatewayOutpoint1);
         if(!pgw1) {
-            LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- can't find gateway1 %s\n", gwv.vin1.prevout.ToStringShort());
+            LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- can't find gateway1 %s\n", gwv.gatewayOutpoint1.ToStringShort());
             return;
         }
 
-        CGateway* pgw2 = Find(gwv.vin2.prevout);
+        CGateway* pgw2 = Find(gwv.gatewayOutpoint2);
         if(!pgw2) {
-            LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- can't find gateway2 %s\n", gwv.vin2.prevout.ToStringShort());
+            LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- can't find gateway2 %s\n", gwv.gatewayOutpoint2.ToStringShort());
             return;
         }
 
@@ -1231,6 +1390,23 @@ void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerificatio
             return;
         }
 
+        if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+            uint256 hash1 = gwv.GetSignatureHash1(blockHash);
+            uint256 hash2 = gwv.GetSignatureHash2(blockHash);
+
+            if(!CHashSigner::VerifyHash(hash1, pgw1->pubKeyGateway, gwv.vchSig1, strError)) {
+                LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- VerifyHash() failed, error: %s\n", strError);
+                return;
+            }
+
+            if(!CHashSigner::VerifyHash(hash2, pgw2->pubKeyGateway, gwv.vchSig2, strError)) {
+                LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- VerifyHash() failed, error: %s\n", strError);
+                return;
+            }
+        } else {
+            std::string strMessage1 = strprintf("%s%d%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString());
+            std::string strMessage2 = strprintf("%s%d%s%s%s", gwv.addr.ToString(false), gwv.nonce, blockHash.ToString(),
+                                    gwv.gatewayOutpoint1.ToStringShort(), gwv.gatewayOutpoint2.ToStringShort());
         if(!CMessageSigner::VerifyMessage(pgw1->pubKeyGateway, gwv.vchSig1, strMessage1, strError)) {
             LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- VerifyMessage() for gateway1 failed, error: %s\n", strError);
             return;
@@ -1239,6 +1415,7 @@ void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerificatio
         if(!CMessageSigner::VerifyMessage(pgw2->pubKeyGateway, gwv.vchSig2, strMessage2, strError)) {
             LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- VerifyMessage() for gateway2 failed, error: %s\n", strError);
             return;
+            }
         }
 
         if(!pgw1->IsPoSeVerified()) {
@@ -1247,12 +1424,12 @@ void CGatewayMan::ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerificatio
         gwv.Relay();
 
         LogPrintf("CGatewayMan::ProcessVerifyBroadcast -- verified gateway %s for addr %s\n",
-                    pgw1->vin.prevout.ToStringShort(), pgw1->addr.ToString());
+                    pgw1->outpoint.ToStringShort(), pgw1->addr.ToString());
 
         // increase ban score for everyone else with the same addr
         int nCount = 0;
         for (auto& gwpair : mapGateways) {
-            if(gwpair.second.addr != gwv.addr || gwpair.first == gwv.vin1.prevout) continue;
+            if(gwpair.second.addr != gwv.addr || gwpair.first == gwv.gatewayOutpoint1) continue;
             gwpair.second.IncreasePoSeBanScore();
             nCount++;
             LogPrint("gateway", "CGatewayMan::ProcessVerifyBroadcast -- increased PoSe ban score for %s addr %s, new score %d\n",
@@ -1276,28 +1453,6 @@ std::string CGatewayMan::ToString() const
     return info.str();
 }
 
-void CGatewayMan::UpdateGatewayList(CGatewayBroadcast gwb, CConnman& connman)
-{
-    LOCK2(cs_main, cs);
-    mapSeenGatewayPing.insert(std::make_pair(gwb.lastPing.GetHash(), gwb.lastPing));
-    mapSeenGatewayBroadcast.insert(std::make_pair(gwb.GetHash(), std::make_pair(GetTime(), gwb)));
-
-    LogPrintf("CGatewayMan::UpdateGatewayList -- gateway=%s  addr=%s\n", gwb.vin.prevout.ToStringShort(), gwb.addr.ToString());
-
-    CGateway* pgw = Find(gwb.vin.prevout);
-    if(pgw == NULL) {
-        if(Add(gwb)) {
-            gatewaySync.BumpAssetLastTime("CGatewayMan::UpdateGatewayList - new");
-        }
-    } else {
-        CGatewayBroadcast gwbOld = mapSeenGatewayBroadcast[CGatewayBroadcast(*pgw).GetHash()].second;
-        if(pgw->UpdateFromNewBroadcast(gwb, connman)) {
-            gatewaySync.BumpAssetLastTime("CGatewayMan::UpdateGatewayList - seen");
-            mapSeenGatewayBroadcast.erase(gwbOld.GetHash());
-        }
-    }
-}
-
 bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast gwb, int& nDos, CConnman& connman)
 {
     // Need to lock cs_main here to ensure consistent locking order because the SimpleCheck call below locks cs_main
@@ -1306,14 +1461,14 @@ bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast g
     {
         LOCK(cs);
         nDos = 0;
-        LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s\n", gwb.vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s\n", gwb.outpoint.ToStringShort());
 
         uint256 hash = gwb.GetHash();
         if(mapSeenGatewayBroadcast.count(hash) && !gwb.fRecovery) { //seen
-            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen\n", gwb.vin.prevout.ToStringShort());
+            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen\n", gwb.outpoint.ToStringShort());
             // less then 2 pings left before this GW goes into non-recoverable state, bump sync timeout
             if(GetTime() - mapSeenGatewayBroadcast[hash].first > GATEWAY_NEW_START_REQUIRED_SECONDS - GATEWAY_MIN_GWP_SECONDS * 2) {
-                LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen update\n", gwb.vin.prevout.ToStringShort());
+                LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen update\n", gwb.outpoint.ToStringShort());
                 mapSeenGatewayBroadcast[hash].first = GetTime();
                 gatewaySync.BumpAssetLastTime("CGatewayMan::CheckGwbAndUpdateGatewayList - seen");
             }
@@ -1332,7 +1487,7 @@ bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast g
                         LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gwb=%s seen request, addr=%s, better lastPing: %d min ago, projected gw state: %s\n", hash.ToString(), pfrom->addr.ToString(), (GetAdjustedTime() - gwb.lastPing.sigTime)/60, gwTemp.GetStateString());
                         if(gwTemp.IsValidStateForAutoStart(gwTemp.nActiveState)) {
                             // this node thinks it's a good one
-                            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen good\n", gwb.vin.prevout.ToStringShort());
+                            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s seen good\n", gwb.outpoint.ToStringShort());
                             mGwbRecoveryGoodReplies[hash].push_back(gwb);
                         }
                     }
@@ -1342,19 +1497,19 @@ bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast g
         }
         mapSeenGatewayBroadcast.insert(std::make_pair(hash, std::make_pair(GetTime(), gwb)));
 
-        LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s new\n", gwb.vin.prevout.ToStringShort());
+        LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- gateway=%s new\n", gwb.outpoint.ToStringShort());
 
         if(!gwb.SimpleCheck(nDos)) {
-            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- SimpleCheck() failed, gateway=%s\n", gwb.vin.prevout.ToStringShort());
+            LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- SimpleCheck() failed, gateway=%s\n", gwb.outpoint.ToStringShort());
             return false;
         }
 
         // search Gateway list
-        CGateway* pgw = Find(gwb.vin.prevout);
+        CGateway* pgw = Find(gwb.outpoint);
         if(pgw) {
             CGatewayBroadcast gwbOld = mapSeenGatewayBroadcast[CGatewayBroadcast(*pgw).GetHash()].second;
             if(!gwb.Update(pgw, nDos, connman)) {
-                LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- Update() failed, gateway=%s\n", gwb.vin.prevout.ToStringShort());
+                LogPrint("gateway", "CGatewayMan::CheckGwbAndUpdateGatewayList -- Update() failed, gateway=%s\n", gwb.outpoint.ToStringShort());
                 return false;
             }
             if(hash != gwbOld.GetHash()) {
@@ -1368,12 +1523,12 @@ bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast g
         Add(gwb);
         gatewaySync.BumpAssetLastTime("CGatewayMan::CheckGwbAndUpdateGatewayList - new");
         // if it matches our Gateway privkey...
-        if(fGateWay && gwb.pubKeyGateway == activeGateway.pubKeyGateway) {
+        if(fGatewayMode && gwb.pubKeyGateway == activeGateway.pubKeyGateway) {
             gwb.nPoSeBanScore = -GATEWAY_POSE_BAN_MAX_SCORE;
             if(gwb.nProtocolVersion == PROTOCOL_VERSION) {
                 // ... and PROTOCOL_VERSION, then we've been remotely activated ...
                 LogPrintf("CGatewayMan::CheckGwbAndUpdateGatewayList -- Got NEW Gateway entry: gateway=%s  sigTime=%lld  addr=%s\n",
-                            gwb.vin.prevout.ToStringShort(), gwb.sigTime, gwb.addr.ToString());
+                            gwb.outpoint.ToStringShort(), gwb.sigTime, gwb.addr.ToString());
                 activeGateway.ManageState(connman);
             } else {
                 // ... otherwise we need to reactivate our node, do not add it to the list and do not relay
@@ -1384,7 +1539,7 @@ bool CGatewayMan::CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast g
         }
         gwb.Relay(connman);
     } else {
-        LogPrintf("CGatewayMan::CheckGwbAndUpdateGatewayList -- Rejected Gateway entry: %s  addr=%s\n", gwb.vin.prevout.ToStringShort(), gwb.addr.ToString());
+        LogPrintf("CGatewayMan::CheckGwbAndUpdateGatewayList -- Rejected Gateway entry: %s  addr=%s\n", gwb.outpoint.ToStringShort(), gwb.addr.ToString());
         return false;
     }
 
@@ -1397,43 +1552,37 @@ void CGatewayMan::UpdateLastPaid(const CBlockIndex* pindex)
 
     if(fLiteMode || !gatewaySync.IsWinnersListSynced() || mapGateways.empty()) return;
 
-    static bool IsFirstRun = true;
-    // Do full scan on first run or if we are not a gateway
-    // (GWs should update this info on every block, so limited scan should be enough for them)
-    int nMaxBlocksToScanBack = (IsFirstRun || !fGateWay) ? gwpayments.GetStorageLimit() : LAST_PAID_SCAN_BLOCKS;
+    static int nLastRunBlockHeight = 0;
+    // Scan at least LAST_PAID_SCAN_BLOCKS but no more than gwpayments.GetStorageLimit()
+    int nMaxBlocksToScanBack = std::max(LAST_PAID_SCAN_BLOCKS, nCachedBlockHeight - nLastRunBlockHeight);
+    nMaxBlocksToScanBack = std::min(nMaxBlocksToScanBack, gwpayments.GetStorageLimit());
 
-    // LogPrint("gwpayments", "CGatewayMan::UpdateLastPaid -- nHeight=%d, nMaxBlocksToScanBack=%d, IsFirstRun=%s\n",
-    //                         nCachedBlockHeight, nMaxBlocksToScanBack, IsFirstRun ? "true" : "false");
+    LogPrint("gateway", "CGatewayMan::UpdateLastPaid -- nCachedBlockHeight=%d, nLastRunBlockHeight=%d, nMaxBlocksToScanBack=%d\n",
+                            nCachedBlockHeight, nLastRunBlockHeight, nMaxBlocksToScanBack);
 
     for (auto& gwpair: mapGateways) {
         gwpair.second.UpdateLastPaid(pindex, nMaxBlocksToScanBack);
     }
 
-    IsFirstRun = false;
+    nLastRunBlockHeight = nCachedBlockHeight;
 }
 
-void CGatewayMan::UpdateWatchdogVoteTime(const COutPoint& outpoint, uint64_t nVoteTime)
+void CGatewayMan::UpdateLastSentinelPingTime()
 {
     LOCK(cs);
-    CGateway* pgw = Find(outpoint);
-    if(!pgw) {
-        return;
-    }
-    pgw->UpdateWatchdogVoteTime(nVoteTime);
-    nLastWatchdogVoteTime = GetTime();
+    nLastSentinelPingTime = GetTime();
 }
 
-bool CGatewayMan::IsWatchdogActive()
+bool CGatewayMan::IsSentinelPingActive()
 {
     LOCK(cs);
     // Check if any gateways have voted recently, otherwise return false
-    return (GetTime() - nLastWatchdogVoteTime) <= GATEWAY_WATCHDOG_MAX_SECONDS;
+    return (GetTime() - nLastSentinelPingTime) <= GATEWAY_SENTINEL_PING_MAX_SECONDS;
 }
-
 
 void CGatewayMan::CheckGateway(const CPubKey& pubKeyGateway, bool fForce)
 {
-    LOCK(cs);
+    LOCK2(cs_main, cs);
     for (auto& gwpair : mapGateways) {
         if (gwpair.second.pubKeyGateway == pubKeyGateway) {
             gwpair.second.Check(fForce);
@@ -1457,7 +1606,9 @@ void CGatewayMan::SetGatewayLastPing(const COutPoint& outpoint, const CGatewayPi
         return;
     }
     pgw->lastPing = gwp;
-    
+    if(gwp.fSentinelIsCurrent) {
+        UpdateLastSentinelPingTime();
+    }
     mapSeenGatewayPing.insert(std::make_pair(gwp.GetHash(), gwp));
 
     CGatewayBroadcast gwb(*pgw);
@@ -1474,9 +1625,49 @@ void CGatewayMan::UpdatedBlockTip(const CBlockIndex *pindex)
 
     CheckSameAddr();
 
-    if(fGateWay) {
+    if(fGatewayMode) {
         // normal wallet does not need to update this every block, doing update on rpc call should be enough
         UpdateLastPaid(pindex);
     }
 }
 
+void CGatewayMan::WarnGatewayDaemonUpdates()
+{
+    LOCK(cs);
+
+    static bool fWarned = false;
+
+    if (fWarned || !size() || !gatewaySync.IsGatewayListSynced())
+        return;
+
+    int nUpdatedGateways{0};
+
+    for (const auto& gwpair : mapGateways) {
+        if (gwpair.second.lastPing.nDaemonVersion > CLIENT_VERSION) {
+            ++nUpdatedGateways;
+        }
+    }
+
+    // Warn only when at least half of known gateways already updated
+    if (nUpdatedGateways < size() / 2)
+        return;
+
+    std::string strWarning;
+    if (nUpdatedGateways != size()) {
+        strWarning = strprintf(_("Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too."),
+                    nUpdatedGateways, size());
+    } else {
+        // someone was postponing this update for way too long probably
+        strWarning = strprintf(_("Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it's very likely that you missed a major/critical update."),
+                    size());
+    }
+
+    // notify GetWarnings(), called by Qt and the JSON-RPC code to warn the user
+    SetMiscWarning(strWarning);
+    // trigger GUI update
+    uiInterface.NotifyAlertChanged(SerializeHash(strWarning), CT_NEW);
+    // trigger cmd-line notification
+    CAlert::Notify(strWarning);
+
+    fWarned = true;
+}

@@ -9,8 +9,6 @@
 #include "gateway.h"
 #include "sync.h"
 
-using namespace std;
-
 class CGatewayMan;
 class CConnman;
 
@@ -19,9 +17,9 @@ extern CGatewayMan gwnodeman;
 class CGatewayMan
 {
 public:
-    typedef std::pair<arith_uint256, CGateway*> score_pair_t;
+    typedef std::pair<arith_uint256,const CGateway*> score_pair_t;
     typedef std::vector<score_pair_t> score_pair_vec_t;
-    typedef std::pair<int, CGateway> rank_pair_t;
+    typedef std::pair<int,const CGateway> rank_pair_t;
     typedef std::vector<rank_pair_t> rank_pair_vec_t;
 
 private:
@@ -29,7 +27,7 @@ private:
 
     static const int GWEG_UPDATE_SECONDS        = 3 * 60 * 60;
 
-    static const int LAST_PAID_SCAN_BLOCKS      = 100;
+    static const int LAST_PAID_SCAN_BLOCKS;
 
     static const int MIN_POSE_PROTO_VERSION     = 70203;
     static const int MAX_POSE_CONNECTIONS       = 10;
@@ -52,27 +50,35 @@ private:
     // map to hold all GWs
     std::map<COutPoint, CGateway> mapGateways;
     // who's asked for the Gateway list and the last time
-    std::map<CNetAddr, int64_t> mAskedUsForGatewayList;
+    std::map<CService, int64_t> mAskedUsForGatewayList;
     // who we asked for the Gateway list and the last time
-    std::map<CNetAddr, int64_t> mWeAskedForGatewayList;
+    std::map<CService, int64_t> mWeAskedForGatewayList;
     // which Gateways we've asked for
-    std::map<COutPoint, std::map<CNetAddr, int64_t> > mWeAskedForGatewayListEntry;
+    std::map<COutPoint, std::map<CService, int64_t> > mWeAskedForGatewayListEntry;
     // who we asked for the gateway verification
-    std::map<CNetAddr, CGatewayVerification> mWeAskedForVerification;
+    std::map<CService, CGatewayVerification> mWeAskedForVerification;
 
     // these maps are used for gateway recovery from GATEWAY_NEW_START_REQUIRED state
-    std::map<uint256, std::pair< int64_t, std::set<CNetAddr> > > mGwbRecoveryRequests;
+    std::map<uint256, std::pair< int64_t, std::set<CService> > > mGwbRecoveryRequests;
     std::map<uint256, std::vector<CGatewayBroadcast> > mGwbRecoveryGoodReplies;
     std::list< std::pair<CService, uint256> > listScheduledGwbRequestConnections;
+    std::map<CService, std::pair<int64_t, std::set<uint256> > > mapPendingGWB;
+    std::map<CService, std::pair<int64_t, CGatewayVerification> > mapPendingGWV;
+    CCriticalSection cs_mapPendingGWV;
 
 
-    int64_t nLastWatchdogVoteTime;
+    int64_t nLastSentinelPingTime;
 
     friend class CGatewaySync;
     /// Find an entry
     CGateway* Find(const COutPoint& outpoint);
 
     bool GetGatewayScores(const uint256& nBlockHash, score_pair_vec_t& vecGatewayScoresRet, int nMinProtocol = 0);
+
+    void SyncSingle(CNode* pnode, const COutPoint& outpoint, CConnman& connman);
+    void SyncAll(CNode* pnode, CConnman& connman);
+
+    void PushGwegInvs(CNode* pnode, const CGateway& gw);
 
 public:
     // Keep track of all broadcasts I've seen
@@ -85,7 +91,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         LOCK(cs);
         std::string strVersion;
         if(ser_action.ForRead()) {
@@ -102,8 +108,7 @@ public:
         READWRITE(mWeAskedForGatewayListEntry);
         READWRITE(mGwbRecoveryRequests);
         READWRITE(mGwbRecoveryGoodReplies);
-        READWRITE(nLastWatchdogVoteTime);
-
+        READWRITE(nLastSentinelPingTime);
 
         READWRITE(mapSeenGatewayBroadcast);
         READWRITE(mapSeenGatewayPing);
@@ -169,12 +174,14 @@ public:
 
     void ProcessGatewayConnections(CConnman& connman);
     std::pair<CService, std::set<uint256> > PopScheduledGwbRequestConnection();
+    void ProcessPendingGwbRequests(CConnman& connman);
 
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CConnman& connman);
+    void ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman);
 
     void DoFullVerificationStep(CConnman& connman);
     void CheckSameAddr();
-    bool SendVerifyRequest(const CAddress& addr, const std::vector<CGateway*>& vSortedByAddr, CConnman& connman);
+    bool SendVerifyRequest(const CAddress& addr, const std::vector<const CGateway*>& vSortedByAddr, CConnman& connman);
+    void ProcessPendingGwvRequests(CConnman& connman);
     void SendVerifyReply(CNode* pnode, CGatewayVerification& gwv, CConnman& connman);
     void ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv);
     void ProcessVerifyBroadcast(CNode* pnode, const CGatewayVerification& gwv);
@@ -184,17 +191,15 @@ public:
 
     std::string ToString() const;
 
-    /// Update gateway list and maps using provided CGatewayBroadcast
-    void UpdateGatewayList(CGatewayBroadcast gwb, CConnman& connman);
-    /// Perform complete check and only then update list and maps
+    /// Perform complete check and only then update gateway list and maps using provided CGatewayBroadcast
     bool CheckGwbAndUpdateGatewayList(CNode* pfrom, CGatewayBroadcast gwb, int& nDos, CConnman& connman);
     bool IsGwbRecoveryRequested(const uint256& hash) { return mGwbRecoveryRequests.count(hash); }
 
     void UpdateLastPaid(const CBlockIndex* pindex);
 
 
-    bool IsWatchdogActive();
-    void UpdateWatchdogVoteTime(const COutPoint& outpoint, uint64_t nVoteTime = 0);
+    bool IsSentinelPingActive();
+    void UpdateLastSentinelPingTime();
 
     void CheckGateway(const CPubKey& pubKeyGateway, bool fForce);
 
@@ -202,6 +207,8 @@ public:
     void SetGatewayLastPing(const COutPoint& outpoint, const CGatewayPing& gwp);
 
     void UpdatedBlockTip(const CBlockIndex *pindex);
+
+    void WarnGatewayDaemonUpdates();
 
 };
 

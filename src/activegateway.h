@@ -41,6 +41,10 @@ private:
     /// Ping Gateway
     bool SendGatewayPing(CConnman& connman);
 
+    //  sentinel ping data
+    int64_t nSentinelPingTime;
+    uint32_t nSentinelVersion;
+
 public:
     // Keys for the active Gateway
     CPubKey pubKeyGateway;
@@ -70,6 +74,8 @@ public:
     std::string GetStateString() const;
     std::string GetStatus() const;
     std::string GetTypeString() const;
+
+    bool UpdateSentinelPing(int version);
 
 private:
     void ManageStateInitial(CConnman& connman);

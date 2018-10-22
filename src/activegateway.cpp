@@ -7,8 +7,8 @@
 #include "gateway.h"
 #include "gateway-sync.h"
 #include "gatewayman.h"
+#include "netbase.h"
 #include "protocol.h"
-#include "util.h"
 
 // Keep track of the active Gateway
 CActiveGateway activeGateway;
@@ -16,7 +16,7 @@ CActiveGateway activeGateway;
 void CActiveGateway::ManageState(CConnman& connman)
 {
     LogPrint("gateway", "CActiveGateway::ManageState -- Start\n");
-    if(!fGateWay) {
+    if(!fGatewayMode) {
         LogPrint("gateway", "CActiveGateway::ManageState -- Not a gateway, returning\n");
         return;
     }
@@ -97,6 +97,9 @@ bool CActiveGateway::SendGatewayPing(CConnman& connman)
     }
 
     CGatewayPing gwp(outpoint);    
+    gwp.nSentinelVersion = nSentinelVersion;
+    gwp.fSentinelIsCurrent =
+            (abs(GetAdjustedTime() - nSentinelPingTime) < GATEWAY_SENTINEL_PING_MAX_SECONDS);
     if(!gwp.Sign(keyGateway, pubKeyGateway)) {
         LogPrintf("CActiveGateway::SendGatewayPing -- ERROR: Couldn't sign Gateway Ping\n");
         return false;
@@ -112,6 +115,14 @@ bool CActiveGateway::SendGatewayPing(CConnman& connman)
 
     LogPrintf("CActiveGateway::SendGatewayPing -- Relaying ping, collateral=%s\n", outpoint.ToStringShort());
     gwp.Relay(connman);
+
+    return true;
+}
+
+bool CActiveGateway::UpdateSentinelPing(int version)
+{
+    nSentinelVersion = version;
+    nSentinelPingTime = GetAdjustedTime();
 
     return true;
 }
@@ -158,24 +169,28 @@ void CActiveGateway::ManageStateInitial(CConnman& connman)
 
 	if(!fLocalGateWay)
     {
-	    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-	    if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
-	        if(service.GetPort() != mainnetDefaultPort) {
-	            nState = ACTIVE_GATEWAY_NOT_CAPABLE;
-	            strNotCapableReason = strprintf("Invalid port: %u - only %d is supported on mainnet.", service.GetPort(), mainnetDefaultPort);
-	            LogPrintf("CActiveGateway::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
-	            return;
-	        }
-	    } else if(service.GetPort() == mainnetDefaultPort) {
-	        nState = ACTIVE_GATEWAY_NOT_CAPABLE;
-	        strNotCapableReason = strprintf("Invalid port: %u - %d is only supported on mainnet.", service.GetPort(), mainnetDefaultPort);
-	        LogPrintf("CActiveGateway::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
-	        return;
-	    }
+    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        if(service.GetPort() != mainnetDefaultPort) {
+            nState = ACTIVE_GATEWAY_NOT_CAPABLE;
+            strNotCapableReason = strprintf("Invalid port: %u - only %d is supported on mainnet.", service.GetPort(), mainnetDefaultPort);
+            LogPrintf("CActiveGateway::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
+            return;
+        }
+    } else if(service.GetPort() == mainnetDefaultPort) {
+        nState = ACTIVE_GATEWAY_NOT_CAPABLE;
+        strNotCapableReason = strprintf("Invalid port: %u - %d is only supported on mainnet.", service.GetPort(), mainnetDefaultPort);
+        LogPrintf("CActiveGateway::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
+        return;
+    }
 	}
+    // Check socket connectivity
     LogPrintf("CActiveGateway::ManageStateInitial -- Checking inbound connection to '%s'\n", service.ToString());
+    SOCKET hSocket;
+    bool fConnected = ConnectSocket(service, hSocket, nConnectTimeout) && IsSelectableSocket(hSocket);
+    CloseSocket(hSocket);
 
-    if(!connman.ConnectNode(CAddress(service, NODE_NETWORK), NULL, true)) {
+    if (!fConnected) {
         nState = ACTIVE_GATEWAY_NOT_CAPABLE;
         strNotCapableReason = "Could not connect to " + service.ToString();
         LogPrintf("CActiveGateway::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
@@ -216,7 +231,7 @@ void CActiveGateway::ManageStateRemote()
         }
         if(nState != ACTIVE_GATEWAY_STARTED) {
             LogPrintf("CActiveGateway::ManageStateRemote -- STARTED!\n");
-            outpoint = infoGw.vin.prevout;
+            outpoint = infoGw.outpoint;
             service = infoGw.addr;
             fPingerEnabled = true;
             nState = ACTIVE_GATEWAY_STARTED;
