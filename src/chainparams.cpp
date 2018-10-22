@@ -12,14 +12,12 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
+
 #include <assert.h>
 
 #include <boost/assign/list_of.hpp>
 
 #include "chainparamsseeds.h"
-//#/ start hcdo add include for MineGenesis 180420
-#include "arith_uint256.h"
-//@/ end hcdo add include for MineGenesis
 
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
@@ -36,7 +34,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     genesis.nBits    = nBits;
     genesis.nNonce   = nNonce;
     genesis.nVersion = nVersion;
-    genesis.vtx.push_back(txNew);
+    genesis.vtx.push_back(MakeTransactionRef(std::move(txNew)));
     genesis.hashPrevBlock.SetNull();
     genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
     return genesis;
@@ -80,11 +78,9 @@ public:
         consensus.nGatewayPaymentsStartBlock = 100000; // not true, but it's ok as long as it's less then nGatewayPaymentsIncreaseBlock
         consensus.nGatewayPaymentsIncreaseBlock = 158000; // actual historical value
         consensus.nGatewayPaymentsIncreasePeriod = 576*30; // 17280 - actual historical value
+        consensus.nInstantSendConfirmationsRequired = 6;
         consensus.nInstantSendKeepLock = 24;
         consensus.nGatewayMinimumConfirmations = 15;
-        consensus.nMajorityEnforceBlockUpgrade = 750;
-        consensus.nMajorityRejectBlockOutdated = 950;
-        consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x000000005bf291276cd33777ea78dde7b5303cea5aba4af0345469fc5f9684f5");
 		consensus.BIP65Height = 1; 
@@ -110,6 +106,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
 
 
+        // Deployment of BIP147
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].bit = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 1524477600; // Apr 23th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1556013600; // Apr 23th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nWindowSize = 4032;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 3226; // 80% of 4032
 	 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -130,8 +132,6 @@ public:
 
         vAlertPubKey = ParseHex("046469bb798dd1976883e84ded53b492af512e201102bc0e7a1ae5198df03df9919f8cdff2af92ec2a9fb3779e86e92df0c5e53e4b191cc768d0745b0442c77ac0");
         nDefaultPort = 16099;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
-        nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1533447343, 8362638, 0x1e0ffff0, 1, 50 * COIN);
@@ -157,7 +157,7 @@ public:
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,50);
         // Soom script addresses start with '7'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
-        // Soom private keys start with '7' or 'S'
+        // Soom private keys start with '7' or 'M'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,170);
 //@/ end jhhong modify prefix
         // Soom BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
@@ -180,21 +180,23 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fTestnetToBeDeprecatedFieldRPC = false;
+        fAllowMultipleAddressesFromGroup = false;
+        fAllowMultiplePorts = false;
 
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
-        strSporkPubKey = "04a3d66fd1d48e1857d7fa2c1c1af0a1310c05f10efbd33b7e4afb44496c7a6a8473771f377e85c1dadf12c74bec9ff094617bd4f737b8b4d9764fc002caca6fd8";
 		strFoundationAddress = "M8iNkrKZ1deRmzHc6wrqyRKhamEsKpQgcd";
-
+        strSporkAddress = "MJWpvWvQpVs24HE8vd8BntvFwYpBMReU2J";
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (  2000, uint256S("0x000000000002cc28d7e340b9e6253d23dbf7fa811817833f1242987797248469"))
             (  4000, uint256S("0x000000000000de97cda98fc8329329c2c5da6f496aaad45b841c8f17355f9884"))
-            (  8000, uint256S("0x0000000000000dc94a4a8917eba2865d3c52961e2fc0e94f56c98f70fde1b2f0")),
-            1533447343, // * UNIX timestamp of last checkpoint block
-            0,    // * total number of transactions between genesis and last checkpoint
+            (  8000, uint256S("0x0000000000000dc94a4a8917eba2865d3c52961e2fc0e94f56c98f70fde1b2f0"))
+        };
+        chainTxData = ChainTxData{
+            1533943914, // * UNIX timestamp of last checkpoint block
+            0,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0        // * estimated number of transactions per day after checkpoint
+            0           // * estimated number of transactions per second after that timestamp
         };
     }
 };
@@ -211,11 +213,9 @@ public:
         consensus.nGatewayPaymentsStartBlock = 4010; // not true, but it's ok as long as it's less then nGatewayPaymentsIncreaseBlock
         consensus.nGatewayPaymentsIncreaseBlock = 4030;
         consensus.nGatewayPaymentsIncreasePeriod = 10;
+        consensus.nInstantSendConfirmationsRequired = 2;
         consensus.nInstantSendKeepLock = 6;
         consensus.nGatewayMinimumConfirmations = 1;
-        consensus.nMajorityEnforceBlockUpgrade = 51;
-        consensus.nMajorityRejectBlockOutdated = 75;
-        consensus.nMajorityWindow = 100;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x000004ca73d9b8b2a7e7aa9b5799fb788550f2a1fa07cf1c470926af15c7b0ba");
 		consensus.BIP65Height = 1; 
@@ -240,7 +240,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1456790400; // March 1st, 2016
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
 
-
+        // Deployment of BIP147
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].bit = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 1517792400; // Feb 5th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1549328400; // Feb 5th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nWindowSize = 100;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 50; // 50% of 100
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00"); 
@@ -254,8 +259,6 @@ public:
         pchMessageStart[3] = 0xcf;
         vAlertPubKey = ParseHex("04517d8a699cb43d3938d7b24faaff7cda448ca4ea267723ba614784de661949bf632d6304316b244646dea079735b9a6fc4af804efb4752075b9fe2245e14e412");
         nDefaultPort = 16999;
-        nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
-        nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1533447343, 4430630, 0x1e0ffff0, 1, 50 * COIN);
@@ -263,6 +266,13 @@ public:
 		
         assert(consensus.hashGenesisBlock == uint256S("0x0000059f3300f9caa0d4c8697abf1281c25099d9bc0fc1a8e996c5b714a49c49"));
         assert(genesis.hashMerkleRoot == uint256S("0x47eec0209382963a4f867534b242cd795688b38471f3b85236de04f4e77d19f4"));
+
+//#/ start jhhong add dns seed in test-net 180803
+        vFixedSeeds.clear();
+        vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("soompay.org",  "test01.soompay.org"));
+        vSeeds.push_back(CDNSSeedData("soompay.org", "test02.soompay.org"));
+//@/ end jhhong add dns seed in test-net
 
         // Testnet Soom addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
@@ -277,27 +287,24 @@ public:
 
         // Testnet Soom BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
-//#/ start jhhong add dns seed in test-net 180803
-		//vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
-        vFixedSeeds.clear();
-        //vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("soompay.org",  "test01.soompay.org"));
-        vSeeds.push_back(CDNSSeedData("soompay.org", "test02.soompay.org"));
-//@/ end jhhong add dns seed in test-net
 
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
-        fTestnetToBeDeprecatedFieldRPC = true;
+        fAllowMultipleAddressesFromGroup = false;
+        fAllowMultiplePorts = false;
 
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
-        strSporkPubKey = "0485bfd33b09d2b7e416216d82554c7872cc269559af49be1ae22fc2f31dbe19d6094066c8f519cc9f73abf4f1bd4d0eec09e83252696c4f5492468e4a5ce9df23";
-		strFoundationAddress = "yQJVxpZiMRe5GAj6f9mtnxoPhifiHgwXLm";
 
+		strFoundationAddress = "yQJVxpZiMRe5GAj6f9mtnxoPhifiHgwXLm";
+        strSporkAddress = "yTPWxZAH9erjunaSSwJxR7CHdaar7bRRPV";        
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (      0, uint256S("0x0000059f3300f9caa0d4c8697abf1281c25099d9bc0fc1a8e996c5b714a49c49")),
+            (      0, uint256S("0x0000059f3300f9caa0d4c8697abf1281c25099d9bc0fc1a8e996c5b714a49c49"))
+        };
+
+        chainTxData = ChainTxData{
             1533447343, // * UNIX timestamp of last checkpoint block
             0,       // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -321,16 +328,13 @@ public:
         consensus.nGatewayPaymentsIncreasePeriod = 10;
         consensus.nInstantSendKeepLock = 6;
         consensus.nGatewayMinimumConfirmations = 1;
-        consensus.nMajorityEnforceBlockUpgrade = 750;
-        consensus.nMajorityRejectBlockOutdated = 950;
-        consensus.nMajorityWindow = 1000;
-        consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
+        consensus.BIP34Height = 100000000; // BIP34 has not activated on regtest (far in the future so block v1 are not rejected in tests)
         consensus.BIP34Hash = uint256();
 		consensus.BIP65Height = 1; 
 		consensus.BIP66Height = 1; 
-		consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+		consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Soom: 1 day
-        consensus.nPowTargetSpacing = 60; // Soom: 2.5 minutes
+        consensus.nPowTargetSpacing = 60; // Soom: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nPowKGWHeight = 100; // same as mainnet
@@ -345,6 +349,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].bit = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 999999999999ULL;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -356,8 +363,6 @@ public:
         pchMessageStart[1] = 0xd1;
         pchMessageStart[2] = 0xc7;
         pchMessageStart[3] = 0xec;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
-        nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
         nDefaultPort = 16994;
         nPruneAfterHeight = 1000;
 
@@ -367,21 +372,28 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x2851bcc4e828d21ad4291244d5154227a9b6f9f179a5a0e076cc6d6817cb9ed9"));
         assert(genesis.hashMerkleRoot == uint256S("0x47eec0209382963a4f867534b242cd795688b38471f3b85236de04f4e77d19f4"));
 
-        vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
-        vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
+        vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
+        vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
         fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
-        fTestnetToBeDeprecatedFieldRPC = false;
-		strFoundationAddress = "yj17EQ3CcimHaE6ffNpm1unkeidbZqgVzK";
+        fAllowMultipleAddressesFromGroup = true;
+        fAllowMultiplePorts = true;
 
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
+        strFoundationAddress = "yj17EQ3CcimHaE6ffNpm1unkeidbZqgVzK";
+        // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
+        strSporkAddress = "yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW";
+
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0x2851bcc4e828d21ad4291244d5154227a9b6f9f179a5a0e076cc6d6817cb9ed9")),
+            ( 0, uint256S("0x2851bcc4e828d21ad4291244d5154227a9b6f9f179a5a0e076cc6d6817cb9ed9"))
+        };
+
+        chainTxData = ChainTxData{
             0,
             0,
             0
@@ -400,6 +412,12 @@ public:
         // Regtest Soom BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
    }
+
+    void UpdateBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
+    {
+        consensus.vDeployments[d].nStartTime = nStartTime;
+        consensus.vDeployments[d].nTimeout = nTimeout;
+    }
 };
 static CRegTestParams regTestParams;
 
@@ -426,4 +444,9 @@ void SelectParams(const std::string& network)
 {
     SelectBaseParams(network);
     pCurrentParams = &Params(network);
+}
+
+void UpdateRegtestBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
+{
+    regTestParams.UpdateBIP9Parameters(d, nStartTime, nTimeout);
 }
