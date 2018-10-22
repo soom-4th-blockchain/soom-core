@@ -11,6 +11,7 @@
 #include "gateway-sync.h"
 #include "gatewayman.h"
 #include "netfulfilledman.h"
+#include "netmessagemaker.h"
 #include "spork.h"
 #include "ui_interface.h"
 #include "util.h"
@@ -35,7 +36,7 @@ void CGatewaySync::Reset()
     nTimeLastFailure = 0;
 }
 
-void CGatewaySync::BumpAssetLastTime(std::string strFuncName)
+void CGatewaySync::BumpAssetLastTime(const std::string& strFuncName)
 {
     if(IsSynced() || IsFailed()) return;
     nTimeLastBumped = GetTime();
@@ -46,12 +47,12 @@ std::string CGatewaySync::GetAssetName()
 {
     switch(nRequestedGatewayAssets)
     {
-        case(GATEWAY_SYNC_INITIAL):      return "GATEWAY_SYNC_INITIAL";
-        case(GATEWAY_SYNC_WAITING):      return "GATEWAY_SYNC_WAITING";
-        case(GATEWAY_SYNC_LIST):         return "GATEWAY_SYNC_LIST";
-        case(GATEWAY_SYNC_GWW):          return "GATEWAY_SYNC_GWW";
-        case(GATEWAY_SYNC_FAILED):       return "GATEWAY_SYNC_FAILED";
-        case GATEWAY_SYNC_FINISHED:      return "GATEWAY_SYNC_FINISHED";
+        case(GATEWAY_SYNC_INITIAL):         return "GATEWAY_SYNC_INITIAL";
+        case(GATEWAY_SYNC_WAITING):         return "GATEWAY_SYNC_WAITING";
+        case(GATEWAY_SYNC_LIST):            return "GATEWAY_SYNC_LIST";
+        case(GATEWAY_SYNC_GWW):             return "GATEWAY_SYNC_GWW";
+        case(GATEWAY_SYNC_FAILED):          return "GATEWAY_SYNC_FAILED";
+        case GATEWAY_SYNC_FINISHED:         return "GATEWAY_SYNC_FINISHED";
         default:                            return "UNKNOWN";
     }
 }
@@ -64,12 +65,10 @@ void CGatewaySync::SwitchToNextAsset(CConnman& connman)
             throw std::runtime_error("Can't switch to next asset from failed, should use Reset() first!");
             break;
         case(GATEWAY_SYNC_INITIAL):
-            ClearFulfilledRequests(connman);
             nRequestedGatewayAssets = GATEWAY_SYNC_WAITING;
             LogPrintf("CGatewaySync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
             break;
         case(GATEWAY_SYNC_WAITING):
-            ClearFulfilledRequests(connman);
             LogPrintf("CGatewaySync::SwitchToNextAsset -- Completed %s in %llds\n", GetAssetName(), GetTime() - nTimeAssetSyncStarted);
             nRequestedGatewayAssets = GATEWAY_SYNC_LIST;
             LogPrintf("CGatewaySync::SwitchToNextAsset -- Starting %s\n", GetAssetName());
@@ -85,10 +84,6 @@ void CGatewaySync::SwitchToNextAsset(CConnman& connman)
             uiInterface.NotifyAdditionalDataSyncProgressChanged(1);
             //try to activate our gateway if possible
             activeGateway.ManageState(connman);
-
-            // TODO: Find out whether we can just use LOCK instead of:
-            // TRY_LOCK(cs_vNodes, lockRecv);
-            // if(lockRecv) { ... }
 
             connman.ForEachNode(CConnman::AllNodes, [](CNode* pnode) {
                 netfulfilledman.AddFulfilledRequest(pnode->addr, "full-sync");
@@ -115,7 +110,7 @@ std::string CGatewaySync::GetSyncStatus()
     }
 }
 
-void CGatewaySync::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
+void CGatewaySync::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv)
 {
     if (strCommand == NetMsgType::SYNCSTATUSCOUNT) { //Sync status count
 
@@ -130,20 +125,6 @@ void CGatewaySync::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataSt
     }
 }
 
-void CGatewaySync::ClearFulfilledRequests(CConnman& connman)
-{
-    // TODO: Find out whether we can just use LOCK instead of:
-    // TRY_LOCK(cs_vNodes, lockRecv);
-    // if(!lockRecv) return;
-
-    connman.ForEachNode(CConnman::AllNodes, [](CNode* pnode) {
-        netfulfilledman.RemoveFulfilledRequest(pnode->addr, "spork-sync");
-        netfulfilledman.RemoveFulfilledRequest(pnode->addr, "gateway-list-sync");
-        netfulfilledman.RemoveFulfilledRequest(pnode->addr, "gateway-payment-sync");
-        netfulfilledman.RemoveFulfilledRequest(pnode->addr, "full-sync");
-    });
-}
-
 void CGatewaySync::ProcessTick(CConnman& connman)
 {
     static int nTick = 0;
@@ -152,7 +133,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
     // reset the sync process if the last call to this function was more than 60 minutes ago (client was in sleep mode)
     static int64_t nTimeLastProcess = GetTime();
     if(GetTime() - nTimeLastProcess > 60*60) {
-        LogPrintf("CGatewaySync::HasSyncFailures -- WARNING: no actions for too long, restarting sync...\n");
+        LogPrintf("CGatewaySync::ProcessTick -- WARNING: no actions for too long, restarting sync...\n");
         Reset();
         SwitchToNextAsset(connman);
         nTimeLastProcess = GetTime();
@@ -163,7 +144,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
     // reset sync status in case of any other sync failure
     if(IsFailed()) {
         if(nTimeLastFailure + (1*60) < GetTime()) { // 1 minute cooldown after failed sync
-            LogPrintf("CGatewaySync::HasSyncFailures -- WARNING: failed to sync, trying again...\n");
+            LogPrintf("CGatewaySync::ProcessTick -- WARNING: failed to sync, trying again...\n");
             Reset();
             SwitchToNextAsset(connman);
         }
@@ -172,7 +153,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
 
     // gradually request the rest of the votes after sync finished
     if(IsSynced()) {	
-	    LogPrintf("CGatewaySync::ProcessTick -- IsSynced true" );
+	    // LogPrintf("CGatewaySync::ProcessTick -- IsSynced true" );
         return;
     }
 
@@ -181,26 +162,32 @@ void CGatewaySync::ProcessTick(CConnman& connman)
     LogPrintf("CGatewaySync::ProcessTick -- nTick %d nRequestedGatewayAssets %d nRequestedGatewayAttempt %d nSyncProgress %f\n", nTick, nRequestedGatewayAssets, nRequestedGatewayAttempt, nSyncProgress);
     uiInterface.NotifyAdditionalDataSyncProgressChanged(nSyncProgress);
 
-    std::vector<CNode*> vNodesCopy = connman.CopyNodeVector();
+    std::vector<CNode*> vNodesCopy = connman.CopyNodeVector(CConnman::FullyConnectedOnly);
 
-    BOOST_FOREACH(CNode* pnode, vNodesCopy)
+    for (auto& pnode : vNodesCopy)
     {
+        CNetMsgMaker msgMaker(pnode->GetSendVersion());
+
         // Don't try to sync any data from outbound "gateway" connections -
         // they are temporary and should be considered unreliable for a sync process.
         // Inbound connection this early is most likely a "gateway" connection
         // initiated from another node, so skip it too.
-        if(pnode->fGateway || (fGateWay && pnode->fInbound)) continue;
+        if(pnode->fGateway || (fGatewayMode && pnode->fInbound)) continue;
 
         // QUICK MODE (REGTEST ONLY!)
         if(Params().NetworkIDString() == CBaseChainParams::REGTEST)
         {
             if(nRequestedGatewayAttempt <= 2) {
-                connman.PushMessageWithVersion(pnode, INIT_PROTO_VERSION, NetMsgType::GETSPORKS); //get current network sporks
+                connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETSPORKS)); //get current network sporks
             } else if(nRequestedGatewayAttempt < 4) {
                 gwnodeman.GwegUpdate(pnode, connman);
             } else if(nRequestedGatewayAttempt < 6) {
-                int nGwCount = gwnodeman.CountGateways();
-                connman.PushMessage(pnode, NetMsgType::GATEWAYPAYMENTSYNC, nGwCount); //sync payment votes
+                //sync payment votes
+                if(pnode->nVersion == 70208) {
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC, gwpayments.GetStorageLimit())); //sync payment votes
+                } else {
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC)); //sync payment votes
+                }
             } else {
                 nRequestedGatewayAssets = GATEWAY_SYNC_FINISHED;
             }
@@ -225,7 +212,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
                 // always get sporks first, only request once from each peer
                 netfulfilledman.AddFulfilledRequest(pnode->addr, "spork-sync");
                 // get current network sporks
-                connman.PushMessageWithVersion(pnode, INIT_PROTO_VERSION, NetMsgType::GETSPORKS);
+                connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETSPORKS));
                 LogPrintf("CGatewaySync::ProcessTick -- nTick %d nRequestedGatewayAssets %d -- requesting sporks from peer %d\n", nTick, nRequestedGatewayAssets, pnode->id);
             }
 
@@ -260,6 +247,12 @@ void CGatewaySync::ProcessTick(CConnman& connman)
                         return;
                     }
                     SwitchToNextAsset(connman);
+                    connman.ReleaseNodeVector(vNodesCopy);
+                    return;
+                }
+
+                // request from three peers max
+                if (nRequestedGatewayAttempt > 2) {
                     connman.ReleaseNodeVector(vNodesCopy);
                     return;
                 }
@@ -308,6 +301,12 @@ void CGatewaySync::ProcessTick(CConnman& connman)
                     return;
                 }
 
+                // request from three peers max
+                if (nRequestedGatewayAttempt > 2) {
+                    connman.ReleaseNodeVector(vNodesCopy);
+                    return;
+                }
+
                 // only request once from each peer
                 if(netfulfilledman.HasFulfilledRequest(pnode->addr, "gateway-payment-sync")) continue;
                 netfulfilledman.AddFulfilledRequest(pnode->addr, "gateway-payment-sync");
@@ -316,7 +315,12 @@ void CGatewaySync::ProcessTick(CConnman& connman)
                 nRequestedGatewayAttempt++;
 
                 // ask node for all payment votes it has (new nodes will only return votes for future payments)
-                connman.PushMessage(pnode, NetMsgType::GATEWAYPAYMENTSYNC, gwpayments.GetStorageLimit());
+                //sync payment votes
+                if(pnode->nVersion == 70208) {
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC, gwpayments.GetStorageLimit()));
+                } else {
+                    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC));
+                }
                 // ask node for missing pieces only (old nodes will not be asked)
                 gwpayments.RequestLowDataPaymentBlocks(pnode, connman);
 
@@ -396,6 +400,11 @@ void CGatewaySync::UpdatedBlockTip(const CBlockIndex *pindexNew, bool fInitialDo
                 pindexNew->nHeight, pindexBestHeader->nHeight, fInitialDownload, fReachedBestHeader);
 
     if (!IsBlockchainSynced() && fReachedBestHeader) {
+        if (fLiteMode) {
+            // nothing to do in lite mode, just finish the process immediately
+            nRequestedGatewayAssets = GATEWAY_SYNC_FINISHED;
+            return;
+        }
         // Reached best header while being in initial mode.
         // We must be at the tip already, let's move to the next asset.
         SwitchToNextAsset(connman);
@@ -429,22 +438,25 @@ void ThreadCheckGatewaySync(CConnman& connman)
             // make sure to check all gateways first
             gwnodeman.Check();
 
+            gwnodeman.ProcessPendingGwbRequests(connman);
+            gwnodeman.ProcessPendingGwvRequests(connman);
             // check if we should activate or ping every few minutes,
             // slightly postpone first run to give net thread a chance to connect to some peers
             if(nTick % GATEWAY_MIN_GWP_SECONDS == 15)
                 activeGateway.ManageState(connman);
 
             if(nTick % 60 == 0) {
+                netfulfilledman.CheckAndRemove();
                 gwnodeman.ProcessGatewayConnections(connman);
                 gwnodeman.CheckAndRemove(connman);
+                gwnodeman.WarnGatewayDaemonUpdates();				
                 gwpayments.CheckAndRemove();
                 instantsend.CheckAndRemove();
             }
-            if(fGateWay && (nTick % (60 * 5) == 0)) {
+			
+            if(fGatewayMode && (nTick % (60 * 5) == 0)) {
                 gwnodeman.DoFullVerificationStep(connman);
             }
-
-            
         }
     }
 }
