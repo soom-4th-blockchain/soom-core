@@ -96,7 +96,7 @@ std::string ChainNameFromCommandLine()
     bool fTestNet = GetBoolArg("-testnet", false);
 
     if (fTestNet && fRegTest)
-        throw std::runtime_error("Invalid combination of -regtest and -testnet.");
+        throw std::runtime_error("Only one of -regtest or -testnet can be used.");
     if (fRegTest)
         return CBaseChainParams::REGTEST;
     if (fTestNet)
