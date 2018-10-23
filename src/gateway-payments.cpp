@@ -4,17 +4,19 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "activegateway.h"
-#include "script/standard.h"
-#include "base58.h"
+#include "consensus/validation.h"
+
 #include "gateway-payments.h"
 #include "gateway-sync.h"
 #include "gatewayman.h"
 #include "messagesigner.h"
 #include "netfulfilledman.h"
+#include "netmessagemaker.h"
 #include "spork.h"
 #include "util.h"
 #include "chainparams.h"
-
+#include "script/standard.h"
+#include "base58.h"
 #include <boost/lexical_cast.hpp>
 
 /** Object for who's going to get paid on which blocks */
@@ -35,14 +37,14 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 {
     strErrorRet = "";
 
-    bool isBlockRewardValueMet = (block.vtx[0].GetValueOut() <= blockReward);
-    if(fDebug) LogPrintf("block.vtx[0].GetValueOut() %lld <= blockReward %lld\n", block.vtx[0].GetValueOut(), blockReward);
+    bool isBlockRewardValueMet = (block.vtx[0]->GetValueOut() <= blockReward);
+    if(fDebug) LogPrintf("block.vtx[0]->GetValueOut() %lld <= blockReward %lld\n", block.vtx[0]->GetValueOut(), blockReward);
 
     if(!isBlockRewardValueMet) {
-        strErrorRet = strprintf("coinbase pays too much at height %d (actual=%d vs limit=%d), exceeded block reward, block is not in budget cycle window",
-                                    nBlockHeight, block.vtx[0].GetValueOut(), blockReward);
-     }
-     return isBlockRewardValueMet;
+        strErrorRet = strprintf("coinbase pays too much at height %d (actual=%d vs limit=%d), exceeded block reward",
+                                nBlockHeight, block.vtx[0]->GetValueOut(), blockReward);
+    }
+    return isBlockRewardValueMet;
 
 }
 
@@ -59,7 +61,7 @@ bool IsFoundationTxValid(const CTransaction& txNew, int nBlockHeight, CAmount bl
 	}
     
    
-	BOOST_FOREACH(CTxOut txout, txNew.vout) {
+    for (const auto& txout : txNew.vout) {
 		if (FoundationScript == txout.scriptPubKey && FoundationPayment == txout.nValue) {
 			LogPrint("gwpayments", "IsFoundationTxValid -- Found required payment\n");
 			return true;
@@ -86,27 +88,26 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
 			return false;
 		}
 	}	
-    if(!gatewaySync.IsSynced()) {
+    if(!gatewaySync.IsSynced() || fLiteMode) {
         //there is no budget data to use to check anything, let's just accept the longest chain
         if(fDebug) LogPrintf("IsBlockPayeeValid -- WARNING: Client not synced, skipping block payee checks\n");
         return true;
     }
 
-    // we are still using budgets, but we have no data about them anymore,
     // we can only check gateway payments
-        if(gwpayments.IsTransactionValid(txNew, nBlockHeight)) {
-            LogPrint("gwpayments", "IsBlockPayeeValid -- Valid gateway payment at height %d: %s", nBlockHeight, txNew.ToString());
-            return true;
-        }
-
-
-        if(sporkManager.IsSporkActive(SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT)) {
-            LogPrintf("IsBlockPayeeValid -- ERROR: Invalid gateway payment detected at height %d: %s", nBlockHeight, txNew.ToString());
-            return false;
-        }
-
-        LogPrintf("IsBlockPayeeValid -- WARNING: Gateway payment enforcement is disabled, accepting any payee\n");
+    if(gwpayments.IsTransactionValid(txNew, nBlockHeight)) {
+        LogPrint("gwpayments", "IsBlockPayeeValid -- Valid gateway payment at height %d: %s", nBlockHeight, txNew.ToString());
         return true;
+    }
+
+
+    if(sporkManager.IsSporkActive(SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT)) {
+        LogPrintf("IsBlockPayeeValid -- ERROR: Invalid gateway payment detected at height %d: %s", nBlockHeight, txNew.ToString());
+        return false;
+    }
+
+    LogPrintf("IsBlockPayeeValid -- WARNING: Gateway payment enforcement is disabled, accepting any payee\n");
+    return true;
 }
 
 void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet)
@@ -132,16 +133,20 @@ void CGatewayPayments::Clear()
     mapGatewayPaymentVotes.clear();
 }
 
-bool CGatewayPayments::CanVote(COutPoint outGateway, int nBlockHeight)
+bool CGatewayPayments::UpdateLastVote(const CGatewayPaymentVote& vote)
 {
     LOCK(cs_mapGatewayPaymentVotes);
 
-    if (mapGatewaysLastVote.count(outGateway) && mapGatewaysLastVote[outGateway] == nBlockHeight) {
-        return false;
+    const auto it = mapGatewaysLastVote.find(vote.gatewayOutpoint);
+    if (it != mapGatewaysLastVote.end()) {
+        if (it->second == vote.nBlockHeight)
+            return false;
+        it->second = vote.nBlockHeight;
+        return true;
     }
 
     //record this gateway voted
-    mapGatewaysLastVote[outGateway] = nBlockHeight;
+    mapGatewaysLastVote.emplace(vote.gatewayOutpoint, vote.nBlockHeight);
     return true;
 }
 
@@ -151,14 +156,13 @@ bool CGatewayPayments::CanVote(COutPoint outGateway, int nBlockHeight)
 *   Fill Gateway ONLY payment block
 */
 
-void CGatewayPayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet)
+void CGatewayPayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet) const
 {
     // make sure it's not filled yet
     txoutGatewayRet = CTxOut();
     txoutFoundationRet = CTxOut();
 	
     CScript payee;
-
 
     CBitcoinAddress FoundationAddess(Params().GetFoundationAddress());
     CScript FoundationScript = GetScriptForDestination(FoundationAddess.Get());
@@ -175,7 +179,7 @@ void CGatewayPayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeig
 		LogPrintf("CGatewayPayments::FillBlockPayee -- foundation payment %lld to %s\n", FoundationPayment, FoundationAddess.ToString());
 	}
 	
-    if(!gwpayments.GetBlockPayee(nBlockHeight, payee)) {
+    if(!GetBlockPayee(nBlockHeight, payee)) {
         // no gateway detected...
         int nCount = 0;
         gateway_info_t gwInfo;
@@ -204,27 +208,38 @@ void CGatewayPayments::FillBlockPayee(CMutableTransaction& txNew, int nBlockHeig
     LogPrintf("CGatewayPayments::FillBlockPayee -- Gateway payment %lld to %s\n", gatewayPayment, address2.ToString());
 }
 
-int CGatewayPayments::GetMinGatewayPaymentsProto() {
+int CGatewayPayments::GetMinGatewayPaymentsProto() const {
     return sporkManager.IsSporkActive(SPORK_10_GATEWAY_PAY_UPDATED_NODES)
             ? MIN_GATEWAY_PAYMENT_PROTO_VERSION_2
             : MIN_GATEWAY_PAYMENT_PROTO_VERSION_1;
 }
 
-void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void CGatewayPayments::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(fLiteMode) return; // disable all Soom specific functionality
 
     if (strCommand == NetMsgType::GATEWAYPAYMENTSYNC) { //Gateway Payments Request Sync
+
+        if(pfrom->nVersion < GetMinGatewayPaymentsProto()) {
+            LogPrint("gwpayments", "GATEWAYPAYMENTSYNC -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
+            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
+                               strprintf("Version must be %d or greater", GetMinGatewayPaymentsProto())));
+            return;
+        }
 
         // Ignore such requests until we are fully synced.
         // We could start processing this after gateway list is synced
         // but this is a heavy one so it's better to finish sync first.
         if (!gatewaySync.IsSynced()) return;
 
-        int nCountNeeded;
-        vRecv >> nCountNeeded;
+        // DEPRECATED, should be removed on next protocol bump
+        if(pfrom->nVersion == 70208) {
+            int nCountNeeded;
+            vRecv >> nCountNeeded;
+        }
 
         if(netfulfilledman.HasFulfilledRequest(pfrom->addr, NetMsgType::GATEWAYPAYMENTSYNC)) {
+            LOCK(cs_main);
             // Asking for the payments list multiple times in a short period of time is no good
             LogPrintf("GATEWAYPAYMENTSYNC -- peer already asked me for the list, peer=%d\n", pfrom->id);
             Misbehaving(pfrom->GetId(), 20);
@@ -240,7 +255,12 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDa
         CGatewayPaymentVote vote;
         vRecv >> vote;
 
-        if(pfrom->nVersion < GetMinGatewayPaymentsProto()) return;
+        if(pfrom->nVersion < GetMinGatewayPaymentsProto()) {
+            LogPrint("gwpayments", "GATEWAYPAYMENTVOTE -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
+            connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
+                               strprintf("Version must be %d or greater", GetMinGatewayPaymentsProto())));
+            return;
+        }
 
         uint256 nHash = vote.GetHash();
 
@@ -253,16 +273,19 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDa
 
         {
             LOCK(cs_mapGatewayPaymentVotes);
-            if(mapGatewayPaymentVotes.count(nHash)) {
-                LogPrint("gwpayments", "GATEWAYPAYMENTVOTE -- hash=%s, nHeight=%d seen\n", nHash.ToString(), nCachedBlockHeight);
+
+            auto res = mapGatewayPaymentVotes.emplace(nHash, vote);
+
+            // Avoid processing same vote multiple times if it was already verified earlier
+            if(!res.second && res.first->second.IsVerified()) {
+                LogPrint("gwpayments", "GATEWAYPAYMENTVOTE -- hash=%s, nBlockHeight=%d/%d seen\n",
+                            nHash.ToString(), vote.nBlockHeight, nCachedBlockHeight);
                 return;
             }
 
-            // Avoid processing same vote multiple times
-            mapGatewayPaymentVotes[nHash] = vote;
-            // but first mark vote as non-verified,
-            // AddPaymentVote() below should take care of it if vote is actually ok
-            mapGatewayPaymentVotes[nHash].MarkAsNotVerified();
+            // Mark vote as non-verified when it's seen for the first time,
+            // AddOrUpdatePaymentVote() below should take care of it if vote is actually ok
+            res.first->second.MarkAsNotVerified();
         }
 
         int nFirstBlock = nCachedBlockHeight - GetStorageLimit();
@@ -277,22 +300,18 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDa
             return;
         }
 
-        if(!CanVote(vote.vinGateway.prevout, vote.nBlockHeight)) {
-            LogPrintf("GATEWAYPAYMENTVOTE -- gateway already voted, gateway=%s\n", vote.vinGateway.prevout.ToStringShort());
-            return;
-        }
-
         gateway_info_t gwInfo;
-        if(!gwnodeman.GetGatewayInfo(vote.vinGateway.prevout, gwInfo)) {
+        if(!gwnodeman.GetGatewayInfo(vote.gatewayOutpoint, gwInfo)) {
             // gw was not found, so we can't check vote, some info is probably missing
-            LogPrintf("GATEWAYPAYMENTVOTE -- gateway is missing %s\n", vote.vinGateway.prevout.ToStringShort());
-            gwnodeman.AskForGW(pfrom, vote.vinGateway.prevout, connman);
+            LogPrintf("GATEWAYPAYMENTVOTE -- gateway is missing %s\n", vote.gatewayOutpoint.ToStringShort());
+            gwnodeman.AskForGW(pfrom, vote.gatewayOutpoint, connman);
             return;
         }
 
         int nDos = 0;
         if(!vote.CheckSignature(gwInfo.pubKeyGateway, nCachedBlockHeight, nDos)) {
             if(nDos) {
+                LOCK(cs_main);
                 LogPrintf("GATEWAYPAYMENTVOTE -- ERROR: invalid signature\n");
                 Misbehaving(pfrom->GetId(), nDos);
             } else {
@@ -301,10 +320,15 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDa
             }
             // Either our info or vote info could be outdated.
             // In case our info is outdated, ask for an update,
-            gwnodeman.AskForGW(pfrom, vote.vinGateway.prevout, connman);
+            gwnodeman.AskForGW(pfrom, vote.gatewayOutpoint, connman);
             // but there is nothing we can do if vote info itself is outdated
             // (i.e. it was signed by a gw which changed its key),
             // so just quit here.
+            return;
+        }
+
+        if(!UpdateLastVote(vote)) {
+            LogPrintf("GATEWAYPAYMENTVOTE -- gateway already voted, gateway=%s\n", vote.gatewayOutpoint.ToStringShort());
             return;
         }
 
@@ -313,59 +337,89 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, std::string& strCommand, CDa
         CBitcoinAddress address2(address1);
 
         LogPrint("gwpayments", "GATEWAYPAYMENTVOTE -- vote: address=%s, nBlockHeight=%d, nHeight=%d, prevout=%s, hash=%s new\n",
-                    address2.ToString(), vote.nBlockHeight, nCachedBlockHeight, vote.vinGateway.prevout.ToStringShort(), nHash.ToString());
+                    address2.ToString(), vote.nBlockHeight, nCachedBlockHeight, vote.gatewayOutpoint.ToStringShort(), nHash.ToString());
 
-        if(AddPaymentVote(vote)){
+        if(AddOrUpdatePaymentVote(vote)){
             vote.Relay(connman);
             gatewaySync.BumpAssetLastTime("GATEWAYPAYMENTVOTE");
         }
     }
 }
 
+uint256 CGatewayPaymentVote::GetHash() const
+{
+    // Note: doesn't match serialization
+
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    ss << *(CScriptBase*)(&payee);
+    ss << nBlockHeight;
+    ss << gatewayOutpoint;
+    return ss.GetHash();
+}
+
+uint256 CGatewayPaymentVote::GetSignatureHash() const
+{
+    return SerializeHash(*this);
+}
+
 bool CGatewayPaymentVote::Sign()
 {
     std::string strError;
-    std::string strMessage = vinGateway.prevout.ToStringShort() +
+
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
+
+        if(!CHashSigner::SignHash(hash, activeGateway.keyGateway, vchSig)) {
+            LogPrintf("CGatewayPaymentVote::Sign -- SignHash() failed\n");
+            return false;
+        }
+
+        if (!CHashSigner::VerifyHash(hash, activeGateway.pubKeyGateway, vchSig, strError)) {
+            LogPrintf("CGatewayPaymentVote::Sign -- VerifyHash() failed, error: %s\n", strError);
+            return false;
+        }
+    } else {
+        std::string strMessage = gatewayOutpoint.ToStringShort() +
                 boost::lexical_cast<std::string>(nBlockHeight) +
                 ScriptToAsmStr(payee);
 
-    if(!CMessageSigner::SignMessage(strMessage, vchSig, activeGateway.keyGateway)) {
-        LogPrintf("CGatewayPaymentVote::Sign -- SignMessage() failed\n");
-        return false;
-    }
+        if(!CMessageSigner::SignMessage(strMessage, vchSig, activeGateway.keyGateway)) {
+            LogPrintf("CGatewayPaymentVote::Sign -- SignMessage() failed\n");
+            return false;
+        }
 
-    if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, vchSig, strMessage, strError)) {
-        LogPrintf("CGatewayPaymentVote::Sign -- VerifyMessage() failed, error: %s\n", strError);
-        return false;
+        if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, vchSig, strMessage, strError)) {
+            LogPrintf("CGatewayPaymentVote::Sign -- VerifyMessage() failed, error: %s\n", strError);
+            return false;
+        }
     }
 
     return true;
 }
 
-bool CGatewayPayments::GetBlockPayee(int nBlockHeight, CScript& payee)
+bool CGatewayPayments::GetBlockPayee(int nBlockHeight, CScript& payeeRet) const
 {
-    if(mapGatewayBlocks.count(nBlockHeight)){
-        return mapGatewayBlocks[nBlockHeight].GetBestPayee(payee);
-    }
+    LOCK(cs_mapGatewayBlocks);
 
-    return false;
+    auto it = mapGatewayBlocks.find(nBlockHeight);
+    return it != mapGatewayBlocks.end() && it->second.GetBestPayee(payeeRet);
 }
 
 // Is this gateway scheduled to get paid soon?
 // -- Only look ahead up to 8 blocks to allow for propagation of the latest 2 blocks of votes
-bool CGatewayPayments::IsScheduled(CGateway& gw, int nNotBlockHeight)
+bool CGatewayPayments::IsScheduled(const gateway_info_t& gwInfo, int nNotBlockHeight) const
 {
     LOCK(cs_mapGatewayBlocks);
 
     if(!gatewaySync.IsGatewayListSynced()) return false;
 
     CScript gwpayee;
-    gwpayee = GetScriptForDestination(gw.pubKeyCollateralAddress.GetID());
+    gwpayee = GetScriptForDestination(gwInfo.pubKeyCollateralAddress.GetID());
 
     CScript payee;
     for(int64_t h = nCachedBlockHeight; h <= nCachedBlockHeight + 8; h++){
         if(h == nNotBlockHeight) continue;
-        if(mapGatewayBlocks.count(h) && mapGatewayBlocks[h].GetBestPayee(payee) && gwpayee == payee) {
+        if(GetBlockPayee(h, payee) && gwpayee == payee) {
             return true;
         }
     }
@@ -373,31 +427,31 @@ bool CGatewayPayments::IsScheduled(CGateway& gw, int nNotBlockHeight)
     return false;
 }
 
-bool CGatewayPayments::AddPaymentVote(const CGatewayPaymentVote& vote)
+bool CGatewayPayments::AddOrUpdatePaymentVote(const CGatewayPaymentVote& vote)
 {
     uint256 blockHash = uint256();
     if(!GetBlockHash(blockHash, vote.nBlockHeight - 101)) return false;
 
-    if(HasVerifiedPaymentVote(vote.GetHash())) return false;
+    uint256 nVoteHash = vote.GetHash();
+
+    if(HasVerifiedPaymentVote(nVoteHash)) return false;
 
     LOCK2(cs_mapGatewayBlocks, cs_mapGatewayPaymentVotes);
 
-    mapGatewayPaymentVotes[vote.GetHash()] = vote;
+    mapGatewayPaymentVotes[nVoteHash] = vote;
 
-    if(!mapGatewayBlocks.count(vote.nBlockHeight)) {
-       CGatewayBlockPayees blockPayees(vote.nBlockHeight);
-       mapGatewayBlocks[vote.nBlockHeight] = blockPayees;
-    }
+    auto it = mapGatewayBlocks.emplace(vote.nBlockHeight, CGatewayBlockPayees(vote.nBlockHeight)).first;
+    it->second.AddPayee(vote);
 
-    mapGatewayBlocks[vote.nBlockHeight].AddPayee(vote);
+    LogPrint("gwpayments", "CGatewayPayments::AddOrUpdatePaymentVote -- added, hash=%s\n", nVoteHash.ToString());
 
     return true;
 }
 
-bool CGatewayPayments::HasVerifiedPaymentVote(uint256 hashIn)
+bool CGatewayPayments::HasVerifiedPaymentVote(const uint256& hashIn) const
 {
     LOCK(cs_mapGatewayPaymentVotes);
-    std::map<uint256, CGatewayPaymentVote>::iterator it = mapGatewayPaymentVotes.find(hashIn);
+    const auto it = mapGatewayPaymentVotes.find(hashIn);
     return it != mapGatewayPaymentVotes.end() && it->second.IsVerified();
 }
 
@@ -405,27 +459,29 @@ void CGatewayBlockPayees::AddPayee(const CGatewayPaymentVote& vote)
 {
     LOCK(cs_vecPayees);
 
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees) {
+    uint256 nVoteHash = vote.GetHash();
+
+    for (auto& payee : vecPayees) {
         if (payee.GetPayee() == vote.payee) {
-            payee.AddVoteHash(vote.GetHash());
+            payee.AddVoteHash(nVoteHash);
             return;
         }
     }
-    CGatewayPayee payeeNew(vote.payee, vote.GetHash());
+    CGatewayPayee payeeNew(vote.payee, nVoteHash);
     vecPayees.push_back(payeeNew);
 }
 
-bool CGatewayBlockPayees::GetBestPayee(CScript& payeeRet)
+bool CGatewayBlockPayees::GetBestPayee(CScript& payeeRet) const
 {
     LOCK(cs_vecPayees);
 
-    if(!vecPayees.size()) {
+    if(vecPayees.empty()) {
         LogPrint("gwpayments", "CGatewayBlockPayees::GetBestPayee -- ERROR: couldn't find any payee\n");
         return false;
     }
 
     int nVotes = -1;
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees) {
+    for (const auto& payee : vecPayees) {
         if (payee.GetVoteCount() > nVotes) {
             payeeRet = payee.GetPayee();
             nVotes = payee.GetVoteCount();
@@ -435,11 +491,11 @@ bool CGatewayBlockPayees::GetBestPayee(CScript& payeeRet)
     return (nVotes > -1);
 }
 
-bool CGatewayBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq)
+bool CGatewayBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq) const
 {
     LOCK(cs_vecPayees);
 
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees) {
+    for (const auto& payee : vecPayees) {
         if (payee.GetVoteCount() >= nVotesReq && payee.GetPayee() == payeeIn) {
             return true;
         }
@@ -449,7 +505,7 @@ bool CGatewayBlockPayees::HasPayeeWithVotes(const CScript& payeeIn, int nVotesRe
     return false;
 }
 
-bool CGatewayBlockPayees::IsTransactionValid(const CTransaction& txNew)
+bool CGatewayBlockPayees::IsTransactionValid(const CTransaction& txNew) const
 {
     LOCK(cs_vecPayees);
 
@@ -460,7 +516,7 @@ bool CGatewayBlockPayees::IsTransactionValid(const CTransaction& txNew)
 
     //require at least GWPAYMENTS_SIGNATURES_REQUIRED signatures
 
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees) {
+    for (const auto& payee : vecPayees) {
         if (payee.GetVoteCount() >= nMaxSignatures) {
             nMaxSignatures = payee.GetVoteCount();
         }
@@ -469,9 +525,9 @@ bool CGatewayBlockPayees::IsTransactionValid(const CTransaction& txNew)
     // if we don't have at least GWPAYMENTS_SIGNATURES_REQUIRED signatures on a payee, approve whichever is the longest chain
     if(nMaxSignatures < GWPAYMENTS_SIGNATURES_REQUIRED) return true;
 
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees) {
+    for (const auto& payee : vecPayees) {
         if (payee.GetVoteCount() >= GWPAYMENTS_SIGNATURES_REQUIRED) {
-            BOOST_FOREACH(CTxOut txout, txNew.vout) {
+            for (const auto& txout : txNew.vout) {
                 if (payee.GetPayee() == txout.scriptPubKey && nGatewayPayment == txout.nValue) {
                     LogPrint("gwpayments", "CGatewayBlockPayees::IsTransactionValid -- Found required payment\n");
                     return true;
@@ -494,48 +550,44 @@ bool CGatewayBlockPayees::IsTransactionValid(const CTransaction& txNew)
     return false;
 }
 
-std::string CGatewayBlockPayees::GetRequiredPaymentsString()
+std::string CGatewayBlockPayees::GetRequiredPaymentsString() const
 {
     LOCK(cs_vecPayees);
 
-    std::string strRequiredPayments = "Unknown";
+    std::string strRequiredPayments = "";
 
-    BOOST_FOREACH(CGatewayPayee& payee, vecPayees)
+    for (const auto& payee : vecPayees)
     {
         CTxDestination address1;
         ExtractDestination(payee.GetPayee(), address1);
         CBitcoinAddress address2(address1);
 
-        if (strRequiredPayments != "Unknown") {
-            strRequiredPayments += ", " + address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.GetVoteCount());
-        } else {
-            strRequiredPayments = address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.GetVoteCount());
-        }
+        if (!strRequiredPayments.empty())
+            strRequiredPayments += ", ";
+
+        strRequiredPayments += strprintf("%s:%d", address2.ToString(), payee.GetVoteCount());
     }
+
+    if (strRequiredPayments.empty())
+        return "Unknown";
 
     return strRequiredPayments;
 }
 
-std::string CGatewayPayments::GetRequiredPaymentsString(int nBlockHeight)
+std::string CGatewayPayments::GetRequiredPaymentsString(int nBlockHeight) const
 {
     LOCK(cs_mapGatewayBlocks);
 
-    if(mapGatewayBlocks.count(nBlockHeight)){
-        return mapGatewayBlocks[nBlockHeight].GetRequiredPaymentsString();
-    }
-
-    return "Unknown";
+    const auto it = mapGatewayBlocks.find(nBlockHeight);
+    return it == mapGatewayBlocks.end() ? "Unknown" : it->second.GetRequiredPaymentsString();
 }
 
-bool CGatewayPayments::IsTransactionValid(const CTransaction& txNew, int nBlockHeight)
+bool CGatewayPayments::IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const
 {
     LOCK(cs_mapGatewayBlocks);
 
-    if(mapGatewayBlocks.count(nBlockHeight)){
-        return mapGatewayBlocks[nBlockHeight].IsTransactionValid(txNew);
-    }
-
-    return true;
+    const auto it = mapGatewayBlocks.find(nBlockHeight);
+    return it == mapGatewayBlocks.end() ? true : it->second.IsTransactionValid(txNew);
 }
 
 void CGatewayPayments::CheckAndRemove()
@@ -561,15 +613,15 @@ void CGatewayPayments::CheckAndRemove()
     LogPrintf("CGatewayPayments::CheckAndRemove -- %s\n", ToString());
 }
 
-bool CGatewayPaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman)
+bool CGatewayPaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const
 {
     gateway_info_t gwInfo;
 
-    if(!gwnodeman.GetGatewayInfo(vinGateway.prevout, gwInfo)) {
-        strError = strprintf("Unknown Gateway: prevout=%s", vinGateway.prevout.ToStringShort());
+    if(!gwnodeman.GetGatewayInfo(gatewayOutpoint, gwInfo)) {
+        strError = strprintf("Unknown Gateway=%s", gatewayOutpoint.ToStringShort());
         // Only ask if we are already synced and still have no idea about that Gateway
         if(gatewaySync.IsGatewayListSynced()) {
-            gwnodeman.AskForGW(pnode, vinGateway.prevout, connman);
+            gwnodeman.AskForGW(pnode, gatewayOutpoint, connman);
         }
 
         return false;
@@ -591,23 +643,24 @@ bool CGatewayPaymentVote::IsValid(CNode* pnode, int nValidationHeight, std::stri
 
     // Only gateways should try to check gateway rank for old votes - they need to pick the right winner for future blocks.
     // Regular clients (miners included) need to verify gateway rank for future block votes only.
-    if(!fGateWay && nBlockHeight < nValidationHeight) return true;
+    if(!fGatewayMode && nBlockHeight < nValidationHeight) return true;
 
     int nRank;
 
-    if(!gwnodeman.GetGatewayRank(vinGateway.prevout, nRank, nBlockHeight - 101, nMinRequiredProtocol)) {
+    if(!gwnodeman.GetGatewayRank(gatewayOutpoint, nRank, nBlockHeight - 101, nMinRequiredProtocol)) {
         LogPrint("gwpayments", "CGatewayPaymentVote::IsValid -- Can't calculate rank for gateway %s\n",
-                    vinGateway.prevout.ToStringShort());
+                    gatewayOutpoint.ToStringShort());
         return false;
     }
 
     if(nRank > GWPAYMENTS_SIGNATURES_TOTAL) {
         // It's common to have gateways mistakenly think they are in the top 10
         // We don't want to print all of these messages in normal mode, debug mode should print though
-        strError = strprintf("Gateway is not in the top %d (%d)", GWPAYMENTS_SIGNATURES_TOTAL, nRank);
+        strError = strprintf("Gateway %s is not in the top %d (%d)", gatewayOutpoint.ToStringShort(), GWPAYMENTS_SIGNATURES_TOTAL, nRank);
         // Only ban for new gww which is out of bounds, for old gww GW list itself might be way too much off
         if(nRank > GWPAYMENTS_SIGNATURES_TOTAL*2 && nBlockHeight > nValidationHeight) {
-            strError = strprintf("Gateway is not in the top %d (%d)", GWPAYMENTS_SIGNATURES_TOTAL*2, nRank);
+            LOCK(cs_main);
+            strError = strprintf("Gateway %s is not in the top %d (%d)", gatewayOutpoint.ToStringShort(), GWPAYMENTS_SIGNATURES_TOTAL*2, nRank);
             LogPrintf("CGatewayPaymentVote::IsValid -- Error: %s\n", strError);
             Misbehaving(pnode->GetId(), 20);
         }
@@ -622,7 +675,7 @@ bool CGatewayPayments::ProcessBlock(int nBlockHeight, CConnman& connman)
 {
     // DETERMINE IF WE SHOULD BE VOTING FOR THE NEXT PAYEE
 
-    if(fLiteMode || !fGateWay) return false;
+    if(fLiteMode || !fGatewayMode) return false;
 
     // We have little chances to pick the right winner if winners list is out of sync
     // but we have no choice, so we'll try. However it doesn't make sense to even try to do so
@@ -655,8 +708,7 @@ bool CGatewayPayments::ProcessBlock(int nBlockHeight, CConnman& connman)
         return false;
     }
 
-    LogPrintf("CGatewayPayments::ProcessBlock -- Gateway found by GetNextGatewayInQueueForPayment(): %s\n", gwInfo.vin.prevout.ToStringShort());
-
+    LogPrintf("CGatewayPayments::ProcessBlock -- Gateway found by GetNextGatewayInQueueForPayment(): %s\n", gwInfo.outpoint.ToStringShort());
 
     CScript payee = GetScriptForDestination(gwInfo.pubKeyCollateralAddress.GetID());
 
@@ -672,9 +724,9 @@ bool CGatewayPayments::ProcessBlock(int nBlockHeight, CConnman& connman)
 
     LogPrintf("CGatewayPayments::ProcessBlock -- Signing vote\n");
     if (voteNew.Sign()) {
-        LogPrintf("CGatewayPayments::ProcessBlock -- AddPaymentVote()\n");
+        LogPrintf("CGatewayPayments::ProcessBlock -- AddOrUpdatePaymentVote()\n");
 
-        if (AddPaymentVote(voteNew)) {
+        if (AddOrUpdatePaymentVote(voteNew)) {
             voteNew.Relay(connman);
             return true;
         }
@@ -683,39 +735,39 @@ bool CGatewayPayments::ProcessBlock(int nBlockHeight, CConnman& connman)
     return false;
 }
 
-void CGatewayPayments::CheckPreviousBlockVotes(int nPrevBlockHeight)
+void CGatewayPayments::CheckBlockVotes(int nBlockHeight)
 {
     if (!gatewaySync.IsWinnersListSynced()) return;
 
-    std::string debugStr;
-
-    debugStr += strprintf("CGatewayPayments::CheckPreviousBlockVotes -- nPrevBlockHeight=%d, expected voting GWs:\n", nPrevBlockHeight);
-
     CGatewayMan::rank_pair_vec_t gws;
-    if (!gwnodeman.GetGatewayRanks(gws, nPrevBlockHeight - 101, GetMinGatewayPaymentsProto())) {
-        debugStr += "CGatewayPayments::CheckPreviousBlockVotes -- GetGatewayRanks failed\n";
-        LogPrint("gwpayments", "%s", debugStr);
+    if (!gwnodeman.GetGatewayRanks(gws, nBlockHeight - 101, GetMinGatewayPaymentsProto())) {
+        LogPrintf("CGatewayPayments::CheckBlockVotes -- nBlockHeight=%d, GetGatewayRanks failed\n", nBlockHeight);
         return;
     }
 
+    std::string debugStr;
+
+    debugStr += strprintf("CGatewayPayments::CheckBlockVotes -- nBlockHeight=%d,\n  Expected voting GWs:\n", nBlockHeight);
+
     LOCK2(cs_mapGatewayBlocks, cs_mapGatewayPaymentVotes);
 
-    for (int i = 0; i < GWPAYMENTS_SIGNATURES_TOTAL && i < (int)gws.size(); i++) {
-        auto gw = gws[i];
+    int i{0};
+    for (const auto& gw : gws) {
         CScript payee;
         bool found = false;
 
-        if (mapGatewayBlocks.count(nPrevBlockHeight)) {
-            for (auto &p : mapGatewayBlocks[nPrevBlockHeight].vecPayees) {
-                for (auto &voteHash : p.GetVoteHashes()) {
-                    if (!mapGatewayPaymentVotes.count(voteHash)) {
-                        debugStr += strprintf("CGatewayPayments::CheckPreviousBlockVotes --   could not find vote %s\n",
+        const auto it = mapGatewayBlocks.find(nBlockHeight);
+        if (it != mapGatewayBlocks.end()) {
+            for (const auto& p : it->second.vecPayees) {
+                for (const auto& voteHash : p.GetVoteHashes()) {
+                    const auto itVote = mapGatewayPaymentVotes.find(voteHash);
+                    if (itVote == mapGatewayPaymentVotes.end()) {
+                        debugStr += strprintf("    - could not find vote %s\n",
                                               voteHash.ToString());
                         continue;
                     }
-                    auto vote = mapGatewayPaymentVotes[voteHash];
-                    if (vote.vinGateway.prevout == gw.second.vin.prevout) {
-                        payee = vote.payee;
+                    if (itVote->second.gatewayOutpoint == gw.second.outpoint) {
+                        payee = itVote->second.payee;
                         found = true;
                         break;
                     }
@@ -723,29 +775,37 @@ void CGatewayPayments::CheckPreviousBlockVotes(int nPrevBlockHeight)
             }
         }
 
-        if (!found) {
-            debugStr += strprintf("CGatewayPayments::CheckPreviousBlockVotes --   %s - no vote received\n",
-                                  gw.second.vin.prevout.ToStringShort());
-            mapGatewaysDidNotVote[gw.second.vin.prevout]++;
-            continue;
+        if (found) {
+            CTxDestination address1;
+            ExtractDestination(payee, address1);
+            CBitcoinAddress address2(address1);
+
+            debugStr += strprintf("    - %s - voted for %s\n",
+                                  gw.second.outpoint.ToStringShort(), address2.ToString());
+        } else {
+            mapGatewaysDidNotVote.emplace(gw.second.outpoint, 0).first->second++;
+
+            debugStr += strprintf("    - %s - no vote received\n",
+                                  gw.second.outpoint.ToStringShort());
         }
 
-        CTxDestination address1;
-        ExtractDestination(payee, address1);
-        CBitcoinAddress address2(address1);
-
-        debugStr += strprintf("CGatewayPayments::CheckPreviousBlockVotes --   %s - voted for %s\n",
-                              gw.second.vin.prevout.ToStringShort(), address2.ToString());
+        if (++i >= GWPAYMENTS_SIGNATURES_TOTAL) break;
     }
-    debugStr += "CGatewayPayments::CheckPreviousBlockVotes -- Gateways which missed a vote in the past:\n";
-    for (auto it : mapGatewaysDidNotVote) {
-        debugStr += strprintf("CGatewayPayments::CheckPreviousBlockVotes --   %s: %d\n", it.first.ToStringShort(), it.second);
+
+    if (mapGatewaysDidNotVote.empty()) {
+        LogPrint("gwpayments", "%s", debugStr);
+        return;
+    }
+
+    debugStr += "  Gateways which missed a vote in the past:\n";
+    for (const auto& item : mapGatewaysDidNotVote) {
+        debugStr += strprintf("    - %s: %d\n", item.first.ToStringShort(), item.second);
     }
 
     LogPrint("gwpayments", "%s", debugStr);
 }
 
-void CGatewayPaymentVote::Relay(CConnman& connman)
+void CGatewayPaymentVote::Relay(CConnman& connman) const
 {
     // Do not relay until fully synced
     if(!gatewaySync.IsSynced()) {
@@ -757,24 +817,47 @@ void CGatewayPaymentVote::Relay(CConnman& connman)
     connman.RelayInv(inv);
 }
 
-bool CGatewayPaymentVote::CheckSignature(const CPubKey& pubKeyGateway, int nValidationHeight, int &nDos)
+bool CGatewayPaymentVote::CheckSignature(const CPubKey& pubKeyGateway, int nValidationHeight, int &nDos) const
 {
     // do not ban by default
     nDos = 0;
-
-    std::string strMessage = vinGateway.prevout.ToStringShort() +
-                boost::lexical_cast<std::string>(nBlockHeight) +
-                ScriptToAsmStr(payee);
-
     std::string strError = "";
-    if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
-        // Only ban for future block vote when we are already synced.
-        // Otherwise it could be the case when GW which signed this vote is using another key now
-        // and we have no idea about the old one.
-        if(gatewaySync.IsGatewayListSynced() && nBlockHeight > nValidationHeight) {
-            nDos = 20;
+
+    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
+
+        if (!CHashSigner::VerifyHash(hash, pubKeyGateway, vchSig, strError)) {
+            // could be a signature in old format
+            std::string strMessage = gatewayOutpoint.ToStringShort() +
+                        boost::lexical_cast<std::string>(nBlockHeight) +
+                        ScriptToAsmStr(payee);
+            if(!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+                // nope, not in old format either
+                // Only ban for future block vote when we are already synced.
+                // Otherwise it could be the case when GW which signed this vote is using another key now
+                // and we have no idea about the old one.
+                if(gatewaySync.IsGatewayListSynced() && nBlockHeight > nValidationHeight) {
+                    nDos = 20;
+                }
+                return error("CGatewayPaymentVote::CheckSignature -- Got bad Gateway payment signature, gateway=%s, error: %s",
+                            gatewayOutpoint.ToStringShort(), strError);
+            }
         }
-        return error("CGatewayPaymentVote::CheckSignature -- Got bad Gateway payment signature, gateway=%s, error: %s", vinGateway.prevout.ToStringShort().c_str(), strError);
+    } else {
+        std::string strMessage = gatewayOutpoint.ToStringShort() +
+                    boost::lexical_cast<std::string>(nBlockHeight) +
+                    ScriptToAsmStr(payee);
+
+        if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+            // Only ban for future block vote when we are already synced.
+            // Otherwise it could be the case when GW which signed this vote is using another key now
+            // and we have no idea about the old one.
+            if(gatewaySync.IsGatewayListSynced() && nBlockHeight > nValidationHeight) {
+                nDos = 20;
+            }
+            return error("CGatewayPaymentVote::CheckSignature -- Got bad Gateway payment signature, gateway=%s, error: %s",
+                        gatewayOutpoint.ToStringShort(), strError);
+        }
     }
 
     return true;
@@ -784,7 +867,7 @@ std::string CGatewayPaymentVote::ToString() const
 {
     std::ostringstream info;
 
-    info << vinGateway.prevout.ToStringShort() <<
+    info << gatewayOutpoint.ToStringShort() <<
             ", " << nBlockHeight <<
             ", " << ScriptToAsmStr(payee) <<
             ", " << (int)vchSig.size();
@@ -793,7 +876,7 @@ std::string CGatewayPaymentVote::ToString() const
 }
 
 // Send only votes for future blocks, node should request every other missing payment block individually
-void CGatewayPayments::Sync(CNode* pnode, CConnman& connman)
+void CGatewayPayments::Sync(CNode* pnode, CConnman& connman) const
 {
     LOCK(cs_mapGatewayBlocks);
 
@@ -802,10 +885,11 @@ void CGatewayPayments::Sync(CNode* pnode, CConnman& connman)
     int nInvCount = 0;
 
     for(int h = nCachedBlockHeight; h < nCachedBlockHeight + 20; h++) {
-        if(mapGatewayBlocks.count(h)) {
-            BOOST_FOREACH(CGatewayPayee& payee, mapGatewayBlocks[h].vecPayees) {
+        const auto it = mapGatewayBlocks.find(h);
+        if(it != mapGatewayBlocks.end()) {
+            for (const auto& payee : it->second.vecPayees) {
                 std::vector<uint256> vecVoteHashes = payee.GetVoteHashes();
-                BOOST_FOREACH(uint256& hash, vecVoteHashes) {
+                for (const auto& hash : vecVoteHashes) {
                     if(!HasVerifiedPaymentVote(hash)) continue;
                     pnode->PushInventory(CInv(MSG_GATEWAY_PAYMENT_VOTE, hash));
                     nInvCount++;
@@ -815,14 +899,16 @@ void CGatewayPayments::Sync(CNode* pnode, CConnman& connman)
     }
 
     LogPrintf("CGatewayPayments::Sync -- Sent %d votes to peer %d\n", nInvCount, pnode->id);
-    connman.PushMessage(pnode, NetMsgType::SYNCSTATUSCOUNT, GATEWAY_SYNC_GWW, nInvCount);
+    CNetMsgMaker msgMaker(pnode->GetSendVersion());
+    connman.PushMessage(pnode, msgMaker.Make(NetMsgType::SYNCSTATUSCOUNT, GATEWAY_SYNC_GWW, nInvCount));
 }
 
 // Request low data/unknown payment blocks in batches directly from some node instead of/after preliminary Sync.
-void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman)
+void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman) const
 {
     if(!gatewaySync.IsGatewayListSynced()) return;
 
+    CNetMsgMaker msgMaker(pnode->GetSendVersion());
     LOCK2(cs_main, cs_mapGatewayBlocks);
 
     std::vector<CInv> vToFetch;
@@ -831,13 +917,14 @@ void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connm
     const CBlockIndex *pindex = chainActive.Tip();
 
     while(nCachedBlockHeight - pindex->nHeight < nLimit) {
-        if(!mapGatewayBlocks.count(pindex->nHeight)) {
+        const auto it = mapGatewayBlocks.find(pindex->nHeight);
+        if(it == mapGatewayBlocks.end()) {
             // We have no idea about this block height, let's ask
             vToFetch.push_back(CInv(MSG_GATEWAY_PAYMENT_BLOCK, pindex->GetBlockHash()));
             // We should not violate GETDATA rules
             if(vToFetch.size() == MAX_INV_SZ) {
-                LogPrintf("CGatewayPayments::SyncLowDataPaymentBlocks -- asking peer %d for %d blocks\n", pnode->id, MAX_INV_SZ);
-                connman.PushMessage(pnode, NetMsgType::GETDATA, vToFetch);
+                LogPrintf("CGatewayPayments::RequestLowDataPaymentBlocks -- asking peer=%d for %d blocks\n", pnode->id, MAX_INV_SZ);
+                connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
                 // Start filling new batch
                 vToFetch.clear();
             }
@@ -846,12 +933,12 @@ void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connm
         pindex = pindex->pprev;
     }
 
-    std::map<int, CGatewayBlockPayees>::iterator it = mapGatewayBlocks.begin();
+    auto it = mapGatewayBlocks.begin();
 
     while(it != mapGatewayBlocks.end()) {
         int nTotalVotes = 0;
         bool fFound = false;
-        BOOST_FOREACH(CGatewayPayee& payee, it->second.vecPayees) {
+        for (const auto& payee : it->second.vecPayees) {
             if(payee.GetVoteCount() >= GWPAYMENTS_SIGNATURES_REQUIRED) {
                 fFound = true;
                 break;
@@ -868,7 +955,7 @@ void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connm
         // DEBUG
         DBG (
             // Let's see why this failed
-            BOOST_FOREACH(CGatewayPayee& payee, it->second.vecPayees) {
+            for (const auto& payee : it->second.vecPayees) {
                 CTxDestination address1;
                 ExtractDestination(payee.GetPayee(), address1);
                 CBitcoinAddress address2(address1);
@@ -884,8 +971,8 @@ void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connm
         }
         // We should not violate GETDATA rules
         if(vToFetch.size() == MAX_INV_SZ) {
-            LogPrintf("CGatewayPayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, MAX_INV_SZ);
-            connman.PushMessage(pnode, NetMsgType::GETDATA, vToFetch);
+            LogPrintf("CGatewayPayments::RequestLowDataPaymentBlocks -- asking peer=%d for %d payment blocks\n", pnode->id, MAX_INV_SZ);
+            connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
             // Start filling new batch
             vToFetch.clear();
         }
@@ -893,8 +980,8 @@ void CGatewayPayments::RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connm
     }
     // Ask for the rest of it
     if(!vToFetch.empty()) {
-        LogPrintf("CGatewayPayments::SyncLowDataPaymentBlocks -- asking peer %d for %d payment blocks\n", pnode->id, vToFetch.size());
-        connman.PushMessage(pnode, NetMsgType::GETDATA, vToFetch);
+        LogPrintf("CGatewayPayments::RequestLowDataPaymentBlocks -- asking peer=%d for %d payment blocks\n", pnode->id, vToFetch.size());
+        connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GETDATA, vToFetch));
     }
 }
 
@@ -908,14 +995,14 @@ std::string CGatewayPayments::ToString() const
     return info.str();
 }
 
-bool CGatewayPayments::IsEnoughData()
+bool CGatewayPayments::IsEnoughData() const
 {
     float nAverageVotes = (GWPAYMENTS_SIGNATURES_TOTAL + GWPAYMENTS_SIGNATURES_REQUIRED) / 2;
     int nStorageLimit = GetStorageLimit();
     return GetBlockCount() > nStorageLimit && GetVoteCount() > nStorageLimit * nAverageVotes;
 }
 
-int CGatewayPayments::GetStorageLimit()
+int CGatewayPayments::GetStorageLimit() const
 {
     return std::max(int(gwnodeman.size() * nStorageCoeff), nMinBlocksToStore);
 }
@@ -929,6 +1016,6 @@ void CGatewayPayments::UpdatedBlockTip(const CBlockIndex *pindex, CConnman& conn
 
     int nFutureBlock = nCachedBlockHeight + 10;
 
-    CheckPreviousBlockVotes(nFutureBlock - 1);
+    CheckBlockVotes(nFutureBlock - 1);
     ProcessBlock(nFutureBlock, connman);
 }
