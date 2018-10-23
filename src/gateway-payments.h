@@ -62,16 +62,16 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(*(CScriptBase*)(&scriptPubKey));
         READWRITE(vecVoteHashes);
     }
 
-    CScript GetPayee() { return scriptPubKey; }
+    CScript GetPayee() const { return scriptPubKey; }
 
     void AddVoteHash(uint256 hashIn) { vecVoteHashes.push_back(hashIn); }
-    std::vector<uint256> GetVoteHashes() { return vecVoteHashes; }
-    int GetVoteCount() { return vecVoteHashes.size(); }
+    std::vector<uint256> GetVoteHashes() const { return vecVoteHashes; }
+    int GetVoteCount() const { return vecVoteHashes.size(); }
 };
 
 // Keep track of votes for payees from gateways
@@ -93,39 +93,39 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(nBlockHeight);
         READWRITE(vecPayees);
     }
 
     void AddPayee(const CGatewayPaymentVote& vote);
-    bool GetBestPayee(CScript& payeeRet);
-    bool HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq);
+    bool GetBestPayee(CScript& payeeRet) const;
+    bool HasPayeeWithVotes(const CScript& payeeIn, int nVotesReq) const;
 
-    bool IsTransactionValid(const CTransaction& txNew);
+    bool IsTransactionValid(const CTransaction& txNew) const;
 
-    std::string GetRequiredPaymentsString();
+    std::string GetRequiredPaymentsString() const;
 };
 
 // vote for the winning payment
 class CGatewayPaymentVote
 {
 public:
-    CTxIn vinGateway;
+    COutPoint gatewayOutpoint;
 
     int nBlockHeight;
     CScript payee;
     std::vector<unsigned char> vchSig;
 
     CGatewayPaymentVote() :
-        vinGateway(),
+        gatewayOutpoint(),
         nBlockHeight(0),
         payee(),
         vchSig()
         {}
 
-    CGatewayPaymentVote(COutPoint outpointGateway, int nBlockHeight, CScript payee) :
-        vinGateway(outpointGateway),
+    CGatewayPaymentVote(COutPoint outpoint, int nBlockHeight, CScript payee) :
+        gatewayOutpoint(outpoint),
         nBlockHeight(nBlockHeight),
         payee(payee),
         vchSig()
@@ -134,28 +134,39 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITE(vinGateway);
+    inline void SerializationOp(Stream& s, Operation ser_action) {
+        int nVersion = s.GetVersion();
+        if (nVersion == 70208 && (s.GetType() & SER_NETWORK)) {
+            // converting from/to old format
+            CTxIn txin{};
+            if (ser_action.ForRead()) {
+                READWRITE(txin);
+                gatewayOutpoint = txin.prevout;
+            } else {
+                txin = CTxIn(gatewayOutpoint);
+                READWRITE(txin);
+            }
+        } else {
+            // using new format directly
+            READWRITE(gatewayOutpoint);
+        }
         READWRITE(nBlockHeight);
         READWRITE(*(CScriptBase*)(&payee));
-        READWRITE(vchSig);
+        if (!(s.GetType() & SER_GETHASH)) {
+            READWRITE(vchSig);
+        }
     }
 
-    uint256 GetHash() const {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
-        ss << *(CScriptBase*)(&payee);
-        ss << nBlockHeight;
-        ss << vinGateway.prevout;
-        return ss.GetHash();
-    }
+    uint256 GetHash() const;
+    uint256 GetSignatureHash() const;
 
     bool Sign();
-    bool CheckSignature(const CPubKey& pubKeyGateway, int nValidationHeight, int &nDos);
+    bool CheckSignature(const CPubKey& pubKeyGateway, int nValidationHeight, int &nDos) const;
 
-    bool IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman);
-    void Relay(CConnman& connman);
+    bool IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const;
+    void Relay(CConnman& connman) const;
 
-    bool IsVerified() { return !vchSig.empty(); }
+    bool IsVerified() const { return !vchSig.empty(); }
     void MarkAsNotVerified() { vchSig.clear(); }
 
     std::string ToString() const;
@@ -183,44 +194,44 @@ public:
     std::map<COutPoint, int> mapGatewaysLastVote;
     std::map<COutPoint, int> mapGatewaysDidNotVote;
 
-    CGatewayPayments() : nStorageCoeff(1.25), nMinBlocksToStore(5000) {}
+    CGatewayPayments() : nStorageCoeff(1.25), nMinBlocksToStore(6000) {}
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(mapGatewayPaymentVotes);
         READWRITE(mapGatewayBlocks);
     }
 
     void Clear();
 
-    bool AddPaymentVote(const CGatewayPaymentVote& vote);
-    bool HasVerifiedPaymentVote(uint256 hashIn);
+    bool AddOrUpdatePaymentVote(const CGatewayPaymentVote& vote);
+    bool HasVerifiedPaymentVote(const uint256& hashIn) const;
     bool ProcessBlock(int nBlockHeight, CConnman& connman);
-    void CheckPreviousBlockVotes(int nPrevBlockHeight);
+    void CheckBlockVotes(int nBlockHeight);
 
-    void Sync(CNode* node, CConnman& connman);
-    void RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman);
+    void Sync(CNode* node, CConnman& connman) const;
+    void RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman) const;
     void CheckAndRemove();
 
-    bool GetBlockPayee(int nBlockHeight, CScript& payee);
-    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight);
-    bool IsScheduled(CGateway& gw, int nNotBlockHeight);
+    bool GetBlockPayee(int nBlockHeight, CScript& payeeRet) const;
+    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const;
+    bool IsScheduled(const gateway_info_t& gwInfo, int nNotBlockHeight) const;
 
-    bool CanVote(COutPoint outGateway, int nBlockHeight);
+    bool UpdateLastVote(const CGatewayPaymentVote& vote);
 
-    int GetMinGatewayPaymentsProto();
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CConnman& connman);
-    std::string GetRequiredPaymentsString(int nBlockHeight);
-    void FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet);
+    int GetMinGatewayPaymentsProto() const;
+    void ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman);
+    std::string GetRequiredPaymentsString(int nBlockHeight) const;
+    void FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet) const;
     std::string ToString() const;
 
-    int GetBlockCount() { return mapGatewayBlocks.size(); }
-    int GetVoteCount() { return mapGatewayPaymentVotes.size(); }
+    int GetBlockCount() const { return mapGatewayBlocks.size(); }
+    int GetVoteCount() const { return mapGatewayPaymentVotes.size(); }
 
-    bool IsEnoughData();
-    int GetStorageLimit();
+    bool IsEnoughData() const;
+    int GetStorageLimit() const;
 
     void UpdatedBlockTip(const CBlockIndex *pindex, CConnman& connman);
 };
