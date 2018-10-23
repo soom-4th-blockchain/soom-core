@@ -36,12 +36,14 @@ void CGWNotificationInterface::UpdatedBlockTip(const CBlockIndex *pindexNew, con
     if (fInitialDownload)
         return;
 
+    if (fLiteMode)
+        return;
     gwnodeman.UpdatedBlockTip(pindexNew);
     instantsend.UpdatedBlockTip(pindexNew);
     gwpayments.UpdatedBlockTip(pindexNew, connman);
 }
 
-void CGWNotificationInterface::SyncTransaction(const CTransaction &tx, const CBlock *pblock)
+void CGWNotificationInterface::SyncTransaction(const CTransaction &tx, const CBlockIndex *pindex, int posInBlock)
 {
-    instantsend.SyncTransaction(tx, pblock);
+    instantsend.SyncTransaction(tx, pindex, posInBlock);
 }
