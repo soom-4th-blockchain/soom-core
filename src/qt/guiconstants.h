@@ -18,7 +18,7 @@ static const int STATUSBAR_ICONSIZE = 16;
 static const bool DEFAULT_SPLASHSCREEN = true;
 
 /* Invalid field background style */
-#define STYLE_INVALID "background:#FF8080"
+#define STYLE_INVALID "background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #ED3155, stop: .1 rgba(237, 49, 85, 0.3), stop: .95 rgba(237, 49, 85, 0.3), stop: 1 #ED3155);"
 
 /* Transaction list -- unconfirmed transaction */
 #define COLOR_UNCONFIRMED QColor(128, 128, 128)
@@ -44,7 +44,7 @@ static const int TOOLTIP_WRAP_THRESHOLD = 80;
 static const int MAX_URI_LENGTH = 255;
 
 /* QRCodeDialog -- size of exported QR Code image */
-#define QR_IMAGE_SIZE 300
+#define QR_IMAGE_SIZE 228
 
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36

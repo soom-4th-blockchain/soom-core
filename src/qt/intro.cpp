@@ -137,7 +137,9 @@ Intro::Intro(QWidget *parent) :
     requiredSpace += CHAIN_STATE_SIZE;
     ui->sizeWarningLabel->setText(ui->sizeWarningLabel->text().arg(tr(PACKAGE_NAME)).arg(requiredSpace));
 
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));
 
     startThread();
@@ -212,6 +214,7 @@ bool Intro::pickDataDirectory()
             } catch (const fs::filesystem_error&) {
                 QMessageBox critical(QMessageBox::Critical, tr(PACKAGE_NAME),
                     tr("Error: Specified data directory \"%1\" cannot be created.").arg(dataDir), QMessageBox::Ok, 0);
+                critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                 critical.setButtonText(QMessageBox::Ok, tr("&OK"));
                 critical.exec();
                 /* fall through, back to choosing screen */

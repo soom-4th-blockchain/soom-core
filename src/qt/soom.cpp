@@ -559,6 +559,7 @@ void BitcoinApplication::handleRunawayException(const QString &message)
     QMessageBox critical(QMessageBox::Critical, "Runaway exception",
                          BitcoinGUI::tr("A fatal error occurred. Soom Core can no longer continue safely and will quit.") + QString("\n\n") + message,
                          QMessageBox::Ok, 0);
+    critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
     critical.setButtonText(QMessageBox::Ok, tr("&OK"));
     critical.exec();
     ::exit(EXIT_FAILURE);
@@ -653,6 +654,7 @@ int main(int argc, char *argv[])
     {
         QMessageBox critical(QMessageBox::Critical, QObject::tr(PACKAGE_NAME),
                               QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(GetArg("-datadir", ""))), QMessageBox::Ok, 0);
+        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
         critical.exec();
         return EXIT_FAILURE;
@@ -662,6 +664,7 @@ int main(int argc, char *argv[])
     } catch (const std::exception& e) {
         QMessageBox critical(QMessageBox::Critical, QObject::tr(PACKAGE_NAME),
                               QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()), QMessageBox::Ok, 0);
+        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
         critical.exec();
         return EXIT_FAILURE;
@@ -678,6 +681,7 @@ int main(int argc, char *argv[])
         SelectParams(ChainNameFromCommandLine());
     } catch(std::exception &e) {
         QMessageBox critical(QMessageBox::Critical, QObject::tr(PACKAGE_NAME), QObject::tr("Error: %1").arg(e.what()), QMessageBox::Ok, 0);
+        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
         critical.exec();
         return EXIT_FAILURE;
@@ -701,6 +705,7 @@ int main(int argc, char *argv[])
     if(!gatewayConfig.read(strErr)) {
         QMessageBox critical(QMessageBox::Critical, QObject::tr(PACKAGE_NAME),
                               QObject::tr("Error reading gateway configuration file: %1").arg(strErr.c_str()), QMessageBox::Ok, 0);
+        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         critical.setButtonText(QMessageBox::Ok, QObject::tr("&OK"));
         critical.exec();
         return EXIT_FAILURE;

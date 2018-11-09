@@ -202,6 +202,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     // Disable size grip because it looks ugly and nobody needs it
     statusBar()->setSizeGripEnabled(false);
 
+    QString theme = GUIUtil::getThemeName();
+
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setContentsMargins(0,0,0,0);
@@ -210,6 +212,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
     unitDisplayControl = new UnitDisplayStatusBarControl(platformStyle);
+    if(theme == "default")
+        unitDisplayControl->setStyleSheet("QLabel { background-color: #191A24; color: #ffffff; font-size:11px; }");
     labelWalletEncryptionIcon = new QLabel();
     labelWalletHDStatusIcon = new QLabel();
     labelConnectionsIcon = new GUIUtil::ClickableLabel();
@@ -239,12 +243,12 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
-    QString curStyle = QApplication::style()->metaObject()->className();
-    if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
-    {
-//        progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
-        progressBar->setStyleSheet("QProgressBar { background: #bcc9dd; border: 1px solid #fff; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #f86c6b, stop: 1 #f86c6b); border-radius: 7px; margin: 0px; }");
-    }
+//    QString curStyle = QApplication::style()->metaObject()->className();
+//    if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
+//    {
+//        progressBar->setStyleSheet("QProgressBar { background-color:#191A24; border:1px solid #75CFFC; border-radius:7px; padding:1px; text-align:center; } "
+//                                   "QProgressBar::chunk { background-color: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #75CFFC, stop: 1 #75CFFC); border-radius:7px; margin:0px; }");
+//    }
 
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
@@ -259,12 +263,15 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
         QLabel* networkStyles = new QLabel(this);
         networkStyles->setFrameStyle(QFrame::Panel | QFrame::Sunken);
         networkStyles->setAlignment(Qt::AlignCenter);
-        networkStyles->setStyleSheet("QLabel { background: #bcc9dd; color: #ffffff; border: 1px solid #fff; border-radius: 7px; padding: 1px; text-align: center; }");
+        if(theme == "light")
+            networkStyles->setStyleSheet("QLabel { background-color:#bcc9dd; color:#ffffff; border:1px solid #fff; border-radius:5px; padding:1px; text-align:center; font-size:11px; }");
+        else    // "default"
+            networkStyles->setStyleSheet("QLabel { background-color:#191A24; color:#75CFFC; border:1px solid #75CFFC; border-radius:5px; padding:1px; text-align:center; font-size:11px; }");
 
         if (chain == TESTNET)
         {
             networkStyles->setText(" TESTNET ");
-//            networkStyles->setToolTip(tr("Use the test chain"));
+            networkStyles->setToolTip(tr("Use the test chain"));
         }
         else    // REGTEST
             networkStyles->setText(" REGTEST ");
@@ -342,7 +349,7 @@ void BitcoinGUI::createActions()
     sendCoinsMenuAction->setStatusTip(sendCoinsAction->statusTip());
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/" + theme + "/receiving_addresses"), tr("&Receive"), this);
+    receiveCoinsAction = new QAction(QIcon(":/icons/" + theme + "/receive"), tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and soom: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
@@ -353,7 +360,7 @@ void BitcoinGUI::createActions()
 #endif
     tabGroup->addAction(receiveCoinsAction);
 
-    receiveCoinsMenuAction = new QAction(QIcon(":/icons/" + theme + "/receiving_addresses"), receiveCoinsAction->text(), this);
+    receiveCoinsMenuAction = new QAction(QIcon(":/icons/" + theme + "/receive"), receiveCoinsAction->text(), this);
     receiveCoinsMenuAction->setStatusTip(receiveCoinsAction->statusTip());
     receiveCoinsMenuAction->setToolTip(receiveCoinsMenuAction->statusTip());
 
@@ -368,7 +375,7 @@ void BitcoinGUI::createActions()
 #endif
     tabGroup->addAction(historyAction);
 
-    signMessageAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("&Message"), this);        // Sign &message
+    signMessageAction = new QAction(QIcon(":/icons/" + theme + "/message"), tr("&Message"), this);        // Sign &message
     signMessageAction->setStatusTip(tr("Sign messages with your Soom addresses to prove you own them"));
     signMessageAction->setToolTip(signMessageAction->statusTip());
     signMessageAction->setCheckable(true);
@@ -379,7 +386,7 @@ void BitcoinGUI::createActions()
 #endif
     tabGroup->addAction(signMessageAction);
 
-    verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify Message"), this);
+    verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/message"), tr("&Verify Message"), this);
     verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Soom addresses"));
     verifyMessageAction->setToolTip(verifyMessageAction->statusTip());
     verifyMessageAction->setCheckable(true);
@@ -493,7 +500,7 @@ void BitcoinGUI::createActions()
     unlockWalletAction = new QAction(tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
-//    signMessageAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Sign &message..."), this);
+//    signMessageAction = new QAction(QIcon(":/icons/" + theme + "/message"), tr("Sign &message..."), this);
 //    signMessageAction->setStatusTip(tr("Sign messages with your Soom addresses to prove you own them"));
 //    verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify message..."), this);
 //    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Soom addresses"));
@@ -507,9 +514,9 @@ void BitcoinGUI::createActions()
     openPeersAction->setStatusTip(tr("Show peers info"));
     openRepairAction = new QAction(/*QIcon(":/icons/" + theme + "/options"), */tr("Wallet &Repair"), this);
     openRepairAction->setStatusTip(tr("Show wallet repair options"));
-    openConfEditorAction = new QAction(/*QIcon(":/icons/" + theme + "/edit"), */tr("Open Wallet &Configuration File"), this);
+    openConfEditorAction = new QAction(/*QIcon(":/icons/" + theme + "/message"), */tr("Open Wallet &Configuration File"), this);
     openConfEditorAction->setStatusTip(tr("Open configuration file"));
-    openGWConfEditorAction = new QAction(/*QIcon(":/icons/" + theme + "/edit"), */tr("Open &Gateway Configuration File"), this);
+    openGWConfEditorAction = new QAction(/*QIcon(":/icons/" + theme + "/message"), */tr("Open &Gateway Configuration File"), this);
     openGWConfEditorAction->setStatusTip(tr("Open Gateway configuration file"));
     showBackupsAction = new QAction(/*QIcon(":/icons/" + theme + "/browse"), */tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
@@ -643,32 +650,34 @@ void BitcoinGUI::createToolBars()
 #ifdef ENABLE_WALLET
     if(walletFrame)
     {
-        QToolBar *toolbar = new QToolBar(tr("Tabs toolbar"));
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-        toolbar->setStyleSheet("QToolButton { color: #ffffff; } QToolButton:hover { background-color: #4e586d } QToolButton:checked { background-color: rgba(255, 255, 255, 0.1) } QToolButton:pressed { background-color: rgba(255, 255, 255, 0.1) } #tabs { color: #ffffff; background-color: qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #404040, stop: 1 #101010); }");
-
         QLabel* coinImage = new QLabel();
-        coinImage->setMinimumSize(128, 128);
-        coinImage->setMaximumSize(128, 128);
+        coinImage->setMinimumSize(64, 64/*42.71, 42.71*/);
+        coinImage->setMaximumSize(64, 64/*42.71, 42.71*/);
         coinImage->setAlignment(Qt::AlignCenter);
         coinImage->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         coinImage->setPixmap(QPixmap(":/icons/bitcoin"));
         coinImage->setScaledContents(true);
 
+        QToolBar *toolbar = new QToolBar(tr("Tabs toolbar"));
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         toolbar->addSeparator();
         toolbar->addWidget(coinImage);
         toolbar->addSeparator();
         toolbar->addAction(overviewAction);
+        toolbar->addSeparator();
         toolbar->addAction(sendCoinsAction);
+        toolbar->addSeparator();
         toolbar->addAction(receiveCoinsAction);
+        toolbar->addSeparator();
         toolbar->addAction(historyAction);
+        toolbar->addSeparator();
         toolbar->addAction(signMessageAction);
 //        toolbar->addAction(usedSendingAddressesAction);
 //        toolbar->addAction(usedReceivingAddressesAction);
         QSettings settings;
         if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction)
         {
-//            toolbar->addSeparator();
+            toolbar->addSeparator();
             toolbar->addAction(gatewayAction);
         }
         toolbar->setMovable(false); // remove unused icon in upper left corner
@@ -677,10 +686,10 @@ void BitcoinGUI::createToolBars()
         toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
 
         QLayout *lay = toolbar->layout();
-        lay->itemAt(0)->setAlignment(Qt::AlignLeft);  // separator AlignCenter
+        lay->itemAt(0)->setAlignment(Qt::AlignCenter);  // separator AlignCenter
         lay->itemAt(1)->setAlignment(Qt::AlignCenter);  // bitcoin image AlignCenter
         for(int i = 2; i < lay->count(); i++)
-            lay->itemAt(i)->setAlignment(Qt::AlignLeft);
+            lay->itemAt(i)->setAlignment(Qt::AlignCenter);
 
         overviewAction->setChecked(true);
 
@@ -704,6 +713,7 @@ void BitcoinGUI::createToolBars()
         addDockWidget(Qt::LeftDockWidgetArea, dock);
 #else
 //        addToolBar(Qt::LeftToolBarArea, toolbar);
+        updateToolbarState(overview_selected);
 #endif
     }
 #endif // ENABLE_WALLET
@@ -987,12 +997,14 @@ void BitcoinGUI::openClicked()
 void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
+    updateToolbarState(overview_selected);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
 void BitcoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
+    updateToolbarState(history_selected);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
@@ -1001,6 +1013,7 @@ void BitcoinGUI::gotoGatewayPage()
     QSettings settings;
     if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction) {
         gatewayAction->setChecked(true);
+        updateToolbarState(gateways_selected);
         if (walletFrame) walletFrame->gotoGatewayPage();
     }
 }
@@ -1008,22 +1021,26 @@ void BitcoinGUI::gotoGatewayPage()
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
+    updateToolbarState(receive_selected);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
 void BitcoinGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
+    updateToolbarState(send_selected);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
 void BitcoinGUI::gotoSignMessageTab(QString addr)
 {
+    updateToolbarState(message_selected);
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
 void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 {
+    updateToolbarState(message_selected);
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
@@ -1040,6 +1057,19 @@ void BitcoinGUI::gotoUsedReceivingAddressesPage()
 }
 
 #endif // ENABLE_WALLET
+void BitcoinGUI::updateToolbarState(int status)
+{
+    QString theme = GUIUtil::getThemeName();
+
+    if(theme == "default") {
+        overviewAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::overview_selected ? "/overview_selected" : "/overview")));
+        sendCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::send_selected ? "/send_selected" : "/send")));
+        receiveCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::receive_selected ? "/receive_selected" : "/receive")));
+        historyAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::history_selected ? "/history_selected" : "/history")));
+        signMessageAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::message_selected ? "/message_selected" : "/message")));
+        gatewayAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::gateways_selected ? "/gateways_selected" : "/gateways")));
+    }
+}
 
 void BitcoinGUI::updateNetworkState()
 {
@@ -1301,6 +1331,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
 
         showNormalIfMinimized();
         QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons, this);
+        mBox.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         mBox.setButtonText(QMessageBox::Ok, tr("&OK"));
 
         int r = mBox.exec();
@@ -1610,7 +1641,12 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
+
+    QString theme = GUIUtil::getThemeName();
+    if(theme == "light")
+        setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
+    else    // "default"
+        setStyleSheet(QString("QLabel { color : %1 }").arg("#ffffff"));
 }
 
 /** So that it responds to button clicks */

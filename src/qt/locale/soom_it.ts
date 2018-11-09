@@ -1833,6 +1833,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>Tema dell'interfaccia utente.</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unità di misura con cui visualizzare gli importi:</translation>
@@ -2334,7 +2339,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
+        <source>PNG Image (*.png)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3542,6 +3547,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Scegli indirizzo</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Incolla indirizzo</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>Rimuovi</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>Scegli un indirizzo usato precedentemente</translation>
     </message>
@@ -3608,12 +3628,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Questa è una richiesta di pagamento non verificata.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>Questa è una richiesta di pagamento verificata.</translation>
@@ -3621,19 +3635,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Pagare a:</translation>
+        <source>Pay To</source>
+        <translation>Pagare a</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>Messaggio</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Memo:</translation>
+        <source>Memo</source>
+        <translation>Memo</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3843,6 +3857,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>Messaggio verificato.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Scegli indirizzo</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Incolla indirizzo</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>Incolla Firma</translation>
     </message>
 </context>
 <context>
@@ -5448,7 +5477,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>

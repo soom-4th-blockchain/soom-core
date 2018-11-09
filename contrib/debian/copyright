@@ -20,7 +20,7 @@ Files: src/qt/res/icons/add.png
        src/qt/res/icons/chevron.png
        src/qt/res/icons/configure.png
        src/qt/res/icons/debugwindow.png
-       src/qt/res/icons/edit.png
+       src/qt/res/icons/message.png
        src/qt/res/icons/editcopy.png
        src/qt/res/icons/editpaste.png
        src/qt/res/icons/export.png

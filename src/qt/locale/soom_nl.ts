@@ -1833,6 +1833,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>Gebruikersinterface thema:</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Eenheid om bedrag in te tonen:</translation>
@@ -2334,7 +2339,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
+        <source>PNG Image (*.png)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3545,6 +3550,21 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Kies het adres</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Plak adres</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>Verwijder</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>Kies een eerder gebruikt adres</translation>
     </message>
@@ -3588,7 +3608,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     <message>
         <location line="+13"/>
         <source>A&amp;mount</source>
-        <translation type="unfinished"/>
+        <translation>Bedra&amp;g</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -3611,12 +3631,6 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Dit is een niet-geverifieerd betalingsverzoek.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation>Bedra&amp;g:</translation>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>Dit is een geverifieerd betalingsverzoek.</translation>
@@ -3624,19 +3638,19 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Betaal Aan:</translation>
+        <source>Pay To</source>
+        <translation>Betaal Aan</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation>Bericht:</translation>
+        <source>Message</source>
+        <translation>Bericht</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Memo:</translation>
+        <source>Memo</source>
+        <translation>Memo</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3846,6 +3860,21 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>Bericht geverifiëerd.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Kies het adres</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Plak adres</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>Plak Handtekening</translation>
     </message>
 </context>
 <context>
@@ -5451,7 +5480,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>

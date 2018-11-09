@@ -386,6 +386,12 @@
         </item>
         <item>
          <widget class="QLabel" name="labelLocked">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>(1 locked)</string>
           </property>

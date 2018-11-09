@@ -1832,6 +1832,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>Design/Thema der Benutzeroberfläche:</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Einheit der Beträge:</translation>
@@ -2333,7 +2338,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
+        <source>PNG Image (*.png)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3542,6 +3547,21 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Wählen Sie die Adresse aus</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Adresse einfügen</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>Entfernen</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>Bereits verwendete Adresse auswählen</translation>
     </message>
@@ -3608,12 +3628,6 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Dies ist eine unverifizierte Zahlungsanforderung.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>Dies ist eine verifizierte Zahlungsanforderung.</translation>
@@ -3621,19 +3635,19 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Empfänger:</translation>
+        <source>Pay To</source>
+        <translation>Empfänger</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>Nachricht</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Memo:</translation>
+        <source>Memo</source>
+        <translation>Memo</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3843,6 +3857,21 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>Nachricht verifiziert.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Wählen Sie die Adresse aus</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Adresse einfügen</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>Signatur einfügen</translation>
     </message>
 </context>
 <context>

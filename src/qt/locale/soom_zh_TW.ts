@@ -39,12 +39,12 @@
     <message>
         <location line="+19"/>
         <source>Show QR codes and soom URIs</source>
-        <translation type="unfinished"/>
+        <translation>QR碼和Soom URI查看</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show &amp;QRCode</source>
-        <translation type="unfinished"/>
+        <translation>查看二維碼(&amp;Q)</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1176,7 +1176,7 @@
     <message>
         <location line="+16"/>
         <source>Note: Status of your gateways in local wallet can potentially be slightly incorrect.&lt;br&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br&gt;if your gateway should be running but you still do not see &quot;ENABLED&quot; in &quot;Status&quot; field.</source>
-        <translation>注意: 本地錢包中的網關狀態可能略有不正確。&lt;br&gt;總是等待錢包同步額外的數據，然後再從另一個節點多檢查一次&lt;br&gt;如果您的網關應該已經運行，但您仍然在“狀態”欄看不到“ENABLED” 的字樣的話。</translation>
+        <translation>注意: 本地錢包中的網關狀態可能略有不正確。總是等待錢包同步額外的數據，然後再從另一個節點多檢查一次&lt;br&gt;如果您的網關應該已經運行，但您仍然在“狀態”欄看不到“ENABLED” 的字樣的話。</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -1757,7 +1757,7 @@
         <location line="+23"/>
         <location line="+23"/>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation type="unfinished"/>
+        <translation>如果是使用提供的預設 SOCKS5 代理來連接到節點就加以顯示。</translation>
     </message>
     <message>
         <location line="-36"/>
@@ -1830,6 +1830,11 @@
 https://www.transifex.com/projects/p/soom/</source>
         <translation>缺少相關語言或翻譯不完整？請到這裡協助翻譯
 https://www.transifex.com/projects/p/soom/</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>用戶界面主題：</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -2304,37 +2309,37 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location filename="../qrcodedialog.cpp" line="+57"/>
         <source>URI</source>
-        <translation type="unfinished"/>
+        <translation>URI</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>位址</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Label</source>
-        <translation type="unfinished"/>
+        <translation>標記</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished"/>
+        <translation>產生的 URI 過長，請試著縮短標記或訊息的文字內容。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished"/>
+        <translation>把 URI 編碼成 QR Code 時發生錯誤。</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Save QR Code</source>
-        <translation type="unfinished"/>
+        <translation>儲存 QR Code</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
-        <translation type="unfinished"/>
+        <source>PNG Image (*.png)</source>
+        <translation>PNG 圖檔(*.png)</translation>
     </message>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
@@ -2344,18 +2349,18 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+55"/>
         <source>Copy &amp;Address</source>
-        <translation type="unfinished"/>
+        <translation>複製位址(&amp;A)</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&amp;Save Image...</source>
-        <translation type="unfinished"/>
+        <translation>儲存圖片(&amp;S)...</translation>
     </message>
     <message>
         <location line="+20"/>
         <location filename="../qrcodedialog.cpp" line="-77"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"/>
+        <translation>關閉(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -3038,7 +3043,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location filename="../receiverequestdialog.cpp" line="+33"/>
         <source>C&amp;lose</source>
-        <translation type="unfinished"/>
+        <translation>關閉(&amp;C)</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -3541,6 +3546,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>選擇位址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>貼上位址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>刪掉</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>選擇先前使用過的位址</translation>
     </message>
@@ -3607,12 +3627,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>這是一個未認證的付款請求。</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>這是一個已認證的付款請求。</translation>
@@ -3620,19 +3634,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>付給:</translation>
+        <source>Pay To</source>
+        <translation>付給</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>訊息</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>備註:</translation>
+        <source>Memo</source>
+        <translation>備註</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3842,6 +3856,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>訊息驗證成功。</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>選擇位址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>貼上位址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>貼上簽章</translation>
     </message>
 </context>
 <context>
@@ -4077,7 +4106,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>Output index</source>
-        <translation type="unfinished"/>
+        <translation>输出索引</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4142,7 +4171,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+7"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"/>
+        <translation>關閉(&amp;C)</translation>
     </message>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+6"/>
@@ -5242,6 +5271,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation>正在啟動網路執行緒...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
         <translation>正在同步區塊鏈...</translation>
     </message>
@@ -5278,12 +5312,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>Tor control port to use if onion listening enabled (default: %s)</source>
-        <translation type="unfinished"/>
+        <translation>Tor控制端口設定，如果啟用了洋蔥聽侯 (預設值: %s)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
-        <translation type="unfinished"/>
+        <translation>無法啟動HTTP服務器。 詳細信息請參閱debug.log。</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -5452,7 +5486,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation>單一的錢包交易允許付出最高的總手續費 (共 %s)，設定太低的話，可能會無法進行資料量大的交易(預設值: %s)</translation>
     </message>
     <message>

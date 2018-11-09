@@ -45,10 +45,12 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
         ui->deleteAddress->setIcon(QIcon());
         ui->exportButton->setIcon(QIcon());
     } else {
-        ui->newAddress->setIcon(QIcon(":/icons/" + theme + "/add"));
-        ui->copyAddress->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
-        ui->deleteAddress->setIcon(QIcon(":/icons/" + theme + "/remove"));
-        ui->exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
+        if(theme == "light") {
+            ui->newAddress->setIcon(QIcon(":/icons/" + theme + "/add"));
+            ui->copyAddress->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
+            ui->deleteAddress->setIcon(QIcon(":/icons/" + theme + "/remove"));
+            ui->exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
+        }
     }
 
     switch(mode)
@@ -104,11 +106,13 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
         break;
     }
 
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-    shadow->setBlurRadius(9.0);
-    shadow->setColor(QColor(0, 0, 0, 160));
-    shadow->setOffset(4.0);
-    ui->labelExplanation->setGraphicsEffect(shadow);
+    if(theme == "light") {
+        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
+        shadow->setBlurRadius(9.0);
+        shadow->setColor(QColor(0, 0, 0, 160));
+        shadow->setOffset(4.0);
+        ui->labelExplanation->setGraphicsEffect(shadow);
+    }
 
     // Context menu actions
     QAction *copyAddressAction = new QAction(tr("&Copy Address"), this);
@@ -349,6 +353,7 @@ void AddressBookPage::on_exportButton_clicked()
     if(!writer.write()) {
         QMessageBox critical(QMessageBox::Critical, tr("Exporting Failed"),
             tr("There was an error trying to save the address list to %1. Please try again.").arg(filename), QMessageBox::Ok, this);
+        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         critical.setButtonText(QMessageBox::Ok, tr("&OK"));
         critical.exec();
     }

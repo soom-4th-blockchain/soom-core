@@ -180,43 +180,80 @@ RES_ICONS = \
   qt/res/icons/bitcoin_testnet.ico \
   qt/res/icons/bitcoin.png \
   qt/res/icons/soomcoin.png \
-  qt/res/icons/chevron.png \
-  qt/res/icons/warning.png \
-  qt/res/icons/default/add.png \
-  qt/res/icons/default/address-book.png \
-  qt/res/icons/default/browse.png \
+  qt/res/icons/light/warning.png \
+  qt/res/icons/light/add.png \
+  qt/res/icons/light/address-book.png \
+  qt/res/icons/light/editcopy.png \
+  qt/res/icons/light/editpaste.png \
+  qt/res/icons/light/export.png \
+  qt/res/icons/light/clock1.png \
+  qt/res/icons/light/clock2.png \
+  qt/res/icons/light/clock3.png \
+  qt/res/icons/light/clock4.png \
+  qt/res/icons/light/clock5.png \
+  qt/res/icons/light/connect0_16.png \
+  qt/res/icons/light/connect1_16.png \
+  qt/res/icons/light/connect2_16.png \
+  qt/res/icons/light/connect3_16.png \
+  qt/res/icons/light/connect4_16.png \
+  qt/res/icons/light/message.png \
+  qt/res/icons/light/eye.png \
+  qt/res/icons/light/eye_minus.png \
+  qt/res/icons/light/eye_plus.png \
+  qt/res/icons/light/hd_disabled.png \
+  qt/res/icons/light/hd_enabled.png \
+  qt/res/icons/light/history.png \
+  qt/res/icons/light/lock_closed.png \
+  qt/res/icons/light/lock_open.png \
+  qt/res/icons/light/gateways.png \
+  qt/res/icons/light/overview.png \
+  qt/res/icons/light/receive.png \
+  qt/res/icons/light/remove.png \
+  qt/res/icons/light/send.png \
+  qt/res/icons/light/synced.png \
+  qt/res/icons/light/transaction0.png \
+  qt/res/icons/light/transaction2.png \
+  qt/res/icons/light/transaction_conflicted.png \
+  qt/res/icons/light/tx_inout.png \
+  qt/res/icons/light/tx_input.png \
+  qt/res/icons/light/tx_output.png \
+  qt/res/icons/light/tx_mined.png \
+  qt/res/icons/light/about_qt.png \
+  qt/res/icons/light/fontbigger.png \
+  qt/res/icons/light/fontsmaller.png \
+  qt/res/icons/light/transaction_abandoned.png \
+  qt/res/icons/light/network_disabled.png \
+  qt/res/icons/default/warning.png \
   qt/res/icons/default/clock1.png \
   qt/res/icons/default/clock2.png \
   qt/res/icons/default/clock3.png \
   qt/res/icons/default/clock4.png \
   qt/res/icons/default/clock5.png \
-  qt/res/icons/default/configure.png \
   qt/res/icons/default/connect0_16.png \
   qt/res/icons/default/connect1_16.png \
   qt/res/icons/default/connect2_16.png \
   qt/res/icons/default/connect3_16.png \
   qt/res/icons/default/connect4_16.png \
-  qt/res/icons/default/debugwindow.png \
-  qt/res/icons/default/edit.png \
-  qt/res/icons/default/editcopy.png \
-  qt/res/icons/default/editpaste.png \
-  qt/res/icons/default/export.png \
+  qt/res/icons/default/message.png \
+  qt/res/icons/default/message_selected.png \
   qt/res/icons/default/eye.png \
   qt/res/icons/default/eye_minus.png \
   qt/res/icons/default/eye_plus.png \
-  qt/res/icons/default/filesave.png \
   qt/res/icons/default/hd_disabled.png \
   qt/res/icons/default/hd_enabled.png \
   qt/res/icons/default/history.png \
-  qt/res/icons/default/key.png \
+  qt/res/icons/default/history_selected.png \
   qt/res/icons/default/lock_closed.png \
   qt/res/icons/default/lock_open.png \
   qt/res/icons/default/gateways.png \
+  qt/res/icons/default/gateways_selected.png \
   qt/res/icons/default/overview.png \
-  qt/res/icons/default/quit.png \
+  qt/res/icons/default/overview_selected.png \
   qt/res/icons/default/receive.png \
+  qt/res/icons/default/receive_selected.png \
   qt/res/icons/default/remove.png \
   qt/res/icons/default/send.png \
+  qt/res/icons/default/send_selected.png \
   qt/res/icons/default/synced.png \
   qt/res/icons/default/transaction0.png \
   qt/res/icons/default/transaction2.png \
@@ -225,9 +262,7 @@ RES_ICONS = \
   qt/res/icons/default/tx_input.png \
   qt/res/icons/default/tx_output.png \
   qt/res/icons/default/tx_mined.png \
-  qt/res/icons/default/about.png \
   qt/res/icons/default/about_qt.png \
-  qt/res/icons/default/verify.png \
   qt/res/icons/default/fontbigger.png \
   qt/res/icons/default/fontsmaller.png \
   qt/res/icons/default/transaction_abandoned.png \
@@ -299,21 +334,45 @@ BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
 endif
 
 RES_IMAGES = \
-  qt/res/images/default/about.png \
+  qt/res/images/light/splash.png \
+  qt/res/images/light/splash_testnet.png \
+  qt/res/images/light/soom_logo_horizontal.png \
+  qt/res/images/light/unchecked.png \
+  qt/res/images/light/checked.png \
+  qt/res/images/light/unchecked_disabled.png \
+  qt/res/images/light/checked_disabled.png \
+  qt/res/images/light/downArrow.png \
+  qt/res/images/light/downArrow_small.png \
+  qt/res/images/light/upArrow_small.png \
+  qt/res/images/light/leftArrow_small.png \
+  qt/res/images/light/rightArrow_small.png \
+  qt/res/images/light/qtreeview_selected.png \
+  qt/res/images/light/walletFrame_bg.png \
+  qt/res/images/light/radio_on.png \
+  qt/res/images/light/radio_off.png \
+  qt/res/images/light/radio_on_disabled.png \
+  qt/res/images/light/radio_off_disabled.png \
   qt/res/images/default/splash.png \
-  qt/res/images/default/splash_testnet.png \
   qt/res/images/default/soom_logo_horizontal.png \
   qt/res/images/default/unchecked.png \
   qt/res/images/default/checked.png \
+  qt/res/images/default/unchecked_disabled.png \
+  qt/res/images/default/checked_disabled.png \
   qt/res/images/default/downArrow.png \
   qt/res/images/default/downArrow_small.png \
+  qt/res/images/default/upArrow.png \
   qt/res/images/default/upArrow_small.png \
   qt/res/images/default/leftArrow_small.png \
   qt/res/images/default/rightArrow_small.png \
   qt/res/images/default/qtreeview_selected.png \
-  qt/res/images/default/walletFrame_bg.png
+  qt/res/images/default/walletFrame_bg.png \
+  qt/res/images/default/radio_on.png \
+  qt/res/images/default/radio_off.png \
+  qt/res/images/default/radio_on_disabled.png \
+  qt/res/images/default/radio_off_disabled.png
 
 RES_CSS = \
+  qt/res/css/light.css \
   qt/res/css/default.css
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)

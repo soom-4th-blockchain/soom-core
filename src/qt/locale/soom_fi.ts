@@ -1832,6 +1832,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>Käyttöliittymän Teema:</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>Yksikkö joina määrät näytetään</translation>
@@ -2333,7 +2338,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
+        <source>PNG Image (*.png)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3545,6 +3550,21 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Valitse osoite</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Liitä osoite</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
@@ -3611,12 +3631,6 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tämä on vahvistamaton maksupyyntö</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>Tämä on vahvistettu maksupyyntö.</translation>
@@ -3624,19 +3638,19 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Saaja:</translation>
+        <source>Pay To</source>
+        <translation>Saaja</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>Viesti</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Muistio:</translation>
+        <source>Memo</source>
+        <translation>Muistio</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3846,6 +3860,21 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>Viesti vahvistettu.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Valitse osoite</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Liitä osoite</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>Liitä Allekirjoitus</translation>
     </message>
 </context>
 <context>
@@ -5451,7 +5480,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation>Yksittäisen siirtotapahtuman maksimi siirtomaksu (%s), jos tämä asetetaan liian matalaksi, se voi keskeyttää isot siirtotapahtumat (oletus: %s)</translation>
     </message>
     <message>

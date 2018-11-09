@@ -34,13 +34,31 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *_platformStyle, QWidget *par
 
     QString theme = GUIUtil::getThemeName();
 
-    // These icons are needed on Mac also!
-    ui->addressBookButton->setIcon(QIcon(":/icons/" + theme + "/address-book"));
-    ui->pasteButton->setIcon(QIcon(":/icons/" + theme + "/editpaste"));
-    ui->deleteButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
-    ui->deleteButton_is->setIcon(QIcon(":/icons/" + theme + "/remove"));
-    ui->deleteButton_s->setIcon(QIcon(":/icons/" + theme + "/remove"));
-      
+    if (!_platformStyle->getImagesOnButtons()) {
+        ui->addressBookButton->setIcon(QIcon());
+        ui->pasteButton->setIcon(QIcon());
+        ui->deleteButton->setIcon(QIcon());
+        ui->deleteButton_is->setIcon(QIcon());
+        ui->deleteButton_s->setIcon(QIcon());
+    } else {
+        if(theme == "light") {
+            // These icons are needed on Mac also!
+            ui->addressBookButton->setIcon(QIcon(":/icons/" + theme + "/address-book"));
+            ui->pasteButton->setIcon(QIcon(":/icons/" + theme + "/editpaste"));
+            ui->deleteButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
+            ui->deleteButton_is->setIcon(QIcon(":/icons/" + theme + "/remove"));
+            ui->deleteButton_s->setIcon(QIcon(":/icons/" + theme + "/remove"));
+        }
+        else    // "default"
+        {
+            ui->addressBookButton->setText(tr("Choose the address"));
+            ui->pasteButton->setText(tr("Paste address"));
+            ui->deleteButton->setText(tr("Remove"));
+            ui->deleteButton_is->setText(tr("Remove"));
+            ui->deleteButton_s->setText(tr("Remove"));
+        }
+    }
+
     // normal soom address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
     // just a label for displaying soom address(es)

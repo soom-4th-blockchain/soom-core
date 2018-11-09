@@ -40,22 +40,24 @@ ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *_platformStyle, QWid
         ui->removeRequestButton->setIcon(QIcon());
     } else {
         ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
-        ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receiving_addresses"));
-        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/edit"));
+        ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receive"));
+        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/message"));
         ui->removeRequestButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
     }
 
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-    shadow->setBlurRadius(9.0);
-    shadow->setColor(QColor(0, 0, 0, 160));
-    shadow->setOffset(4.0);
-    ui->label_5->setGraphicsEffect(shadow);
+    if(theme == "light") {
+        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
+        shadow->setBlurRadius(9.0);
+        shadow->setColor(QColor(0, 0, 0, 160));
+        shadow->setOffset(4.0);
+        ui->label_5->setGraphicsEffect(shadow);
 
-    QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
-    shadow2->setBlurRadius(9.0);
-    shadow2->setColor(QColor(0, 0, 0, 160));
-    shadow2->setOffset(4.0);
-    ui->label_6->setGraphicsEffect(shadow2);
+        QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
+        shadow2->setBlurRadius(9.0);
+        shadow2->setColor(QColor(0, 0, 0, 160));
+        shadow2->setOffset(4.0);
+        ui->label_6->setGraphicsEffect(shadow2);
+    }
 
     // context menu actions
     QAction *copyURIAction = new QAction(tr("Copy URI"), this);

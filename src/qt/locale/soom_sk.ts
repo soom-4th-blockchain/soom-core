@@ -1832,6 +1832,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>Motív užívateľského rozhrania:</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Zobrazovať hodnoty v jednotkách:</translation>
@@ -2333,7 +2338,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
+        <source>PNG Image (*.png)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3541,6 +3546,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Zvoľte adresu</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Vložiť adresu</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>Odstrániť</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>Vybrať predtým použitú adresu</translation>
     </message>
@@ -3607,12 +3627,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Toto je neoverená výzva k platbe.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>Toto je overená výzva k platbe.</translation>
@@ -3620,19 +3634,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Platba pre:</translation>
+        <source>Pay To</source>
+        <translation>Platba pre</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>Správa</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Poznámka:</translation>
+        <source>Memo</source>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3842,6 +3856,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>Správa overená.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>Zvoľte adresu</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>Vložiť adresu</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>Vložiť Podpis</translation>
     </message>
 </context>
 <context>
@@ -5447,7 +5476,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation>Celkové maximum poplatkov (v %s) pre použitie jednej transakcie peňaženky. Príliš malá hodnota môže prerušiť veľké transakcie (predvolené: %s)</translation>
     </message>
     <message>

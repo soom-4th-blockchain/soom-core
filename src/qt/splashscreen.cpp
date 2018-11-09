@@ -32,32 +32,43 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 
     // transparent background
     setAttribute(Qt::WA_TranslucentBackground);
-    setStyleSheet("background:transparent;");
+    setStyleSheet("background-color:transparent;");
 
     // no window decorations
     setWindowFlags(Qt::FramelessWindowHint);
 
     // set reference point, paddings
     int paddingLeft             = 14;
-    int paddingTop              = 470;
+    int paddingTop              = 430;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 32;
 
-    float fontFactor            = 1.0;
+    float fontFactor            = 0.87;
 
     // define text to place
-    QString titleText       = tr(PACKAGE_NAME);
+//    QString titleText       = tr(PACKAGE_NAME);
     QString versionText     = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightText   = QString::fromUtf8(CopyrightHolders("Copyright (C)"/*"\xc2\xA9"*/, 2009, COPYRIGHT_YEAR).c_str()) + QString(tr("The Bitcoin Core developers"));
-    QString copyrightTextDash   = QString::fromUtf8(CopyrightHolders("Copyright (C)"/*"\xc2\xA9"*/, 2014, COPYRIGHT_YEAR).c_str()) + QString(tr("The Dash Core developers"));
-    QString copyrightTextSoom   = QString::fromUtf8(CopyrightHolders("Copyright (C)"/*"\xc2\xA9"*/, 2017, COPYRIGHT_YEAR).c_str()) + QString(tr("The Soom Core developers"));
+    QString copyrightText   = QString("Copyright (C) 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
+    QString copyrightTextDash   = QString("Copyright (C) 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core developers"));
+    QString copyrightTextSoom   = QString("Copyright (C) 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Soom Core developers"));
     QString titleAddText    = networkStyle->getTitleAddText();
     // networkstyle.cpp can't (yet) read themes, so we do it here to get the correct Splash-screen
-    QString splashScreenPath = ":/images/" + GUIUtil::getThemeName() + "/splash";
+    QString theme = GUIUtil::getThemeName();
+    QString splashScreenPath = ":/images/" + theme + "/splash";
     if(GetBoolArg("-regtest", false))
-        splashScreenPath = ":/images/" + GUIUtil::getThemeName() + "/splash_testnet";
+    {
+        if(theme == "light")
+            splashScreenPath = ":/images/" + theme + "/splash_testnet";
+        else
+            splashScreenPath = ":/images/" + theme + "/splash";
+    }
     if(GetBoolArg("-testnet", false))
-        splashScreenPath = ":/images/" + GUIUtil::getThemeName() + "/splash_testnet";
+    {
+        if(theme == "light")
+            splashScreenPath = ":/images/" + theme + "/splash_testnet";
+        else
+            splashScreenPath = ":/images/" + theme + "/splash";
+    }
 
     QString font = QApplication::font().toString();
 
@@ -65,20 +76,20 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     pixmap = QPixmap(splashScreenPath);
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100,100,100));
+    pixPaint.setPen((theme == "light") ? QColor(100,100,100) : QColor(255,255,255));
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 28*fontFactor));
     QFontMetrics fm = pixPaint.fontMetrics();
-    int titleTextWidth = fm.width(titleText);
-    if (titleTextWidth > 160) {
-        fontFactor = 0.75;
-    }
+//    int titleTextWidth = fm.width(titleText);
+//    if (titleTextWidth > 160) {
+//        fontFactor = 0.75;
+//    }
 
     pixPaint.setFont(QFont(font, 28*fontFactor));
-    fm = pixPaint.fontMetrics();
-    titleTextWidth  = fm.width(titleText);
-    pixPaint.drawText(paddingLeft,paddingTop,titleText);
+//    fm = pixPaint.fontMetrics();
+//    titleTextWidth  = fm.width(titleText);
+//    pixPaint.drawText(paddingLeft,paddingTop,titleText);
 
     pixPaint.setFont(QFont(font, 15*fontFactor));
     pixPaint.drawText(paddingLeft,paddingTop+titleVersionVSpace,versionText);
@@ -89,11 +100,11 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
         const int x = paddingLeft;
         const int y = paddingTop+titleCopyrightVSpace;
         QRect copyrightRect(x, y, pixmap.width() - x, pixmap.height() - y);
-    	pixPaint.drawText(copyrightRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightText);
-        QRect copyrightRect2(x, y + 12, pixmap.width() - x, pixmap.height() - y + 12);
-		pixPaint.drawText(copyrightRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightTextDash);
-        QRect copyrightRect3(x, y + 24, pixmap.width() - x, pixmap.height() - y + 24);
-    	pixPaint.drawText(copyrightRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightTextSoom);
+        pixPaint.drawText(copyrightRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightText);
+        QRect copyrightRect2(x, y + 15, pixmap.width() - x, pixmap.height() - y + 12);
+        pixPaint.drawText(copyrightRect2, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightTextDash);
+        QRect copyrightRect3(x, y + 30, pixmap.width() - x, pixmap.height() - y + 24);
+        pixPaint.drawText(copyrightRect3, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, copyrightTextSoom);
     }
 
     // draw additional text if special network
@@ -147,11 +158,13 @@ void SplashScreen::slotFinish(QWidget *mainWin)
 
 static void InitMessage(SplashScreen *splash, const std::string &message)
 {
+    QString theme = GUIUtil::getThemeName();
+
     QMetaObject::invokeMethod(splash, "showMessage",
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom|Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(55,55,55)));
+        Q_ARG(QColor, (theme == "light") ? QColor(55,55,55) : QColor(255,255,255)));
 }
 
 static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)

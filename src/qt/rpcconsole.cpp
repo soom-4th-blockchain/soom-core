@@ -370,7 +370,7 @@ bool RPCConsole::RPCParseCommandLine(std::string &strResult, const std::string &
         }
         *pstrFilteredOut = strCommand;
         for (auto i = filter_ranges.rbegin(); i != filter_ranges.rend(); ++i) {
-            pstrFilteredOut->replace(i->first, i->second - i->first, "(¡¦)");
+            pstrFilteredOut->replace(i->first, i->second - i->first, "(\A1\A6)");
         }
     }
     switch(state) // final state
@@ -437,26 +437,64 @@ RPCConsole::RPCConsole(const PlatformStyle *_platformStyle, QWidget *parent) :
 
     QString theme = GUIUtil::getThemeName();
 
-    setStyleSheet("QWidget { background-color: #eff3f6; } QPushButton { color: #ffffff; background-color: #3a5998; border-radius: 7px; outline: 0; } "
-                  "QPushButton:hover { background-color: #4e586d; } QPushButton:pressed { background-color: #4e586d; } "
-                  "QTextEdit { background-color: #ffffff; } "
-                  "QLineEdit { background-color: #ffffff; } "
-                  "QMenu { color: #333; background-color:#bcc9dd; } QMenu::item:selected { color:#ffffff; background-color:#4875b4; } "
-                  "QTableView { background-color: #ffffff; }");
+    if(theme == "light") {
+        setStyleSheet("QWidget { background-color:#eff3f6; } "
+                    "QPushButton { background-color:#3a5998; color:#ffffff; border-radius:7px; outline:0; } "
+                    "QPushButton:hover { background-color:#4e586d; } QPushButton:pressed { background-color:#4e586d; } "
+                    "QTextEdit { background-color:#ffffff; } "
+                    "QLineEdit { background-color:#ffffff; } "
+                    "QMenu { background-color:#bcc9dd; color:#333; } QMenu::item:selected { color:#ffffff; background-color:#4875b4; } "
+                    "QTableView { background-color:#ffffff; } "
+                    "QSlider::groove:horizontal { background-color:#D9D9D9; border:1px solid #D9D9D9; border-radius:3px; height:7px; } "
+                    "QSlider::handle:horizontal { background-color:qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #ffffff, stop: 1 #f0b7b7); border:1px solid #717496; border-radius:2px; width:5px; margin-top:-5px; margin-bottom:-5px; } "
+                    "QSlider::add-page:horizontal { background-color:#D9D9D9; border-radius:4px; height:10px; } "
+                    "QSlider::sub-page:horizontal { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0b7b7, stop: 1 #f86c6b); border-radius:4px; height:10px; }");
+    }
+    else    // "default"
+    {
+        setStyleSheet("QWidget { background-color:#2B2D3C; border:0px solid #ffffff; } "
+                    "QPushButton { background-color:#3a5998; border-radius:5px; font-size:13px; color:#ffffff; outline:0; } "
+                    "QPushButton:hover { background-color:#4e586d; } QPushButton:pressed { background-color:#4e586d; } "
+                    "QTextEdit, QLineEdit { background-color:rgba(117, 207, 252, 0.1); border:1px solid #717496; color:#ffffff; } "
+                    "QMenu { background-color:#3B3D53; color:#333; } QMenu::item { color:#717496; } QMenu::item:selected { background-color:#2B2D3C; color:#ffffff; } QMenu::item:disabled { background-color:#3B3D53; color:#4E586D; } "
+                    "QHeaderView { background-color:#34AAF9; } "
+                    "QScrollBar:vertical { background-color:#717496; border:0; width:15px; margin:15px 0px 15px 0px; } "
+                    "QScrollBar:horizontal { background-color:#717496; border:0; height:15px; margin:0px 15px 0px 15px; } "
+                    "QScrollBar::handle:vertical { background-color:#72EFFE; border:2px solid #717496; border-radius:7px; min-height:10px; } "
+                    "QScrollBar::handle:horizontal { background-color:#72EFFE; border:2px solid #717496; border-radius:7px; min-width:10px; } "
+                    "QScrollBar::sub-line:vertical { subcontrol-position:top; subcontrol-origin:margin; background-color:#717496; width:16px; height:16px; } "
+                    "QScrollBar::add-line:vertical { subcontrol-position:bottom; subcontrol-origin:margin; background-color:#717496; width:16px; height:16px; } "
+                    "QScrollBar::sub-line:horizontal { subcontrol-position:left; subcontrol-origin:margin; background-color:#717496; width:16px; height:16px; } "
+                    "QScrollBar::add-line:horizontal { subcontrol-position:right; subcontrol-origin:margin; background-color:#717496; width:16px; height:16px; } "
+                    "QScrollBar:up-arrow { image:url(':/images/default/upArrow_small'); width:10px; height:10px; } "
+                    "QScrollBar:down-arrow { image:url(':/images/default/downArrow_small'); width:10px; height:10px; } "
+                    "QScrollBar:left-arrow { image:url(':/images/default/leftArrow_small'); width:10px; height:10px; } "
+                    "QScrollBar:right-arrow { image:url(':/images/default/rightArrow_small'); width:10px; height:10px; } "
+                    "QHeaderView::section { qproperty-alignment:center; background-color:#34AAF9; color:#ffffff; border:0px solid #717496; border-right:1px solid #717496; font-size:12px; min-height:25px; outline:0; } "
+                    "QHeaderView::section:checked { font-weight:normal; } QHeaderView::section:last { border-right:0px solid #d7d7d7; } "
+                    "QTableView { background-color:#4E586D; color:#ffffff; font-size:12px; } "
+                    "QTableView::item { background-color:#4E586D; font-size:12px; } QTableView::item:selected { background-color:#717496; border:1px solid #717496; color:#ffffff; } "
+                    "QTabWidget QTabBar::tab { background-color:#2B2D3C; color:#ffffff; padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px; border-bottom:3px solid #717496; padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px; }"
+                    "QTabWidget QTabBar::tab:selected { background-color:#2B2D3C; color:#ffffff; border-bottom:3px solid #75CFFC; }"
+                    "QTabWidget QTabBar::tab:hover { background-color:#2B2D3C; color:#717496; }"
+                    "QLabel { color:#ffffff; } "
+                    "QSlider::groove:horizontal { background-color:#D9D9D9; border:1px solid #D9D9D9; border-radius:3px; height:7px; } "
+                    "QSlider::handle:horizontal { background-color:qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #ffffff, stop: 1 #CAE9F6); border:1px solid #717496; border-radius:2px; width:5px; margin-top:-5px; margin-bottom:-5px; } "
+                    "QSlider::add-page:horizontal { background-color:#D9D9D9; border-radius:4px; height:10px; } "
+                    "QSlider::sub-page:horizontal { background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #CAE9F6, stop: 1 #34AAF9); border-radius:4px; height:10px; }");
+    }
 
     if (platformStyle->getImagesOnButtons()) {
-        ui->openDebugLogfileButton->setIcon(QIcon(":/icons/" + theme + "/export"));
+        if(theme == "light")
+            ui->openDebugLogfileButton->setIcon(QIcon(":/icons/" + theme + "/export"));
     }
 
     ui->fontSmallerButton->setStyleSheet("QPushButton { background-color:transparent; } ");
     ui->fontBiggerButton->setStyleSheet("QPushButton { background-color:transparent; } ");
     ui->clearButton->setStyleSheet("QPushButton { background-color:transparent; } ");
-    ui->promptIcon->setStyleSheet("QPushButton { background-color:transparent; } ");
 
-    ui->line->setStyleSheet("QLabel { background-color: #00ff00; min-height:3px; } ");
-    ui->line_2->setStyleSheet("QLabel { background-color: #ff0000; min-height:3px; } ");
-
-//    ui->sldGraphRange->setStyleSheet("QSlider { color: #ffffff; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f); border: 1px solid: #5c5c5; border-radius: 7px; } ");
+    ui->line->setStyleSheet("QLabel { background-color:#00ff00; min-height:3px; } ");
+    ui->line_2->setStyleSheet("QLabel { background-color:#ff0000; min-height:3px; } ");
 
     // Needed on Mac also
     ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
@@ -603,8 +641,6 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSION_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
-        ui->peerWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #ffffff, stop:1 #ffffff); } ");
-                                                    //"selection-background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop: 0 #ff92bb, stop: 1 #ffffff);
         ui->peerWidget->setGridStyle(Qt::DotLine);
 //        ui->peerWidget->setCornerButtonEnabled(true);
 
@@ -648,7 +684,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         connect(model->getPeerTableModel(), SIGNAL(layoutChanged()), this, SLOT(peerLayoutChanged()));
         // peer table signal handling - cache selected node ids
         connect(model->getPeerTableModel(), SIGNAL(layoutAboutToBeChanged()), this, SLOT(peerLayoutAboutToChange()));
-        
+
         // set up ban table
         ui->banlistWidget->setModel(model->getBanTableModel());
         ui->banlistWidget->verticalHeader()->hide();
@@ -659,7 +695,6 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->banlistWidget->setColumnWidth(BanTableModel::Address, BANSUBNET_COLUMN_WIDTH);
         ui->banlistWidget->setColumnWidth(BanTableModel::Bantime, BANTIME_COLUMN_WIDTH);
         ui->banlistWidget->horizontalHeader()->setStretchLastSection(true);
-        ui->banlistWidget->setStyleSheet("QTableView { color: #333333; background: qlineargradient(x1:0, y1:0, x2:0, y2:0, stop:0 #ffffff, stop:1 #ffffff); } ");
         ui->banlistWidget->setGridStyle(Qt::DotLine);
 
         // create ban table context menu action
@@ -842,12 +877,12 @@ void RPCConsole::clear(bool clearHistory)
     ui->messagesWidget->document()->setDefaultStyleSheet(
         QString(
                 "table { }"
-                "td.time { color: #808080; font-size: %2; padding-top: 3px; } "
+                "td.time { color:#808080; font-size: %2; padding-top:3px; } "
                 "td.message { font-family: %1; font-size: %2; white-space:pre-wrap; } "
-                "td.cmd-request { color: #006060; } "
+                "td.cmd-request { color:#006060; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #006060; } "
+                "b { color:#006060; } "
             ).arg(fixedFontInfo.family(), QString("%1pt").arg(consoleFontSize))
         );
 

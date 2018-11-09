@@ -939,14 +939,19 @@ QString loadStyleSheet()
     QString cssName;
     QString theme = settings.value("theme", "").toString();
 
-    cssName = QString(":/css/default");
-    settings.setValue("theme", "default");
-    
-    QFile qFile(cssName);      
+    if(!theme.isEmpty()){
+        cssName = QString(":/css/") + theme;
+    }
+    else {
+        cssName = QString(":/css/default");
+        settings.setValue("theme", "default");
+    }
+
+    QFile qFile(cssName);
     if (qFile.open(QFile::ReadOnly)) {
         styleSheet = QLatin1String(qFile.readAll());
     }
-        
+
     return styleSheet;
 }
 

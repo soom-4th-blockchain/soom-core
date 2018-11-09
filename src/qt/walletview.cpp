@@ -48,19 +48,25 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     vbox->addWidget(transactionView);
     QPushButton *exportButton = new QPushButton(tr("&Export"), this);
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
+
+    QString theme = GUIUtil::getThemeName();
     if (platformStyle->getImagesOnButtons()) {
-        QString theme = GUIUtil::getThemeName();
-        exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
+        if(theme == "light")
+            exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
     }
     hbox_buttons->addStretch();
 
     // Sum of selected transactions
     QLabel *transactionSumLabel = new QLabel(); // Label
+
+    if(theme == "default")
+        transactionSumLabel->setStyleSheet("QLabel { background-color:transparent; color:#ffffff; font-size:12px; font-weight:bold; text-align:center; }");
     transactionSumLabel->setObjectName("transactionSumLabel"); // Label ID as CSS-reference
     transactionSumLabel->setText(tr("Selected amount:"));
     hbox_buttons->addWidget(transactionSumLabel);
 
     transactionSum = new QLabel(); // Amount
+    transactionSum->setStyleSheet("QLabel { background-color:transparent; color:#ffffff; font-size:13px; text-align:center; }");
     transactionSum->setObjectName("transactionSum"); // Label ID as CSS-reference
     transactionSum->setMinimumSize(200, 8);
     transactionSum->setTextInteractionFlags(Qt::TextSelectableByMouse);

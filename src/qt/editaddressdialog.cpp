@@ -43,7 +43,9 @@ EditAddressDialog::EditAddressDialog(Mode _mode, QWidget *parent) :
         break;
     }
 
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));
 
     mapper = new QDataWidgetMapper(this);
@@ -116,6 +118,7 @@ void EditAddressDialog::accept()
             QMessageBox warning(QMessageBox::Warning, windowTitle(),
                 tr("The entered address \"%1\" is not a valid Soom address.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, this);
+            warning.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             warning.setButtonText(QMessageBox::Ok, tr("&OK"));
             warning.exec();
         }
@@ -125,6 +128,7 @@ void EditAddressDialog::accept()
             QMessageBox warning2(QMessageBox::Warning, windowTitle(),
                 tr("The entered address \"%1\" is already in the address book.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, this);
+            warning2.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             warning2.setButtonText(QMessageBox::Ok, tr("&OK"));
             warning2.exec();
         }
@@ -134,6 +138,7 @@ void EditAddressDialog::accept()
             QMessageBox critical(QMessageBox::Critical, windowTitle(),
                 tr("Could not unlock wallet."),
                 QMessageBox::Ok, this);
+            critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             critical.setButtonText(QMessageBox::Ok, tr("&OK"));
             critical.exec();
         }
@@ -143,6 +148,7 @@ void EditAddressDialog::accept()
             QMessageBox critical2(QMessageBox::Critical, windowTitle(),
                 tr("New key generation failed."),
                 QMessageBox::Ok, this);
+            critical2.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             critical2.setButtonText(QMessageBox::Ok, tr("&OK"));
             critical2.exec();
         }

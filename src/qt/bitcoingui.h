@@ -76,6 +76,15 @@ public:
     bool enableWallet;
 
 protected:
+    enum ToolbarStatus {
+        overview_selected = 0,
+        send_selected,
+        receive_selected,
+        history_selected,
+        message_selected,
+        gateways_selected,
+
+    };
     void changeEvent(QEvent *e);
     void closeEvent(QCloseEvent *event);
     void showEvent(QShowEvent *event);
@@ -168,6 +177,8 @@ private:
     void updateNetworkState();
 
     void updateHeadersSyncProgressLabel();
+
+    void updateToolbarState(int status);
 
 Q_SIGNALS:
     /** Signal raised when a URI was entered or dragged to the GUI */

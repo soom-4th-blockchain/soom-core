@@ -92,7 +92,7 @@ void QRCodeDialog::generatesQRCodes()
             }
             QRcode_free(code);
 
-            ui->lblQRCode->setPixmap(QPixmap::fromImage(myImage).scaled(300, 300));
+            ui->lblQRCode->setPixmap(QPixmap::fromImage(myImage).scaled(QR_IMAGE_SIZE, QR_IMAGE_SIZE));
             ui->btnSaveAs->setEnabled(true);
         }
     }
@@ -100,7 +100,7 @@ void QRCodeDialog::generatesQRCodes()
 
 void QRCodeDialog::on_btnSaveAs_clicked()
 {
-    QString fn = GUIUtil::getSaveFileName(this, tr("Save QR Code"), QString(), tr("PNG Images (*.png)"), NULL);
+    QString fn = GUIUtil::getSaveFileName(this, tr("Save QR Code"), QString(), tr("PNG Image (*.png)"), NULL);
     if (!fn.isEmpty())
         myImage.scaled(QR_IMAGE_SIZE, QR_IMAGE_SIZE).save(fn);
 }

@@ -72,7 +72,9 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent) :
             break;
     }
 
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));
 
     textChanged();
@@ -121,7 +123,9 @@ void AskPassphraseDialog::accept()
             tr("Warning: If you encrypt your wallet and lose your passphrase, you will <b>LOSE ALL OF YOUR SOOM</b>!") + "<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
             QMessageBox::Yes | QMessageBox::Cancel,
             this);
+        question.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
         question.setButtonText(QMessageBox::Yes, tr("&Yes"));
+        question.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
         question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
 
         int retval = question.exec();
@@ -143,6 +147,7 @@ void AskPassphraseDialog::accept()
                                          "Previous backups of the unencrypted wallet file contain the same HD seed and "
                                          "still have full access to all your funds just like the new, encrypted wallet.") +
                                          "</b></qt>", QMessageBox::Ok, this);
+                        warning.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                         warning.setButtonText(QMessageBox::Ok, tr("&OK"));
                         warning.exec();
                     } else {
@@ -157,6 +162,7 @@ void AskPassphraseDialog::accept()
                                          "For security reasons, previous backups of the unencrypted wallet file "
                                          "will become useless as soon as you start using the new, encrypted wallet.") +
                                          "</b></qt>", QMessageBox::Ok, this);
+                        warning.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                         warning.setButtonText(QMessageBox::Ok, tr("&OK"));
                         warning.exec();
                     }
@@ -166,6 +172,7 @@ void AskPassphraseDialog::accept()
                 {
                     QMessageBox critical(QMessageBox::Critical, tr("Wallet encryption failed"),
                                          tr("Wallet encryption failed due to an internal error. Your wallet was not encrypted."), QMessageBox::Ok, this);
+                    critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                     critical.setButtonText(QMessageBox::Ok, tr("&OK"));
                     critical.exec();
                 }
@@ -175,6 +182,7 @@ void AskPassphraseDialog::accept()
             {
                 QMessageBox critical(QMessageBox::Critical, tr("Wallet encryption failed"),
                                      tr("The supplied passphrases do not match."), QMessageBox::Ok, this);
+                critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                 critical.setButtonText(QMessageBox::Ok, tr("&OK"));
                 critical.exec();
             }
@@ -189,6 +197,7 @@ void AskPassphraseDialog::accept()
         {
             QMessageBox critical(QMessageBox::Critical, tr("Wallet unlock failed"),
                                   tr("The passphrase entered for the wallet decryption was incorrect."), QMessageBox::Ok, this);
+            critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             critical.setButtonText(QMessageBox::Ok, tr("&OK"));
             critical.exec();
         }
@@ -202,6 +211,7 @@ void AskPassphraseDialog::accept()
         {
             QMessageBox critical(QMessageBox::Critical, tr("Wallet decryption failed"),
                                   tr("The passphrase entered for the wallet decryption was incorrect."), QMessageBox::Ok, this);
+            critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             critical.setButtonText(QMessageBox::Ok, tr("&OK"));
             critical.exec();
         }
@@ -217,6 +227,7 @@ void AskPassphraseDialog::accept()
             {
                 QMessageBox information(QMessageBox::Information, tr("Wallet encrypted"),
                                      tr("Wallet passphrase was successfully changed."), QMessageBox::Ok, this);
+                information.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                 information.setButtonText(QMessageBox::Ok, tr("&OK"));
                 information.exec();
                 QDialog::accept(); // Success
@@ -225,6 +236,7 @@ void AskPassphraseDialog::accept()
             {
                 QMessageBox critical(QMessageBox::Critical, tr("Wallet encryption failed"),
                                      tr("The passphrase entered for the wallet decryption was incorrect."), QMessageBox::Ok, this);
+                critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
                 critical.setButtonText(QMessageBox::Ok, tr("&OK"));
                 critical.exec();
             }
@@ -233,6 +245,7 @@ void AskPassphraseDialog::accept()
         {
             QMessageBox critical(QMessageBox::Critical, tr("Wallet encryption failed"),
                                  tr("The supplied passphrases do not match."), QMessageBox::Ok, this);
+            critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
             critical.setButtonText(QMessageBox::Ok, tr("&OK"));
             critical.exec();
         }

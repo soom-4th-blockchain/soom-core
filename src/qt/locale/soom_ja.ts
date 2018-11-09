@@ -1757,7 +1757,7 @@
         <location line="+23"/>
         <location line="+23"/>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation type="unfinished"/>
+        <translation>提供されているデフォルトのSOCKS5プロキシを使用してノードに接続されている場合に表示されます。</translation>
     </message>
     <message>
         <location line="-36"/>
@@ -1830,6 +1830,11 @@
 https://www.transifex.com/projects/p/soom/</source>
         <translation>支援する言語がないか、翻訳が完璧ではないですか？翻訳をサポートしてください:
 https://www.transifex.com/projects/p/soom/</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>ユーザインターフェースのテーマ：</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -2319,27 +2324,27 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished"/>
+        <translation>URI が長くなり過ぎます。ラベルやメッセージのテキストを短くしてください。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished"/>
+        <translation>QR コード用の URI エンコードでエラー。</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Save QR Code</source>
-        <translation type="unfinished"/>
+        <translation>QR コードの保存</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
-        <translation type="unfinished"/>
+        <source>PNG Image (*.png)</source>
+        <translation>PNG画像ファイル(*.png)</translation>
     </message>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation type="unfinished"/>
+        <translation>QR コードのダイアログ</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -3078,7 +3083,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>InstantSend</source>
-        <translation type="unfinished"/>
+        <translation>直ちに送る</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3541,6 +3546,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>アドレスを選択</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>アドレスを貼付ける</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>削除</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>前に使用したアドレスを選ぶ</translation>
     </message>
@@ -3607,12 +3627,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>未確認の支払要請です。</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>確認済みの支払要請です。</translation>
@@ -3620,19 +3634,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>支払先:</translation>
+        <source>Pay To</source>
+        <translation>支払先</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>メッセージ</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>メモ:</translation>
+        <source>Memo</source>
+        <translation>メモ</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3842,6 +3856,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>メッセージは検証されました。</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>アドレスを選択</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>アドレスを貼付ける</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>署名貼付ける</translation>
     </message>
 </context>
 <context>
@@ -4077,7 +4106,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>Output index</source>
-        <translation type="unfinished"/>
+        <translation>出力指数</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5123,12 +5152,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+2"/>
         <source>Loading banlist...</source>
-        <translation type="unfinished"/>
+        <translation>ブラックリストを読み込む...</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Loading fulfilled requests cache...</source>
-        <translation type="unfinished"/>
+        <translation>要求された要求キャッシュをロードする...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5242,8 +5271,13 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation>ネットワークスレッドの開始...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
-        <translation type="unfinished"/>
+        <translation>ブロックチェーンの同期...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5288,12 +5322,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+2"/>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation type="unfinished"/>
+        <translation>サポートされていない引数 -benchmark は無視されました。-debug=bench を使用してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation type="unfinished"/>
+        <translation>サポートされていない引数 -debugnet は無視されました。-debug=net を使用してください。</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5452,7 +5486,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>

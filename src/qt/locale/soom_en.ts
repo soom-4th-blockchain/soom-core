@@ -60,7 +60,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+102"/>
         <source>C&amp;lose</source>
         <translation>C&amp;lose</translation>
     </message>
@@ -100,7 +100,7 @@
         <translation>These are your Soom addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+22"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Copy Address</translation>
     </message>
@@ -370,7 +370,7 @@
         <translation>Node</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+173"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overview</translation>
     </message>
@@ -412,12 +412,12 @@
     <message>
         <location line="+10"/>
         <source>&amp;Message</source>
-        <translation type="unfinished">&amp;Message</translation>
+        <translation>&amp;Message</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>&amp;Verify Message</source>
-        <translation type="unfinished">&amp;Verify Message</translation>
+        <translation>&amp;Verify Message</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -670,12 +670,12 @@
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+205"/>
         <source>%1 client</source>
         <translation>%1 client</translation>
     </message>
@@ -778,7 +778,7 @@
     <message>
         <location line="+29"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+68"/>
@@ -1010,7 +1010,7 @@
     <message>
         <location line="+57"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+94"/>
@@ -1113,12 +1113,12 @@
         <location line="+9"/>
         <location line="+9"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="-99"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancel</translation>
+        <translation>&amp;Cancel</translation>
     </message>
     <message>
         <location line="+70"/>
@@ -1305,7 +1305,7 @@
         <location line="+27"/>
         <location line="+35"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancel</translation>
+        <translation>&amp;Cancel</translation>
     </message>
     <message>
         <location line="-40"/>
@@ -1330,7 +1330,7 @@
     <message>
         <location line="+1"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -1414,7 +1414,7 @@
     <message>
         <location line="+43"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
 </context>
 <context>
@@ -1453,12 +1453,12 @@
         <location filename="../intro.cpp" line="+26"/>
         <location line="+75"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="-74"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancel</translation>
+        <translation>&amp;Cancel</translation>
     </message>
     <message>
         <location line="+73"/>
@@ -1552,7 +1552,7 @@
     <message>
         <location filename="../notificator.cpp" line="+323"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
 </context>
 <context>
@@ -1580,12 +1580,12 @@
     <message>
         <location filename="../openuridialog.cpp" line="+21"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancel</translation>
+        <translation>&amp;Cancel</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1835,6 +1835,11 @@ https://www.transifex.com/projects/p/soom/</source>
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>User Interface Theme:</translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
@@ -2042,7 +2047,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+104"/>
@@ -2184,7 +2189,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+16"/>
         <location line="+23"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -2302,17 +2307,17 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location filename="../soom.cpp" line="-98"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
-        <translation type="unfinished">Error: Specified data directory &quot;%1&quot; does not exist.</translation>
+        <translation>Error: Specified data directory &quot;%1&quot; does not exist.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation type="unfinished">Error: Cannot parse configuration file: %1. Only use key=value syntax.</translation>
+        <translation>Error: Cannot parse configuration file: %1. Only use key=value syntax.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Error: %1</source>
-        <translation type="unfinished">Error: %1</translation>
+        <translation>Error: %1</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -2340,22 +2345,22 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished">Resulting URI too long, try to reduce the text for label / message.</translation>
+        <translation>Resulting URI too long, try to reduce the text for label / message.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished">Error encoding URI into QR Code.</translation>
+        <translation>Error encoding URI into QR Code.</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Save QR Code</source>
-        <translation type="unfinished">Save QR Code</translation>
+        <translation>Save QR Code</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
-        <translation>PNG Images (*.png)</translation>
+        <source>PNG Image (*.png)</source>
+        <translation>PNG Image (*.png)</translation>
     </message>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
@@ -2907,7 +2912,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</translation>
     </message>
@@ -2917,7 +2922,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>R&amp;euse an existing receiving address (not recommended)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</translation>
     </message>
@@ -2927,44 +2932,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Message</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>An optional label to associate with the new receiving address.</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-135"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+81"/>
         <source>&amp;Label</source>
         <translation>&amp;Label</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>An optional amount to request. Leave this empty or zero to not request a specific amount.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>&amp;Amount</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-97"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Request payment</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>Clear all fields of the form.</translation>
     </message>
@@ -2974,17 +2979,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Clear</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+165"/>
         <source>Request InstantSend</source>
         <translation>Request InstantSend</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-149"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>Request payments (generates QR codes and soom: URIs)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+132"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2994,7 +2999,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Requested payments history</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Show the selected request (does the same as double clicking an entry)</translation>
     </message>
@@ -3004,7 +3009,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Show</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>Remove the selected entries from the list</translation>
     </message>
@@ -3014,7 +3019,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Remove</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+48"/>
         <source>Copy URI</source>
         <translation>Copy URI</translation>
     </message>
@@ -3042,7 +3047,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR Code</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+61"/>
         <source>Copy &amp;URI</source>
         <translation>Copy &amp;URI</translation>
     </message>
@@ -3164,12 +3169,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+651"/>
+        <location filename="../sendcoinsdialog.cpp" line="+638"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>Coin Control Features</translation>
     </message>
@@ -3184,12 +3189,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>automatically selected</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>Insufficient funds!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>Quantity:</translation>
     </message>
@@ -3224,7 +3229,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Change:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</translation>
     </message>
@@ -3234,7 +3239,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Custom change address</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>Transaction Fee</translation>
     </message>
@@ -3260,32 +3265,32 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+51"/>
-        <source>If the custom fee is set to 1000 tnSOOMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnSOOMs in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnSOOMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 tnSOOMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnSOOMs in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnSOOMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 tnSOOMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnSOOMs in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnSOOMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 tnSOOMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnSOOMs in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnSOOMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;total at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <location line="+33"/>
         <location line="+13"/>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for soom transactions than the network can process.</source>
-        <translation>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for soom transactions than the network can process.</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</source>
+        <translation>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+146"/>
         <source>Confirmation time target:</source>
         <translation>Confirmation time target:</translation>
     </message>
     <message>
-        <location line="+196"/>
+        <location line="+156"/>
         <source>InstantSend</source>
         <translation>InstantSend</translation>
     </message>
     <message>
-        <location line="-398"/>
+        <location line="-361"/>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
     </message>
@@ -3315,22 +3320,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Custom:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(Smart fee not initialized yet. This usually takes a few blocks...)</translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+56"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>fast</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>Confirm the send action</translation>
     </message>
@@ -3340,7 +3345,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>S&amp;end</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-747"/>
         <source>Clear all fields of the form.</source>
         <translation>Clear all fields of the form.</translation>
     </message>
@@ -3360,7 +3365,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Add &amp;Recipient</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+684"/>
         <source>Balance:</source>
         <translation>Balance:</translation>
     </message>
@@ -3552,22 +3557,37 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>This is a normal payment.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>Pay &amp;To</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>The Soom address to send the payment to</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+16"/>
+        <source>Choose the address</source>
+        <translation>Choose the address</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Paste address</source>
+        <translation>Paste address</translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Remove</source>
+        <translation>Remove</translation>
+    </message>
+    <message>
+        <location line="-62"/>
         <source>Choose previously used address</source>
         <translation>Choose previously used address</translation>
     </message>
@@ -3577,7 +3597,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+16"/>
         <source>Paste address from clipboard</source>
         <translation>Paste address from clipboard</translation>
     </message>
@@ -3587,34 +3607,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>Remove this entry</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation>Alt+D</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-121"/>
         <source>&amp;Label</source>
         <translation>&amp;Label</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Enter a label for this address to add it to the list of used addresses</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+632"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>A&amp;mount</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</translation>
     </message>
@@ -3624,42 +3646,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>S&amp;ubtract fee from amount</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>This is an unauthenticated payment request.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation>A&amp;mount:</translation>
-    </message>
-    <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>This is an authenticated payment request.</translation>
     </message>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>Pay To:</translation>
+        <source>Pay To</source>
+        <translation>Pay To</translation>
     </message>
     <message>
-        <location line="-983"/>
-        <source>Message:</source>
-        <translation>Message:</translation>
+        <location line="-966"/>
+        <source>Message</source>
+        <translation>Message</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>Memo:</translation>
+        <source>Memo</source>
+        <translation>Memo</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3670,7 +3686,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
@@ -3712,19 +3728,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>The Soom address to sign the message with</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>Choose previously used address</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>Paste address from clipboard</translation>
     </message>
@@ -3744,12 +3760,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Signature</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Copy the current signature to the system clipboard</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>Sign the message to prove you own this Soom address</translation>
     </message>
@@ -3759,18 +3775,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Sign &amp;Message</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>Reset all sign message fields</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>Clear &amp;All</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verify Message</translation>
     </message>
@@ -3785,7 +3801,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>The Soom address the message was signed with</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>Verify the message to ensure it was signed with the specified Soom address</translation>
     </message>
@@ -3795,7 +3811,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Verify &amp;Message</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>Reset all verify message fields</translation>
     </message>
@@ -3870,6 +3886,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <source>Message verified.</source>
         <translation>Message verified.</translation>
     </message>
+    <message>
+        <location filename="../forms/signverifymessagedialog.ui" line="-291"/>
+        <location line="+220"/>
+        <source>Choose the address</source>
+        <translation>Choose the address</translation>
+    </message>
+    <message>
+        <location line="-198"/>
+        <source>Paste address</source>
+        <translation>Paste address</translation>
+    </message>
+    <message>
+        <location line="+58"/>
+        <source>Paste Signature</source>
+        <translation>Paste Signature</translation>
+    </message>
 </context>
 <context>
     <name>SplashScreen</name>
@@ -3886,17 +3918,17 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>The Bitcoin Core developers</source>
-        <translation>The Bitcoin Core developers</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Dash Core developers</source>
-        <translation>The Dash Core developers</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Soom Core developers</source>
-        <translation>The Soom Core developers</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4178,7 +4210,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+7"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Close</translation>
+        <translation>&amp;Close</translation>
     </message>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+6"/>
@@ -4582,12 +4614,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Export the data in the current tab to a file</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+11"/>
         <source>Selected amount:</source>
         <translation>Selected amount:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+275"/>
         <source>Backup Wallet</source>
         <translation>Backup Wallet</translation>
     </message>
@@ -4675,13 +4707,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</translation>
     </message>
     <message>
-        <location line="+18"/>
-        <location line="+255"/>
+        <location line="+264"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>Unable to bind to %s on this computer. %s is probably already running.</translation>
     </message>
     <message>
-        <location line="-245"/>
+        <location line="-238"/>
         <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
         <translation>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</translation>
     </message>
@@ -4701,7 +4732,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</translation>
     </message>
@@ -4716,12 +4747,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Accept command line and JSON-RPC commands</translation>
     </message>
     <message>
-        <location line="-293"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</translation>
     </message>
     <message>
-        <location line="+295"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Add a node to connect to and attempt to keep the connection open</translation>
     </message>
@@ -4751,12 +4782,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Cannot write default address</translation>
     </message>
     <message>
-        <location line="-283"/>
+        <location line="-278"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</translation>
     </message>
     <message>
-        <location line="+288"/>
+        <location line="+283"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Connect to a node to retrieve peer addresses, and disconnect</translation>
     </message>
@@ -4766,12 +4797,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Connection options:</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Copyright (C)</source>
-        <translation>Copyright (C)</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>Corrupted block database detected</translation>
     </message>
@@ -4846,7 +4872,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Failed to listen on any port. Use -listen=0 if you want this.</translation>
     </message>
     <message>
-        <location line="-355"/>
+        <location line="-347"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>
@@ -4871,12 +4897,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+448"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>This is the transaction fee you will pay if you send a transaction.</translation>
     </message>
     <message>
-        <location line="-454"/>
+        <location line="-445"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</translation>
     </message>
@@ -4971,7 +4997,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</translation>
     </message>
@@ -4991,7 +5017,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</translation>
     </message>
@@ -5036,7 +5062,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Connect to KeePassHttp on port &lt;port&gt; (default: %u)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+3"/>
+        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
+        <translation>Copyright (C) 2009-2018 The Bitcoin Core developers</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
+        <translation>Copyright (C) 2014-2018 The Dash Core developers</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
+        <translation>Copyright (C) 2017-2018 The Soom Core developers</translation>
+    </message>
+    <message>
+        <location line="+13"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Enable the client to act as a gateway (0-1, default: %u)</translation>
     </message>
@@ -5121,7 +5162,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-301"/>
+        <location line="-293"/>
         <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
         <translation>Extra transactions to keep in memory for compact block reconstructions (default: %u)</translation>
     </message>
@@ -5171,12 +5212,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+29"/>
         <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
         <translation>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+138"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Keypool ran out, please call keypoolrefill first</translation>
     </message>
@@ -5249,11 +5290,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+1"/>
         <source>Prepend debug output with timestamp (default: %u)</source>
         <translation>Prepend debug output with timestamp (default: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5436,7 +5472,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Wallet needed to be rewritten: restart %s to complete</translation>
     </message>
     <message>
-        <location line="-112"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>Invalid gatewayprivkey. Please see documenation.</translation>
     </message>
@@ -5471,7 +5507,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</translation>
     </message>
     <message>
-        <location line="-340"/>
+        <location line="-332"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</translation>
     </message>
@@ -5606,7 +5642,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</translation>
     </message>
@@ -5646,12 +5682,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+9"/>
+        <location line="+16"/>
         <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
         <translation>You are starting in lite mode, all Soom-specific functionality is disabled.</translation>
     </message>
@@ -5721,18 +5752,8 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Change index out of range</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5906,7 +5927,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Password for JSON-RPC connections</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>Print version and exit</translation>
     </message>
@@ -6141,7 +6162,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Zapping all transactions from wallet...</translation>
     </message>
     <message>
-        <location line="-205"/>
+        <location line="-201"/>
         <source>%s corrupt, salvage failed</source>
         <translation>%s corrupt, salvage failed</translation>
     </message>

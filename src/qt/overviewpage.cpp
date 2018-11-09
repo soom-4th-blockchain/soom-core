@@ -55,7 +55,8 @@ public:
         int xspace = DECORATION_SIZE + 8;
         int ypad = 6;
         int halfheight = (mainRect.height() - 2*ypad)/2;
-        QRect amountRect(mainRect.left() + xspace, mainRect.top()+ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+        QRect dateTimeRect(mainRect.left() + xspace, mainRect.top()+ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+        QRect amountRect(mainRect.left() + xspace - 30, mainRect.top()+ypad + 11, mainRect.width() - xspace - ICON_OFFSET, halfheight);
         QRect addressRect(mainRect.left() + xspace, mainRect.top()+ypad+halfheight, mainRect.width() - xspace, halfheight);
         icon = platformStyle->SingleColorIcon(icon);
         icon.paint(painter, decorationRect);
@@ -74,6 +75,8 @@ public:
 
         painter->setPen(foreground);
         QRect boundingRect;
+        QString font = QApplication::font().toString();
+        painter->setFont(QFont(font, 11));
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address, &boundingRect);
 
         if (index.data(TransactionTableModel::WatchonlyRole).toBool())
@@ -101,10 +104,12 @@ public:
         {
             amountText = QString("[") + amountText + QString("]");
         }
+        painter->setFont(QFont(font, 8));
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen(option.palette.color(QPalette::Text));
-        painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
+        painter->setFont(QFont(font, 8));
+        painter->drawText(dateTimeRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
         painter->restore();
     }
@@ -144,23 +149,28 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
     // init "out of sync" warning labels
-    ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
-    ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
+    if(theme == "light")
+    {
+        ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
+        ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
-    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-    shadow->setBlurRadius(9.0);
-    shadow->setColor(QColor(0, 0, 0, 160));
-    shadow->setOffset(4.0);
-    ui->label_4->setGraphicsEffect(shadow);
+        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
+        shadow->setBlurRadius(9.0);
+        shadow->setColor(QColor(0, 0, 0, 160));
+        shadow->setOffset(4.0);
+        ui->label_4->setGraphicsEffect(shadow);
 
-    QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
-    shadow2->setBlurRadius(9.0);
-    shadow2->setColor(QColor(0, 0, 0, 160));
-    shadow2->setOffset(4.0);
-    ui->label_5->setGraphicsEffect(shadow2);
-
-    ui->lineSpendableBalance->setStyleSheet("QLabel { background-color: #717496; min-height:2px; } ");
-    ui->lineWatchBalance->setStyleSheet("QLabel { background-color: #717496; min-height:2px; } ");
+        QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
+        shadow2->setBlurRadius(9.0);
+        shadow2->setColor(QColor(0, 0, 0, 160));
+        shadow2->setOffset(4.0);
+        ui->label_5->setGraphicsEffect(shadow2);
+    }
+    else    // default
+    {
+        ui->labelWalletStatus->setText(tr("out of sync"));
+        ui->labelTransactionsStatus->setText(tr("out of sync"));
+    }
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);

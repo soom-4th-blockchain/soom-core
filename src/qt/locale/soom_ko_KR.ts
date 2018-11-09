@@ -871,7 +871,7 @@
     <message>
         <location line="+140"/>
         <source>Dust:</source>
-        <translation>Dust:</translation>
+        <translation>더스트:</translation>
     </message>
     <message>
         <location line="+93"/>
@@ -1483,7 +1483,7 @@
     <message>
         <location line="+117"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
-        <translation>최근 거래가 아직 표시되지 않을 수 있으므로 지갑 잔액이 올바르지 않을 수 있습니다. 아래에 설명 된대로 지갑이 Soom 네트워크와의 동기화가 완료되면 이 정보는 정확합니다.</translation>
+        <translation>최근 거래가 아직 표시되지 않을 수 있으므로 지갑 잔액이 올바르지 않을 수 있습니다.&lt;br&gt;아래에 설명 된대로 지갑이 Soom 네트워크와의 동기화가 완료되면 이 정보는 정확합니다.</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1757,7 +1757,7 @@
         <location line="+23"/>
         <location line="+23"/>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation type="unfinished"/>
+        <translation>제공된 기본 SOCKS5 프록시 서버를 통해 노드에 연결하는 경우 표시됩니다.</translation>
     </message>
     <message>
         <location line="-36"/>
@@ -1830,6 +1830,11 @@
 https://www.transifex.com/projects/p/soom/</source>
         <translation>지원 언어가 없거나 번역이 불완전한가요? 번역을 도와 주십시오:
 https://www.transifex.com/projects/p/soom/</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>사용자 인터페이스 테마:</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -2319,27 +2324,27 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished"/>
+        <translation>URI 결과가 너무 깁니다, 라벨 / 메시지의 텍스트를 줄이십시오.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished"/>
+        <translation>URI를 QR 코드로 인코딩하는 도중 오류가 발생했습니다.</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Save QR Code</source>
-        <translation type="unfinished"/>
+        <translation>QR 코드 저장</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
-        <translation type="unfinished"/>
+        <source>PNG Image (*.png)</source>
+        <translation>PNG 형식 이미지 (*.png)</translation>
     </message>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation type="unfinished"/>
+        <translation>QR 코드 대화상자</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -2750,7 +2755,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location filename="../rpcconsole.cpp" line="-667"/>
         <source>&amp;Disconnect</source>
-        <translation>연결이 끊어짐(&amp;D)</translation>
+        <translation>연결 끊기(&amp;D)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2758,7 +2763,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+1"/>
         <location line="+1"/>
         <source>Ban for</source>
-        <translation>제한된</translation>
+        <translation>제한:</translation>
     </message>
     <message>
         <location line="-3"/>
@@ -3190,7 +3195,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-48"/>
         <source>Dust:</source>
-        <translation>Dust:</translation>
+        <translation>더스트:</translation>
     </message>
     <message>
         <location line="+99"/>
@@ -3541,6 +3546,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>주소 선택</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>주소 복사</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>삭제</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>이전에 사용한 주소를 선택하십시오</translation>
     </message>
@@ -3607,12 +3627,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>인증되지 않은 지불 요청입니다.</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>인증된 지불 요청입니다.</translation>
@@ -3620,19 +3634,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>송금할 대상:</translation>
+        <source>Pay To</source>
+        <translation>송금할 대상</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>메시지</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>메모:</translation>
+        <source>Memo</source>
+        <translation>메모</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3677,7 +3691,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+6"/>
         <source>You can sign messages/agreements with your addresses to prove you can receive Soom sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>자신의 주소로 메시지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의해 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>
+        <translation>자신의 주소로 메시지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의하여 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -3842,6 +3856,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>메시지를 검증했습니다.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>주소 선택</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>주소 복사</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>서명 복사</translation>
     </message>
 </context>
 <context>
@@ -5123,12 +5152,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+2"/>
         <source>Loading banlist...</source>
-        <translation type="unfinished"/>
+        <translation>제한 리스트를 불러오는 중...</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Loading fulfilled requests cache...</source>
-        <translation type="unfinished"/>
+        <translation>충족된 요청 캐시를 불러오는 중...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5242,8 +5271,13 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation>네트워크 스레드 시작 중...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
-        <translation type="unfinished"/>
+        <translation>블록체인 동기화 중...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5288,12 +5322,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+2"/>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation type="unfinished"/>
+        <translation>지원하지 않는 인수 -benchmark는 무시되었습니다. -debug=bench를 사용하십시오.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation type="unfinished"/>
+        <translation>지원하지 않는 인수 -debugnet는 무시되었습니다. -debug=net을 사용하십시오.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5452,7 +5486,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -5528,7 +5562,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+3"/>
         <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
-        <translation type="unfinished"/>
+        <translation>지원하지 않는 인수 -whitelistalwaysrelay는 무시되었습니다. -whitelistrelay 또는 -whitelistforcerelay를 사용하십시오.</translation>
     </message>
     <message>
         <location line="+3"/>

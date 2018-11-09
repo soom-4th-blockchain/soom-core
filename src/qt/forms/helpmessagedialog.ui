@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>580</width>
+    <width>656</width>
     <height>500</height>
    </rect>
   </property>
@@ -46,7 +46,7 @@
      <item>
       <widget class="QLabel" name="aboutLogo">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Ignored">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -54,7 +54,7 @@
        <property name="minimumSize">
         <size>
          <width>96</width>
-         <height>464</height>
+         <height>564</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -71,9 +71,6 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../soom.qrc">:/images/default/about</pixmap>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
@@ -110,13 +107,16 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>442</width>
+          <width>518</width>
           <height>213</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLabel" name="aboutMessage">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="cursor">
             <cursorShape>IBeamCursor</cursorShape>
            </property>

@@ -1757,7 +1757,7 @@
         <location line="+23"/>
         <location line="+23"/>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation type="unfinished"/>
+        <translation>如果是使用提供的默认SOCKS5代理来连接到节点就加以显示。</translation>
     </message>
     <message>
         <location line="-36"/>
@@ -1830,6 +1830,11 @@
 https://www.transifex.com/projects/p/soom/</source>
         <translation>缺少相关语言或翻译不完整? 请到这里协助翻译:
 https://www.transifex.com/projects/p/soom/</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>User Interface Theme:</source>
+        <translation>用户界面主题：</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -2319,27 +2324,27 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished"/>
+        <translation>URI 太长，请试着精简标签或消息文本。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished"/>
+        <translation>将 URI 转为二维码失败。</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Save QR Code</source>
-        <translation type="unfinished"/>
+        <translation>保存二维码</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>PNG Images (*.png)</source>
-        <translation type="unfinished"/>
+        <source>PNG Image (*.png)</source>
+        <translation>PNG图片(*.png)</translation>
     </message>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation type="unfinished"/>
+        <translation>QR码对话框</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -3240,7 +3245,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+452"/>
         <source>InstantSend</source>
-        <translation>即时支付</translation>
+        <translation>立即发送</translation>
     </message>
     <message>
         <location line="-401"/>
@@ -3545,6 +3550,21 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>选择地址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>粘贴地址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove</source>
+        <translation>移除</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Choose previously used address</source>
         <translation>选择以前用过的地址</translation>
     </message>
@@ -3611,12 +3631,6 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>这是个非有效的支付请求。</translation>
     </message>
     <message>
-        <location line="+62"/>
-        <location line="+529"/>
-        <source>A&amp;mount:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location line="-66"/>
         <source>This is an authenticated payment request.</source>
         <translation>这是个有效的支付请求。</translation>
@@ -3624,19 +3638,19 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-510"/>
         <location line="+525"/>
-        <source>Pay To:</source>
-        <translation>支付给:</translation>
+        <source>Pay To</source>
+        <translation>支付给</translation>
     </message>
     <message>
         <location line="-983"/>
-        <source>Message:</source>
-        <translation type="unfinished"/>
+        <source>Message</source>
+        <translation>消息</translation>
     </message>
     <message>
         <location line="+488"/>
         <location line="+529"/>
-        <source>Memo:</source>
-        <translation>便条:</translation>
+        <source>Memo</source>
+        <translation>便条</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+32"/>
@@ -3846,6 +3860,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+5"/>
         <source>Message verified.</source>
         <translation>消息验证成功。</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose the address</source>
+        <translation>选择地址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address</source>
+        <translation>粘贴地址</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste Signature</source>
+        <translation>粘贴签名</translation>
     </message>
 </context>
 <context>
@@ -4081,7 +4110,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>Output index</source>
-        <translation type="unfinished"/>
+        <translation>输出索引</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5127,12 +5156,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+2"/>
         <source>Loading banlist...</source>
-        <translation type="unfinished"/>
+        <translation>正在加载黑名单...</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Loading fulfilled requests cache...</source>
-        <translation type="unfinished"/>
+        <translation>正在加载己完成请求的缓存…</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5246,8 +5275,13 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation>正在启动网络线程...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
-        <translation type="unfinished"/>
+        <translation>正在同步区块链...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5287,17 +5321,17 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+7"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
-        <translation type="unfinished"/>
+        <translation>无法启动HTTP服务，查看日志获取更多信息。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation type="unfinished"/>
+        <translation>忽略不支持的选项 -benchmark，使用 -debug=bench</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation type="unfinished"/>
+        <translation>忽略不支持的选项 -debugnet，使用 -debug=net。</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5457,7 +5491,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>"Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>
