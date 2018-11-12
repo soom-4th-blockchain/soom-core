@@ -41,7 +41,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     int paddingLeft             = 14;
     int paddingTop              = 430;
     int titleVersionVSpace      = 17;
-    int titleCopyrightVSpace    = 32;
+    int titleCopyrightVSpace    = 25;
 
     float fontFactor            = 0.87;
 
@@ -114,7 +114,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
         pixPaint.setFont(boldFont);
         fm = pixPaint.fontMetrics();
         int titleAddTextWidth  = fm.width(titleAddText);
-        pixPaint.drawText(pixmap.width()-titleAddTextWidth-10,pixmap.height()-25,titleAddText);
+        pixPaint.drawText(pixmap.width()-titleAddTextWidth-10,pixmap.height()-37,titleAddText);
     }
 
     pixPaint.end();

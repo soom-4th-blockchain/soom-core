@@ -159,7 +159,7 @@ color:#4E586D;
 /*******************************************************/
 
 QToolBar {
-background-color:#4e586d;
+background-color:#191A24;
 color:#717496;
 border:0px solid #333;
 padding:0;
@@ -168,14 +168,14 @@ font-size:12px;
 }
 
 QToolBar::separator {
-background-color:#4e586d;
+background-color:#191A24;
 }
 
 QToolBar > QToolButton {
-background-color:#4e586d;
+background-color:#191A24;
 color:#717496;
-border:0px solid #4e586d;
-border-left:3px solid #4e586d;
+border:0px solid #191A24;
+border-left:3px solid #191A24;
 /*font-weight:bold;*/
 font-size:12px;
 min-height:2.5em;
@@ -206,7 +206,7 @@ color:#ffffff;
 }
 
 QToolBar > #tabs {
-background-color:qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #4e586d, stop: 1 #4e586d);
+background-color:qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #191A24, stop: 1 #191A24);
 color: #ffffff;
 }
 
@@ -1151,13 +1151,17 @@ padding-right:5px;
 
 QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance */
 qproperty-alignment: 'AlignVCenter | AlignRight';
+color:#34AAF9;
 font-size:12px;
+font-weight:bold;
 margin-left:0px;
 }
 
 QWidget .QFrame#frame .QLabel#labelWatchAvailable { /* Watch-only Balance */
 qproperty-alignment: 'AlignVCenter | AlignRight';
+color:#34AAF9;
 font-size:12px;
+font-weight:bold;
 margin-left:0px;
 }
 

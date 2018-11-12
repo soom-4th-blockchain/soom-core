@@ -177,7 +177,7 @@ QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussi
     int digits = settings.value("digits").toInt();
 
     QString result = format(unit, amount, plussign, separators);
-    if(decimals(unit) > digits) result.chop(decimals(unit) - digits);
+//    if(decimals(unit) > digits) result.chop(decimals(unit) - digits);
 
     return result + QString(" ") + name(unit);
 }
