@@ -1067,7 +1067,9 @@ void BitcoinGUI::updateToolbarState(int status)
         receiveCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::receive_selected ? "/receive_selected" : "/receive")));
         historyAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::history_selected ? "/history_selected" : "/history")));
         signMessageAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::message_selected ? "/message_selected" : "/message")));
-        gatewayAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::gateways_selected ? "/gateways_selected" : "/gateways")));
+        QSettings settings;
+        if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction)
+            gatewayAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::gateways_selected ? "/gateways_selected" : "/gateways")));
     }
 }
 
