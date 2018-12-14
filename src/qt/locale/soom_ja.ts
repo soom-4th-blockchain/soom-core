@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>閉じる(&amp;L)</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>このアドレスは転送されるSoomのアドレスです。各トランザクションことに新しい入金アドレスを使うことをお勧めします。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>アドレスのコピー(&amp;C)</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>トランザクション履歴を %1 へ保存する際にエラーが発生しました。再試行してください。</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
@@ -219,27 +219,27 @@
         <translation>ウォレットに使う前のパスワードと新しいパスワードを入力してください。</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>ウォレットの暗号化を確認する</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>本当にウォレットを暗号化しますか?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>はい(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>ウォレットは暗号化されました</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1は暗号化プロセスのため、閉じります。ウォレット暗号化してもマルウェアでsoomｓの盗難を完璧に防ぐことはできません。</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation>重要: 過去のウォレット ファイルのバックアップは、暗号化された新しいウォレット ファイルに取り替える必要があります。以前に暗号化されていないWalletファイルには同じHDシードが含まれており、新しい暗号化ウォレットのようにすべてのファンドを使用することができます。</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>重要: 過去のウォレット ファイルのバックアップは、暗号化された新しいウォレット ファイルに取り替える必要があります。セキュリティ上の理由により、暗号化された新しいウォレットを使い始めると、暗号化されていないウォレット ファイルのバックアップはすぐに使えなくなります。</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>ウォレットの暗号化に失敗しました</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>内部エラーによりウォレットの暗号化が失敗しました。ウォレットは暗号化されませんでした。</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>パスフレーズが同じではありません。</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>ウォレットのアンロックに失敗しました</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>ウォレットの暗号化解除のパスフレーズが正しくありません。</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>ウォレットの暗号化解除に失敗しました</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>ウォレットのパスフレーズの変更が成功しました。</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>警告: キャプスロック・キーがオンになっています!</translation>
@@ -345,15 +345,15 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"/>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>致命的なエラーが発生しました。Soom Coreは安全ではないため、プログラムを終了します。</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>ノード</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>概要(&amp;O)</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>Soomのアドレスにメッセージにサインをして所有していることを証明してください</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>テストのためのネットワークを使用</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>メッセージが指定されたSoomのアドレスにサインされているかご確認ください</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>タブツールバー</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1クライアント</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n 個のSoomネットワークへ接続される</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>情報</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>%1 の新しい取引があります。</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>新しい取引</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>日付: %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>着金取引</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD鍵の生成が &lt;b&gt;活性化されました&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>全体: %1 (使用中: %2)</translation>
     </message>
@@ -859,12 +874,7 @@
         <translation>総額:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>手数料:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>コイン選択</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>ダスト:</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>手数料:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>手数料差引後:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>リストモード</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(１ロック)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>検証済み</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>アドレスのコピー</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>釣り銭をコピー</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 がロック済み)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>はい</translation>
     </message>
@@ -1031,8 +1046,8 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>一つの入力当り+/- %1 duff(s)のエラー。</translation>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
+        <translation>一つの入力当り+/- %1 tnSOOM(s)のエラー。</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -1099,16 +1114,16 @@
         <translation>送信アドレスを編集</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>入力されたアドレス「%１」は正しいSoomのアドレスではありません。</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>入力されたアドレス &quot;%1&quot; は既にアドレス帳にあります。</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>ウォレットをアンロックできませんでした。</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>新しいキーの生成に失敗しました。</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>選択されたゲートウェイスタート</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>ゲートウェイスタート確認</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>ゲートウェイ%１を始めますか？</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation>はい(&amp;Y)</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>全てのゲートウェイスタートの確認</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>全てのゲートウェイを始めますか？</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>現在、命令は使用できません</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>ゲートウェイリストが同期化されるまでこの命令は使用できません。</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
@@ -1380,8 +1395,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>言語設定 例: &quot;de_DE&quot; (デフォルト設定: システムの言語)</translation>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
+        <translation>言語設定 例: &quot;ja_JA&quot; (デフォルト設定: システムの言語)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1442,13 +1457,13 @@
         <translation>任意のデータ ディレクトリを使用:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>エラー: 指定のデータディレクトリ &quot;%1&quot; を作成できません。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>エラー</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>様式</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>最近の取引がまだ表示されない場合がありますので、ウォレットの残高が正しくない可能性があります。&lt;br&gt;下記の説明通りウォレットがSoomネットワークとの同期化が完了されるとこの情報は正確です。&lt;br&gt;最近の取引がまだ表示されていないため、ウォレットの残高が正しくない可能性があります。&lt;br&gt;下記の説明通りウォレットがSoomネットワークとの同期化が完了されるとこの情報は正確です。</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>進行</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>時間当り進行率の増加</translation>
     </message>
@@ -1549,7 +1559,7 @@
     <message>
         <location filename="../notificator.cpp" line="+323"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"/>
+        <translation>例え(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1575,12 +1585,12 @@
         <translation>支払いリクエストファイルを選択してください</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
@@ -1683,18 +1693,18 @@
         <translation>ウィンドーを閉じる際、応用プログラムを終了する代わりに最小限にしてください。このオプションを選択するとメニューで終了を選択した後に応用プログラムが閉まります。</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>ユーザーのインタフェースの言語の設定ができます。この設定は%1の再起動後に適用されます。</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>トランザクションのタップにコンテキストメニュー項目で表示されるサード・パーティーURL(例え: ブロック探索)URL%sはトランザクションハッシュで代替されます。複数のURLは縦の棒で区分されます。</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>エクスポート</translation>
     </message>
@@ -1815,6 +1825,16 @@
         <translation>閉じる時に最小化(&amp;I)</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>新しいトランザクションのポップアップを表示します。</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>取引のポップアップを表示する (&amp;S)</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>表示(&amp;D)</translation>
@@ -1837,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ユーザインターフェースのテーマ：</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>額を表示する単位(&amp;U):</translation>
     </message>
@@ -1878,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>デフォルト設定</translation>
     </message>
@@ -1893,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>なし</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>オプションのリセットの確認</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>変更を有効化するにはクライアントを再起動する必要があります。</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>クライアントが終了されます。続けますか？</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>はい(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>この変更はクライアントの再起動が必要です。</translation>
     </message>
@@ -1932,93 +1952,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>様式</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>表示された情報が古い可能性があります。接続が完了されるとウォレットがSoomネットワークと自動に同期化される予定ですが、まだ該当プロセスが完了されていません。</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>利用可能</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>あなたの利用可能残高</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation>検証待ち</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>未検証の取引で利用可能残高に反映されていない数</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>完成していない採掘された残高</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>残高</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>監視限定アドレスに対する未検証のトランザクション</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>ウォッチオンリーアドレスの採掘された残高のうち、成熟していないもの</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>合計</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>あなたの現在の残高</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>監視限定アドレス内の現在の全残高</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>監視限定:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>監視限定アドレス内の現在の残高</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>使用可能:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>最近のトランザクション</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>同期化されていない</translation>
@@ -2181,9 +2203,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation>例え(&amp;O)</translation>
@@ -2204,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soomのアドレスを入力してください (e.g. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1日</translation>
     </message>
@@ -2220,7 +2242,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1秒</translation>
     </message>
@@ -2284,17 +2306,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2347,7 +2369,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR コードのダイアログ</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation>アドレスのコピー(&amp;A)</translation>
     </message>
@@ -2421,7 +2443,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>該当事項なし</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>接続数</translation>
     </message>
@@ -2528,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>コンソールをクリア</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>ネットワーク(&amp;N)</translation>
     </message>
@@ -2566,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>詳しい情報を見たいピアを選択してください。</translation>
     </message>
@@ -2607,13 +2629,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>ユーザエージェント</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>データのディレクトリ―</translation>
     </message>
@@ -2628,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>フォント拡大</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>サービス</translation>
     </message>
@@ -2753,7 +2775,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: 現在blk000??.datファイルのブロックチェーンのインデックスを再構築します。</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>接続が切れる(&amp;D)</translation>
     </message>
@@ -2786,7 +2808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1年(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>制限解除(&amp;U)</translation>
     </message>
@@ -2826,7 +2848,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -2891,7 +2913,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>前使用していた受取アドレスのうち一つを使用してください。&lt;br&gt;アドレスの再使用はセキュリティ及び個人情報保護に問題が生じる恐れがあります。&lt;br&gt;前作成した決済要請を再び生成しない限りこれを使用しないでください。</translation>
     </message>
@@ -2901,7 +2923,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>既存の受取用アドレスを再利用する (非推奨)(&amp;E)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>要請が開く時、表示される決済要請に添付する選択的なメッセージです。参考: Soomネットワークによる決済はメッセージが転送されません。</translation>
     </message>
@@ -2911,44 +2933,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージ(&amp;M)</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>受取用アドレスに紐づく任意のラベル。</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>要請が開く時、表示される決済要請に添付する選択的なメッセージです。&lt;br&gt;参考: Soomネットワークによる決済はメッセージが転送されません。</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>このフォームを使用して支払のリクエストを行いましょう。すべての項目は&lt;b&gt;任意入力&lt;/b&gt;です。</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>ラベル(&amp;L)</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>リクエストする任意の金額。特定の金額をリクエストするのでない場合には、この欄は空白のままかゼロにしてください。</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>総額(&amp;A)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>支払要請(&amp;R)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>全ての入力項目をクリア</translation>
     </message>
@@ -2958,17 +2980,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>クリア</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>直ちに送る要請</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>決済要請 (QRコード及びsoom: URI生成)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2978,7 +3000,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>支払リクエスト履歴</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>選択されたリクエストを表示する (項目をダブルクリックすることでも表示できます)</translation>
     </message>
@@ -2988,7 +3010,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>表示</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>リストから選択項目を削除</translation>
     </message>
@@ -2998,7 +3020,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>URIのコピー</translation>
     </message>
@@ -3026,7 +3048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR コード</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>URIのコピー(&amp;U)</translation>
     </message>
@@ -3041,7 +3063,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>画像保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation>閉じる(&amp;L)</translation>
     </message>
@@ -3051,12 +3073,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1 への支払いリクエストを行う</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>支払い情報</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3148,12 +3170,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>コインを送る</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>コインコントロール機能</translation>
     </message>
@@ -3168,12 +3190,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自動選択</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>残高不足です！</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>数量:</translation>
     </message>
@@ -3208,7 +3230,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>釣り銭:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>これが有効にもかかわらずおつりアドレスが空欄であったり無効であった場合には、おつりは新しく生成されたアドレスへ送金されます。</translation>
     </message>
@@ -3218,17 +3240,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>カスタムおつりアドレス</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>トランザクションの手数料</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>選択…</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation>fallbackfeeを使用すると、数時間から数日かかることがあります。&lt;br&gt;手動で手数料を選択するか、チェーン全体を確認するまで待ってください。</translation>
     </message>
@@ -3243,12 +3265,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>手数料設定を折りたたむ</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>直ちに送る</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>取引が250バイトである場合、ユーザー指定手数料が1000tnsoomに設定され、1000tnsoom内には最小「キロバイト当り」250tnsoomだけを支払います。&lt;br&gt;1キロバイトより大きい取引の場合、全てキロバイト単位で支払います。</translation>
     </message>
@@ -3264,7 +3281,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ブロックのスペースよりトランザクション量が少ない場合、手数料は最小金額で結構です。&lt;br&gt;しかし、Soomトランザクションの数が多い場合、未確認のトランザクションでネットワークが処理できる場合もありまあす。</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>検証時間の目標:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>直ちに送る</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>1キロバイトあたり手数料</translation>
     </message>
@@ -3294,27 +3321,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>カスタム:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(スマート手数料はまだ初期化されていません。これにはおおよそ数ブロックほどかかります…)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>検証時間の目標:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>普通</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>高速</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>送る操作を確認する</translation>
     </message>
@@ -3324,7 +3346,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>送る(&amp;e)</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>全ての入力項目をクリア</translation>
     </message>
@@ -3344,12 +3366,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>受取人を追加(&amp;R)</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>残高:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>数量をコピーする</translation>
     </message>
@@ -3399,7 +3421,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>及び直ちに支払い</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3432,12 +3454,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>コインを送る確認</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation>はい(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
@@ -3487,7 +3509,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>決済要請の期限が満了しました。</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
@@ -3497,12 +3519,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%１の必要な手数料だけをお支払いください</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>%n ブロック以内に検証が開始されると予想されます。</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>警告: 正しくないSoomアドレス</translation>
     </message>
@@ -3530,37 +3552,39 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>これは通常の支払です。</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>送り先(&amp;T)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>転送するSoomのアドレス</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>アドレスを選択</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>アドレスを貼付ける</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>前に使用したアドレスを選ぶ</translation>
     </message>
@@ -3570,7 +3594,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>クリップボードからアドレスを貼付ける</translation>
     </message>
@@ -3580,34 +3604,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>この項目を削除する</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>ラベル(&amp;L)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>このアドレスに対するラベルを入力することで、使用済みアドレスの一覧に追加することができます</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>金額(&amp;A)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>手数料は送金額から差し引かれます。受取人は金額の欄に入力額のより低い金額のSoomを受け取ることになります。複数の受取人を選択すると料金も均等に分けられます。</translation>
     </message>
@@ -3617,17 +3643,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>金額から手数料を差し引く(&amp;U)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>未確認の支払要請です。</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>確認済みの支払要請です。</translation>
     </message>
@@ -3638,18 +3664,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>支払先</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>メッセージ</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>メモ</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>アドレス帳に追加するには、このアドレスのラベルを入力します</translation>
     </message>
@@ -3657,7 +3683,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation>はい(&amp;Y)</translation>
@@ -3699,19 +3725,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージをサインするためのSoomのアドレス</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>前に使用したアドレスを選ぶ</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>クリップボードからアドレスを貼付ける</translation>
     </message>
@@ -3731,12 +3757,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>署名</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>現在の署名をシステムのクリップボードにコピーする</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>このSoomアドレスを所有していることを証明するため、メッセージにサインしてください</translation>
     </message>
@@ -3746,18 +3772,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージの署名(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>入力項目の内容をすべて消去します</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>すべてクリア(&amp;A)</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>メッセージの検証(&amp;V)</translation>
     </message>
@@ -3772,7 +3798,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージに署名されたSoomのアドレス</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>メッセージが指定されたSoomのアドレスでサインされているかご確認ください</translation>
     </message>
@@ -3782,7 +3808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージの検証(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>入力項目の内容をすべて消去します</translation>
     </message>
@@ -3792,7 +3818,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>署名を作成するには&quot;メッセージの署名&quot;をクリック</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>不正なアドレスが入力されました。</translation>
@@ -3858,17 +3884,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>メッセージは検証されました。</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>アドレスを選択</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>アドレスを貼付ける</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>署名貼付ける</translation>
     </message>
@@ -4160,16 +4187,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>取引の詳細</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation>%1 詳細</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation>閉める(&amp;C)</translation>
     </message>
@@ -4562,7 +4585,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>エクスポート(&amp;E)</translation>
     </message>
@@ -4572,12 +4595,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ファイルに現在のタブのデータをエクスポート</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>選択した金額:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>ウォレットのバックアップ</translation>
     </message>
@@ -4610,7 +4633,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>指定のアドレスへバインドし、その上で常にリスンします。IPv6 は [host]:port 番号 と表記します</translation>
     </message>
@@ -4620,7 +4643,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>translationロックされたデータのディレクトリ%sを読み込むことができません。%sは既に実行中です。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>エラー: 内向きの接続をリッスンするのに失敗しました (エラー %s が返却されました)</translation>
     </message>
@@ -4640,17 +4663,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>最良のブロックに変更する際にコマンドを実行 (cmd の %s はブロック ハッシュに置換される)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>保有するピアアドレスが少ない場合、DNS ルックアップによりピアアドレスを問い合わせる (-connect/-noconnect を使っていない場合のデフォルト設定: 1)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>最優先/最低手数料の最大サイズをバイトで指定 (デフォルト設定: %d)</translation>
     </message>
@@ -4660,37 +4683,42 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>スクリプト検証スレッドを設定 (%uから%dの間, 0 = 自動, &lt;0 = たくさんのコアを自由にしておく, デフォルト設定: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>これはリリース前のテストビルドです - 各自の責任で利用すること - 採掘や商取引に使用しないでください</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>このパソコンを%sに指定することは不可能です。%sは既に実行中です。</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>警告: ネットワークは完全に同意しないみたいです。マイナーは何かの問題を経験してるみたいなんです。</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>警告: ピアーと完全に同意しないみたいです！アップグレードは必要かもしれません、それとも他のノードはアップグレードは必要かもしれません。</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>警告: wallet が壊れたのでデータを復旧しました! オリジナルの %s は %s として %s に保存されました; もしもあなたの残高や取引が正しくないならバックアップから復元してください。</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>環境設定でgatewayprivkeyを指定する必要があります。ヘルプをご参照ください。</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4700,12 +4728,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>コマンドラインと JSON-RPC コマンドを許可</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>外部からの接続を許可 (デフォルト設定: -proxy または -connect/-noconnect を使用していない場合は1)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>接続するノードを追加し接続を持続するように試します</translation>
     </message>
@@ -4715,7 +4743,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-addnode, -seednode と -connect で DNS ルックアップを許可する</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>ブロック作成オプション:</translation>
     </message>
@@ -4730,17 +4758,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-%s のアドレス &apos;%s&apos; を解決できません</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>初期値のアドレスを書き込むことができません</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>指定したノードだけに接続; -noconnectまたは-connect = 0のみで自動接続を無効にする</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>ピア アドレスを取得するためにノードに接続し、そして切断します</translation>
     </message>
@@ -4750,12 +4778,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>接続オプション:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>破損したブロック データベースが見つかりました</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>デバッグ／テスト用オプション:</translation>
     </message>
@@ -4785,12 +4813,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ウォレットのデータベース環境 %s 初期化エラー!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>ブロック データベースの読み込みエラー</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>%s 読み込みエラー</translation>
     </message>
@@ -4800,7 +4828,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%s 読み込みエラー: ウォレットが壊れました</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>ブロック データベースの開始エラー</translation>
     </message>
@@ -4825,7 +4853,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ポートのリスンに失敗しました。必要であれば -listen=0 を使用してください。</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = トランザクションのメタデータ、例えばアカウントの所有者や支払リクエストの内容を保持する, 2 = トランザクションのメタデータを破棄する)</translation>
     </message>
@@ -4840,27 +4868,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation type="unfinished"/>
     </message>
@@ -4880,7 +4908,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>指定されたアドレスに対して JSON-RPC 接続をリッスンしするようバインドします。IPv6の場合には [host]:port 表記を使用してください。このオプションは複数回指定することが可能です (デフォルト設定:すべてのインターフェースに対してバインドする)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>umask 077 ではなく、システムのデフォルトパーミッションで新規ファイルを作成する (ウォレット機能が無効化されていた場合にのみ有効)</translation>
     </message>
@@ -4900,7 +4928,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>-checkblocks のブロックの検証レベル (0-4, デフォルト設定: %u)</translation>
     </message>
@@ -4930,7 +4958,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>中継および採掘を行う際の、データ運送トランザクションの中のデータの最大サイズ (デフォルト設定: %u)</translation>
     </message>
@@ -4945,27 +4973,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>デバッグ情報を出力する (デフォルト設定: %u, &lt;範疇&gt; の指定は任意です)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>コイン生成が有効になっていた場合の利用スレッド数を設定する (-1 = すべてのコア, デフォルト設定: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation>成功的にロックされた取引に対する確認をNで表します。(%u-%u、基本値: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>この製品はOpenSSLプロジェクトにより開発されたソフトウェアをOpenSSLツールキットとして利用しています %s。また、Eric Young氏により開発された暗号ソフトウェア、Thomas Bernard氏により書かれたUPnPソフトウェアを用いています。</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Tor隠れたサービスでピアに届くための独立したSOCKS5プロキシを使います。(基本値: %s)</translation>
     </message>
@@ -4975,17 +4988,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>指定されたIPアドレス（1.2.3.4など）またはCIDR表記ネットワーク（1.2.3.0/24など）からの接続を許可するピア。 複数回指定できます。</translation>
     </message>
@@ -4995,27 +5008,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ホワイトリストのピアはDoSによるアクセス禁止処理が無効化され、トランザクションは例えmempool内に既に存在していたとしても常にリレーされます。これは例えばゲートウェイに対して有用です</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(デフォルト設定: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>公開 REST リクエストを許可する (デフォルト設定: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>DNS ルックアップを通してピアアドレスを常に問い合わせる (デフォルト設定: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation type="unfinished"/>
     </message>
@@ -5030,37 +5043,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>著作権 (C) 2009-2018 Bitcoin Core開発者</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>著作権 (C) 2014-2018 Dash Core開発者</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>著作権 (C) 2017-2018 Soom Core開発者</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>クライアントがゲートウェイで作動することを活性化 (0-1, 基本値: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>%sをロードする際、エラーが発生しました。ウォレットに最新バージョンの%sが必要です。</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation type="unfinished"/>
     </message>
@@ -5076,11 +5074,6 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>コインを生成 (デフォルト設定: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>起動時に点検するブロック数 (デフォルト設定: %u, 0=すべて)</translation>
     </message>
@@ -5125,17 +5118,72 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>無効な -proxy アドレス: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>-paytxfee=&lt;amount&gt; に対する無効な数量です: &apos;%s&apos; (少なくとも %s でなければいけません)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>-%s=&lt;amount&gt; の額 &apos;%s&apos; が無効です</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>パソコンの日付と時間が正しく設定されているのかご確認ください。正しくない場合、%s は正しく動かない可能性があります。</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>あなたが%sを見つけたら貢献してください。 ソフトウェアの詳細については、%sを参照してください。</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>この製品はOpenSSLプロジェクトにより開発されたソフトウェアをOpenSSLツールキットとして利用しています %s。また、Eric Young氏により開発された暗号ソフトウェア、Thomas Bernard氏により書かれたUPnPソフトウェアを用いています。</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation type="unfinished"/>
     </message>
@@ -5210,6 +5258,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>デバッグ出力にタイムスタンプを付ける (デフォルト設定: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation type="unfinished"/>
@@ -5235,12 +5288,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>key pool のサイズを &lt;n&gt; (デフォルト設定: %u) にセット</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>最小ブロックサイズをバイトで設定 (デフォルト設定: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>RPC サービスのスレッド数を設定 (デフォルト設定: %d)</translation>
     </message>
@@ -5300,7 +5348,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ソースコードは%sから入手できます。</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>不正なピアを切断するためのしきい値 (デフォルト設定: %u)</translation>
     </message>
@@ -5315,7 +5373,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>onionが活性化された場合使用するTorコントロールポート(基本値: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation type="unfinished"/>
     </message>
@@ -5361,21 +5429,26 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>ゲートウェイの個人鍵が正しくありません。取扱説明書をご参照ください。</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>gateway.confの分析ができません。</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>-whitelist に対する無効なネットマスクです: &apos;%s&apos;</translation>
     </message>
@@ -5385,7 +5458,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>gateway.confから有効ではないポートが感知されました。</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation type="unfinished"/>
     </message>
@@ -5400,7 +5473,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>最大で &lt;n&gt; 個の孤立したトランザクションをメモリの中に保持する (デフォルト設定: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>自分のIPアドレスを探します。(基本値: 1受信中或は-externalip 又は -proxyがない場合)</translation>
     </message>
@@ -5430,7 +5503,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>バックアップ生成失敗。ファイルが既にあります！ウォレットを60秒以内に再起動する場合発生する現象です。同意を押すと続けられます。</translation>
     </message>
@@ -5485,22 +5558,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>パソコンの日付と時間が正しく設定されているのかご確認ください。正しくない場合、Soomコアは正しく動かない可能性があります。</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
-        <translation>あなたが%sを見つけたら貢献してください。 ソフトウェアの詳細については、%sを参照してください。</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation type="unfinished"/>
     </message>
@@ -5515,12 +5573,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>全てのプロキシへの接続ことに資格証明の無作為化。このようにするとTorストリームの隔離ができます (基本値: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation type="unfinished"/>
     </message>
@@ -5545,17 +5598,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>エラー: サポートされていない引数 -socks が見つかりました。SOCKSバージョンの設定はできないようになりました。SOCKS5プロキシのみがサポートされています。</translation>
     </message>
@@ -5570,39 +5623,59 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>リスン ポートの割当に UPnP を使用 (デフォルト設定: リスン中は1)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+22"/>
-        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%dはメインネットでのみ使用可能です)</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>(default: %u)</source>
-        <translation type="unfinished"/>
+        <translation>(基本値: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5620,7 +5693,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&lt;範疇&gt; 可能:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation type="unfinished"/>
     </message>
@@ -5635,7 +5713,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自動Torヒドゥンサービス生成 (基本値: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>&lt;アドレスから&gt;ハッシュブロック掲示可能</translation>
     </message>
@@ -5710,7 +5808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation type="unfinished"/>
     </message>
@@ -5720,12 +5818,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5765,12 +5868,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>ゲートウェイオプション:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5800,7 +5903,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>JSON-RPC 接続のパスワード</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>バージョン出力後終了</translation>
     </message>
@@ -5825,12 +5928,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation type="unfinished"/>
     </message>
@@ -5845,12 +5948,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQお知らせオプション:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPCサーバのオプション:</translation>
     </message>
@@ -5900,7 +6008,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>最大ブロックサイズをバイトで設定 (デフォルト設定: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation type="unfinished"/>
     </message>
@@ -5935,7 +6043,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>あなた自身のパブリックなアドレスを指定</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>同期化待機中...</translation>
     </message>
@@ -5945,32 +6053,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ゲートウェイの支払いを同期化中です...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>このヘルプ メッセージ</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>これは実験的なソフトウェアです。</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>取引の額が小さ過ぎます</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transaction amounts must not be negative</source>
-        <translation>取引の額は0より大きくしてください</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>手数料ポリシーに対してトランザクションが大きすぎます</translation>
     </message>
@@ -5985,7 +6088,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>このコンピュータの %s にバインドすることができません (バインドが返したエラーは %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>スポークメッセージの認証ができません。鍵をご確認ください?</translation>
     </message>
@@ -6015,7 +6118,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>財布 %s はデータ・ディレクトリ%sの外にあります</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>ウォレットオプション:</translation>
     </message>
@@ -6030,12 +6133,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>警告</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>ウォレットからすべてのトランザクションを消去しています…</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
         <translation>%s が壊れ、復旧に失敗しました</translation>
     </message>

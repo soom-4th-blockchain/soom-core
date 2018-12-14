@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>关闭(&amp;L)</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>这些是你用来收款的SOOM位址。建议在每次交易时，都使用一个新的收款位址。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>复制地址(&amp;C)</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>尝试保存地址列表至%1.时发生错误,请重新执行操作。</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
@@ -219,27 +219,27 @@
         <translation>请输入该钱包的旧密码与新密码。</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>确认加密钱包</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>您确定需要为钱包加密吗？</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>钱包已加密</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1软体现在要关闭，以完成加密过程。请注意，加密钱包不能完全防止恶意软件入侵你的电脑盗取你的SOOMs。</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation>重要提示: 请用新生成的加密钱包文件替换旧的钱包备份文件。先前未加密的旧钱包备份文件含有同样的HD种子，能够像新加密的钱包一样获取您的资金，而无需输入密码。</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>重要提示: 您以前备份的钱包文件应该替换成最新生成的加密钱包文件(重新备份)。从安全性上考虑，您以前备份的未加密的钱包文件，在您使用新的加密钱包后将无效，请重新备份。</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>钱包加密失败</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>由于一个本地错误，加密钱包的操作已经失败。您的钱包没能被加密。</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>密码不匹配。</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>钱包解锁失败</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>用于解密钱包的密码不正确。</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>钱包解密失败。</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>修改钱包密码成功。</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>警告: 大写锁定键处于打开状态！</translation>
@@ -345,15 +345,15 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"/>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>发生了致命错误。 Soom Core无法再安全继续并将退出。</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>节点</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>概况(&amp;O)</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>用Soom地址签署讯息来证明地址是你的</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>使用测试网络</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>验证讯息是用来确定讯息是用指定的Soom地址签署的</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>分页工具栏</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1客户端</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n 个运作中的SOOM网路连线</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>信息</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>有%1笔新交易。</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>新交易</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>日期: %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>流入交易</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD密钥生成&lt;b&gt;已激活&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>总计: %1 (使用: %2)</translation>
     </message>
@@ -859,12 +874,7 @@
         <translation>金额:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>费用:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>选择币</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>零钱:</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>费用:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>加上交易费用后:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>列表模式</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 锁定)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>已确认</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>复制地址</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>复制零钱</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 锁定)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>是</translation>
     </message>
@@ -1031,8 +1046,8 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>每笔输入可能会有 +/- %1个duff(s)的偏差。</translation>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
+        <translation>每笔输入可能会有 +/- %1个tnSOOM(s)的偏差。</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -1099,16 +1114,16 @@
         <translation>编辑发送地址</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>输入的地址&quot;%1&quot;不是有效的Soom地址。</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>输入的地址“%1”已经存在于地址簿中。</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>无法解锁钱包</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>新的密钥生成失败。</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>启动姓名</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>确认启动网关</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>您确定要启动网关 %1吗?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>确认启动所有的网关</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>您确定要启动所有的网关吗?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>当前命令不可使用</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>在与网关列表同步之前，您不能使用此命令</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
@@ -1380,8 +1395,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>设置语言, 例如“de_DE” (默认为系统语言)</translation>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
+        <translation>设置语言, 例如“zh_CN” (默认为系统语言)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1442,13 +1457,13 @@
         <translation>使用自定义的数据目录:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>错误: 指定的数据目录“%1”无法被创建。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>模板</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>因最近交易尚未显示，因此您的钱包余额可能不正确。一旦钱包完成与SOOM网络的同步，信息将是显示正确。</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>进行</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>每小时进行率增加</translation>
     </message>
@@ -1549,7 +1559,7 @@
     <message>
         <location filename="../notificator.cpp" line="+323"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"/>
+        <translation>确定(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1575,12 +1585,12 @@
         <translation>选择付款请求文件</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -1683,18 +1693,18 @@
         <translation>点击关闭窗口，将应用最小化，而不是结束应用。当勾选这个选项时，只可以在选项中关闭应用。</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>可以设置用户界面语言，此设置在重新启动%1后适用。</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>在交易页签的情境选单出现的第三方(比如说区块探索网站)网址连结。&lt;br/&gt;网址中的 %s 会被取代为交易的杂凑值。可以用直线符号 | 来分隔多个连结。</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>专家</translation>
     </message>
@@ -1815,6 +1825,16 @@
         <translation>单击关闭按钮最小化(&amp;I)</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>显示新事务的弹出窗口。</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>显示交易气球弹出窗口 (&amp;S)</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>显示(&amp;D)</translation>
@@ -1837,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>用户界面主题：</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>显示金额的单位(&amp;U):</translation>
     </message>
@@ -1878,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>默认</translation>
     </message>
@@ -1893,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>无</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>确认恢复缺省设置</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>更改生效需要重启客户端。</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>客户端即将关闭，确定继续吗？</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>此更改需要重启客户端。</translation>
     </message>
@@ -1932,93 +1952,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>模板</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>显示信息也许已过期。当与Soom网络连接后钱包程序会自动同步，但现在还未完成。</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>可使用的余额</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>您当前可使用的余额</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation>等待中的余额</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>尚未确认的交易总额，未计入当前余额</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>未成熟的</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>尚未成熟的挖矿收入余额</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>余额</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>仅限查看的还未交易确认的地址</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>仅限查看的地址中尚未成熟的挖矿收入余额</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>总额</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>您当前的总余额</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>仅限查看地址中的当前总余额</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>仅限查看:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>仅限查看地址中的当前余额</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>可花费:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>最近交易</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>还没同步</translation>
@@ -2181,9 +2203,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
@@ -2204,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>输入Soom地址(e.g. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1天</translation>
     </message>
@@ -2220,7 +2242,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1秒</translation>
     </message>
@@ -2284,17 +2306,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2347,7 +2369,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR码对话框</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation>复制地址(&amp;A)</translation>
     </message>
@@ -2421,7 +2443,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>不可用</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>连接数</translation>
     </message>
@@ -2528,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>清空控制台</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>网络流量(&amp;N)</translation>
     </message>
@@ -2566,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>选择一个节点查看详细信息。</translation>
     </message>
@@ -2607,13 +2629,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>用户代理</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>数据目录</translation>
     </message>
@@ -2628,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>增加字体大小</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>服务</translation>
     </message>
@@ -2753,7 +2775,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: 从现在的blk000??.dat文件重新建立数据块链索引。</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>斷開連接(&amp;D)</translation>
     </message>
@@ -2786,7 +2808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1年(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>解禁(&amp;U)</translation>
     </message>
@@ -2826,7 +2848,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 字节</translation>
     </message>
@@ -2891,7 +2913,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>重复使用以前用过的接收地址。&lt;br&gt;重用地址有安全和隐私方面的隐患。&lt;br&gt;除非是为重复生成同一项支付请求，否则请不要这样做。</translation>
     </message>
@@ -2901,7 +2923,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>重用现有的接收地址 (不推荐)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>附加在付款要求中的讯息，可以不填，打开要求内容时会显示。注意: 这个讯息不会随着付款送到Soom网路上。</translation>
     </message>
@@ -2911,44 +2933,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>消息(&amp;M)</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>可为新建的收款地址添加一个标签。</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>附加在付款要求中的讯息，可以不填，打开要求内容时会显示。&lt;br&gt;注意: 这个讯息不会随着付款送到Soom网路上。</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>使用此表单要求付款。所有字段都是&lt;b&gt;可选&lt;/b&gt;。</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>标签(&amp;L)</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>可选的请求金额。留空或填零为不要求具体金额。</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>总额(&amp;A)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>请求付款(&amp;R)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>清空此表单的所有字段。</translation>
     </message>
@@ -2958,17 +2980,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>清除</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>请求立即发送</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>请求付款(生成二维码和soom付款协议的URI)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2978,7 +3000,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>请求付款的历史</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>显示选中的请求 (双击也可以显示)</translation>
     </message>
@@ -2988,7 +3010,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>显示</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>从列表中移除选中的条目</translation>
     </message>
@@ -2998,7 +3020,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>复制URI</translation>
     </message>
@@ -3026,7 +3048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>二维码</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>复制 URI(&amp;U)</translation>
     </message>
@@ -3041,7 +3063,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>保存图片(&amp;S)...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation>关闭(&amp;L)</translation>
     </message>
@@ -3051,12 +3073,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>请求付款到 %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>付款信息</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3148,12 +3170,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>发送货币</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>交易源地址控制功能</translation>
     </message>
@@ -3168,12 +3190,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自动选择</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>存款不足！</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>总量:</translation>
     </message>
@@ -3208,7 +3230,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>变更:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>如果激活该选项，但是零钱地址用光或者非法，将会新生成零钱地址，转入零钱。</translation>
     </message>
@@ -3218,17 +3240,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自定义零钱地址</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>交易手续费</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>选择...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation>使用fallbackfee可能会导致发送一笔需要几个小时或几天(或永远不会)确认的交易.&lt;br&gt;建议手动选择手续费, 或者等待你完全验证整个区块链后.</translation>
     </message>
@@ -3243,12 +3265,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>收起手续费设置</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>立即发送</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>
 如果自定手续费设定为1000 tnsoom,而交易信息只有250字节的话,那么选择&quot;每千位字节&quot;就只会支付250 tnsoom的手续费,&lt;br&gt;而&quot;至少&quot;会支付1000 tnsoom.
@@ -3265,10 +3282,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+33"/>
         <location line="+13"/>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</source>
-        <translation>当交易量少于区块可容纳的空间时，只付最低手续费不会有什么问题。 &lt;br&gt;但是当交易量的需求成长到超过整体网路可以处理的量时，可能会造成一笔一直不会被确认的交易。</translation>
+        <translation>当交易量少于区块可容纳的空间时，只付最低手续费不会有什么问题。 &amp;lt;br&amp;gt;但是当交易量的需求成长到超过整体网路可以处理的量时，可能会造成一笔一直不会被确认的交易。</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>确认时间目标:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>即时支付</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>每千位字节</translation>
     </message>
@@ -3298,27 +3325,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自定义:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(手续费演算法还没有准备好.通常都要等几个块才可以...)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>确认时间目标:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>正常</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>快速</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>确认并发送货币</translation>
     </message>
@@ -3328,7 +3350,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>发送(&amp;E)</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>清除此表单的所有字段。</translation>
     </message>
@@ -3348,12 +3370,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>添加收款人(&amp;R)</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>余额:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>复制金额</translation>
     </message>
@@ -3403,7 +3425,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>和 即时支付</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3436,12 +3458,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>确认发送货币</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -3491,7 +3513,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>支付请求已过期。</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
@@ -3501,12 +3523,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>支付%1的手续费</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>预计在%n 个区块内开始确认.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>警告: 无效的Soom地址</translation>
     </message>
@@ -3534,37 +3556,39 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>这是笔正常的支付。</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>付给(&amp;T)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>输入要传送soom地址</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>选择地址</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>粘贴地址</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>选择以前用过的地址</translation>
     </message>
@@ -3574,7 +3598,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>从剪贴板粘贴地址</translation>
     </message>
@@ -3584,34 +3608,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>移除此项</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>标签(&amp;L)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>请为此地址输入一个标签以将它加入用过的地址列表</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>金额(&amp;M)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>费用将从汇款金额中扣除。收件人将收到的低于输入的金额。 如果选择了多个收件人，则费用将平均分配。</translation>
     </message>
@@ -3621,17 +3647,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>从金额中减去手续费(&amp;U)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>附加在soom付款协议URI中的信息,会和交易内容一并存储,可供您参考.提示:此信息不会发送到Soom网络上。</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>这是个非有效的支付请求。</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>这是个有效的支付请求。</translation>
     </message>
@@ -3642,18 +3668,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>支付给</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>消息</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
-        <translation>便条</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>为这个地址输入一个标签，以便将它添加到您的地址簿</translation>
     </message>
@@ -3661,7 +3687,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
@@ -3703,19 +3729,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>对此地址进行签名</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>选择以前用过的地址</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>从剪贴板粘贴地址</translation>
     </message>
@@ -3735,12 +3761,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>签名</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>复制当前签名至剪切板</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>签署信息证明你拥有此Soom地址</translation>
     </message>
@@ -3750,18 +3776,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>消息签名(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>清空所有签名消息栏</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>清除所有(&amp;A)</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>验证消息(&amp;V)</translation>
     </message>
@@ -3776,7 +3802,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>发送签名的SOOM位址信息</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>验证这个讯息来确定是用指定的SOOM位址签署的</translation>
     </message>
@@ -3786,7 +3812,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>验证消息签名(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>清空所有验证消息栏</translation>
     </message>
@@ -3796,7 +3822,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>单击“签名消息“产生签名。</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>输入的地址非法。</translation>
@@ -3862,19 +3888,20 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>消息验证成功。</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>选择地址</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>粘贴地址</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
-        <translation>粘贴签名</translation>
+        <translation>便条</translation>
     </message>
 </context>
 <context>
@@ -4164,16 +4191,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>交易细节</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation>%1 详情</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation>关闭(&amp;C)</translation>
     </message>
@@ -4566,7 +4589,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>导出(&amp;E)</translation>
     </message>
@@ -4576,12 +4599,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>导出当前数据到文件</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>选择总额:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>备份钱包</translation>
     </message>
@@ -4614,7 +4637,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>与提供地址绑定，持续监听。使用[host]:标记IPv6端口</translation>
     </message>
@@ -4624,7 +4647,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>不能获得锁定的数据目录 %s. %s可能已经在运行。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>错误:监听输入链接失败(监听回馈错误 %s)</translation>
     </message>
@@ -4644,17 +4667,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>当最新区块改变时需要执行的命令(命令中的 %s 会被区块哈希值代替)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>通过DNS搜索，节点位址数目不足时，使用域名查询来搜寻节点 ( 不是-connect/-noconnect时，默认值: 为 1)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>以字节为单位设置高优先级/低手续费的交易值 (默认值: %d)</translation>
     </message>
@@ -4664,37 +4687,42 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>设置脚本验证线程的数量 (%u 到 %d， 0= 自动，&lt;0= 充分保留处理器核心，默认值: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>这是个预先发布的测试版本 - 使用请自负风险 – 禁止用于商业用途</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>无法绑定%s此计算机. %s应该已经在运行中了。</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>警告: Soom网路对于区块链结的决定目前有分歧！看来有些矿工会有问题。</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>警告: 我们和某些连线的节点对于区块链结的决定不同！你可能需要升级，或是需要等其它的节点升级。</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>警告: 钱包档wallet 损坏，但资料被拯救回来了！原来的%s 会改储存在%s, 档名是%s. 如果余额或交易资料有误，你应该要用备份资料复原回来。</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>您必须在配置中指定一个网关密钥。请参阅文档以获得帮助。</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4704,12 +4732,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>接受命令行以及JSON-RPC命令</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>接受来自外部链接 (默认: 1 if no -proxy or -connect/-noconnect)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>添加一个可连接节点，并尝试保持连接开放。</translation>
     </message>
@@ -4719,7 +4747,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>允许DNS查找 -新节点, -子节点 和 -链接</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>数据块创建选项:</translation>
     </message>
@@ -4731,20 +4759,20 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>Cannot resolve -%s address: &apos;%s&apos;</source>
-        <translation>不能解决 -%s地址:&apos;%s&apos;</translation>
+        <translation>不能解决 -%s地址: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>不能写入默认钱包</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>只连接指定节点(或多个); -noconnect or connect=0 来仅用自动链接</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>连接至节点来找回对等地址和断开链接</translation>
     </message>
@@ -4754,12 +4782,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>连接选项:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>已找到损坏的数据块</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>排除故障/测试 选项:</translation>
     </message>
@@ -4789,12 +4817,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>正在初始钱包数据库环境错误 %s!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>读取数据库块错误</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>读取%s文件错误</translation>
     </message>
@@ -4804,7 +4832,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>读取%s文件错误:钱包已损坏</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>正在打开数据库块错误</translation>
     </message>
@@ -4829,7 +4857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>监听端口失败。如果想使用此项 修改-listen=0</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 =维持Meta数据，例如帐户所有者及支付请求信息，2＝删除TX元数据)</translation>
     </message>
@@ -4844,27 +4872,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation type="unfinished"/>
     </message>
@@ -4884,7 +4912,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>为连接JSON-RPC接收，指定已知位址. 使用IPv6端口显示方法。本选项可重复指定。(默认值: 指定所有界面)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>替代umask 077, 创建系统默认权限的新文档， (仅在钱包功能禁用时，才可实现有效作用)。</translation>
     </message>
@@ -4904,7 +4932,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>使用 -checkblocks 检查区块的仔细程度 (0-4, 默认: %u)</translation>
     </message>
@@ -4934,7 +4962,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -4949,27 +4977,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>输出除错信息(默认: %u,  &lt;category&gt;是可选项)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>设置激活时的coin生成的线程数，(-1 所有cores，默认值: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation>将成功锁定的交易值显示为 N (%u-%u, 默认值: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>此产品包括了由OpenSSL Project所开发的OpenSSL Toolkit 软件%s, 和由Eric Young 编写的加密软件, 以及由Thomas Bernard 编写的UPnP软件。</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>为使用另外的 SOCK5 代理伺服器，来透过 Tor 隐藏服务跟节点联系 (默认值: %s)</translation>
     </message>
@@ -4979,17 +4992,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>把来自指定地址（例如：1.2.3.4）或CIDR格式网段（例如：1.2.3.0/24）的节点放进白名单。这个选项可以设定多次。</translation>
     </message>
@@ -4999,27 +5012,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>在白名单中的节点不会因为检测到DoS攻击而被停用. 来自这些节点的交易也一定会被转发, 即使说交易本神就来自记忆池. 适用于网关</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(默认: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>接受公开的REST请求 (默认值: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>总是通过DNS查询对等地址(默认: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation type="unfinished"/>
     </message>
@@ -5034,37 +5047,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>连接至 KeePassHttp 端口 &lt;port&gt; (默认: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>版权(C) 2009-2018 Bitcoin Core 的开发者</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>版权 (C) 2014-2018 达世币核心开发人员</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>版权 (C) 2017-2018 Soom Core 的开发者</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>激活客户端,使其作为网关(0-1, 默认: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>读取%s文件错误: 需要较为新版本的%s来读取钱包</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation type="unfinished"/>
     </message>
@@ -5080,11 +5078,6 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>生成币 (默认: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>启动时检查的区块数 (默认值: %u, 指定 0 =全部)</translation>
     </message>
@@ -5129,17 +5122,72 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>无效-代理地址:&apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>设定 -paytxfee=&lt;金额&gt;  的金额无效: &apos;%s&apos; (至少要有%s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>设定 -%s=&lt;金额&gt; 的金额无效: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>请检查电脑日期和时间是否正确！%s没办法在时钟不准的情况下正常运作。</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>如果你认为%s对你比较有用的话，请对我们进行一些捐赠支持。请访问%s网站来获取有关这个软件的更多信息。</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>此产品包括了由OpenSSL Project所开发的OpenSSL Toolkit 软件%s, 和由Eric Young 编写的加密软件, 以及由Thomas Bernard 编写的UPnP软件。</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation type="unfinished"/>
     </message>
@@ -5214,6 +5262,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>通过时间标记预先调试输出 (默认: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation type="unfinished"/>
@@ -5239,12 +5292,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>设置钥匙池大小至&lt;n&gt; (默认: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>以字节为单位设置最小的块(默认: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>设定处理RPC 服务请求的执行绪数目(默认: %d)</translation>
     </message>
@@ -5304,7 +5352,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>源代码可以在 %s 获得。</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>断开的作弊节点临界值(默认: %u)</translation>
     </message>
@@ -5319,7 +5377,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>启用onion时使用的Tor控制端口(默认值: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>无法启动HTTP服务，查看日志获取更多信息。</translation>
     </message>
@@ -5366,21 +5434,26 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation>钱包需要重写: 请重新启动%s来完成</translation>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>无效网关私钥。请查阅文件材料。</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>无法解析网关配置文件</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>指定 -whitelist: &apos;%s&apos;的网络掩码无效</translation>
     </message>
@@ -5390,7 +5463,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>在网关配置文件中检测到无效端口</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation type="unfinished"/>
     </message>
@@ -5405,7 +5478,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>发现私有IP地址(默认:收听时为1，没有-externalip或-proxy)</translation>
     </message>
@@ -5435,7 +5508,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>无法创建备份。 该文件已存在！ 如果您在60秒内重新启动钱包，就会发生这种情况。点击同意，即可继续进行。</translation>
     </message>
@@ -5490,22 +5563,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>请检查电脑日期和时间是否正确！Soom核心没办法在时钟不准的情况下正常运作。</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
-        <translation>如果你认为%s对你比较有用的话，请对我们进行一些捐赠支持。请访问%s网站来获取有关这个软件的更多信息。</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation type="unfinished"/>
     </message>
@@ -5520,12 +5578,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>每次连接proxy时，随机赋予资格证明. 此操作可以隔离Tor stream (预设值: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation type="unfinished"/>
     </message>
@@ -5550,17 +5603,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>错误: 发现未支持的-socks 参数。无法继续设置SOCKS5版本，仅支持SOCKS 代理版本。</translation>
     </message>
@@ -5575,39 +5628,59 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>使用通用随插即用协定来设定对应的服务连接埠(默认:1为监听中)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+22"/>
-        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d 只能被用于主网)</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>(default: %u)</source>
-        <translation type="unfinished"/>
+        <translation>(预设值: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5625,7 +5698,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&lt;category&gt; 可以是:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation type="unfinished"/>
     </message>
@@ -5640,7 +5718,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>自动创建Tor匿名服务 (默认值: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -5715,7 +5813,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation type="unfinished"/>
     </message>
@@ -5725,12 +5823,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>即时支付 选项:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5770,12 +5873,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>网关选项:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5805,7 +5908,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>JSON-RPC连接密码</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>打印版本并退出</translation>
     </message>
@@ -5830,12 +5933,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation type="unfinished"/>
     </message>
@@ -5850,12 +5953,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ 通知选项:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPC服务器选项:</translation>
     </message>
@@ -5905,7 +6013,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>以字节为单位设置最大的块(默认: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>设置网关私钥</translation>
     </message>
@@ -5940,7 +6048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>指定你个人公开地址</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>同步即将开始...</translation>
     </message>
@@ -5950,22 +6058,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>正在同步网关付款资讯...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>此帮助信息</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>这是一款实验软件。</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>交易额过小</translation>
     </message>
@@ -5975,7 +6078,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>交易额一定要真实有效</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>根据交易手续费准则，本交易的位元量过大</translation>
     </message>
@@ -5990,7 +6093,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>无法绑定%s此计算机 (绑定返回错误 %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>无法签署交叉信息，错误的密钥？</translation>
     </message>
@@ -6020,7 +6123,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>钱包 %s 属于外部数据目录 %s</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>钱包选项:</translation>
     </message>
@@ -6035,12 +6138,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>警告</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>从钱包正在展开所有交易记录...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
         <translation>%s数据损坏，恢复失败</translation>
     </message>

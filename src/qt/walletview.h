@@ -9,6 +9,7 @@
 #include "gatewaylist.h"
 
 #include <QStackedWidget>
+#include <QTimer>
 
 class BitcoinGUI;
 class ClientModel;
@@ -75,6 +76,9 @@ private:
     QProgressDialog *progressDialog;
     QLabel *transactionSum;
     const PlatformStyle *platformStyle;
+    QTimer limitPopupTimer;
+    int limitTime;
+    int newTxCount;
 
 public Q_SLOTS:
     /** Switch to overview (home) page */
@@ -127,9 +131,12 @@ public Q_SLOTS:
     /** User has requested more information about the out of sync state */
     void requestedSyncWarningInfo();
 
-
     /** Update selected SOOM amount from transactionview */
     void trxAmount(QString amount);
+
+    /** Limit show balloon popup about 5sec **/     // by Jeon 2018.12.07
+    void limitPopupCount();
+
 Q_SIGNALS:
     /** Signal that we want to show the main window */
     void showNormalIfMinimized();

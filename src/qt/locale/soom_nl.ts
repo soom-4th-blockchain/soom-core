@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>S&amp;luiten</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>Dit zijn uw Soom adressen om betalingen me te ontvangen. Het wordt aangeraden om voor elke transactie een niew ontvangstadres te gebruiken.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>Kopieer adres</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>Er was een probleem tijdens het opslaan van de adressenlijst naar %1. Probeer het alstublieft opnieuw.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -219,27 +219,27 @@
         <translation>Voer het oude en het nieuwe wachtwoord in voor uw portemonnee.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>Bevestig de versleuteling van uw portemonnee</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>Weet u zeker dat u uw portemonnee wilt versleutelen?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>Portemonnee is versleuteld</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1 wordt nu afgesloten om de versleuteling te voltooien. Denk eraan dat het versleutelen van uw portemonnee niet volledig kan beschermen tegen diefstal van uw geld door malware op uw computer.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation>BELANGRIJK: Alle eerder gemaakte back-up van uw portemonneebestand dienen vervangen te worden door het nieuw gegenereerde, versleutelde portemonneebestand. Eerdere back-ups van de niet versleutelde portemonnee bevatten dezelfde HD seed en zullen nog steeds volledig toegang hebben tot uw geld net als de nieuwe, versleutelde portemonnee.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>BELANGRIJK: Alle vorige backups die je van je portemonnee hebt gemaakt moeten worden vervangen met het nieuw aangemaakte, versleutelde portemonneebestand. Voor veiligheidsredenen, vorige backups van de niet-versleutelde portemonnee worden onbruikbaar zodra je de nieuwe, versleutelde portemonnee gebruikt.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>Portemonneeversleuteling mislukt</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Door een interne fout is de portemonneeversleuteling mislukt. Je portemonnee is niet versleuteld.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>De ingegeven wachtwoordzinnen komen niet overeen.</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>Portemonnee ontgrendelen mislukt</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>Het ingevoerde wachtwoord om de portemonnee te ontsleutelen was incorrect.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>Het ontsleutelen van de portemonnee is mislukt</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Het wachtwoord van de portemonnee is succesvol gewijzigd.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Waarschuwing: Caps-lock staat aan!</translation>
@@ -345,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -353,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>Er heeft zich een fatale fout voorgedaan. Soom Core kan niet veilig worden voortgezet en zal worden afgesloten.</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>Node</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overzicht</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>Onderteken berichten met uw Soomadressen om te bewijzen dat u deze adressen bezit.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>Gebruik de test keten</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>Verifieer handtekeningen om zeker te zijn dat de berichten zijn ondertekend met de gespecificeerde Soomadressen.</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>Tab-werkbalk</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 client</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n actieve verbinding met het Soom netwerk</numerusform><numerusform>%n actieve verbindingen met het Soom netwerk</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>Informatie</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>Er zijn %1 nieuwe transacties.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>Nieuwe transactie</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -808,7 +823,7 @@
         <translation>Binnenkomende transactie</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD sleutel generatie is &lt;b&gt;ingeschakeld&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation type="unfinished"/>
     </message>
@@ -859,12 +874,7 @@
         <translation>Bedrag:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>Vergoeding:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>Munt selectie</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>Stof</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>Vergoeding:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>Na vergoeding:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>Lijst modus</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 geblokeerd)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>Bevestigd</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>Kopieer adres</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>Kopieer wisselgeld</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 geblokeerd)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>ja</translation>
     </message>
@@ -1031,7 +1046,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
         <translation>Kan +/- %1 duff(s) per invoer variëren.</translation>
     </message>
     <message>
@@ -1099,16 +1114,16 @@
         <translation>Bewerk verzendadres</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>Het ingevoerde adres &quot;%1&quot; is geen geldig Soom adres.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>Het opgegeven adres &quot;%1&quot; bestaat al in uw adresboek.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>Kon de portemonnee niet openen.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>Genereren nieuwe sleutel mislukt.</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>Start alias</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>Bevestig opstarten van Gateway</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>Weet u zeker dat u Gateway %1 wenst op te starten?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>Bevestig het opstarten van alle Gateways</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>Weet u zeker dat u ALLE gateways wenst te starten?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>Dit commando is momenteel niet beschikbaar</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>U kunt dit commando niet gebruiken totdat de Gateway lijst is gesynchroniseerd</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1380,7 +1395,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
         <translation>Stel taal in, bijvoorbeeld &quot;nl_NL&quot; (standaard: systeemlocale)</translation>
     </message>
     <message>
@@ -1442,13 +1457,13 @@
         <translation>Gebruik een persoonlijke gegevensmap:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>Fout: De gespecificeerde map &quot;%1&quot; kan niet worden gecreëerd.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>Vorm</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de portemonnee is daarom mogelijk niet correct. Deze informatie is correct van zodra de synchronisatie met het Soom-netwerk werd voltooid, zoals onderaan beschreven.</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>Vooruitgang</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>Vooruitgang per uur</translation>
     </message>
@@ -1575,12 +1585,12 @@
         <translation>Selecteer betalingsverzoek bestand</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1650,7 +1660,7 @@
     <message>
         <location line="+7"/>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
-        <translation>Indien het uitgeven van onbevestigd wisselgeld uitgeschakeld wordt dan kan het wisselgeld van een transactie niet worden gebruikt totdat de transactie ten minste een bevestiging heeft.
+        <translation>Indien het uitgeven van onbevestigd wisselgeld uitgeschakeld wordt dan kan het wisselgeld van een transactie niet worden gebruikt totdat de transactie ten minste een bevestiging heeft. 
 Dit heeft ook invloed op de manier waarop uw saldo wordt berekend.</translation>
     </message>
     <message>
@@ -1684,18 +1694,18 @@ Dit heeft ook invloed op de manier waarop uw saldo wordt berekend.</translation>
         <translation>Minimaliseren in plaats van de applicatie af te sluiten wanneer het venster is afgesloten. Als deze optie is ingeschakeld, zal de toepassing pas worden afgesloten na het selecteren van Exit in het menu.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Derde partij URL&apos;s (bijvoorbeeld block explorer) dat in de transacties tab verschijnen als contextmenu elementen. %s in de URL is vervangen door transactie hash. Verscheidene URL&apos;s zijn gescheiden met een verticale streep |.  </translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>Expert</translation>
     </message>
@@ -1816,6 +1826,16 @@ Dit heeft ook invloed op de manier waarop uw saldo wordt berekend.</translation>
         <translation>Minimaliseer bij sluiten van het &amp;venster</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>Pop-ups weergeven voor nieuwe transacties.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>Toon transactie-pop-up(&amp;S)</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>&amp;Interface</translation>
@@ -1829,7 +1849,7 @@ Dit heeft ook invloed op de manier waarop uw saldo wordt berekend.</translation>
         <location line="+43"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
 https://www.transifex.com/projects/p/soom/</source>
-        <translation>Is een een taal te kort of een vertaling onvolledig ? Help de vertaling hier:
+        <translation>Is een een taal te kort of een vertaling onvolledig ? Help de vertaling hier: 
 https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
@@ -1838,7 +1858,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Gebruikersinterface thema:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Eenheid om bedrag in te tonen:</translation>
     </message>
@@ -1879,12 +1899,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>Ann&amp;uleren</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>standaard</translation>
     </message>
@@ -1894,28 +1914,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>geen</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>Bevestig reset van alle instellingen</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>Herstart van de client is vereist om aanpassingen door te voeren.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>De client zal worden afgesloten, wilt u doorgaan?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>Deze aanpassing vereist een herstart van de client.</translation>
     </message>
@@ -1933,93 +1953,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Vorm</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>De weergegeven informatie kan achterhaald zijn. De beurs synchroniseert automatisch met het Soom netwerk nadat de verbinding is gelegd, maar dit proces is nog niet beeindigd.</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>Uw beschikbare saldo</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>De som van de transacties die nog bevestigd moeten worden, en nog niet meetellen in uw beschikbare saldo</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Gedolven saldo dat nog niet tot wasdom is gekomen</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>Saldo&apos;s</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>Onbevestigde transacties naar een alleen-kijken adressen</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>Gemijnd saldo in alleen-kijken adressen </translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>Uw totale saldo</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>Huidig totaal bedrag in alleen-kijken adressen</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>Alleen-kijken:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>Jouw huidig totaal bedrag in alleen-kijken adressen</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>Uitgeefbaar:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>Recente transacties</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>niet gesynchroniseerd</translation>
@@ -2182,9 +2204,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
@@ -2205,7 +2227,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Voer een Soomadres in (bijv. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1 d</translation>
     </message>
@@ -2221,7 +2243,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1 s</translation>
     </message>
@@ -2285,17 +2307,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2348,7 +2370,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation type="unfinished"/>
     </message>
@@ -2422,7 +2444,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2444,7 +2466,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>N.v.t.</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>Aantal connecties</translation>
     </message>
@@ -2529,7 +2551,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Maak console leeg</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Netwerkverkeer</translation>
     </message>
@@ -2567,8 +2589,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Selecteer een peer om details te bekijken</translation>
     </message>
@@ -2608,13 +2630,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Portemonnee bestandspad</translation>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>Gebruikers klant</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>Gegevensmap</translation>
     </message>
@@ -2629,7 +2651,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Vergroot lettergrootte</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>Services</translation>
     </message>
@@ -2754,7 +2776,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-herbouw index: Herbouw de blokketen index vanuit de huidige blk000???.dat bestanden.</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>&amp;Verbreek verbinding</translation>
     </message>
@@ -2787,7 +2809,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1 &amp;jaar</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>&amp;Maak ban voor Node ongedaan</translation>
     </message>
@@ -2827,7 +2849,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Netwerkactiviteit uitgeschakeld</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -2892,10 +2914,10 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Gebruik een van de eerder gebruikte ontvangstadressen opnieuw.
-Het opnieuw gebruiken van adressen heeft beveiliging- en privacy problemen.
+Het opnieuw gebruiken van adressen heeft beveiliging- en privacy problemen. 
 Gebruik dit niet, behalve als er eerder een betalingsverzoek opnieuw gegenereerd is.</translation>
     </message>
     <message>
@@ -2904,7 +2926,7 @@ Gebruik dit niet, behalve als er eerder een betalingsverzoek opnieuw gegenereerd
         <translation>H&amp;ergebruik en bestaand ontvangstadres (niet aanbevolen)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Een optioneel bericht om aan het betalingsverzoek toe te voegen, die zal worden getoond wanneer het verzoek wordt geopend. Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwerk.</translation>
     </message>
@@ -2914,45 +2936,45 @@ Gebruik dit niet, behalve als er eerder een betalingsverzoek opnieuw gegenereerd
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>Een optioneel label om te associëren met het nieuwe ontvangende adres</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Een optioneel bericht om aan het betalingsverzoek toe te voegen, die zal worden getoond wanneer het verzoek wordt geopend. &lt;br&gt;
 Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwerk.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Gebruik dit formulier om te verzoeken tot betaling. Alle velden zijn &lt;b&gt;optioneel&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>Een optioneel te verzoeken bedrag. Laat dit leeg, of nul, om geen specifiek bedrag aan te vragen.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Betalingsverzoek</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>Wis alle velden op het formulier.</translation>
     </message>
@@ -2962,17 +2984,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Wissen</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>Verzoek InstantSend</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2982,7 +3004,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Geschiedenis van de betalingsverzoeken</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Toon het geselecteerde verzoek (doet hetzelfde als dubbelklikken)</translation>
     </message>
@@ -2992,7 +3014,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Toon</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>Verwijder de geselecteerde items van de lijst</translation>
     </message>
@@ -3002,7 +3024,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Verwijder</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>Kopieer URI</translation>
     </message>
@@ -3030,7 +3052,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>QR-code</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>Kopieer &amp;URI</translation>
     </message>
@@ -3045,7 +3067,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>&amp;Sla afbeelding op...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation type="unfinished"/>
     </message>
@@ -3055,12 +3077,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Betalingsverzoek tot %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>Betalingsinformatie</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3152,12 +3174,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>Verstuur munten</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>Coin controleopties</translation>
     </message>
@@ -3172,12 +3194,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>automatisch geselecteerd</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>Onvoldoende fonds!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>Kwantiteit</translation>
     </message>
@@ -3212,7 +3234,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Wisselgeld:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Als dit is geactiveerd, maar het wisselgeldadres is leeg of ongeldig, dan wordt het wisselgeld verzonden naar een nieuw gegenereerd adres.</translation>
     </message>
@@ -3222,17 +3244,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Aangepast wisselgeldadres</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>Kies...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation>Het gebruik van de terugvalvergoeding kan resulteren in het verzenden van een transactie die meerdere uren of dagen (of nooit) nodig heeft om bevestigd te worden. Overweeg om handmatig een vergoeding te kiezen of wacht totdat de volledige blockchain gevalideerd is.</translation>
     </message>
@@ -3247,12 +3269,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Klap de vergoedinginstellingen dicht</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>InstantSend</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"/>
     </message>
@@ -3268,7 +3285,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>InstantSend</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
     </message>
@@ -3298,27 +3325,22 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Aangepast:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(Slimme kosten zijn nog niet geïnitialiseerd Dit duurt meestal een paar blokken...)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>normaal</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>snel</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>Bevestig de verstuuractie</translation>
     </message>
@@ -3328,7 +3350,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>&amp;Verstuur</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>Wis alle velden van het formulier.</translation>
     </message>
@@ -3348,12 +3370,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Voeg &amp;Ontvanger Toe</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>Saldo:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>Kopieer aantal</translation>
     </message>
@@ -3403,7 +3425,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>en InstantSend</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3436,12 +3458,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Bevestig versturen munten</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -3491,9 +3513,9 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Betalingsverzoek verlopen.</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
-        <translation><numerusform>%n blok</numerusform><numerusform>%n blokken</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+28"/>
@@ -3501,12 +3523,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Betaal alleen de verplichte transactie vergoeding van %1</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>Schatting is dat bevestiging begint binnen %n blok.</numerusform><numerusform>Schatting is dat bevestiging begint binnen %n blokken.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>WAARSCHUWING: Ongeldig Soom adres</translation>
     </message>
@@ -3534,37 +3556,39 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>Dit is een normale betaling.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
-        <translation type="unfinished"/>
+        <translation>Betaal Aan(&amp;T)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>Het Soomadres om betaling aan te versturen</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>Kies het adres</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>Plak adres</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>Verwijder</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>Kies een eerder gebruikt adres</translation>
     </message>
@@ -3574,7 +3598,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>Plak adres vanuit klembord</translation>
     </message>
@@ -3584,34 +3608,36 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>Verwijder deze toevoeging</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Vul een label voor dit adres in om het aan de lijst met gebruikte adressen toe te voegen</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
-        <translation>Bedra&amp;g</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>De vergoeding zal worden afgetrokken van het bedrag dat wordt verzonden. De ontvanger zal een lagere hoeveelheid Soom ontvangt dan u in het veld bedrag invoert. Als meerdere ontvangers zijn geselecteerd, wordt de vergoeding gelijk verdeeld.</translation>
     </message>
@@ -3621,17 +3647,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Trek de transactiekosten a&amp;f van het bedrag.</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>Een boodschap die was bijgevoegd aan de soom: URI die met de transactie voor uw referentie wordt opgeslagen. Opmerking: Dit bericht zal niet over het Soom netwerk worden verzonden.</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>Dit is een niet-geverifieerd betalingsverzoek.</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>Dit is een geverifieerd betalingsverzoek.</translation>
     </message>
@@ -3642,18 +3668,18 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Betaal Aan</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>Bericht</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>Memo</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Vul een label in voor dit adres om het toe te voegen aan uw adresboek</translation>
     </message>
@@ -3661,7 +3687,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
@@ -3703,19 +3729,19 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Het Soomadres om bericht mee te ondertekenen</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>Kies een eerder gebruikt adres</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>Plak adres vanuit klembord</translation>
     </message>
@@ -3735,12 +3761,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Handtekening</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Kopieer de huidige handtekening naar het systeemklembord</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>Teken het bericht om te bewijzen dat u dit Soom adres bezit</translation>
     </message>
@@ -3750,18 +3776,18 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Onderteken &amp;Bericht</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>Verwijder &amp;Alles</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verifiëer Bericht</translation>
     </message>
@@ -3776,7 +3802,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Het Soomadres waarmee het bericht ondertekend is</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>Verifieer het bericht om zeker te zijn dat het getekend werd met het opgegeven Soom adres</translation>
     </message>
@@ -3786,7 +3812,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Verifiëer &amp;Bericht</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
@@ -3796,7 +3822,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Klik op &quot;Onderteken Bericht&quot; om de handtekening te genereren</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>Het opgegeven adres is ongeldig.</translation>
@@ -3862,17 +3888,18 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Bericht geverifiëerd.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>Kies het adres</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>Plak adres</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>Plak Handtekening</translation>
     </message>
@@ -4164,16 +4191,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation>Details voor %1</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation type="unfinished"/>
     </message>
@@ -4566,7 +4589,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporteer</translation>
     </message>
@@ -4576,12 +4599,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Exporteer de data in de huidige tab naar een bestand</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>Gekozen bedrag:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>Portemonnee backuppen</translation>
     </message>
@@ -4614,7 +4637,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Bind aan opgegeven adres en luister er altijd op. Gebruik [host]:port notatie voor IPv6</translation>
     </message>
@@ -4624,7 +4647,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>Fout: luisteren naar binnenkomende verbindingen mislukt (luisteren gaf foutmelding %s)</translation>
     </message>
@@ -4644,17 +4667,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Voer opdracht uit zodra het beste blok verandert (%s in cmd wordt vervangen door blokhash)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation>Naam om url te vormen voor de KeePass invoer die de wachtwoordzin van de wallet opslaat</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>Stel de maximale grote in van hoge prioriteit/lage kosten transacties in bytes (default: %d)</translation>
     </message>
@@ -4664,37 +4687,42 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Kies het aantal scriptverificatie processen (%u tot %d, 0 = auto, &lt;0 = laat dit aantal kernen vrij, standaard: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Dit is een pre-release testversie - gebruik op eigen risico! Gebruik deze niet voor het delven van munten of handelsdoeleinden</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Waarschuwing: Het lijkt erop dat het netwerk geen consensus kan vinden! Sommige delvers lijken problemen te ondervinden.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>Waarschuwing: Het lijkt erop dat we geen consensus kunnen vinden met onze peers! Mogelijk dient u te upgraden, of andere nodes moeten wellicht upgraden.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>U moet een geheime sleutel van een Gateway invoeren. Raadpleeg de documentatie voor hulp.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation>(druk op q om af te sluiten en later verder te gaan)</translation>
     </message>
@@ -4704,12 +4732,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Ontvang command-lijn en JSON-RPC commando&apos;s.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Voeg een node toe om mee te verbinden en probeer de verbinding open te houden.</translation>
     </message>
@@ -4719,7 +4747,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Sta DNS opzoekingen to voor -addnode, -seednode en -connect</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>Opties bij aanmaken van blokken:</translation>
     </message>
@@ -4734,17 +4762,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>Kan niet schrijven naar het standaard adres</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Verbind naar een node om het peer adres op te halen en verbreek.</translation>
     </message>
@@ -4754,12 +4782,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Verbindingsopties:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>Corrupte blok database gedetecteerd</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>Debug-/testopties:</translation>
     </message>
@@ -4789,12 +4817,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Fout bij het initialiseren van de  portenomnee database omgeving %s!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>Fout tijdens laden van blokdatabase</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation type="unfinished"/>
     </message>
@@ -4804,7 +4832,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>Fout bij het openen van de blokken database</translation>
     </message>
@@ -4829,7 +4857,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Het is mislukt om naar gelijk welke poort te luisteren. Gebruik -listen=0 als je dit wil</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = behoudt tx meta data bijv. account eigenaar en betalingsverzoek informatie, 2. sla tx meta data niet op)</translation>
     </message>
@@ -4844,27 +4872,27 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>De %s ontwikkelaars</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation>-maxtxfee staat zeer hoog! Transactiekosten van deze grootte kunnen worden gebruikt in een enkele transactie.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>Een transactietarief (in %s/kB) dat gebruikt wordt als de transactiekosten schatting niet genoeg data heeft. (normaal: %s)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation>Accepteer doorgestuurde transacties ontvangen van goedgekeurde peers, ook wanneer je zelf geen transacties doorstuurt (standaard: %d)</translation>
     </message>
@@ -4884,7 +4912,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Bind aan opgegeven adres om te luisteren naar JSON-RPC connecties. Gebruik [host]:port notatie voor IPv6. Deze instelling kan meerdere keren worden opgegeven (standaard: bind aan alle interfaces)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Creër nieuwe bestanden met standaard systeem bestandsrechten in plaats van umask 077 (alleen effectief met uitgeschakelde portemonnee functionaliteit)</translation>
     </message>
@@ -4904,7 +4932,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Fout bij het laden van %s: U kunt HD niet inschakelen op een al bestaande non-HD wallet</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>Hoe grondig de blokverificatie van -checkblocks is (0-4, standaard: %u)</translation>
     </message>
@@ -4934,7 +4962,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Zorg ervoor dat u uw wallet versleuteld, verwijder alle niet versleutelde backups nadat u getest hebt dat de nieuwe wallet werkt!</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>Maximale grootte van de gegevens in gegevensdragertransacties die we doorgeven en mijnen (standaard: %u)</translation>
     </message>
@@ -4949,27 +4977,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Output extra debugginginformatie (standaard: %u, het leveren van &lt;categorie&gt; is optioneel)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Gebruik een aparte SOCKS5 proxy om verborgen diensten van Tor te bereiken (standaard: %s)</translation>
     </message>
@@ -4979,17 +4992,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Door de gebruiker gedefinieerde mnemonic voor HD-wallet (bip39). Werkt alleen tijdens het aanmaken van een wallet/ eerste start (standaard: willekeurig gegenereerd)</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation>Door de gebruiker gedefinieerde seed voor HD-wallet (moet in hex zijn). Heeft alleen effect tijdens het aanmaken van een portemonnee / eerste start (standaard: willekeurig gegenereerd)</translation>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation type="unfinished"/>
     </message>
@@ -4999,27 +5012,27 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Goedgekeurde peers kunnen niet ge-DoS-banned worden en hun transacties worden altijd doorgegeven, zelfs als ze reeds in de mempool aanwezig zijn, nuttig voor bijv. een gateway</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation>U moet de database herbouwen met -reindex-chainstate om -txindex aan te passen</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(standaard: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>Laat publiek REST vragen toe (standaard %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>Vind anderen door middel van een DNS-naslag (standaard: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation>Keten selectie opties:</translation>
     </message>
@@ -5034,37 +5047,22 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Verbind naar KeePassHttps via poort &lt;port&gt; (standaard: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Stel de client toe om te handelen als een gateway (0-1, standaard: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation>Fout bij het laden van %s: U kunt HD niet uitschakelen op een al bestaande HD wallet</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation>Fout bij het inladen van de fulfilled requests cache uit</translation>
     </message>
@@ -5080,11 +5078,6 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>Aantal te checken blokken bij het opstarten (standaard: %u, 0 = allemaal)</translation>
     </message>
@@ -5129,17 +5122,72 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Ongeldig -proxy adres: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: &apos;%s&apos; (Minimum %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Keypool op geraakt, roep alsjeblieft eerst keypoolrefill functie aan</translation>
     </message>
@@ -5214,6 +5262,11 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Begin debug output met tijdstempel (standaard: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation>Herbouw ketenstaat en block index met behulp van de blk*.dat bestanden op de harde schijf</translation>
@@ -5239,12 +5292,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Stel sleutelpoelgrootte in op &lt;n&gt; (standaard: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>Stel het aantal threads in om RPC-aanvragen mee te bedienen (standaard: %d)</translation>
     </message>
@@ -5275,6 +5323,11 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
         <translation>Blockchain synchroniseren...</translation>
     </message>
@@ -5294,7 +5347,22 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Gateways synchroniseren...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>The source code is available from %s.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Drempel om verbinding te verbreken naar zich misdragende peers (standaard: %u)</translation>
     </message>
@@ -5309,7 +5377,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Tor bepaalt welke poort te gebruiken als luisteren naar onion wordt gebruikt (standaard: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>Niet mogelijk ok HTTP-server te starten. Zie debuglogboek voor details.</translation>
     </message>
@@ -5355,21 +5433,26 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>Ongeldige geheime sleutel voor de gateway. Raadpleeg de documentatie alstublieft.</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>Kan gateway.conf niet lezen</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ongeldig netmask gespecificeerd in -whitelist: &apos;%s&apos;</translation>
     </message>
@@ -5379,7 +5462,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Ongeldige poort gevonden in gateway.conf</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation>KeePassHttp id voor de ingestelde associatie</translation>
     </message>
@@ -5394,7 +5477,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Houd maximaal &lt;n&gt; onverbonden transacties in geheugen (standaard: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Ontdek eigen IP-adressen (standaard: 1 voor luisteren en geen -externalip of -proxy)</translation>
     </message>
@@ -5424,7 +5507,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Voer opdracht uit zodra een wallettransactie succesvol vastgezet is (%s in cmd wordt vervangen door TxID)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>Backup maken is mislukt, het bestand bestaat al! Dit kan gebeuren als u de wallet herstart binnen 60 seconden. U kunt verder gaan als u hier ok mee bent.</translation>
     </message>
@@ -5479,17 +5562,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Onderhoudt maximaal &lt;n&gt; connecties met peers (tijdelijke service connecties uitgezonderd) (standaard: %u)</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation>Prune is ingesteld op minder dan het minimum van %d MiB. Gebruik a.u.b. een hoger aantal.</translation>
     </message>
@@ -5504,12 +5577,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Gebruik willekeurige inloggegevens voor elke proxyverbinding. Dit maakt streamisolatie voor Tor mogelijk (standaard: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>Herscannen is niet mogelijk i.c.m. -prune. U moet -reindex gebruiken dat de hele blockchain opnieuw zal downloaden.</translation>
     </message>
@@ -5534,17 +5602,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Het transactiebedrag is te klein om te versturen nadat de transactievergoeding in mindering is gebracht</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation>Totale lengte van netwerkversiestring (%i) overschrijdt maximale lengte (%i). Verminder het aantal of grootte van uacomments.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation>Pogingen om uitgaand verkeer onder een bepaald doel te houden (in MiB per 24u), 0 = geen limiet (standaard: %d)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Niet-ondersteund argument -socks gevonden. Instellen van SOCKS-versie is niet meer mogelijk, alleen SOCKS5-proxies worden ondersteund.</translation>
     </message>
@@ -5559,32 +5627,52 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Gebruik UPnP om de luisterende poort te mappen (standaard: 1 als er geluisterd worden en geen -proxy is meegegeven)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation>Waarschuwing: Onbekende blok versies worden gemined! Er zijn mogelijk onbekende regels in werking getreden</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation>U moet de database herbouwen met -reindex om terug te gaan naar de niet-prune modus. Dit zal de gehele blockchain opnieuw downloaden.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d kan alleen gebruikt worden op mainnet)</translation>
     </message>
@@ -5609,7 +5697,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>&lt;categorie&gt; kan zijn:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation>Voeg commentaar toe aan de user agent string</translation>
     </message>
@@ -5624,7 +5717,27 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Creëer automatisch verborgen dienst van Tor (standaard:%d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>Sta toe om hashblok te publiceren in &lt;adres&gt;</translation>
     </message>
@@ -5699,7 +5812,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation>Importeer blokken van externe blk000??.dat-bestand bij opstarten</translation>
     </message>
@@ -5709,12 +5822,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>InstantSend-opties:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Ongeldig bedrag voor -fallbackfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation>De transactiegeheugenpool moet onder de &lt;n&gt; megabytes blijven (standaard: %u)</translation>
     </message>
@@ -5754,12 +5872,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Laat de portemonnee transacties uitsturen</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>Gateway-opties:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation>Minimale bytes per sigop in transacties die worden doorgegeven en gemijnd (standaard: %u)</translation>
     </message>
@@ -5789,7 +5907,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Paswoord voor JSON-RPC verbinding</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>Print versie en sluit af</translation>
     </message>
@@ -5814,12 +5932,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Herscan de blokketen voor missende portemonneetransacties bij opstarten</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation>Upgraden UTXO-database</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation>Waarschuwing: onbekende nieuwe regels geactiveerd (versionbit %i)</translation>
     </message>
@@ -5834,12 +5952,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Om in alleen een blokmodus te opereren (standaard: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ notificatieopties:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPC-serveropties:</translation>
     </message>
@@ -5889,7 +6012,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Stel de maximale blok grootte in bytes in (standaard: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>Stel de gateway private key in</translation>
     </message>
@@ -5924,7 +6047,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Specificeer uw eigen publieke adres</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>Synchronisatie in behandeling...</translation>
     </message>
@@ -5934,22 +6057,17 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Synchroniseren gateway betalingen...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation>Het transactiebedrag is te klein om transactiekosten in rekening te brengen</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>Dit is experimentele software.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>Transactiebedrag te klein</translation>
     </message>
@@ -5959,14 +6077,14 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>De transactie is te groot voor het transactiekostenbeleid</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transaction too large</source>
-        <translation type="unfinished"/>
+        <translation>Transactie te groot</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5974,7 +6092,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Niet in staat om aan %s te binden op deze computer (bind gaf error %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>Niet in staat om het sporkbericht te ondertekenen, verkeerde sleutel?</translation>
     </message>
@@ -6004,7 +6122,7 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Wallet %s bevindt zich buiten de gegevensmap %s</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>Portemonnee-opties</translation>
     </message>
@@ -6019,12 +6137,12 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Soom netwer
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Bezig met het zappen van alle transacties van de portemonnee...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
         <translation type="unfinished"/>
     </message>

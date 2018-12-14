@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
@@ -541,6 +541,16 @@
          </property>
          <property name="text">
           <string>M&amp;inimize on close</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="showBalloonPopup">
+         <property name="toolTip">
+          <string>Show balloon popups for new transactions.</string>
+         </property>
+         <property name="text">
+          <string>&amp;Show Transaction balloon popup</string>
          </property>
         </widget>
        </item>

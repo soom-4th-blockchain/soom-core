@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>닫기(&amp;L)</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>이 주소들은 받을 수 있는 Soom 주소입니다. 각 거래별로 새로운 주소 사용을 권장합니다.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>주소 복사(&amp;C)</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>%1에 주소 리스트를 저장하는 동안 오류가 발생했습니다. 다시 시도해 주십시오.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
@@ -219,27 +219,27 @@
         <translation>지갑의 기존 암호와 새로운 암호를 입력해 주십시오.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>지갑 암호화 승인</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>지갑을 암호화 하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>지갑 암호화 완료</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1는 이제 암호화 처리 과정을 끝내기 위해 종료합니다. 지갑을 암호화하더라도 맬웨어로 인한 sooms의 도난당하는 것을 완벽하게 보호할 수는 없습니다.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation>중요: 이전에 지갑 파일을 백업한 경우 새로 생성한 암호화된 지갑 파일로 교체됩니다. 암호화하지 않은 지갑 파일의 이전 백업에는 동일한 HD 시드가 포함되어 있으며, 새로 암호화된 지갑과 마찬가지로 모든 자금에 대한 완전한 액세스 권한을 가집니다.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>중요: 이전에 지갑 파일을 백업한 경우 새로 생성한 암호화된 지갑 파일로 교체됩니다. 보안상 이유로 암호화하지 않은 지갑 파일의 이전 백업은 새롭게 암호화된 지갑을 사용하게 되면 사용할 수 없게 되오니 이른 시일 내에 새로 암호화된 지갑을 사용하시기 바랍니다.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>지갑 암호화 실패</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>내부 오류로 인해 지갑 암호화에 실패했습니다. 지갑이 암호화되지 않았습니다.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>암호가 일치하지 않습니다.</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>지갑 잠금해제 실패</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>입력한 지갑 암호가 올바르지 않습니다.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>지갑 암호화 해제 실패</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>지갑 암호가 성공적으로 변경되었습니다.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>경고: Caps Lock 키가 켜져있습니다!</translation>
@@ -345,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -353,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>치명적인 오류가 발생했습니다. Soom 코어는 더 이상 안전하게 실행되지 않아 프로그램이 종료됩니다.</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>노드</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>개요(&amp;O)</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>소유하고 있음을 증명하기 위해 Soom 주소에 서명하기</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>테스트 네트워크를 사용합니다.</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>메시지가 지정된 Soom 주소로 서명되었는지 확인합니다.</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>탭 도구 모음</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 클라이언트</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n개의 Soom 네트워크에 연결됨</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>정보</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>%1 개의 새로운 거래가 있습니다.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>새로운 거래</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>날짜: %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>받은 거래</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD 키 생성이 &lt;b&gt;활성화되었습니다&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>전체: %1 (사용중: %2)</translation>
     </message>
@@ -859,22 +874,22 @@
         <translation>거래액:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>수수료:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>코인 선택</translation>
     </message>
     <message>
         <location line="+140"/>
         <source>Dust:</source>
-        <translation>더스트:</translation>
+        <translation>Dust:</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>수수료:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>수수료 차감 후:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>리스트 모드</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 잠김)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>확정</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>주소 복사</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>잔돈 복사</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 잠김)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>예</translation>
     </message>
@@ -1031,7 +1046,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
         <translation>하나의 입력당 +/- %1의 오류를 가질 수 있습니다.</translation>
     </message>
     <message>
@@ -1099,16 +1114,16 @@
         <translation>보내는 주소 수정</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>입력한 주소 &quot;%1&quot;은(는) 올바른 Soom 주소가 아닙니다.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>입력한 주소 &quot;%1&quot;은(는) 이미 주소록에 등록되어 있습니다.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>지갑의 잠금을 해제할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>새로운 키 생성에 실패했습니다.</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>선택된 게이트웨이 시작</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>게이트웨이 시작 확인</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>게이트웨이 %1을(를) 시작하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>모든 게이트웨이 시작 확인</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>모든 게이트웨이를 시작하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>현재 명령을 사용할 수 없습니다.</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>게이트웨이 리스트가 동기화 될 때까지 이 명령을 사용할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
@@ -1380,8 +1395,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>언어 설정 예시 &quot;de_DE&quot; (기본값: 시스템 언어)</translation>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
+        <translation>언어 설정 예시 &quot;ko_KR&quot; (기본값: 시스템 언어)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1442,13 +1457,13 @@
         <translation>사용자 지정 데이터 디렉터리 사용:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>오류: 지정된 데이터 디렉터리 &quot;%1&quot;을(를) 생성할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
@@ -1481,9 +1496,9 @@
         <translation>양식</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
-        <translation>최근 거래가 아직 표시되지 않을 수 있으므로 지갑 잔액이 올바르지 않을 수 있습니다.&lt;br&gt;아래에 설명 된대로 지갑이 Soom 네트워크와의 동기화가 완료되면 이 정보는 정확합니다.</translation>
+        <translation>최근 거래가 아직 표시되지 않을 수 있으므로 지갑 잔액이 올바르지 않을 수 있습니다. 아래에 설명 된대로 지갑이 Soom 네트워크와의 동기화가 완료되면 이 정보는 정확합니다.</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1513,12 +1528,7 @@
         <translation>진행</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>시간당 진행률 증가</translation>
     </message>
@@ -1549,7 +1559,7 @@
     <message>
         <location filename="../notificator.cpp" line="+323"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"/>
+        <translation>확인 (&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -1575,12 +1585,12 @@
         <translation>결제 요청 파일 선택</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
@@ -1635,7 +1645,7 @@
     <message>
         <location line="+3"/>
         <source>&amp;Start %1 on system login</source>
-        <translation>시스템 로그인 시 %1 시작(&amp;S)</translation>
+        <translation>시스템 로그인 시 %1 시작 (&amp;S)</translation>
     </message>
     <message>
         <location line="+123"/>
@@ -1683,18 +1693,19 @@
         <translation>창 닫기 시 프로그램을 종료하지 않고 최소화하기.&lt;br&gt;이 옵션을 사용하면 메뉴에서 종료를 선택해야 프로그램이 종료됩니다.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
-        <translation>사용자 인터페이스 언어를 설정할 수 있습니다.&lt;br/&gt;이 설정은 %1를 다시 시작한 후에 적용됩니다.</translation>
+        <translation>사용자 인터페이스 언어를 설정할 수 있습니다.
+이 설정은 %1를 다시 시작한 후에 적용됩니다.</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>거래 탭에 컨텍스트 메뉴 항목으로 표시되는 서드파티 URL (예: 블록 탐색)&lt;br/&gt;URL의 %s은(는) 거래 해시로 대체됩니다. 여러 개의 URL은 | 세로 막대로 구분됩니다.</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>전문가 설정</translation>
     </message>
@@ -1815,6 +1826,16 @@
         <translation>닫기 시 최소화(&amp;I)</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>새로운 거래에 대한 팝업을 표시합니다.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>거래 팝업 표시 (&amp;S)</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>디스플레이(&amp;D)</translation>
@@ -1837,7 +1858,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>사용자 인터페이스 테마:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>금액을 표시 할 단위(&amp;U):</translation>
     </message>
@@ -1878,12 +1899,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>기본값</translation>
     </message>
@@ -1893,28 +1914,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>없음</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>옵션 재설정 확인</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>변경 사항을 적용하려면 클라이언트를 다시 시작해야 합니다.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>클라이언트가 종료됩니다. 계속 진행하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>이 변경 사항 적용을 위해 프로그램 재시작이 필요합니다.</translation>
     </message>
@@ -1932,93 +1953,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>양식</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>표시된 정보가 오래되었을 수 있습니다.&lt;br&gt;연결이 완료되면 지갑이 Soom 네트워크와 자동으로 동기화될 예정이지만,&lt;br&gt;아직 해당 프로세스가 완료되지 않았습니다.</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>사용가능</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>현재 출금 가능한 잔액</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
-        <translation>대기 중</translation>
+        <translation>대기중</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>아직 승인되지 않아 사용할 수 없으며, 잔고에 포함되지 않은 총 거래</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>미완료</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>아직 완료되지 않은 채굴 잔액</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>잔액</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>읽기 전용 주소의 미승인 거래</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>아직 완료되지 않은 읽기 전용 주소의 채굴 잔액</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>총합</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>현재 총 잔액</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>현재 읽기 전용 주소의 총 잔액</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>읽기 전용:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>읽기 전용 주소의 현재 잔액</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>출금 가능 액수:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>최근 거래</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>동기화되지 않음</translation>
@@ -2181,9 +2204,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
@@ -2204,7 +2227,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soom 주소를 입력하십시오 (예 %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1일</translation>
     </message>
@@ -2220,7 +2243,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1초</translation>
     </message>
@@ -2284,17 +2307,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2324,7 +2347,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+10"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>URI 결과가 너무 깁니다, 라벨 / 메시지의 텍스트를 줄이십시오.</translation>
+        <translation>URI 결과가 너무 깁니다. 라벨 / 메시지의 텍스트를 줄이십시오.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2347,7 +2370,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR 코드 대화상자</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation>주소 복사(&amp;A)</translation>
     </message>
@@ -2421,7 +2444,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2466,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>해당사항 없음</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>연결된 수</translation>
     </message>
@@ -2515,7 +2538,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+93"/>
         <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>%1 디버그 로그 파일을 현재 데이터 디렉터리에서 엽니다.&lt;br&gt;대용량 로그 파일일 경우 수 초가 걸릴 수 있습니다.</translation>
+        <translation>%1 디버그 로그 파일을 현재 데이터 디렉터리에서 엽니다.
+대용량 로그 파일일 경우 수 초가 걸릴 수 있습니다.</translation>
     </message>
     <message>
         <location line="+219"/>
@@ -2528,7 +2552,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>콘솔 초기화</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>네트워크 트래픽(&amp;N)</translation>
     </message>
@@ -2566,8 +2590,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>자세한 정보를 보려면 피어를 선택하십시오.</translation>
     </message>
@@ -2607,13 +2631,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>사용자 에이전트</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>데이터 디렉터리</translation>
     </message>
@@ -2628,7 +2652,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>폰트 크기 확대</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>서비스</translation>
     </message>
@@ -2753,9 +2777,9 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: 현재 blk000??.dat로 부터 블록체인 인덱스 재생성</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
-        <translation>연결 끊기(&amp;D)</translation>
+        <translation>연결이 끊어짐(&amp;D)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2763,7 +2787,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+1"/>
         <location line="+1"/>
         <source>Ban for</source>
-        <translation>제한:</translation>
+        <translation>제한된</translation>
     </message>
     <message>
         <location line="-3"/>
@@ -2786,7 +2810,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1년(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>제한 해지(&amp;U)</translation>
     </message>
@@ -2826,7 +2850,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -2891,7 +2915,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>이전에 사용한 수신 주소 중 하나를 다시 사용하십시오.&lt;br&gt;주소 재사용은 보안 및 개인정보보호 문제가 있습니다.&lt;br&gt;이전에 만든 결제 요청을 다시 생성하지 않는 한 이것을 사용하지 마십시오.</translation>
     </message>
@@ -2901,7 +2925,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>기존 수신 주소 재사용 (권장하지 않음)(&amp;E)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>요청이 있을 때 표시되는 결제 요청에 첨부할 임의의 메시지입니다.&lt;br&gt;참고: Soom 네트워크를 통한 결제는 메시지가 전송되지 않습니다.</translation>
     </message>
@@ -2911,44 +2935,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지(&amp;M)</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>새로운 수신 주소와 연결할 임의의 라벨</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>요청이 있을 때 표시되는 결제 요청에 첨부할 임의의 메시지입니다.&lt;br&gt;참고: Soom 네트워크를 통한 결제는 메시지가 전송되지 않습니다.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>결제 요청을 진행하려면 해당 양식을 입력하십시오. 모든 입력란은 &lt;b&gt;선택 사항&lt;/b&gt;입니다.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>라벨(&amp;L)</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>요청할 선택적 금액. 이 금액을 비워두거나 특정 금액을 요청하지 않으려면 0으로 두십시오.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>금액(&amp;A)</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>결제 요청(&amp;R)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>모든 입력 양식 지우기</translation>
     </message>
@@ -2958,17 +2982,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>지우기</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>즉시 전송 요청</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>결제 요청 (QR 코드와 soom이 생성됩니다: URIs)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2978,7 +3002,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>요청된 결제 내역</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>선택한 요청을 표시하기 (더블 클릭으로 항목을 표시할 수 있습니다)</translation>
     </message>
@@ -2988,7 +3012,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>보기</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>리스트에서 선택한 항목을 삭제합니다</translation>
     </message>
@@ -2998,7 +3022,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>삭제</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>URI 복사</translation>
     </message>
@@ -3026,7 +3050,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>URI 복사(&amp;U)</translation>
     </message>
@@ -3041,7 +3065,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>이미지 저장(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation>닫기(&amp;L)</translation>
     </message>
@@ -3051,12 +3075,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1 결제 요청</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>결제 정보</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3148,12 +3172,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>코인 보내기</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>코인 제어 기능</translation>
     </message>
@@ -3168,12 +3192,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>자동 선택</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>자금이 부족합니다!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>수량:</translation>
     </message>
@@ -3195,7 +3219,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="-48"/>
         <source>Dust:</source>
-        <translation>더스트:</translation>
+        <translation>Dust:</translation>
     </message>
     <message>
         <location line="+99"/>
@@ -3208,7 +3232,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>잔돈:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>이 옵션이 활성화되면 잔돈 주소가 비어있거나 유효하지 않은 경우&lt;br&gt;잔돈은 새로 생성된 주소로 전송됩니다.</translation>
     </message>
@@ -3218,17 +3242,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>주소 변경</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>거래 수수료</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>선택...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation>Fallbackfee를 사용하게 되면 보낸 거래가 승인이 완료될 때까지 몇 시간 또는 몇 일이(또는 영원히) 걸릴 수 있습니다.&lt;br&gt;수동으로 수수료를 선택하거나 전체 체인의 유효성이 검증될 때까지 기다리십시오.</translation>
     </message>
@@ -3243,12 +3267,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>수수료 설정 접기</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>즉시전송</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>거래가 250바이트 인 경우 사용자 지정 수수료가 1000 tnsoom로 설정되고,&lt;br&gt;1000 tnsoom 안에는 최소 &quot;킬로바이트당&quot; 250 tnsoom 만 지불합니다.&lt;br&gt;1킬로바이트보다 큰 거래의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
@@ -3261,10 +3280,21 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+33"/>
         <location line="+13"/>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Soom transactions than the network can process.</source>
-        <translation>블록의 공간보다 거래량이 적으면 최소 수수료만 지불하면 됩니다.&lt;br&gt;하지만 Soom 거래 수가 많으면 미확인된 거래로 네트워크가 처리할 수도 있습니다.</translation>
+        <translation>블록의 공간보다 거래량이 적으면 최소 수수료만 지불하면 됩니다.
+하지만 Soom 거래 수가 많으면 미확인된 거래로 네트워크가 처리할 수도 있습니다.</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>승인 시간 목표:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>즉시전송</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>킬로바이트당</translation>
     </message>
@@ -3294,27 +3324,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>사용자 정의:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(스마트 수수료가 아직 초기화 되지 않았습니다. 블록 분석이 완전하게 끝날때 까지 기다려주십시오...)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>승인 시간 목표:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>보통</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>빠름</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>전송 승인</translation>
     </message>
@@ -3324,7 +3349,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>전송(&amp;E)</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>모든 입력 양식 지우기</translation>
     </message>
@@ -3344,12 +3369,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>수령인 추가(&amp;R)</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>잔액:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>수량 복사</translation>
     </message>
@@ -3399,7 +3424,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>및 즉시 전송</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3432,12 +3457,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>코인 전송 확인</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>취소(&amp;C)</translation>
     </message>
@@ -3487,7 +3512,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>결제 요청 기간이 만료되었습니다.</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
@@ -3497,12 +3522,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%1의 필요한 수수료만 지불하십시오.</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>%n개의 블록 내에서 승인이 시작될 것으로 추정됩니다.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>경고: 잘못된 Soom 주소</translation>
     </message>
@@ -3530,37 +3555,39 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>이것은 정상적인 결제입니다</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>송금할 대상(&amp;T)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>Soom 주소로 송금됩니다</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>주소 선택</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>주소 복사</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>삭제</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>이전에 사용한 주소를 선택하십시오</translation>
     </message>
@@ -3570,7 +3597,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>클립보드에서 주소 붙여넣기</translation>
     </message>
@@ -3580,34 +3607,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>이 항목 삭제</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>라벨(&amp;L)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>이 주소의 라벨을 입력하여 사용된 주소 리스트에 추가하십시오</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>금액(&amp;M)</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>수수료는 송금되는 금액에서 차감됩니다.&lt;br&gt;수령인은 금액 필드에 입력하는 것보다 적은 금액의 Soom을 받게됩니다.&lt;br&gt;여러 명의 수신자가 선택되면 요금도 균등하게 분배됩니다.</translation>
     </message>
@@ -3617,17 +3646,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>송금액에서 수수료 공제(&amp;U)</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>인증되지 않은 지불 요청입니다.</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>인증된 지불 요청입니다.</translation>
     </message>
@@ -3638,18 +3667,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>송금할 대상</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>메시지</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>메모</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>주소록에 추가하려면 이 주소의 라벨을 입력해 주십시오.</translation>
     </message>
@@ -3657,7 +3686,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
@@ -3691,7 +3720,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+6"/>
         <source>You can sign messages/agreements with your addresses to prove you can receive Soom sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>자신의 주소로 메시지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의하여 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>
+        <translation>자신의 주소로 메시지/계약서에 서명하여 자신이 보낸 Soom을 받을 수 있음을 증명할 수 있습니다. 피싱 공격으로 사용자를 속일 수 있으므로 서명에 주의해 주십시오. 동의하는 바에 한하여 서명하십시오.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -3699,19 +3728,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지를 서명한 Soom 주소</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>이전에 사용한 주소를 선택하십시오</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>클립보드에서 주소 붙여넣기</translation>
     </message>
@@ -3731,12 +3760,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>서명</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>현재 서명을 시스템 클립보드에 복사</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>이 Soom 주소를 소유하고 있다는 것을 증명하기 위해 메시지에 서명하십시오</translation>
     </message>
@@ -3746,18 +3775,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지 서명(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>메시지 필드의 모든 서명 재설정</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>모두 지우기(&amp;A)</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>메시지 검증(&amp;V)</translation>
     </message>
@@ -3772,7 +3801,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지의 서명에 사용된 Soom 주소</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>메시지가 지정된 Soom 주소로 서명되었는지 확인해 주십시오</translation>
     </message>
@@ -3782,7 +3811,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지 검증(&amp;M)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>모든 검증 메시지 필드 재설정</translation>
     </message>
@@ -3792,7 +3821,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>서명을 만들려면 &quot;메시지 서명&quot;을 누르십시오</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>입력한 주소가 올바르지 않습니다.</translation>
@@ -3829,7 +3858,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+5"/>
         <source>Message signed.</source>
-        <translation>메시지에 서명했습니다.</translation>
+        <translation>메시지를 서명했습니다.</translation>
     </message>
     <message>
         <location line="+58"/>
@@ -3858,17 +3887,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메시지를 검증했습니다.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>주소 선택</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>주소 복사</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>서명 복사</translation>
     </message>
@@ -4160,16 +4190,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>거래 세부 정보</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation>%1 세부 정보</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation>닫기(&amp;C)</translation>
     </message>
@@ -4562,7 +4588,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>내보내기(&amp;E)</translation>
     </message>
@@ -4572,12 +4598,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>현재 선택된 탭의 데이터를 파일로 내보내기</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>선택한 금액:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>지갑 백업</translation>
     </message>
@@ -4610,7 +4636,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>주어진 주소를 지정하고 항상 수신하도록 하십시오. [host]:IPv6 포트 표기법 사용</translation>
     </message>
@@ -4620,7 +4646,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>잠겨진 데이터 디렉터리 %s을(를) 가져올 수 없습니다. %s은(는) 이미 실행 중입니다.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>오류: 오는 연결들을 수신하는데 실패했습니다.(수신 중 오류 %s 반환됨)</translation>
     </message>
@@ -4640,17 +4666,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>최고 블록이 변경될 경우 명령을 실행하십시오 (명령 내 %s은(는) 블록 해시로 대체 되었습니다)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>DNS 검색을 통한 피어 주소 쿼리, 주소가 부족할 경우 (기본값: 1 -connect/-noconnect이(가) 아닐 경우)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>최우선/낮은 수수료 거래의 최대 크기를 바이트 단위로 설정합니다 (기본값: %d)</translation>
     </message>
@@ -4660,37 +4686,42 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>스크립트 허용 스레드의 개수를 설정합니다. (%u에서 %d, 0 = 자동, &lt;0 = 충분한 코어들을 남겨두십시오, 기본값: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>이것은 사전 릴리스 테스트 빌드입니다 - 사용상 책임은 귀하에게 있습니다. - 마이닝이나 상업적인 용도로는 절대 사용하지 마십시오</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>이 컴퓨터를 %s로 지정하는것은 불가능합니다. %s은(는) 이미 실행 중입니다.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>경고: 네트워크가 완전히 동의하지 않는 것 같습니다! 일부 채굴자들에게 문제가 있는 것으로 보입니다.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>경고: 현재 버전이 다른 노드들과 완벽하게 일치하지 않습니다! 업그레이드 또는 다른 노드들의 업그레이드가 필요할 수 있습니다.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>경고: 지갑파일 내 손상된 데이터가 복구되었습니다. 원래의 %s파일은 %s에서 %s으로 저장됩니다. 잔액 또는 거래 내역이 올바르지 않은 경우 백업에서 복원해야 합니다.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>환경설정에서 gatewayprivkey를 지정해야 합니다. 도움말을 참조하십시오.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4700,12 +4731,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation> command line과 JSON-RPC 적용</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>외부에서의 접속을 허용 (기본값: 1 -proxy 또는 -connect/-noconnect이(가) 유효하지 않을 경우)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>연결할 노드를 추가하고 계속해서 연결을 유지하십시오.</translation>
     </message>
@@ -4715,7 +4746,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-addnode, -seednode, -connect을 위해 DNS 조회를 허용하십시오.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>블록 생성 옵션:</translation>
     </message>
@@ -4730,17 +4761,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>주소를 확인할 수 없습니다 주소 -%s: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>기본 주소를 사용할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>지정된 노드(s)로만 연결이 가능합니다; 자동 연결을 사용하지 않으려면 -noconnect 또는 -connect=0을 단독으로 사용하십시오.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>노드에 연결하여 피어 주소를 검색하고 연결을 끊습니다</translation>
     </message>
@@ -4750,12 +4781,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>연결 옵션:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>손상된 블록 데이터베이스가 감지되었습니다</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>디버깅/테스팅 옵션:</translation>
     </message>
@@ -4785,12 +4816,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>지갑 데이터베이스 환경 %s을(를) 초기화하는 중 오류가 발생했습니다!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>블록 데이터베이스를 불러오는 중 오류가 발생했습니다.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>%s을(를) 불러오는 중 오류가 발생했습니다.</translation>
     </message>
@@ -4800,7 +4831,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>%s을(를) 불러오는 중 오류가 발생했습니다: 지갑 손상됨</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>블록 데이터베이스를 여는 중 오류가 발생했습니다.</translation>
     </message>
@@ -4825,7 +4856,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>어떠한 포트에서도 수신하는 것에 실패했습니다. 원하신다면 &apos;-listen = 0&apos;을 사용하십시오.</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = tx 메타 데이터 유지 예: 계정 소유자 및 지불 요청 정보, 2 = tx 메타 데이터 삭제)</translation>
     </message>
@@ -4840,27 +4871,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation type="unfinished"/>
     </message>
@@ -4880,7 +4911,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>JSON-RPC연결 수신을 위해 주어진 주소를 지정합니다. [host]: IPv6 포트 표기법 사용. 이 옵션은 여러번 지정할 수 있습니다. (기본값: 모든 인터페이스에 지정)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>umask 077대신 시스템 기본 권한으로 새로운 파일들을 만듭니다. (지갑 기능이 비활성화일 때만 효과가 발휘됩니다)</translation>
     </message>
@@ -4900,7 +4931,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>-checkblocks 블록의 검증 수준 (0-4 기본값: %u)</translation>
     </message>
@@ -4930,7 +4961,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>데이터 캐리어 내에서 우리가 중계하고 채굴하는 거래 데이터의 최대 사이즈 (기본값: %u)</translation>
     </message>
@@ -4945,27 +4976,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>디버깅 정보 출력 (기본값: %u, &lt;category&gt; 공급은 선택입니다)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>활성화 시에 코인 생성을 위한 스레드 숫자를 설정합니다 (-1 = 모든 코어, 기본값: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation>성공적으로 잠긴 거래에 대한 확인을 N으로 나타냅니다 (%u-%u, 기본값: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>이 제품은 OpenSSL이 개발한 Open SSL 툴킷 %s에서 사용하기 위한 프로젝트 소프트웨어, Eric Young이 개발한 암호화 소프트웨어, Thomas Bernard가 개발한 UPnP 소프트웨어가 포함되어 있습니다.</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Tor hidden services를 통하여 피어에게 도달하기 위해 독립된 SOCKS5 프록시를 사용합니다 (기본값: %s)</translation>
     </message>
@@ -4975,17 +4991,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>주어진 IP 주소 (예: 1.2.3.4) 또는 CIDR 표기 네트워크 (예: 1.2.3.0/24)로부터 허용리스트 피어가 연결되고 있습니다. 여러번 지정될 수 있습니다.</translation>
     </message>
@@ -4995,27 +5011,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>허용리스트 피어들은 DoS가 금지될 수 없으며 거래가 이미 메모리 풀에 있을지라도 그들의 거래는 항상 중계됩니다. 예를들면 게이트웨이 같은 것에 유용</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(기본값: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>공개 REST 요청 수락(기본값: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>피어 주소에게 DNS 조회를 통한 지속적인 정보 수신 요청을 합니다 (기본값: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation type="unfinished"/>
     </message>
@@ -5030,37 +5046,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>Copyright (C) 2009-2018 비트코인 코어 개발자들</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>Copyright (C) 2014-2018 Dash 코어 개발자들</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>Copyright (C) 2017-2018 Soom 코어 개발자들</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>클라이언트가 게이트웨이로 작동하는 것을 활성화 (0-1, 기본값: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>%s을(를) 로드하는 중 오류가 발생했습니다. 지갑에 최신 버전의 %s이(가) 필요합니다.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation>(으)로부터 충족된 요청 캐시를 불러오는데 실패했습니다</translation>
     </message>
@@ -5076,11 +5077,6 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>코인 생성 (기본값: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>시작할 때 검사할 블록의 수 (기본값: %u, 0 = 모두)</translation>
     </message>
@@ -5125,17 +5121,72 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>잘못된 -proxy 주소: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
-        <translation>-paytxfee=&lt;amount&gt;에 대한 유효하지 않은 값: &apos;%s&apos; (적어도 %s이(가) 필요합니다)</translation>
+        <translation>-paytxfee=&lt;amount&gt; 에 대한 유효하지 않은 값: &apos;%s&apos; (적어도 %s이(가) 필요합니다)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>-%s=&lt;amount&gt;에 대한 유효하지 않은 값: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>컴퓨터의 날짜와 시간이 올바르게 설정되어 있는지 확인해 주십시오! 만일 시계가 잘못되어 있다면 %s은(는) 정상적으로 작동하지 않을 수 있습니다.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>%s이(가) 유용하다고 생각하시면, 기부금을 지원해주십시오. 이 소프트웨어에 대한 자세한 정보는 %s웹 사이트를 방문하십시오.</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>이 제품은 OpenSSL이 개발한 Open SSL 툴킷 %s에서 사용하기 위한 프로젝트 소프트웨어, Eric Young이 개발한 암호화 소프트웨어, Thomas Bernard가 개발한 UPnP 소프트웨어가 포함되어 있습니다.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation type="unfinished"/>
     </message>
@@ -5210,6 +5261,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>디버그 출력 앞에 타임스탬프를 추가합니다. (기본값: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation type="unfinished"/>
@@ -5235,12 +5291,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>키 풀 크기를 &lt;n&gt;로 설정합니다 (기본값: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>최소 블록 크기를 바이트 단위로 설정합니다 (기본값: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>RPC 호출 서비스 스레드의 갯수를 설정합니다 (기본값: %d)</translation>
     </message>
@@ -5300,7 +5351,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>소스 코드는 %s에서 사용할 수 있습니다.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>제대로 동작하지 않는 피어와 연결을 끊을 임계값 (기본값: %u)</translation>
     </message>
@@ -5315,7 +5376,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>onion 활성화되었을 경우 사용할 Tor 컨트롤 포트 (기본값: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>HTTP 서버를 시작할 수 없습니다. debug log 파일을 확인해 주십시오.</translation>
     </message>
@@ -5361,21 +5432,26 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Wallet needed to be rewritten: restart %s to complete</source>
-        <translation>지갑을 다시 써야 합니다: 완료하려면 %s을(를) 재시작해야 합니다</translation>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="+1"/>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>지갑을 다시 써야 합니다: 완료하려면 %s을(를) 재시작해야 합니다.</translation>
+    </message>
+    <message>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>게이트웨이 개인 키가 잘못되었습니다. 설명서를 참조하십시오.</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>gateway.conf 를 분석할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>-whitelist: &apos;%s&apos; 에 지정된 넷마스크가 유효하지 않습니다.</translation>
     </message>
@@ -5385,7 +5461,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>gateway.conf 에서 유효하지 않은 포트가 감지되었습니다</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation type="unfinished"/>
     </message>
@@ -5400,7 +5476,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>메모리에서 연결 불가능한 거래를 &lt;n&gt;개까지 유지하십시오. (기본값: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>자신의 IP 주소를 찾습니다 (기본값: 1 수신 중이거나 -externalip 또는 -proxy가 유효하지 않을 경우)</translation>
     </message>
@@ -5430,7 +5506,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>백업을 생성하지 못했습니다. 파일이 이미 존재합니다! 지갑을 60초 이내에 재 시작하면 이런 일이 발생할 수 있습니다. OK 버튼을 누르면 계속 진행할 수 있습니다.</translation>
     </message>
@@ -5485,22 +5561,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>컴퓨터의 날짜와 시간이 올바르게 설정되어 있는지 확인해 주십시오! 만일 시계가 잘못되어 있다면 Soom 코어는 정상적으로 작동하지 않을 수 있습니다.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
-        <translation>%s이(가) 유용하다고 생각하시면, 기부금을 지원해주십시오. 이 소프트웨어에 대한 자세한 정보는 %s웹 사이트를 방문하십시오.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation type="unfinished"/>
     </message>
@@ -5515,12 +5576,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>모든 프록시 연결마다 자격 증명 무작위화. 이렇게하면 Tor 스트림을 격리할 수 있습니다. (기본값: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation type="unfinished"/>
     </message>
@@ -5545,17 +5601,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>지원하지 않는 인수 -socks가 발견되었습니다. SOCKS 버전 설정은 더 이상 가능하지 않으며 SOCKS5 프록시만 지원합니다.</translation>
     </message>
@@ -5570,39 +5626,59 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>수신 포트를 매핑하려면 UPnP를 사용하십시오 (기본값: 1 수신 상태 또는 -proxy가 유효하지 않을 경우)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+22"/>
-        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d은 메인넷에서만 사용될 수 있습니다)</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>(default: %u)</source>
-        <translation type="unfinished"/>
+        <translation>(기본값: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5620,7 +5696,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&lt;category&gt; 가능함:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation type="unfinished"/>
     </message>
@@ -5635,7 +5716,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>자동 Tor 히든 서비스 생성 (기본값: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>&lt;주소&gt; 에서 해시 블록 게시 가능</translation>
     </message>
@@ -5710,7 +5811,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation type="unfinished"/>
     </message>
@@ -5720,12 +5821,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5765,12 +5871,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>게이트웨이 옵션:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation type="unfinished"/>
     </message>
@@ -5800,7 +5906,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>JSON-RPC 연결 비밀번호</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>버전 출력후 종료</translation>
     </message>
@@ -5825,12 +5931,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation type="unfinished"/>
     </message>
@@ -5845,12 +5951,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ 알림 옵션:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPC 서버 옵션:</translation>
     </message>
@@ -5900,7 +6011,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>최대 블록 크기를 바이트 단위로 설정합니다 (기본값: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>게이트웨이 개인 키를 설정합니다</translation>
     </message>
@@ -5935,7 +6046,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>자신의 공용 주소를 지정</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>동기화 대기 중...</translation>
     </message>
@@ -5945,32 +6056,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>게이트웨이 결제정보를 동기화 중입니다...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>도움말 메시지입니다</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>이 프로그램은 경험에 의해 누적된 소프트웨어입니다.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>거래 금액이 너무 적습니다</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transaction amounts must not be negative</source>
-        <translation>거래 금액에 반드시 양수값이 들어가야 합니다</translation>
+        <translation>거래 금액에 반드시 양수값이 들어가야 합니다.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>수수료 정책에 비해 거래가 너무 큽니다</translation>
     </message>
@@ -5985,7 +6091,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>이 컴퓨터에서 %s로 바인드할 수 없습니다 (바인드 반환 오류 %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>스포크 메시지를 인증할 수 없습니다, 키를 확인해 주십시오</translation>
     </message>
@@ -6015,7 +6121,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>지갑 %s이(가) 데이터 디렉터리 %s 외부에 존재합니다</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>지갑 옵션:</translation>
     </message>
@@ -6030,14 +6136,14 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>경고</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>지갑 내 모든 거래들을 삭제하는 중...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
-        <translation>%s파일이 손상되어 복구에 실패했습니다</translation>
+        <translation>%s 파일이 손상되어 복구에 실패했습니다.</translation>
     </message>
 </context>
 </TS>

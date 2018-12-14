@@ -1401,16 +1401,25 @@ void BitcoinGUI::showEvent(QShowEvent *event)
 #ifdef ENABLE_WALLET
 void BitcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
 {
-    // On new transaction, make an info balloon
-    QString msg = tr("Date: %1").arg(date) + "\n" +
-                  tr("Amount: %1").arg(BitcoinUnits::formatWithUnit(unit, amount, true)) + "\n" +
-                  tr("Type: %1").arg(type) + "\n";
-    if (!label.isEmpty())
-        msg += tr("Label: %1").arg(label) + "\n";
-    if (!address.isEmpty())
-        msg += tr("Address: %1").arg(address);
-    message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
-             msg, CClientUIInterface::MSG_INFORMATION);
+    // Call balloon popup for new Transaction
+    if(QString::compare(address, "New Transaction", Qt::CaseSensitive) == 0)
+    {
+        QString msg = tr("%1 New transactions").arg(unit);
+        message(tr("New transaction"), msg, CClientUIInterface::MSG_INFORMATION);
+    }
+    else
+    {
+        // On new transaction, make an info balloon
+        QString msg = tr("Date: %1").arg(date) + "\n" +
+                      tr("Amount: %1").arg(BitcoinUnits::formatWithUnit(unit, amount, true)) + "\n" +
+                      tr("Type: %1").arg(type) + "\n";
+        if (!label.isEmpty())
+            msg += tr("Label: %1").arg(label) + "\n";
+        if (!address.isEmpty())
+            msg += tr("Address: %1").arg(address);
+        message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
+                 msg, CClientUIInterface::MSG_INFORMATION);
+    }
 }
 #endif // ENABLE_WALLET
 

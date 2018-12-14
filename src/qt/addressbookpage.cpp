@@ -190,9 +190,15 @@ void AddressBookPage::setModel(AddressTableModel *_model)
 #if QT_VERSION < 0x050000
     ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Label, QHeaderView::Stretch);
     ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
+    // Address Column Size Fixed
+    ui->tableView->horizontalHeader()->setDefaultSectionSize(ui->tableView->columnWidth(AddressTableModel::Address) + 5);
+    ui->tableView->horizontalHeader()->setResizeMode(AddressTableModel::Address, QHeaderView::Fixed);
 #else
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Stretch);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
+    // Address Column Size Fixed
+    ui->tableView->horizontalHeader()->setDefaultSectionSize(ui->tableView->columnWidth(AddressTableModel::Address) + 5);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Fixed);
 #endif
 
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),

@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>&amp;Sulje</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>Nämä ovat Soom osoitteesi suoritusten vastaanottamiseen. Suositellaan että käytät uutta osoitetta kullekin siirtotapahtumalle.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>Kopioi &amp;Osoite</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>Osoitelistan tallennuksessa tapahtui virhe tiedostoon %1. Yritä uudelleen.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -219,27 +219,27 @@
         <translation>Anna lompakon vanha ja uusi salasana.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>Vahvista lompakon salaus</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>Haluatko varmasti salata lompakkosi?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>Lompakko salattu</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1 sulkeutuu nyt salauksen viimeistelyä varten. Muista että salaus pelkästään ei voi estää Soomiesi varastamista jos koneesi saastuu haittaohjelmilla tai viruksilla.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>TÄRKEÄÄ: Kaikki vanhat lompakon varmuuskopiot pitäisi korvata uusilla salatuilla varmuuskopioilla. Turvallisuussyistä edelliset salaamattomat varmuuskopiot muuttuvat turhiksi kun aloitat uuden salatun lompakon käytön.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>Lompakon salaus epäonnistui</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Lompakon salaaminen epäonnistui sisäisen virheen vuoksi. Lompakkoasi ei salattu.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>Annetut salasanat eivät täsmää.</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>Lompakon lukituksen avaaminen epäonnistui.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>Annettu salasana oli väärin.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>Lompakon salauksen purku epäonnistui.</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Lompakon salasana vaihdettiin onnistuneesti.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Varoitus: Caps Lock on käytössä!</translation>
@@ -345,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -353,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>Vakava virhe tapahtunut. Soom Core ei voi enää toimia turvallisesti ja sulkeutuu.</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>Solmu</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>&amp;Yleisnäkymä</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>Allekirjoita viestit Soom osoitteillasi todistaaksesi että omistat ne</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>Käytä testilohkoketjua</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>Tarkista viestit ollaksesi varma että ne on allekirjoitettu määritetyillä Soom osoitteilla</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>&amp;Apua</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>Välilehtipalkki</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 asiakasohjelma</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n aktiivinen yhteys Soom verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Soom verkkoon</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>Tietoja</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>On %1 uutta tapahtumaa.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>Uusi tapahtuma</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>Pvm: %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>Saapuva siirtotapahtuma</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD avaimen generointi on &lt;b&gt;käytössä&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>Yhteensä: %1 (Käytössä: %2)</translation>
     </message>
@@ -859,12 +874,7 @@
         <translation>Määrä:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>Siirtomaksu:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>Kolikko Valinta</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>Tomu:</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>Siirtomaksu:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>Siirtomaksun jälkeen:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>Listarakenne</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 lukittu)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>Vahvistettu</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>Kopioi osoite</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>Kopioi vaihtoraha</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 lukittu)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>kyllä</translation>
     </message>
@@ -1031,8 +1046,8 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>Voi vaihdella +/- %1 tnsoom per syöte.</translation>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
+        <translation>Voi vaihdella +/- %1 tnSOOM(s) per syöte.</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -1099,16 +1114,16 @@
         <translation>Muokkaa lähettävää osoitetta</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>Annettu osoite &quot;%1&quot; ei ole pätevä Soom osoite.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>Osoite &quot;%1&quot; on jo osoitekirjassa.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>Lompakkoa ei voitu avata.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>Uuden avaimen luonti epäonnistui.</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>Käynnistä alias</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>Vahvista gatewayn käynnistys</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>Haluatko varmasti käynnistää gatewayn %1?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>Vahvista kaikkien gatewayn käynnistys</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>Haluatko varmasti käynnistää KAIKKI gatewayt?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>Komento ei ole juuri nyt käytettävissä</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>Et voi käyttää tätä komentoa ennen kuin gateway lista on synkronissa</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1380,7 +1395,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
         <translation>Aseta kieli, esim. &quot;fi_FI&quot; (oletus: sama kuin järjestelmän)</translation>
     </message>
     <message>
@@ -1442,13 +1457,13 @@
         <translation>Määritä oma datahakemisto:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>Virhe: Annettua datahakemistoa &quot;%1&quot; ei voida luoda.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>Lomake</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>Viimeisimmät siirtotapahtumat eivät välttämättä ole vielä näkyvissä, ja siksi lompakon saldo voi olla väärin. Saldo korjaantuu oikeaksi kun lompakon synkronointi Soom verkkoon on valmis.</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>Edistyminen</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>Edistymisen kasvu per tunti</translation>
     </message>
@@ -1575,12 +1585,12 @@
         <translation>Valitse maksupyynnön tiedosto</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1683,18 +1693,18 @@
         <translation>Ikkunaa suljettaessa pienennä ohjelman ikkuna lopettamatta itse ohjelmaa. Kun tämä asetus on valittuna, ohjelman voi sulkea vain valitsemalla Lopeta ohjelman valikosta.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>Käyttöliittymän kieli asetetaan tässä, Asetus tulee voimaan kun %1 asiakasohjelma käynnistetään uudelleen.</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Ulkopuoliset URL-osoitteet (esim. lohkoselain) jotka esiintyvät tapahtumat-välilehdellä valikossa.&lt;br/&gt;%s URL-osoitteessa korvataan siirtotunnuksella. Useampi URL-osoite on eroteltu pystyviivalla |.</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>Expertti</translation>
     </message>
@@ -1815,6 +1825,16 @@
         <translation>P&amp;ienennä suljettaessa</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>Näytä ponnahdusikkunoita uusille tapahtumille</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>&amp;Näytä transaktio-ponnahdusikkuna</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>&amp;Käyttöliittymä</translation>
@@ -1837,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Käyttöliittymän Teema:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>Yksikkö joina määrät näytetään</translation>
     </message>
@@ -1878,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Peruuta</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>oletus</translation>
     </message>
@@ -1893,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>ei mitään</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>Vahvista asetusten palautus</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>Ohjelman uudelleen käynnistys aktivoi muutokset käyttöön.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>Ohjelma suljetaan, haluatko jatkaa?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>Tämä muutos vaatii ohjelman uudelleen käynnistyksen.</translation>
     </message>
@@ -1932,93 +1952,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Lomake</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>Näytetyt tiedot eivät välttämättä ole ajan tasalla.&lt;br&gt;Lompakkosi synkronoituu automaattisesti Soom verkkoon kun&lt;br&gt;yhteys on muodostettu, mutta tämä prosessi ei vielä ole valmis.</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>Käytettävissä</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>Nykyinen käytettävissä oleva saldo</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation>Vahvistamatta</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Vahvistamattomien siirtotapahtumien summa,&lt;br&gt;jota ei vielä lasketa käytettävissä olevaan saldoon</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>Kypsymättä</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Louhittu saldo, joka ei ole vielä kypsynyt</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>Saldot</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>Vahvistamattomat tapahtumat vain-luku osoitteisiin</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>Louhittu saldo vain-luku osoitteisiin, joka ei ole vielä kypsynyt</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>Saldo Yhteensä</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>Saldo yhteensä tällä hetkellä</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>Saldo yhteensä vain-luku osoitteissa</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>Vain-luku:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>Nykyinen käytettävissä oleva saldo vain-luku osoitteissa</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>Käytettävissä:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>Viimeisimmät tapahtumat</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>Ei ajan tasalla</translation>
@@ -2181,9 +2203,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
@@ -2204,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Syötä Soom osoite (esim. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1 d</translation>
     </message>
@@ -2220,7 +2242,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1 s</translation>
     </message>
@@ -2284,17 +2306,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2347,7 +2369,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation type="unfinished"/>
     </message>
@@ -2421,7 +2443,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>e/s</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>Yhteyksien määrä</translation>
     </message>
@@ -2528,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Tyhjennä konsoli</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Verkkoliikenne</translation>
     </message>
@@ -2566,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Valitse peer nähdäksesi tarkempia tietoja.</translation>
     </message>
@@ -2607,13 +2629,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Lompakon polku</translation>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>Käyttäjäohjelma</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>Datahakemisto</translation>
     </message>
@@ -2628,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Suurenna fontin kokoa</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>Palvelut</translation>
     </message>
@@ -2757,7 +2779,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>-reindex: Rakenna uudelleen lohkoketjun indeksi nykyisistä blk000??.dat tiedostoista.</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>&amp;Katkaise yhteys</translation>
     </message>
@@ -2790,7 +2812,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>1 &amp;vuodeksi</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>&amp;Poista kieltolistalta</translation>
     </message>
@@ -2830,7 +2852,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Verkkotoiminnot ei käytössä</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -2895,7 +2917,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Uudelleen käytä yksi vanhoista vastaanottavista osoitteista.&lt;br&gt;Uudelleen käytössä on turvallisuus- ja yksityisyysongelmia.&lt;br&gt;Älä käytä tätä ellet ole uudelleen luomassa aikaisempaa maksupyyntöä.</translation>
     </message>
@@ -2905,7 +2927,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>&amp;Uudelleen käytä vastaanottavaa osoitetta (ei suositella)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Soom verkkoon.</translation>
     </message>
@@ -2915,44 +2937,44 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Vi&amp;esti</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>Valinnainen nimi liitetään uuteen vastaanottavaan osoitteeseen.</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Soom verkkoon.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Käytä tätä lomaketta maksupyyntöihin. Kaikki kentät ovat &lt;b&gt;valinnaisia&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>&amp;Nimi</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>Valinnainen pyyntömäärä. Jätä tyhjäksi tai nollaksi jos et pyydä tiettyä määrää.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>&amp;Määrä</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Maksupyyntö</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
@@ -2962,17 +2984,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tyhjennä</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>Pyydä InstantSend</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>Pyydä maksuja (Luo QR koodit ja Soom: URIt)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2982,7 +3004,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Pyydettyjen maksujen historia</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Näytä valittu pyyntö (sama toiminta kuin alkion tuplaklikkaus)</translation>
     </message>
@@ -2992,7 +3014,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Näytä</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>Poista valitut merkinnät listalta</translation>
     </message>
@@ -3002,7 +3024,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>Kopioi URI</translation>
     </message>
@@ -3030,7 +3052,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>QR-koodi</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>Kopioi &amp;URI</translation>
     </message>
@@ -3045,7 +3067,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>&amp;Tallenna Kuva</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation type="unfinished"/>
     </message>
@@ -3055,12 +3077,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Maksupyyntö %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>Maksutiedot</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3152,12 +3174,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>Lähetä</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>Kolikkokontrolli ominaisuudet</translation>
     </message>
@@ -3172,12 +3194,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>automaattisesti valitut</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>Lompakon saldo ei riitä!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>Määrä:</translation>
     </message>
@@ -3212,7 +3234,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Vaihtoraha:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Jos tämä aktivoidaan mutta vaihtorahan osoite on tyhjä tai virheellinen, vaihtoraha tullaan lähettämään uuteen luotuun osoitteeseen.</translation>
     </message>
@@ -3222,17 +3244,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Kustomoitu vaihtorahan osoite</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>Siirtomaksu</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>Valitse...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation type="unfinished"/>
     </message>
@@ -3247,12 +3269,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>pienennä siirtomaksu asetukset</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>InstantSend</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Jos mukautettu siirtomaksu on asetettu 1000 duff ja siirtotapahtuma on vain 250 tavua,&lt;br&gt;tällöin &quot;per kilotavu&quot; maksaa vain 250 tnsoom siirtomaksun, kun taas &quot;vähintään&quot; maksaa 1000 tnsoom.&lt;br&gt;Siirtotapahtumat jotka ovat isompia kuin kilotavu, molemmat maksaa &quot;per kilotavu&quot;.</translation>
     </message>
@@ -3268,7 +3285,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Minimi siirtomaksun maksaminen on ok niin kauan kun siirtotapahtumien määrä on pienempi kuin tila lohkoissa.&lt;br&gt;Mutta ota huomioon että tämä voi johtaa siirtotapahtumaan jota ei vahvisteta koskaan, jos siirtotapahtumia on enemmän kuin verkko voi käsitellä.</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>Vahvistusaika:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>InstantSend</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>per kilotavu</translation>
     </message>
@@ -3298,27 +3325,22 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Mukautettu:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(Älykästä siirtomaksua ei ole alustettu vielä. Tämä kestää yleensä muutaman lohkon...)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>Vahvistusaika:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>normaali</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>nopea</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>Lähetä klikkaamalla</translation>
     </message>
@@ -3328,7 +3350,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>&amp;Lähetä</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
@@ -3348,12 +3370,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Lisää &amp;Vastaanottaja</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>Saldo:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>Kopioi määrä</translation>
     </message>
@@ -3403,7 +3425,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>ja InstantSend</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3436,12 +3458,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Hyväksy lähettäminen</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -3478,7 +3500,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     <message>
         <location line="+4"/>
         <source>The transaction was rejected with the following reason: %1</source>
-        <translation>Siirtotapahtuma hylättiin! Tämä saattaa tapahtua jos lompakossa olevat varat on jo kulutettu, kuten jos käytät kopiota wallet.dat tiedostosta ja varat oli jo käytetty mutta ei merkattu täällä.</translation>
+        <translation>Siirtotapahtuman hylättiin seuraavasta syystä: %1</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -3491,7 +3513,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Maksupyyntö vanhentunut.</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
@@ -3501,12 +3523,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Maksa vain tarpeellinen siirtomaksu %1</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>Arvioitu vahvistuksen aloitus %n lohkon kuluessa.</numerusform><numerusform>Arvioitu vahvistuksen aloitus %n lohkon kuluessa.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>Varoitus: Virheellinen Soom osoite</translation>
     </message>
@@ -3534,37 +3556,39 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>Tämä on normaali maksu.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>Maksun &amp;saaja</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>Soom osoite johon maksu lähetetään</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>Valitse osoite</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>Liitä osoite</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
@@ -3574,7 +3598,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>Liitä osoite leikepöydältä</translation>
     </message>
@@ -3584,34 +3608,36 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>Poista tämä alkio</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>&amp;Nimi</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listaan</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>&amp;Määrä</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>Siirtomaksu vähennetään lähetettävästä summasta. Vastaanottaja saa pienemmän summan kuin mitä laitoit määrä kenttään. Jos useampia vastaanottajia on valittu, siirtomaksu jaetaan tasan.</translation>
     </message>
@@ -3621,17 +3647,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Vähennä siirtomaksu lähetettävästä määrästä</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>Viesti joka liitettiin Soom: URI joka talletetaan siirtotapahtuman kanssa viitteeksi sinulle. Huomio: Tätä viestiä ei lähetetä Soom verkkoon.</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>Tämä on vahvistamaton maksupyyntö</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>Tämä on vahvistettu maksupyyntö.</translation>
     </message>
@@ -3642,18 +3668,18 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Saaja</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>Viesti</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>Muistio</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Anna nimi tälle osoitteelle, jos haluat lisätä sen osoitekirjaan</translation>
     </message>
@@ -3661,7 +3687,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
@@ -3703,19 +3729,19 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Soom osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>Liitä osoite leikepöydältä</translation>
     </message>
@@ -3735,12 +3761,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Allekirjoitus</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Kopioi tämän hetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>Allekirjoita viesti todistaaksesi että omistat tämän Soom osoitteen</translation>
     </message>
@@ -3750,18 +3776,18 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Allekirjoita &amp;Viesti</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>Tyhjennä kaikki kentät</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>T&amp;yhjennä Kaikki</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Tarkista viesti</translation>
     </message>
@@ -3776,7 +3802,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Soom osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>Tarkista että viesti on allekirjoitettu määritetyllä Soom osoitteella</translation>
     </message>
@@ -3786,7 +3812,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tarkista &amp;Viesti...</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>Tyhjennä kaikki kentät</translation>
     </message>
@@ -3796,7 +3822,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Klikkaa &quot;Allekirjoita Viesti&quot; luodaksesi allekirjoituksen</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>Syötetty osoite on virheellinen.</translation>
@@ -3862,17 +3888,18 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Viesti vahvistettu.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>Valitse osoite</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>Liitä osoite</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>Liitä Allekirjoitus</translation>
     </message>
@@ -4164,16 +4191,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>Siirtotapahtuman yksityiskohdat</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation type="unfinished"/>
     </message>
@@ -4566,7 +4589,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>&amp;Vie...</translation>
     </message>
@@ -4576,12 +4599,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Vie tällä hetkellä valitun välilehden tiedot tiedostoon</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>Valittu määrä:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>Varmuuskopioi lompakko</translation>
     </message>
@@ -4614,7 +4637,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Kytkeydy annettuun osoitteeseen ja pidä linja aina auki. Käytä [host]:port merkintätapaa IPv6:lle.</translation>
     </message>
@@ -4624,7 +4647,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Ei voida lukita datahakemistoa %s. %s on luultavasti jo käynnissä.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>Virhe: Sisääntulevien yhteyksien kuuntelu epäonnistui (kuuntelu palautti virheen %s)</translation>
     </message>
@@ -4644,17 +4667,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Suorita käsky kun paras lohko muuttuu (%s cmd on korvattu lohko tarkisteella)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation>Rakenne url nimi KeePass merkinnälle joka talentaa lompakon salasanan</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>Tiedustele vertaisverkon osoitteita DNS hakua käyttäen jos osoitteita ei ole riittävästi (oletus: 1 paitsi jos -connect/-noconnect)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>Aseta maksimikoko korkea prioriteetti/pienen siirtomaksun siirtotapahtumiin tavuissa (oletus: %d)</translation>
     </message>
@@ -4664,37 +4687,42 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Aseta script vahvistuksen säikeiden määrä (%u - %d, 0= auto, &lt;0 = jätä näin monta prosessorin ydintä vapaaksi, oletus: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Tämä on esi-julkaistu testiversio - Käytä omalla vastuulla - Älä käytä louhimiseen tai kauppasovelluksiin.</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>Ei voida yhdistää %s tässä tietokoneessa. %s on luultavasti jo käynnissä.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation>Käytä hierarkkista determinististä avain generaatiota (HD) bip39/bip44 jälkeen. Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä</translation>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Varoitus: Soom verkossa on ristiriitoja! Louhijat näyttävät kokevan virhetilanteita.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>Varoitus: Olemme vertaisverkon kanssa ristiriidassa! Sinun ja/tai solmujen tulee päivitää uusimpaan versioon.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>Varoitus: Wallet lompakkotiedosto on vioittunut, tiedot pelastettu. Alkuperäinen %s lompakkotiedosto on tallennettu %s kansioon %s, jos saldosi tai siirtohistoria on virheellinen, sinun tulisi palauttaa lompakkotiedosto varmuuskopiosta.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>Sinun täytyy määritellä gatewayprivkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4704,12 +4732,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Hyväksy merkkipohjaiset ja JSON-RPC käskyt</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>Hyväksy yhteyksiä ulkopuolelta (oletus: 1 jos -proxy tai -connect/-noconnect ei ole määritelty)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Lisää solmu mihin liittyä pitääksesi yhteyden auki</translation>
     </message>
@@ -4719,7 +4747,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Salli DNS kyselyt -addnode, -seednode ja -connect yhteydessä</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>Lohkon luonnin asetukset:</translation>
     </message>
@@ -4734,17 +4762,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>-%s osoitteen &apos;%s&apos; selvittäminen epäonnistui</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>Oletusosoitetta ei voi kirjoittaa</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
-        <translation>Yhdistä ainoastaan määriteltyihin solmuihin</translation>
+        <translation>Yhdistä ainoastaan määriteltyihin solmuihin(s); -noconnect tai -connect = 0 yksin automaattisten yhteyksien poistamiseksi</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Yhdistä solmuun hakeaksesi peers osoitteet ja katkaise yhteys</translation>
     </message>
@@ -4754,12 +4782,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Yhteyden valinnat:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>Vioittunut lohkotietokanta havaittu</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>Debuggaus/Testauksen valinnat:</translation>
     </message>
@@ -4789,12 +4817,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virhe lompakon tietokantaympäristön alustuksessa %s!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>Virhe lohkotietokannan latauksessa</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>Virhe ladattaessa %s tiedostoa</translation>
     </message>
@@ -4804,7 +4832,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virhe ladattaessa %s tiedostoa: Lompakko vioittunut</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>Virhe lohkotietokannan avauksessa</translation>
     </message>
@@ -4829,7 +4857,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Ei onnistuttu kuuntelemaan mitään porttia. Käytä -listen=0 jos haluat tätä.</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = pidä tx meta data esim. tilin omistaja ja maksupyyntö tiedot, 2 = poista tx meta data)</translation>
     </message>
@@ -4844,27 +4872,27 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Tämä on siirtomaksu jonka saatat maksaa jos siirtomaksun arviota ei ole mahdollista saada.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation>-maxtxfee on asetettu erittäin korkeaksi! Näin isot siirtomaksut voitaisiin maksaa yhdessä siirtotapahtumassa.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Tämä on maksukulu jonka tulet maksamaan jos lähetät siirtotapahtuman.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>Siirtomaksun taso (%s/kB) jota käytetään kun siirtomaksun arvion tiedot ovat puutteelliset (oletus: %s)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation>Hyväksy välitetyt siirtopahtumat jotka on vastaanotettu luotettavilta solmuilta, vaikka ei välitetä siirtopahtumia (oletus: %d)</translation>
     </message>
@@ -4884,7 +4912,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Kytkeydy annettuun osoitteeseen kuunnellaksesi JSON-RPC yhteyksiä. Käytä [host]:port merkintätapaa IPv6:lle. Tämä asetus voidaan määrittää useita kertoja  (oletus: kytkeydy kaikkiin rajapintoihin)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Luo uudet tiedostot järjestelmän oletus oikeuksilla, paitsi umask 077 (voimassa vain käytöstä poistettujen lompakon toimintojen kanssa)</translation>
     </message>
@@ -4904,7 +4932,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virhe latauksessa %s: Et voi ottaa käyttöön HD:tä jo olemassa olevassa ei-HD lompakossa</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>Kuinka vaativa lohkon vahvistus -checkblocks on (0-4, oletus: %u)</translation>
     </message>
@@ -4934,7 +4962,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Muista salata lompakkosi ja poistaa kaikki salaamattomat varmistukset sen jälkeen kun olet todennut että lompakko toimii!</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>Maksimi koko datalle datan kuljetustapahtumissa jotka välitämme ja louhimme (oletus: %u)</translation>
     </message>
@@ -4949,27 +4977,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tulosta debuggaustieto (oletus: %u, tarjottava &lt;category&gt; on valinnainen)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>Aseta prosessorin ytimien määrä louhintaan, jos päällä (-1 = kaikki ytimet, oletus: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation>Näytä N vahvistusta onnistuneesti lukitulle siirtotapahtumalle (%u-%u, oletus: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>Tämä ohjelma sisältää OpenSSL projektin OpenSSL työkalupakin %s sekä Eric Youngin kehittämän salausohjelmiston ja Thomas Bernardin kehittämän UPnP ohjelmiston.</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation>Käytä hierarkkista determinististä avain generaatiota (HD) bip39/bip44 jälkeen. Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Käytä erillistä SOCKS5 proxya tavoittaaksesi peers:it Tor piilotetun palvelun kautta (oletus: %s)</translation>
     </message>
@@ -4979,19 +4992,19 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Käyttäjän määrittelemä mnemonic salasana HD lompakolle (bip39). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: satunnaisesti generoitu)</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation>Käyttäjän määrittelemä mnemonic salasana HD lompakolle (BIP39). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: tyhjä)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation>Käyttäjän määrittelemä siemen HD lompakolle (pitäisi olla hex muodossa). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: satunnaisesti generoitu)</translation>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation>Varoitus: väärä parametri -walletbackupsdir, tiedostopolku on oltava olemassa! Käytetään oletuspolkua.</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
-        <translation>Merkitse solmut luotettaviksi jotka kytkeytyvät annetusta verkkomaskista tai IP osoitteesta. Voidaan määrittää useita kertoja.</translation>
+        <translation>Merkitse solmut luotettaviksi jotka kytkeytyvät annetusta CIDR-merkitty verkko (esim. 1.2.3.0/24) tai IP osoitteesta (esim. 1.2.3.4). Voidaan määrittää useita kertoja.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4999,27 +5012,27 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Luotettaviksi merkittyjä peers:jä ei voida DoS estää, ja niiden siirtotapahtumat välitetään aina, vaikka ne olisvatkin jo muistivarannossa, käyttökelpoinen esim. yhdyskäytävään</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation>Sinun tulee uudelleen rakentaa tietokanta käyttäen -reindex-chainstate vaihtaen -txindex</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(oletus: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>Hyväksy julkiset REST pyynnöt (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>Tiedustele aina peers osoitteita DNS hakua käyttäen (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation>Ketjun valinta-asetukset: </translation>
     </message>
@@ -5034,37 +5047,22 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Yhdistä KeePassHttp porttiin &lt;port&gt; (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>Copyright (C) 2009-2018 Bitcoin Core Kehittäjät</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>Copyright (C) 2014-2018 Dash Core Kehittäjät</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>Copyright (C) 2017-2018 Soom Core Kehittäjät</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Aktivoi asiakasohjelman käyttö gateway:na (0-1, oletus: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation>Virhe latauksessa %s: Et voi poistaa käytöstä HD:tä jo olemassa olevassa HD lompakossa</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>Virhe ladattaessa %s: Lompakko vaatii uudemman version %s:sta</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation>Täytettyjen pyyntöjen välimuistin lataaminen epäonnistui</translation>
     </message>
@@ -5080,11 +5078,6 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>Louhi kolikoita (oletus: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>Kuinka monta lohkoa tarkistetaan käynnistyksessä (oletus: %u, 0 = kaikki)</translation>
     </message>
@@ -5129,17 +5122,72 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virheellinen proxyn osoite &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>Virheellinen määrä -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (oltava vähintään %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Virheellinen määrä -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>Yksittäisen siirtotapahtuman maksimi siirtomaksu (%s), jos tämä asetetaan liian matalaksi, se voi keskeyttää isot siirtotapahtumat (oletus: %s)</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Tarkista että tietokoneesi kellonaika ja päivämäärä ovat oikein! %s ei toimi oikein väärällä päivämäärällä ja/tai kellonajalla.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation>Pienennä tilan tarvetta karsimalla (poistamalla) vanhoja lohkoja. Tämä tilä on epäyhteensopiva -txindex ja -rescan kanssa. Varoitus: Tämän asetuksen peruminen vaatii koko lohkoketjun uudelleen lataamisen. (oletus: 0 = lohkojen karsinta ei käytössä, &gt;%u = tavoitetila lohkojen tiedostoille MiB)</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Tämä ohjelma sisältää OpenSSL projektin OpenSSL työkalupakin %s sekä Eric Youngin kehittämän salausohjelmiston ja Thomas Bernardin kehittämän UPnP ohjelmiston.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation>Käyttäjänimi ja salattu salasana JSON-RPC yhteyksille. Kenttä &lt;userpw&gt; tulee olla formaatissa: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Kanava python-komentosarja sisältyy osioon / rpcuseriin. Asiakas yhdistää sitten normaalisti käyttäen rpcuser = &lt;USERNAME&gt; / rpcpassword = &lt;PASSWORD&gt; paria argumenteja. Tämä optio voidaan määritellä useita kertoja</translation>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Osoitevarasto on tyhjä, tee ensin uudelleen täyttö komennolla keypoolrefill</translation>
     </message>
@@ -5214,6 +5262,11 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Lisää debug lokitiedoston merkinnän alkuun pvm/aika (oletus: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation>Uudelleen rakenna ketjun tila ja lohkoindeksi nykyisistä blk*.dat tiedostoista levyllä</translation>
@@ -5239,12 +5292,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Aseta avainvarannon koko &lt;n&gt; (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>Aseta minimi lohkon koko tavuina (oletus: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>Aseta säikeiden lukumäärä RPC kutsuille (oletus: %d)</translation>
     </message>
@@ -5275,6 +5323,11 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
         <translation>Synkronoidaan lohkoketju...</translation>
     </message>
@@ -5294,7 +5347,22 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Synkronoidaan gatewayt...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>The source code is available from %s.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Yhteyden kynnysaika huonosti käyttäytyville peers:lle (oletus: %u)</translation>
     </message>
@@ -5309,7 +5377,17 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Käytettävä Tor hallintaportti jos onion kuuntelu käytössä (oletus: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>HTTP palvelinta ei voitu käynnistää. Katso debug.log lisätietoja.</translation>
     </message>
@@ -5355,21 +5433,26 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation>Lompakko on kirjoitettava uudelleen: käynnistä %s uudestaan viimeistelyä varten</translation>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>Virheellinen gatewayn yksityisavain (gatewayprivkey). Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation> Ei voitu jäsentää gateway.conf</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Virheellinen verkkomaski määritelty -whitelist: &apos;%s&apos;</translation>
     </message>
@@ -5379,7 +5462,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Virheellinen portti löytyi gateway.conf :sta</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation>KeePassHttp tunnus (id) yhdistymiseen</translation>
     </message>
@@ -5394,7 +5477,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Pidä enintään &lt;n&gt; ei yhdistettyä siirtotapahtumaa muistissa (oletus: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Selvitä oma IP osoite (oletus: 1 kun kuunnellaan ja ei -externalip tai -proxy)</translation>
     </message>
@@ -5424,7 +5507,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Suorita käsky kun lompakon InstantSend siirtotapahtuma on hyväksytysti lukittu (%s cmd on korvattu TxID:llä)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>Varmistus epäonnistui, tiedosto on jo olemassa! Tämä voi tapahtua jos olet käynnistänyt lompakon uudelleen alle 60 sek aikana. Voit jatkaa jos hyväksyt tämän.</translation>
     </message>
@@ -5479,17 +5562,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Ylläpidä enintään &lt;n&gt; solmu yhteyttä (poislukien väliaikaiset huoltoyhteydet) (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>Yksittäisen siirtotapahtuman maksimi siirtomaksu (%s), jos tämä asetetaan liian matalaksi, se voi keskeyttää isot siirtotapahtumat (oletus: %s)</translation>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>Tarkista että tietokoneesi kellonaika ja päivämäärä ovat oikein! Soom ei toimi oikein väärällä päivämäärällä ja/tai kellonajalla.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation>Karsinta asetettu alle minimin %d MiB. Käytä isompaa arvoa.</translation>
     </message>
@@ -5504,12 +5577,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Satunnaista käyttäjätiedot jokaiselle proxy yhteydelle. Tämä ottaa käyttöön Tor virran eristämisen (oletus: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation>Pienennä tilan tarvetta karsimalla (poistamalla) vanhoja lohkoja. Tämä tilä on epäyhteensopiva -txindex ja -rescan kanssa. Varoitus: Tämän asetuksen peruminen vaatii koko lohkoketjun uudelleen lataamisen. (oletus: 0 = lohkojen karsinta ei käytössä, &gt;%u = tavoitetila lohkojen tiedostoille MiB)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>Uudelleen skannaus ei ole mahdollista karsintatilassa. Sinun on käytettävä -reindex joka lataa koko lohkoketjun uudelleen.</translation>
     </message>
@@ -5534,18 +5602,18 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Siirtomäärä on liian pieni lähettämiseen, kun siirtomaksut on siitä  vähennetty.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation>Verkon version merkkijonon (%i) kokonaispituus ylittää maksimi pituuden (%i).
 Vähennä uakommenttien määrää tai kokoa.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation>Yrittää pitää ulos menevän liikenteen alle annetun tavoitteen (MiB per 24h), 0 = ei rajaa (oletus: %d)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Ei tuettu argumentti -socks löydetty. SOCKS version asettaminen ei ole enää mahdollista, vain SOCKS5 proxyt ovat tuettuja.</translation>
     </message>
@@ -5560,32 +5628,52 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: 1 kun kuunellaan ja ei käytetä -proxy)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation>Käyttäjän määrittelemä mnemonic salasana HD lompakolle (bip39). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: tyhjä)</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation>Käyttäjänimi ja salattu salasana JSON-RPC yhteyksille. Kenttä &lt;userpw&gt; tulee olla formaatissa: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Sääntöjen mukainen python scripti on sisällytetty share/rpcuser:ään. Tämä optio voidaan määritellä useita kertoja</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation>Lompakko on lukittu, osoitevaraston täydentäminen ei onnistu! Automaattinen varmistus ja sekoitus ei ole käytössä, avaa lompakon lukitus täydentääksesi osoitevaraston.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation>Varoitus: Tuntemattomia lohkoversioita louhitaan! On mahdollista että tuntemattomia sääntöjä on käytössä</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation>Sinun tulee uudelleen rakentaa tietokanta käyttäen -reindex palataksesi takaisin &apos;ei karsita&apos; tilaan. Tämä aiheuttaa koko lohkoketjun uudelleen lataamisen</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d voidaan käyttää vain pääverkossa)</translation>
     </message>
@@ -5610,7 +5698,12 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>&lt;category&gt; voi olla:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation>Lisää kommentti käyttäjäohjelman merkkijonoon</translation>
     </message>
@@ -5625,7 +5718,27 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Luo automaattisesti Tor piilopalvelu (oletus: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>Ota käyttöön julkaise tarkistelohko osoitteessa &lt;address&gt;</translation>
     </message>
@@ -5700,7 +5813,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation>Tuodaan lohkoja ulkoisesta blk000??.dat tiedostosta käynnistyksessä</translation>
     </message>
@@ -5710,12 +5823,17 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>InstantSend valinnat:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Virheellinen määrä -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation>Pidä siirtotapahtuma muistivaranto alle &lt;n&gt; megatavun (oletus: %u)</translation>
     </message>
@@ -5755,12 +5873,12 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Laita lompakko julkaisemaan siirtotapahtumat</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>Gateway valinnat:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation>Minimit tavut per sigop siirtotapahtumassa jotka välitetään ja louhitaan (oletus: %u)</translation>
     </message>
@@ -5790,7 +5908,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Salasana JSON-RPC yhteyksille</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>Tulosta versio ja poistu</translation>
     </message>
@@ -5815,12 +5933,12 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Skannaa lohkoketju uudelleen lompakon puuttuvien siirtotapahtumien vuoksi käynnistyksessä</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation>Varoitus: tuntemattomia uusia sääntöjä aktivoitu (versionbit %i)</translation>
     </message>
@@ -5835,12 +5953,17 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Käytä vain lohkoja moodia (default: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ ilmoitus asetukset:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPC palvelimen valinnat:</translation>
     </message>
@@ -5890,7 +6013,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Aseta lohkon maksimikoko tavuissa (oletus: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>Aseta gatewayn yksityisavain.</translation>
     </message>
@@ -5925,7 +6048,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Määritä julkinen osoitteesi</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>Synkronointi odottaa...</translation>
     </message>
@@ -5935,32 +6058,27 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Synkronoidaan gateway maksuja...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation>Siirtomäärä on liian pieni siirtomaksun maksamiseen</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>Tämä ohjeviesti</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>Tämä on kokeellinen ohjelmisto.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>Siirtosumma on liian pieni</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transaction amounts must not be negative</source>
-        <translation>Siirtosumman tulee olla positiivinen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>Siirtotapahtuma on liian iso suhteessa siirtomaksujen käytäntöön.</translation>
     </message>
@@ -5975,7 +6093,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Ei voida yhdistää %s tässä tietokoneessa (yhdistäminen palautti virheen %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>En voida allekirjoittaa spork viestiä, väärä avain?</translation>
     </message>
@@ -6005,7 +6123,7 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Lompakko %s sijaitsee datahakemiston ulkopuolella %s</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>Lompakon valinnat:</translation>
     </message>
@@ -6020,14 +6138,14 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Varoitus</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Tyhjennetään kaikki siirtotapahtumat lompakosta....</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
-        <translation>%s lompakkotiedosto vioittunut, pelastaminen epäonnistui</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

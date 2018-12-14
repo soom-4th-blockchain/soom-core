@@ -31,6 +31,7 @@
 #include <QPushButton>
 #include <QSettings>
 #include <QVBoxLayout>
+#include <QTimer>
 
 WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     QStackedWidget(parent),
@@ -125,6 +126,11 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 //    connect(usedSendingAddressesPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
     // Pass through messages from usedReceivingAddressesPage
 //    connect(usedReceivingAddressesPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+
+    // Initialize Limit Popup Timer
+    newTxCount = 0;
+    limitTime = 10;
+    connect(&limitPopupTimer, SIGNAL(timeout()), this, SLOT(limitPopupCount()));
 }
 
 WalletView::~WalletView()
@@ -214,6 +220,20 @@ void WalletView::processNewTransaction(const QModelIndex& parent, int start, int
     TransactionTableModel *ttm = walletModel->getTransactionTableModel();
     if (!ttm || ttm->processingQueuedTransactions())
         return;
+
+    // If 'Show Balloon Popup' option is off, no signal is generated.
+    if(!clientModel->getOptionsModel()->getShowBalloonPopup())
+        return;
+
+    if(!limitPopupTimer.isActive())
+        {
+            limitPopupTimer.start(1000);
+        }
+        else
+        {
+            newTxCount++;
+            return;
+        }
 
     QString date = ttm->index(start, TransactionTableModel::Date, parent).data().toString();
     qint64 amount = ttm->index(start, TransactionTableModel::Amount, parent).data(Qt::EditRole).toULongLong();
@@ -332,6 +352,32 @@ void WalletView::encryptWallet(bool status)
     dlg.exec();
 
     updateEncryptionStatus();
+}
+
+/** Limit New balloon popup about transactions **/
+void WalletView::limitPopupCount()
+{
+    limitTime--;
+
+    if(limitTime <= 0)
+    {
+        limitPopupTimer.stop();
+        limitTime = 10;
+
+        if(newTxCount > 0)
+        {
+            QString date = "";
+            qint64 amount = 0;
+            QString type = "";
+            QString address = "New Transaction";
+            QString label = "";
+	    int exportTxCount = newTxCount;
+	    newTxCount = 0;
+	    limitPopupTimer.start(1000);
+
+            Q_EMIT incomingTransaction(date, exportTxCount, amount, type, address, label);
+        }
+    }
 }
 
 void WalletView::backupWallet()

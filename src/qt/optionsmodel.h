@@ -50,6 +50,7 @@ public:
         ShowGatewaysTab,     // bool
         LowKeysWarning,         // bool
         Listen,                 // bool
+        ShowBalloonPopup,       // bool
         OptionIDRowCount,
     };
 
@@ -66,6 +67,7 @@ public:
     bool getHideTrayIcon() { return fHideTrayIcon; }
     bool getMinimizeToTray() { return fMinimizeToTray; }
     bool getMinimizeOnClose() { return fMinimizeOnClose; }
+    bool getShowBalloonPopup() { return fShowBalloonPopup; }
     int getDisplayUnit() { return nDisplayUnit; }
     QString getThirdPartyTxUrls() { return strThirdPartyTxUrls; }
     bool getProxySettings(QNetworkProxy& proxy) const;
@@ -82,6 +84,7 @@ private:
     bool fHideTrayIcon;
     bool fMinimizeToTray;
     bool fMinimizeOnClose;
+    bool fShowBalloonPopup;
     QString language;
     int nDisplayUnit;
     QString strThirdPartyTxUrls;

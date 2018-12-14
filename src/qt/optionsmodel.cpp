@@ -72,6 +72,11 @@ void OptionsModel::Init(bool resetSettings)
         settings.setValue("fMinimizeOnClose", false);
     fMinimizeOnClose = settings.value("fMinimizeOnClose").toBool();
 
+    // Add "Show Balloon Popup" Option
+    if (!settings.contains("fShowBalloonPopup"))
+        settings.setValue("fShowBalloonPopup", true);
+    fShowBalloonPopup = settings.value("fShowBalloonPopup").toBool();
+
     // Display
     if (!settings.contains("nDisplayUnit"))
         settings.setValue("nDisplayUnit", BitcoinUnits::SOOM);
@@ -206,6 +211,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
 #endif
         case MinimizeOnClose:
             return fMinimizeOnClose;
+        case ShowBalloonPopup:
+            return fShowBalloonPopup;
 
         // default proxy
         case ProxyUse:
@@ -300,6 +307,10 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case MinimizeOnClose:
             fMinimizeOnClose = value.toBool();
             settings.setValue("fMinimizeOnClose", fMinimizeOnClose);
+            break;
+        case ShowBalloonPopup:
+            fShowBalloonPopup = value.toBool();
+            settings.setValue("fShowBalloonPopup", fShowBalloonPopup);
             break;
 
         // default proxy

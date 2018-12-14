@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>&amp;Schließen</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>Dies sind ihre Soom-Adressen zum Empfangen von Zahlungen. Es wird empfohlen für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Adresse kopieren</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>Beim Speichern der Adressliste nach %1 ist ein Fehler aufgetreten. Bitte noch einmal versuchen</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -219,27 +219,27 @@
         <translation>Geben Sie die alte und neue Wallet-Passphrase ein.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>Wallet-Verschlüsselung bestätigen</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>Sind Sie sich sicher, dass Sie ihre Wallet verschlüsseln möchten?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>Wallet verschlüsselt</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1 wird jetzt beendet, um den Verschlüsselungsprozess abzuschließen. Bitte beachten Sie, dass die Wallet-Verschlüsselung nicht vollständig vor Diebstahl ihrer Soom durch Schadsoftware schützt, die ihren Computer befallen könnte.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>WICHTIG: Alle vorherigen Wallet-Sicherungen sollten durch die neu erzeugte, verschlüsselte Wallet ersetzt werden. Aus Sicherheitsgründen werden vorherige Sicherungen der unverschlüsselten Wallet nutzlos, sobald Sie die neue, verschlüsselte Wallet verwenden.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>Wallet-Verschlüsselung fehlgeschlagen</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Die Wallet-Verschlüsselung ist aufgrund eines internen Fehlers fehlgeschlagen. Ihre Wallet wurde nicht verschlüsselt.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>Die eingegebenen Passphrasen stimmen nicht überein.</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>Wallet-Entsperrung fehlgeschlagen</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>Die eingegebene Passphrase zur Wallet-Entschlüsselung war nicht korrekt.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>Wallet-Entschlüsselung fehlgeschlagen</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Die Wallet-Passphrase wurde erfolgreich geändert.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Warnung: Die Feststelltaste ist aktiviert!</translation>
@@ -345,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -353,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>Ein kritischer Fehler ist aufgetreten. Soom Core kann nicht mehr ausgeführt werden und wird nun beendet.</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>Knoten</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>&amp;Übersicht</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>Nachrichten signieren, um den Besitz ihrer Soom-Adressen zu beweisen</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>Nutze Test-Chain</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>Nachrichten verifizieren, um sicherzustellen, dass diese mit den angegebenen Soom-Adressen signiert wurden</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>Registerkartenleiste</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 client</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n aktive Verbindung zum Soom-Netzwerk</numerusform><numerusform>%n aktive Verbindungen zum Soom-Netzwerk</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>Hinweis</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>Es gibt %1 neue Transaktionen.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>Neue Transaktion</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>Datum %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>Eingehende Transaktion</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD-Schlüssel Erzeugung ist &lt;b&gt;aktiviert&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>Gesamt: %1 (Aktiviert: %2)</translation>
     </message>
@@ -859,12 +874,7 @@
         <translation>Betrag:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>Gebühr:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>&quot;Coin Control&quot;-Auswahl</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>&quot;Dust&quot;</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>Gebühr:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>Abzüglich Gebühr:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>Listenansicht</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 gesperrt)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>Bestätigt</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>Adresse kopieren</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>Wechselgeld kopieren</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 gesperrt)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>ja</translation>
     </message>
@@ -1031,8 +1046,8 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>Kann um +/- %1 duff(s) pro Eingabe variieren.</translation>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
+        <translation>Kann um +/- %1 tnSOOM(s) pro Eingabe variieren.</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -1099,16 +1114,16 @@
         <translation>Zahlungsadresse bearbeiten</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige Soom-Adresse.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>Die eingegebene Adresse &quot;%1&quot; befindet sich bereits im Adressbuch.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>Wallet konnte nicht entsperrt werden.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>Erzeugung eines neuen Schlüssels fehlgeschlagen.</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>Alias-Namen starten</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>Gateway-Start bestätigen</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>Sind Sie sicher, daß Sie Gateway %1 starten möchten?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>Start aller Gateways bestätigen</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>Sind Sie sicher, daß Sie ALLE Gateways starten möchten?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>Kommando zur Zeit nicht verfügbar</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>Solange die Liste der Gateways nicht synchronisiert ist können Sie dieses Kommando nicht benutzen.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1380,7 +1395,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
         <translation>Sprache festlegen, z.B. &quot;de_DE&quot; (Standard: Systemstandard)</translation>
     </message>
     <message>
@@ -1442,13 +1457,13 @@
         <translation>Ein benutzerdefiniertes Datenverzeichnis verwenden:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>Fehler: Angegebenes Datenverzeichnis &quot;%1&quot; kann nicht angelegt werden.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>Formular</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>Kontostand möglicherweise falsch, da die neuesten Transaktionen ggf. noch nicht sichtbar sind. Der Kontostand wird automatisch aktualisiert, sobald Ihre Wallet die Synchronisation mit dem Soom Netzwerk abgeschlossen hat.</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>Fortschritt</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>Fortschritt pro Stunde</translation>
     </message>
@@ -1575,12 +1585,12 @@
         <translation>Zahlungsanforderungsdatei auswählen</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1683,18 +1693,18 @@
         <translation>Minimiert die Anwendung anstatt sie zu beenden wenn das Fenster geschlossen wird. Wenn dies aktiviert ist, müssen Sie das Programm über &quot;Beenden&quot; im Menü schließen.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>Legt die Sprache der Benutzeroberfläche fest. Diese Einstellung wird erst nach einem Neustart von %1 aktiv.</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Externe URLs (z.B. ein Block-Explorer), die im Kontextmenü des Transaktionsverlaufs eingefügt werden. In der URL wird %s durch den Transaktionshash ersetzt. Bei Angabe mehrerer URLs müssen diese durch &quot;|&quot; voneinander getrennt werden.</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>Erweiterte Wallet-Optionen</translation>
     </message>
@@ -1815,6 +1825,16 @@
         <translation>Beim Schließen m&amp;inimieren</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>Popups für neue Transaktionen anzeigen.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>&amp;Transaktions-Popup anzeigen</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>Anzei&amp;ge</translation>
@@ -1837,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Design/Thema der Benutzeroberfläche:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Einheit der Beträge:</translation>
     </message>
@@ -1878,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>A&amp;bbrechen</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>Standard</translation>
     </message>
@@ -1893,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>keine</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>Zurücksetzen der Konfiguration bestätigen</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>Clientneustart nötig, um die Änderungen zu aktivieren.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>Client wird beendet, wollen Sie fortfahren?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>Diese Änderung würde einen Clientneustart benötigen.</translation>
     </message>
@@ -1932,93 +1952,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Formular</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>Die angezeigten Informationen sind möglicherweise nicht mehr aktuell. Ihre Wallet wird automatisch synchronisiert, nachdem eine Verbindung zum Soom-Netzwerk hergestellt wurde. Dieser Prozess ist jedoch derzeit noch nicht abgeschlossen.</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>Verfügbar</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>Ihr aktuell verfügbarer Kontostand</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation>Ausstehend</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Betrag aus unbestätigten Transaktionen, der noch nicht im aktuell verfügbaren Kontostand enthalten ist</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>Unreif</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Erarbeiteter Betrag der noch nicht gereift ist</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>Kontostände</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>Unbestätigte Transaktionen  zu beobachteten Adressen</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>Erarbeiteter Betrag der beobachteten Adressen der noch nicht gereift ist</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>Gesamtbetrag</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>Aktueller Gesamtbetrag aus obigen Kategorien</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>Kontostand der beobachteten Adressen</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>Beobachtet:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>Aktueller Kontostand der beobachteten Adressen</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>Verfügbar:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>Letzte Transaktionen</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>nicht synchron</translation>
@@ -2181,9 +2203,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
@@ -2204,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soom-Adresse eingeben (z.B. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1 T</translation>
     </message>
@@ -2220,7 +2242,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1  S</translation>
     </message>
@@ -2284,17 +2306,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2347,7 +2369,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation type="unfinished"/>
     </message>
@@ -2421,7 +2443,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>k.A.</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>Anzahl Verbindungen</translation>
     </message>
@@ -2528,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Konsole zurücksetzen</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Netzwerkauslastung</translation>
     </message>
@@ -2566,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Gegenstelle auswählen, um Detailinformationen zu sehen.</translation>
     </message>
@@ -2607,13 +2629,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Dateipfad des Wallet</translation>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>Benutzerprogramm</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>Datenverzeichnis</translation>
     </message>
@@ -2628,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Fontgröße erhöhen</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>Dienste</translation>
     </message>
@@ -2753,7 +2775,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: Blockkettenindex aus aktuellen Dateien blk000??.dat wieder aufbauen</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>&amp;Trennen</translation>
     </message>
@@ -2786,7 +2808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1 &amp;Jahr</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>Knoten wieder erla&amp;uben</translation>
     </message>
@@ -2826,7 +2848,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Netzwerk-Aktivität deaktiviert</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -2891,7 +2913,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Eine der bereits verwendeten Empfangsadressen wiederverwenden.&lt;br&gt; Addressen wiederzuverwenden birgt Sicherheits- und Datenschutzrisiken.&lt;br&gt; Außer zum Neuerstellen einer bereits erzeugten Zahlungsanforderung sollten Sie dies nicht nutzen.</translation>
     </message>
@@ -2901,7 +2923,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Vorhandene Empfangsadresse &amp;wiederverwenden (nicht empfohlen)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Eine optionale Nachricht, die an die Zahlungsanforderung angehängt wird. Sie wird angezeigt, wenn die Anforderung geöffnet wird. Hinweis: Diese Nachricht wird nicht mit der Zahlung über das Soom-Netzwerk gesendet.</translation>
     </message>
@@ -2911,44 +2933,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Nachricht</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>Eine optionale Bezeichnung, die der neuen Empfangsadresse zugeordnet wird.</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Eine optionale Nachricht, die an die Zahlungsanforderung angehängt wird. Sie wird angezeigt, wenn die Anforderung geöffnet wird.&lt;br&gt; Hinweis: Diese Nachricht wird nicht mit der Zahlung über das Soom-Netzwerk gesendet.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Verwenden Sie dieses Formular, um Zahlungen anzufordern. Alle Felder sind &lt;b&gt;optional&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>&amp;Bezeichnung</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>Ein optional angeforderte Betrag. Lassen Sie dieses Feld leer oder setzen Sie es auf 0, um keinen spezifischen Betrag anzufordern.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>&amp;Betrag</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Zahlung anfordern</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>Alle Formularfelder zurücksetzen.</translation>
     </message>
@@ -2958,17 +2980,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>InstantSend-Zahlung anfordern</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>Zahlungen anfordern (erzeugt QR-Codes und &quot;soom:&quot;-URIs)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2978,7 +3000,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Verlauf der angeforderten Zahlungen</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Ausgewählte Zahlungsanforderungen anzeigen (entspricht einem Doppelklick auf einen Eintrag)</translation>
     </message>
@@ -2988,7 +3010,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Anzeigen</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>Ausgewählte Einträge aus der Liste entfernen</translation>
     </message>
@@ -2998,7 +3020,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>Kopiere URI</translation>
     </message>
@@ -3026,7 +3048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR-Code</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>&amp;URI kopieren</translation>
     </message>
@@ -3041,7 +3063,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Grafik &amp;speichern...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation type="unfinished"/>
     </message>
@@ -3051,12 +3073,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Zahlung anfordern an %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>Zahlungsinformationen</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3148,12 +3170,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>Soom überweisen</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>&quot;Coin Control&quot;-Funktionen</translation>
     </message>
@@ -3168,12 +3190,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>automatisch ausgewählt</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>Unzureichender Kontostand!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>Anzahl:</translation>
     </message>
@@ -3208,7 +3230,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Wechselgeld:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Wenn dies aktivert, und die Wechselgeld-Adresse leer oder ungültig ist, wird das Wechselgeld einer neu erzeugten Adresse gutgeschrieben.</translation>
     </message>
@@ -3218,17 +3240,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Benutzerdefinierte Wechselgeld-Adresse</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>Transaktionsgebühr</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>Auswählen...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation type="unfinished"/>
     </message>
@@ -3243,12 +3265,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Gebühreneinstellungen reduzieren</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>InstantSend</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Wenn die benutzerdefinierten Gebühren auf 1000 tnsoom gesetzt sind und eine Transaktion hat nur 250 Bytes, dann kostet &quot;pro Kilobyte&quot; nur 250 tnsoom Gebühren,&lt;br/&gt; während &quot;mindestens&quot; 1000 tnsoom kostet. Transaktionen größer als 1 Kilobyte werden immer pro Kilobyte bezahlt.</translation>
     </message>
@@ -3264,7 +3281,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Nur die minimalen Gebühren zu zahlen ist völlig ausreichend so lange in einem neuen Block der Blockkette noch genug Platz für neue Transaktionen ist.&lt;br&gt; Bitte beachten Sie dass wenn dies in der Zukunft nicht mehr der Fall sein sollte Ihre Transaktion eventuell niemals in einen neuen Block aufgenommen werden wird, also niemals bestätigt wird.</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>Bestätigungszeit:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>InstantSend</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>pro Kilobyte</translation>
     </message>
@@ -3294,27 +3321,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Benutzerdefiniert:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(&quot;Intelligente&quot; Gebühren sind noch nicht initialisiert. Dies dauert normalerweise ein paar Blöcke...)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>Bestätigungszeit:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>schnell</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>Überweisung bestätigen</translation>
     </message>
@@ -3324,7 +3346,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Überweisen</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>Alle Formularfelder zurücksetzen.</translation>
     </message>
@@ -3344,12 +3366,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Empfänger &amp;hinzufügen</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>Kontostand:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>Anzahl kopieren</translation>
     </message>
@@ -3399,7 +3421,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>und InstantSend</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3432,12 +3454,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Überweisung bestätigen</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -3473,9 +3495,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Die Transaktion wurde abgelehnt!
-Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden. Beispielsweise weil Sie eine Kopie ihrer wallet.dat nutzten und die Soom dort ausgegeben haben. Diese Ausgaben sind in diesem Fall in der derzeit aktiven Wallet nicht vermerkt.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
@@ -3488,7 +3509,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Zahlungsanforderung abgelaufen</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
@@ -3498,12 +3519,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Nur die minimalen Gebühren von %1 zahlen</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>Geschätzter Beginn der Bestätigung in %n Block.</numerusform><numerusform>Geschätzter Beginn der Bestätigung in %n Blöcken.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>Warnung: ungültige Soom-Adresse</translation>
     </message>
@@ -3531,37 +3552,39 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>Dies ist eine normale Überweisung.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>E&amp;mpfänger</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>Soom-Adresse, an die überwiesen werden soll</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>Wählen Sie die Adresse aus</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>Adresse einfügen</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>Bereits verwendete Adresse auswählen</translation>
     </message>
@@ -3571,7 +3594,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>Adresse aus der Zwischenablage einfügen</translation>
     </message>
@@ -3581,34 +3604,36 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>Diesen Eintrag entfernen</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>&amp;Bezeichnung</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Adressbezeichnung eingeben, die dann zusammen mit der Adresse der Liste bereits verwendeter Adressen hinzugefügt wird.</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>Betra&amp;g</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>Die Gebühr wird von der versendeten  Summe abgezogen, daher wird der Empfänger einen  niedrigeren Betrag erhalten, als Sie im Feld &quot;Betrag&quot; angegeben haben. Bei mehreren Empfängern wird die Gebühre gleichmäßig auf alle Empfänger aufgeteilt.</translation>
     </message>
@@ -3618,17 +3643,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Geb&amp;ühren vom Betrag abziehen</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>Eine an die &quot;soom:&quot;-URI angefügte Nachricht, die zusammen mit der Transaktion gespeichert wird. Hinweis: Diese Nachricht wird nicht über das Soom-Netzwerk gesendet.</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>Dies ist eine unverifizierte Zahlungsanforderung.</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>Dies ist eine verifizierte Zahlungsanforderung.</translation>
     </message>
@@ -3639,18 +3664,18 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Empfänger</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>Nachricht</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>Memo</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Adressbezeichnung eingeben (diese wird zusammen mit der Adresse dem Adressbuch hinzugefügt)</translation>
     </message>
@@ -3658,7 +3683,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
@@ -3700,19 +3725,19 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Soom-Adresse, mit der die Nachricht signiert werden soll</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>Bereits verwendete Adresse auswählen</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>Adresse aus der Zwischenablage einfügen</translation>
     </message>
@@ -3732,12 +3757,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Signatur</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Aktuelle Signatur in die Zwischenablage kopieren</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>Die Nachricht signieren, um den Besitz dieser Soom-Adresse zu belegen</translation>
     </message>
@@ -3747,18 +3772,18 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>&amp;Nachricht signieren</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>Alle &quot;Nachricht signieren&quot;-Felder zurücksetzen</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>&amp;Zurücksetzen</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>Nachricht &amp;verifizieren</translation>
     </message>
@@ -3773,7 +3798,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Soom-Adresse, mit der die Nachricht signiert worden ist</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>Die Nachricht verifizieren, um sicherzustellen, dass diese mit der angegebenen Soom-Adresse signiert wurde</translation>
     </message>
@@ -3783,7 +3808,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>&amp;Nachricht verifizieren</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>Alle &quot;Nachricht verifizieren&quot;-Felder zurücksetzen</translation>
     </message>
@@ -3793,7 +3818,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Auf &quot;Nachricht signieren&quot; klicken, um die Signatur zu erzeugen</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>Die eingegebene Adresse ist ungültig.</translation>
@@ -3859,17 +3884,18 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Nachricht verifiziert.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>Wählen Sie die Adresse aus</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>Adresse einfügen</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>Signatur einfügen</translation>
     </message>
@@ -4161,16 +4187,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>Transaktionsdetails</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation type="unfinished"/>
     </message>
@@ -4563,7 +4585,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>E&amp;xportieren</translation>
     </message>
@@ -4573,12 +4595,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Daten der aktuellen Ansicht in eine Datei exportieren</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>Ausgewählter Betrag:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>Wallet sichern</translation>
     </message>
@@ -4611,17 +4633,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>An die angegebene Adresse binden und immer abhören. Für IPv6 &quot;[Host]:Port&quot;-Schreibweise verwenden</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
-        <translation>Das Programm kann das Daten-Verzeichnis %s nicht als &quot;in Verwendung&quot; markieren. Wahrscheinlich läuft das Programm bereits.</translation>
+        <translation>Das Programm kann das Daten-Verzeichnis %s nicht als &quot;in Verwendung&quot; markieren. Wahrscheinlich läuft das %s bereits.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>Fehler: Abhören nach eingehenden Verbindungen fehlgeschlagen (Fehler %s)</translation>
     </message>
@@ -4641,17 +4663,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Befehl ausführen wenn der beste Block wechselt (%s im Befehl wird durch den Hash des Blocks ersetzt)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation>Name, um eine URL für den KeyPass-Eintrag zu erzeugen, der die Wallet-Passphrase speichert.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>Abfrage der Peer-Adressen über DNS, falls es wenige Adressen gibt (Standard: 1, außer wenn -connect/-noconnect konfiguriert wurde)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>Maximale Größe in Byte von Transaktionen hoher Priorität/mit niedrigen Gebühren festlegen (Standard: %d)</translation>
     </message>
@@ -4661,37 +4683,42 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Maximale Anzahl an Skript-Verifizierungs-Threads festlegen (%u bis %d, 0 = automatisch, &lt;0 = so viele Kerne frei lassen, Standard: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Dies ist eine Vorab-Testversion - Verwendung auf eigene Gefahr - nicht für Mining- oder Handelsanwendungen nutzen!</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>%s den Prozess %s auf dem Computer nicht an sich binden. Wahrscheinlich läuft das Programm bereits.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation>Nutze hierarchisch-deterministische Schlüssel-Generierung (HD) gemäß BIP39/BIP44. Nur gültig bei erstmaligem Start der Wallet.</translation>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Warnung: Das Netzwerk scheint nicht vollständig übereinzustimmen! Einige Miner scheinen Probleme zu haben.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>Warnung: Wir scheinen nicht vollständig mit unseren Gegenstellen übereinzustimmen! Sie oder die anderen Knoten müssen unter Umständen ihre Client-Software aktualisieren.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>Warnung: wallet beschädigt, Datenrettung erfolgreich! Original %s wurde als %s in %s gespeichert. Falls ihr Kontostand oder Transaktionen nicht korrekt sind, sollten Sie dem vorangegangenen Zustand durch die Datensicherung wiederherstellen.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>Es muss ein Gateway-Geheimschlüssel (gatewayprivkey) in der Konfiguration angegeben werden. Für weitere Informationen siehe Dokumentation.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4701,12 +4728,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Kommandozeilen- und JSON-RPC-Befehle annehmen</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
         <translation>Eingehende Verbindungen annehmen (Standard: 1, wenn nicht -proxy oder -connect/-noconnect)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Mit dem angegebenen Knoten verbinden und versuchen die Verbindung aufrecht zu erhalten</translation>
     </message>
@@ -4716,7 +4743,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Erlaube DNS-Abfragen für -addnode, -seednode und -connect</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>Blockerzeugungsoptionen:</translation>
     </message>
@@ -4731,17 +4758,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Kann Adresse in -%s nicht auflösen: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>Standardadresse kann nicht geschrieben werden</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
-        <translation>Mit nur dem oder den angegebenen Knoten verbinden</translation>
+        <translation>Mit nur dem oder den angegebenen Knoten verbinden; -noconnect oder -connect = 0 alleine, um automatische Verbindungen zu deaktivieren</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Mit dem angegebenen Knoten verbinden, um Adressen von Gegenstellen abzufragen, danach trennen</translation>
     </message>
@@ -4751,12 +4778,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Verbindungsoptionen:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>Beschädigte Blockdatenbank erkannt</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>Debugging-/Testoptionen:</translation>
     </message>
@@ -4786,12 +4813,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Fehler beim Initialisieren der Wallet-Datenbankumgebung %s!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>Fehler beim Laden der Blockdatenbank</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>Fehler beim Laden von %s</translation>
     </message>
@@ -4801,7 +4828,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Fehler beim Laden von %s: Wallet beschädigt</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>Fehler beim Öffnen der Blockdatenbank</translation>
     </message>
@@ -4826,7 +4853,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Fehler, es konnte kein Port abgehört werden. Wenn dies so gewünscht wird -listen=0 verwenden.</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = Transaktions-Metadaten wie z.B. Kontoinhaber behalten, 2 = Metadaten verwerfen)</translation>
     </message>
@@ -4841,27 +4868,27 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Diese legt die Transaktionsgebühr fest für den Fall, daß eine automatische Gebührenabschätzung nicht möglich ist.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation>Warnung: -maxtxfee ist auf einen sehr hohen Wert gesetzt! Diese Gebühr könnte schon beim Senden einer einzelnen Transaktion fällig werden.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Dies ist die Gebühr die beim Senden einer Transaktion fällig wird.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>Höhe der Transaktionsgebühr (berechnet in %s/kB Transaktionsgröße) die benutzt wird, wenn die Gebührenabschätzung auf Grund unzureichender Daten nicht automatisch berechnet werden kann (Standard: %s)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation>Akzeptiere  weitergeleitete Transaktionen von erlaubten Peers , auch wenn das Weiterleiten von Transaktionen ausgeschaltet ist (Standard: %d)</translation>
     </message>
@@ -4881,7 +4908,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Für JSON-RPC Verbindugen an die angegebene Adresse binden. Für IPv6 &quot;[Host]:Port&quot;-Schreibweise verwenden. Diese Option kann mehrmals eingetragen werden. (Standard: an alle verbinden)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Neue Dateien mit den System-Standardberechtigungen (anstatt 077) erzeugen (nur bei deaktiviertem Wallet möglich)</translation>
     </message>
@@ -4901,7 +4928,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Fehler beim Laden von %s: Sie können HD nicht bei einer bestehenden nicht-HD Wallet aktivieren</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>Legt fest, wie gründlich die Blockverifikation von -checkblocks ist (0-4, Standard: %u)</translation>
     </message>
@@ -4931,7 +4958,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Verschlüsseln Sie ihre Wallet und löschen Sie alle unverschlüsselten Sicherungen nachdem Sie sichergestellt haben, dass diese funktioniert!</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>Maximale Datengröße für von uns weitergegebenen Übermittlungstransaktionen (Standard: %u)</translation>
     </message>
@@ -4946,27 +4973,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Debugging-Informationen ausgeben (Standard: %u, &lt;category&gt; anzugeben ist optional)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>Legt ein Prozessor-/CPU-Kernlimit fest, wenn CPU-Mining aktiviert ist (-1 = unbegrenzt, Standard: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
-        <translation>Anzahl Bestätigungen  für eine erfolgreich gesperrte Transaktion (%u-%u, voreingestellt: %u)</translation>
+        <translation>Anzahl Bestätigungen für eine erfolgreich gesperrte Transaktion (%u-%u, voreingestellt: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>Dieses Produkt enthält vom OpenSSL-Projekt entwickelte Software zur Benutzung des OpenSSL Toolkit %s, kryptographische Software geschrieben von Eric Young und UPnP Software geschrieben von Thomas Bernard.</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation>Nutze hierarchisch-deterministische Schlüssel-Generierung (HD) gemäß BIP39/BIP44. Nur gültig bei erstmaligem Start der Wallet.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Separaten SOCKS5-Proxy verwenden, um Gegenstellen über versteckte Tor-Dienste zu erreichen (Standard: %s)</translation>
     </message>
@@ -4976,19 +4988,19 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Benutzerdefinierter Gedächtniscode für HD Wallet (BIP39). Nur gültig bei erstmaligem Start der Wallet (Standard: Zufallsgeneriert).</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation>Benutzerdefinierter Gedächtniscode für HD Wallet (BIP39). Nur gültig bei erstmaligem Start der Wallet (Standard: Leeres Zeichen).</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation>Benutzerdefinierter Seed für HD-Wallet (sollte im Hex-Format sein). Nur gültig bei erstmaligem Start der Wallet (Standard: Zufallsgeneriert).</translation>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation>Warnung: Ungültiger Parameter -walletbackupsdir. Pfad muss existieren! Nutze Standardpfad.</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
-        <translation>Erlaube Gegenstellen mit dieser Netzmaske oder IP-Adresse. Diese Option kann mehrmals eingetragen werden.</translation>
+        <translation>Erlaube Gegenstellen mit dieser Netzmaske(z. B. 1.2.3.0/24) oder IP-Adresse(z. B. 1.2.3.4). Diese Option kann mehrmals eingetragen werden.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4996,27 +5008,27 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Erlaubte Gegenstellen können nicht wegen DoS ausgeschlossen werden und ihre Transaktionen werden immer weitergeleitet, sogar wenn sie schon im Memory-Pool sind. Dies ist z.B. für Gateways nützlich.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation>Sie müssen die Datenbank mit Hilfe von -reindex-chainstate neu aufbauen, um -txindex zu verändern</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(Standard: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>Akzeptiere öffentliche REST-Anforderungen (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>Peer-Adressen immer über DNS abfragen (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation>Chain Auswahloptionen:</translation>
     </message>
@@ -5031,37 +5043,22 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Mit KeePassHttp auf &lt;port&gt; verbinden (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>Copyright (C) 2009-2018 Die &quot;Bitcoin Core&quot;-Entwickler</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>Copyright (C) 2014-2018 Die &quot;Dash Core&quot;-Entwickler</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>Copyright (C) 2017-2018 Die &quot;Soom Core&quot;-Entwickler</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Gateway-Modus aktivieren. (0=aus, 1=an; Voreinstellung: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation>Fehler beim Laden von %s: Sie können HD nicht bei einer bestehenden HD Wallet deaktivieren</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>Fehler beim Laden von %s: Wallet benötigt neuere Version von %s</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation>Cache für erfüllte Anfragen konnte nicht geladen werden aus</translation>
     </message>
@@ -5077,11 +5074,6 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>Coins erzeugen (Standard: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>Wieviele Blöcke beim Starten geprüft werden sollen (Standard: %u, 0 = alle)</translation>
     </message>
@@ -5126,17 +5118,72 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Ungültige Adresse in -proxy: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>Ungültiger Betrag für -paytxfee=&lt;amount&gt;: &apos;%s&apos; (Betrag muss mindestens %s sein)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Ungültiger Betrag für -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>Maximale Gesamtgebühren (in %s) für eine einzelne Transaktion. Sind diese Gebühren zu gering könnten große Transaktionen evtl. abgebrochen werden (Standard: %s)</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Bitte überprüfen Sie die Datums- und Uhrzeiteinstellungen ihres Computers, da %s ansonsten nicht ordnungsgemäß funktionieren wird!</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation>Speicherbedarf durch &quot;pruning&quot; (Abschneiden/Löschen von alten Blocks) verringern. Dieser Modus ist mit den Optionen -txindex und -rescan nicht kombinierbar.. Warnung: wenn man diese Option wieder abschaltet muß man die gesamte Blockchain erneut downloaden. (Standard: 0 = Pruning deaktiviert, &gt;%u = Maximalgröße für Block-Dateien)</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Dieses Produkt enthält vom OpenSSL-Projekt entwickelte Software zur Benutzung des OpenSSL Toolkit %s, kryptographische Software geschrieben von Eric Young und UPnP Software geschrieben von Thomas Bernard.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation>Benutzernamen und gehashtes Passwort für JSON-RPC-Verbindungen. Das Feld &lt;userpw&gt; hat das Format &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Ein kanonisches Python-Skript ist in share / rpcuser enthalten. Der Client stellt dann normalerweise eine Verbindung her, wobei das Argumentpaar rpcuser = &lt;USERNAME&gt; / rpcpassword = &lt;PASSWORD&gt; verwendet wird. Diese Option kann mehrmals angegeben werden.</translation>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Schlüssel-Pool aufgebraucht, bitte rufen Sie zunächst &quot;keypoolrefill&quot; auf</translation>
     </message>
@@ -5211,6 +5258,11 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Debugausgaben einen Zeitstempel voranstellen (Standard: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation>Zustand der Chain und des Block-Index aus blk*.dat Dateien auf Datenträger wiederherstellen</translation>
@@ -5236,12 +5288,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Größe des Schlüsselpools festlegen auf &lt;n&gt; (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>Minimale Blockgröße in Bytes festlegen (Standard: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>Maximale Anzahl an Threads zur Verarbeitung von RPC-Anfragen festlegen (Standard: %d)</translation>
     </message>
@@ -5272,6 +5319,11 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
         <translation>Synchronisiere Blockchain...</translation>
     </message>
@@ -5291,7 +5343,22 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Synchronisiere Gateways...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>The source code is available from %s.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Schwellenwert, um Verbindungen zu sich nicht konform verhaltenden Gegenstellen zu beenden (Standard: %u)</translation>
     </message>
@@ -5306,7 +5373,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Tor Kontroll-Port falls &quot;Onion-Listening&quot; aktiviert ist (Standard: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>Interner HTTP-Server konnte nicht gestartet werden. Details finden Sie in debug.log</translation>
     </message>
@@ -5352,21 +5429,26 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation>Die Wallet musste neu geschrieben werden. Bitte das %s neu starten um den Vorgang abzuschließen</translation>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>Gateway-Geheimschlüssel (gatewayprivkey) ist ungültig. Siehe Dokumentation. </translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>gateway.conf konnte nicht analysiert werden</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ungültige Netzmaske für -whitelist angegeben: &apos;%s&apos;</translation>
     </message>
@@ -5376,7 +5458,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Ungültige Portnummer in gateway.conf</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation>&quot;KeePassHttp id&quot; für bestehende verknüpfte Verbindungen.</translation>
     </message>
@@ -5391,7 +5473,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Maximal &lt;n&gt; (noch) nicht einsortierte Zahlungen zwischenspeichern (Voreinstellung: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Eigene IP-Adresse erkennen (Standard: 1, wenn -listen aktiv ist und nicht -externalip)</translation>
     </message>
@@ -5421,7 +5503,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Befehl ausführen wenn eine Wallet-Transaktion erfolgreich gesperrt wurde (%s im Befehl wird durch die TxID ersetzt)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>Datensicherung fehlgeschlagen, da diese Datei bereits existiert. Dies kann vorkommen, wenn das Wallet innerhalb von 60 Sekunden neu gestartet wurde. Sie können ohne Probleme weiterarbeiten, falls das so von Ihnen gewollt war.</translation>
     </message>
@@ -5476,17 +5558,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Maximal &lt;n&gt; Verbindungen zu Gegenstellen aufrechterhalten (temporäre Dienstverbindungen ausgenommen) (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>Maximale Gesamtgebühren (in %s) für eine einzelne Transaktion. Sind diese Gebühren zu gering könnten große Transaktionen evtl. abgebrochen werden (Standard: %s)</translation>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>Bitte überprüfen Sie die Datums- und Uhrzeiteinstellungen ihres Computers, da Soom Core ansonsten nicht ordnungsgemäß funktionieren wird!</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation>Abschneiden (&quot;prune&quot;) ist auf einen Wert unterhalb des Minimums von %d MiB eingestellt. Stellen Sie einen höheren Wert ein.</translation>
     </message>
@@ -5501,12 +5573,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Zugangsdaten für jede Proxy-Verbindung zufällig generieren. Diese ermöglicht Tors &quot;stream isolation&quot; Feature (Standard: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation>Speicherbedarf durch &quot;pruning&quot; (Abschneiden/Löschen von alten Blocks) verringern. Dieser Modus ist mit den Optionen -txindex und -rescan nicht kombinierbar.. Warnung: wenn man diese Option wieder abschaltet muß man die gesamte Blockchain erneut downloaden. (Standard: 0 = Pruning deaktiviert, &gt;%u = Maximalgröße für Block-Dateien)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>Im &quot;pruned&quot;-Modus ist ein Überprüfen der Blockchain nicht möglich. Sie müssen dafür die Option -reindex benutzen, welche die gesamte Blockchain erneut downloaden wird.</translation>
     </message>
@@ -5531,17 +5598,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Nach Abzug der Transaktionsgebühren ist die Transaktions-Summe zu klein zum Senden.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation>Die Gesamtlänge des Versions-Namens (%i) überschreitet die erlaubte Maximallänge (%i). Bitte verringern Sie Anzahl oder Größe der Eingaben für die Kommandozeilenoption -uacomments.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation>Versucht die Menge des Ausgehenden Datenverkehrs unterhalb der angegebenen Maximalmenge (in MiB pro Tag) zu halten, 0 = keine Maximalmenge (Standard: %d)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Parameter -socks wird nicht mehr unterstützt. Setzen der SOCKS-Version ist nicht mehr möglich, es werden nur noch SOCKS5 Proxies unterstützt.</translation>
     </message>
@@ -5556,32 +5623,52 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>UPnP verwenden, um eine Portweiterleitung einzurichten (Standard: 1 wenn -listen=1 und -proxy gesetzt ist)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation>Benutzerdefinierter Gedächtniscode für HD Wallet (BIP39). Nur gültig bei erstmaligem Start der Wallet (Standard: Leeres Zeichen).</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation>Benutzernamen und gehashtes Passwort für JSON-RPC-Verbindungen. Das Feld &lt;userpw&gt; hat das Format &lt;Benutzname&gt;:&lt;Salt&gt;$&lt;hash&gt;. Ein Python-Programm hierfür befindet sich im Ordner &quot;share/rpcuser&quot;. Diese Option kann mehrmals angegeben werden.</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation>Das Wallet ist abgesperrt, das Erzeugen neuer Schlüssel ist nicht möglich! Automatische Datensicherungen und Mixing sind deaktiviert. Bitte entsperren Sie Ihre Wallet  um dies zu ermöglichen.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation>Warning: es wird eine unbekannt Block-Version gemined. Es werden unbekannte/ungültige Blockregeln angewandt.</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation>Sie müssen die Datenbank mit Hilfe von -reindex neu aufbauen, um zurück in den nicht abgeschnittenen/pruned Modus zu gehen. Dies wird die gesamte Blockchain downloaden</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d kann nur im Standardnetz benutzt werden)</translation>
     </message>
@@ -5606,7 +5693,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>&lt;Kategorie&gt; kann sein:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation>Kommentar an &quot;Uder-Agent&quot; Text anhängen</translation>
     </message>
@@ -5621,7 +5713,27 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Automatisch versteckte Tor-Dienste erzeugen (Standard: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>Veröffentlichung des Blockhash in &lt;Adresse&gt; ermöglichen </translation>
     </message>
@@ -5696,7 +5808,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation>Blöcke aus externer Datei blk000??.dat importieren</translation>
     </message>
@@ -5706,12 +5818,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>InstantSend Optionen:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Ungültiger Betrag für -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation>Transaktionen im &quot;Mempool&quot; unterhalb von &lt;n&gt; halten (Standard: %u)</translation>
     </message>
@@ -5751,12 +5868,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Aktiviere die Übertragung von Transaktionen</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>Gateway Optionen:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation>Minimale Anzahl Bytes pro SigOp in Transaktionen, die weitergeleitet und gemined werden (Standard: %u)</translation>
     </message>
@@ -5786,7 +5903,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Passwort für JSON-RPC-Verbindungen</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>Version anzeigen und beenden</translation>
     </message>
@@ -5811,12 +5928,12 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Blockkette erneut nach fehlenden Wallet-Transaktionen durchsuchen</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation>Warnung: unbekannte neue Regeln wurden aktiviert (versionbit %i)</translation>
     </message>
@@ -5831,12 +5948,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Arbeite im Block-Only-Modus (Standard: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ Benachrichtigung-Optionen:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>RPC-Serveroptionen:</translation>
     </message>
@@ -5886,7 +6008,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Maximale Blockgröße in Byte festlegen (Standard: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>Privaten Gateway-Schlüssel setzen</translation>
     </message>
@@ -5921,7 +6043,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Die eigene öffentliche Adresse angeben</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>Synchronisation steht bevor...</translation>
     </message>
@@ -5931,22 +6053,17 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Synchronisiere Gateway-Zahlungen...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation>Der Transaktionsbetrag ist zu niedrig, um die Transaktionsgebühren zu bezahlen</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>Dieser Hilfetext</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>Dies ist experimentelle Software.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>Transaktionsbetrag zu niedrig</translation>
     </message>
@@ -5956,7 +6073,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Transaktionsbeträge müssen positiv sein</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>Transaktion ist für die Gebührenrichtlinie zu groß</translation>
     </message>
@@ -5971,7 +6088,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Kann auf diesem Computer nicht an %s binden (von bind zurückgegebener Fehler: %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>Die Spork-Nachricht konnte nicht signiert werden. Wurde der Key falsch gesetzt?</translation>
     </message>
@@ -6001,7 +6118,7 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Wallet %s liegt außerhalb des Datenverzeichnisses %s</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>Wallet-Optionen:</translation>
     </message>
@@ -6016,14 +6133,14 @@ Dies kann passieren, wenn einige Soom aus ihrer Wallet bereits ausgegeben wurden
         <translation>Warnung</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Lösche alle Transaktionen aus Wallet...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
-        <translation>%s beschädigt, Datenrettung fehlgeschlagen</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

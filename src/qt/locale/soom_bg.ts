@@ -58,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+103"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>Затвори</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>Това са вашите Soom адреси за получаване на плащания. Препоръчително е да използвате нов адрес за всяка нова транзакция. </translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Копирай адрес</translation>
     </message>
@@ -133,7 +133,7 @@
         <translation>Възникна грешка при опита за запазване на списъка с адресите към %1.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -219,27 +219,27 @@
         <translation>Въведете старата парола и нова парола за портфейла.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>Потвърдете на шифрирането на портфейла</translation>
     </message>
@@ -254,76 +254,76 @@
         <translation>Наистина ли желаете да шифрирате портфейла си?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>Портфейлът е шифриран</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1 ще се затвори за да завърши процеса на криптиране. Запомнете, това криптира вашият портфейл, но не може да защити вашите Soom от вируси заразили  компютъра Ви.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
-        <translation type="unfinished"/>
+        <translation>ВАЖНО: Всички стари запазвания, които сте направили на Вашият портфейл трябва да замените с запазване на новополучения, шифриран портфейл. От съображения за сигурност, предишните запазвания на нешифрирани портфейли ще станат неизползваеми веднага, щом започнете да използвате новият, шифриран портфейл.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>ВАЖНО: Всички стари запазвания, които сте направили на Вашият портфейл трябва да замените с запазване на новополучения, шифриран портфейл. От съображения за сигурност, предишните запазвания на нешифрирани портфейли ще станат неизползваеми веднага, щом започнете да използвате новият, шифриран портфейл.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>Шифрирането беше неуспешно</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Шифрирането на портфейла беше неуспешно, поради софтуерен проблем. Портфейлът не е шифриран.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>Паролите не съвпадат</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>Неуспешно отключване на портфейла</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>Паролата въведена за дешифриране на портфейла е грешна.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>Дешифрирането на портфейла беше неуспешно</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Паролата на портфейла беше променена успешно.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Внимание: Caps Lock (главни букви) е включен.</translation>
@@ -345,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+546"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -353,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>Възникна фатална грешка. Soom Core не може да продължи безопасно и ще се изключи.</translation>
     </message>
@@ -368,7 +368,7 @@
         <translation>Възел</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>&amp;Баланс</translation>
     </message>
@@ -528,7 +528,12 @@
         <translation>Подпиши съобщения с твоите Soom адреси за да докажеш че ги притежаваш</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>Използвайте тестовата мрежа</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>Проверете съобщенията, за да сте сигурни че са подписани с определен Soom адрес</translation>
     </message>
@@ -668,17 +673,17 @@
         <translation>&amp;Помощ</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+21"/>
         <source>Tabs toolbar</source>
         <translation>Лента с инструменти</translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 клиент</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
         <translation><numerusform>%n активни връзки към Soom мрежата</numerusform><numerusform>%n активни връзки към Soom мрежата</numerusform></translation>
     </message>
@@ -768,12 +773,22 @@
         <translation>Информация</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>Има %1 нови транзакции.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>Нова транзакция</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>Дата: %1</translation>
     </message>
@@ -808,7 +823,7 @@
         <translation>Входяща транзакция</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD ключ генератора е &lt;b&gt;включен&lt;/b&gt;</translation>
     </message>
@@ -831,7 +846,7 @@
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+86"/>
+        <location filename="../clientmodel.cpp" line="+85"/>
         <source>Total: %1 (Enabled: %2)</source>
         <translation>Общо: %1 (Включени: %2)</translation>
     </message>
@@ -859,12 +874,7 @@
         <translation>Сума:</translation>
     </message>
     <message>
-        <location line="+80"/>
-        <source>Fee:</source>
-        <translation>Такса:</translation>
-    </message>
-    <message>
-        <location line="-188"/>
+        <location line="-108"/>
         <source>Coin Selection</source>
         <translation>Избор на монети</translation>
     </message>
@@ -874,7 +884,12 @@
         <translation>Незначителен остатък:</translation>
     </message>
     <message>
-        <location line="+93"/>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>Такса:</translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>After Fee:</source>
         <translation>След таксата:</translation>
     </message>
@@ -904,7 +919,7 @@
         <translation>Режим списък</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 заключен)</translation>
     </message>
@@ -939,7 +954,7 @@
         <translation>Потвърдени</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+61"/>
+        <location filename="../coincontroldialog.cpp" line="+62"/>
         <source>Copy address</source>
         <translation>Копирай адрес</translation>
     </message>
@@ -1000,7 +1015,7 @@
         <translation>Копирай рестото</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1015,7 +1030,7 @@
         <translation>(%1 заключен)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>да</translation>
     </message>
@@ -1031,8 +1046,8 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>Може да варира +/- %1 duff(s) за вход.</translation>
+        <source>Can vary +/- %1 tnSOOM(s) per input.</source>
+        <translation>Може да варира +/- %1 tnSOOM(s) за вход.</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -1099,16 +1114,16 @@
         <translation>Редактиране на адрес за изпращане</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1118,17 +1133,17 @@
         <translation>Въведеният адрес &quot;%1&quot; не е валиден Soom адрес.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>Вече има адрес &quot;%1&quot; в списъка с адреси.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>Отключването на портфейла беше неуспешно.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>Създаването на ключ беше неуспешно.</translation>
     </message>
@@ -1276,7 +1291,7 @@
         <translation>Стартиране псевдоним</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+289"/>
         <source>Confirm gateway start</source>
         <translation>Потвърден старт на gateway</translation>
     </message>
@@ -1286,21 +1301,21 @@
         <translation>Сигурен ли сте, че искате да стартирате gateway %1?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>Потвърдено стартиране на всички gateways</translation>
     </message>
@@ -1310,7 +1325,7 @@
         <translation>Сигурен ли сте, че искате стартирането на  ВСИЧКИ gateways?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>Командата не е налична в момента</translation>
     </message>
@@ -1320,7 +1335,7 @@
         <translation>Не можете да използвате тази команда преди синхронизирането на gateway списъка</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
@@ -1380,8 +1395,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Задаване на език, например &quot;de_DE&quot; (по подразбиране: какъвто е от системата)</translation>
+        <source>Set language, for example &quot;ko_KR&quot; (default: system locale)</source>
+        <translation>Задаване на език, например &quot;bg_BG&quot; (по подразбиране: какъвто е от системата)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1442,13 +1457,13 @@
         <translation>Определете папка по ваш избор:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1458,7 +1473,7 @@
         <translation>Грешка: Посочената директория с данни &quot;%1&quot; не може да бъде създадена.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
@@ -1481,7 +1496,7 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>Скорошните транзакции може да не са видими, поради което салдото на портфейла Ви може да е неправилно. Тази информация ще бъде правилна, след като портфейлът ви е завършил синхронизиране с Soom мрежата, както е описано по-долу.</translation>
     </message>
@@ -1513,12 +1528,7 @@
         <translation>Прогрес</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>~</source>
-        <translation>~</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>Progress increase per hour</source>
         <translation>Увеличаване напредъка за час</translation>
     </message>
@@ -1575,12 +1585,12 @@
         <translation>Избор на файл за заявка за плащане</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+28"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -1635,7 +1645,7 @@
     <message>
         <location line="+3"/>
         <source>&amp;Start %1 on system login</source>
-        <translation>&amp;Стартиране на %1 при влизане</translation>
+        <translation>Стартиране на %1 при влизане (&amp;S)</translation>
     </message>
     <message>
         <location line="+123"/>
@@ -1683,18 +1693,18 @@
         <translation>При затваряне на прозореца приложението остава минимизирано. Ако изберете тази опция, приложението може да се затвори само чрез Изход в менюто.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>Тук можете да промените езика на потребителския изглед. Настройката ще влезе в сила след рестартиране на %1.</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>URL адреси на трети страни (например block Explorer), които се появяват в раздела с транзакции, като елементи от контекстното меню. %s в URL е заменен с хеша на транзакцията. Отделните URL адреси са разделени с вертикална линия |.</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>Експерт</translation>
     </message>
@@ -1815,6 +1825,16 @@
         <translation>М&amp;инимизиране при затваряне</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>Показване на изскачащи прозорци за нови транзакции.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>Показване на прозореца за транзакции (&amp;S)</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>&amp;Интерфейс</translation>
@@ -1837,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изглед на потребителския интерфейс:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>Мерна единица за показваните суми:</translation>
     </message>
@@ -1878,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+244"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отказ</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>по подразбиране</translation>
     </message>
@@ -1893,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>няма</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>Потвърди изчистване на настройките</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>За да влязат в сила промените е необходим рестарт на клиента.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>Клиентът ще бъде изключен, искате ли да продължите?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>Тази промяна ще изисква рестартиране на клиента.</translation>
     </message>
@@ -1932,93 +1952,95 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Формуляр</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <location line="+399"/>
+        <location line="+73"/>
+        <location line="+412"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Soom network after a connection is established, but this process has not completed yet.</source>
         <translation>Показаната информация може да е остаряла. Вашият портфейл се синхронизира автоматично след изграждането на връзка с Soom мрежата, но този процес все още не е завършен.</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-326"/>
         <source>Available</source>
         <translation>Налично</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-19"/>
         <source>Your current spendable balance</source>
         <translation>Текущият ви баланс за харчене</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+265"/>
         <source>Pending</source>
         <translation>Изчакващо</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="-91"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Общо транзакции, които предстоят да бъдат потвърдени, и все още не се включват към баланса за харчене</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-190"/>
         <source>Immature</source>
         <translation>Неотлежал</translation>
     </message>
     <message>
-        <location line="+203"/>
+        <location line="+265"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Изкопан баланс, който все още не е отлежал</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-336"/>
         <source>Balances</source>
         <translation>Баланс</translation>
     </message>
     <message>
-        <location line="+281"/>
+        <location line="+236"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>Непотвърдени транзакции към наблюдаваните адреси</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="+75"/>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
         <translation>Изкопан баланс в наблюдаваните адреси, който все още не е отлежал</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-123"/>
         <source>Total</source>
         <translation>Общо</translation>
     </message>
     <message>
-        <location line="-128"/>
+        <location line="+98"/>
         <source>Your current total balance</source>
         <translation>Текущият ви общ баланс</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="-231"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>настоящ общ баланс на наблюдаваните адреси</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="+58"/>
         <source>Watch-only:</source>
         <translation>Наблюдавани:</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+47"/>
         <source>Your current balance in watch-only addresses</source>
         <translation>Вашият настоящ общ баланс на наблюдаваните адреси</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="+57"/>
         <source>Spendable:</source>
         <translation>Изразходени:</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+195"/>
         <source>Recent transactions</source>
         <translation>Последни транзакции</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+148"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>несинхронизиран</translation>
@@ -2181,9 +2203,9 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
         <location line="+24"/>
         <source>&amp;OK</source>
         <translation type="unfinished"/>
@@ -2204,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Въведете Soom адрес (напр.%1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1 дни</translation>
     </message>
@@ -2220,7 +2242,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation>%1 сек.</translation>
     </message>
@@ -2284,17 +2306,17 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-99"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -2347,14 +2369,14 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
-        <translation type="unfinished"/>
+        <translation>Копирай адрес (&amp;A)</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&amp;Save Image...</source>
-        <translation type="unfinished"/>
+        <translation>Запиши изображението... (&amp;S)</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -2421,7 +2443,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2443,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>N/A</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>Брой връзки</translation>
     </message>
@@ -2515,7 +2537,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+93"/>
         <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Отваря файла за откриване на грешки на %1 от текущата папка.  За по-големите файлове това може да отнеме няколко секунди.</translation>
+        <translation>Отваря файла за откриване на грешки на %1 от текущата папка. За по-големите файлове това може да отнеме няколко секунди.</translation>
     </message>
     <message>
         <location line="+219"/>
@@ -2528,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изчисти конзолата</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Мрежов трафик</translation>
     </message>
@@ -2566,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+346"/>
-        <location line="+767"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Избери пиър за подробна информация.</translation>
     </message>
@@ -2607,13 +2629,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Път на портфейла</translation>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>Потребителски агент</translation>
     </message>
     <message>
-        <location line="-953"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>Datadir</translation>
     </message>
@@ -2628,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Увеличаване размера на шрифта</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>Услуги</translation>
     </message>
@@ -2753,7 +2775,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: Възстановява блок индекс веригата от настоящия blk000??.dat файл.</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-667"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>&amp;Прекъсване</translation>
     </message>
@@ -2786,7 +2808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1 &amp;година</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>&amp;Премахване на бан</translation>
     </message>
@@ -2826,7 +2848,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Мрежова активност изключена</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+153"/>
         <source>%1 B</source>
         <translation>%1 Б</translation>
     </message>
@@ -2891,7 +2913,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+221"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+227"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Повторна употреба на един от адресите за получаване.&lt;br&gt;При повторно използване на адреси са възможни проблеми със сигурността и личната неприкосновеност.&lt;br&gt;Не използвайте адреса, освен ако не ре-генерирате предишна заявка за плащане.</translation>
     </message>
@@ -2901,7 +2923,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>П&amp;овторно използване на съществуващ адрес за получаване (не се препоръчва)</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-93"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Възможност  да се прикрепи съобщение към заявката за плащане, което да бъде показано при отваряне на заявката. Забележка: съобщението няма да бъде изпратено с плащането по мрежата на Soom.</translation>
     </message>
@@ -2911,44 +2933,44 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Съобщение</translation>
     </message>
     <message>
-        <location line="-54"/>
-        <location line="+16"/>
+        <location line="-38"/>
+        <location line="+13"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>Възможност да се прикрепи наименование към новия адрес за получаване.</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+57"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</source>
         <translation>Възможност  да се прикрепи съобщение към заявката за плащане, което да бъде показано при отваряне на заявката. &lt;br&gt;Забележка: съобщението няма да бъде изпратено с плащането по мрежата на Soom.</translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Използвате този формуляр за заявяване на плащания. Всички полета са &lt;b&gt;незадължителни&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>&amp;Наименование</translation>
     </message>
     <message>
+        <location line="+41"/>
         <location line="+26"/>
-        <location line="+51"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>Незадължително заявяване на сума. Оставете полето празно или нулево, за да не заявите конкретна сума.</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+3"/>
         <source>&amp;Amount</source>
         <translation>&amp;Сума</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Заявка за плащане</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-22"/>
         <source>Clear all fields of the form.</source>
         <translation>Изчисти всички полета от формуляра.</translation>
     </message>
@@ -2958,17 +2980,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изчистване</translation>
     </message>
     <message>
-        <location line="+143"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>Заявка за InstantSend</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>Заявка за плащане (генерира QR кодове и Soom: URI)</translation>
     </message>
     <message>
-        <location line="+151"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2978,7 +3000,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>История на заявките за плащане</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+51"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Покажи избраната заявка (прави същото като двойно щракане върху запис)</translation>
     </message>
@@ -2988,7 +3010,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Показване</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-25"/>
         <source>Remove the selected entries from the list</source>
         <translation>Премахни избраните позиции от списъка</translation>
     </message>
@@ -2998,7 +3020,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Премахване</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+61"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>Копирай URI</translation>
     </message>
@@ -3026,7 +3048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR Код</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>Копирай &amp;URI</translation>
     </message>
@@ -3041,7 +3063,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Запиши изображението...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation type="unfinished"/>
     </message>
@@ -3051,12 +3073,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Заявка за плащане на %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>Данни за плащането</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3148,12 +3170,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+643"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>Изпращане на монети</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+67"/>
         <source>Coin Control Features</source>
         <translation>Функции за контрол на монетата</translation>
     </message>
@@ -3168,12 +3190,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>автоматично избрано</translation>
     </message>
     <message>
-        <location line="+473"/>
+        <location line="+472"/>
         <source>Insufficient funds!</source>
         <translation>Недостатъчно средства!</translation>
     </message>
     <message>
-        <location line="-375"/>
+        <location line="-374"/>
         <source>Quantity:</source>
         <translation>Количество:</translation>
     </message>
@@ -3208,7 +3230,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Ресто:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Ако това е активирано, но адреса за рестото е неверен или празен, рестото ще бъде изпратено към новосъздаден адрес.</translation>
     </message>
@@ -3218,17 +3240,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Адрес за ресто по избор</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+305"/>
         <source>Transaction Fee</source>
         <translation>Такса транзакция</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>Избери...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation type="unfinished"/>
     </message>
@@ -3243,12 +3265,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Показване настройки за такса</translation>
     </message>
     <message>
-        <location line="+452"/>
-        <source>InstantSend</source>
-        <translation>InstantSend</translation>
-    </message>
-    <message>
-        <location line="-401"/>
+        <location line="+51"/>
         <source>If the custom fee is set to 1000 tnsoom and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 tnsoom in fee,&lt;br&gt;while &quot;at least&quot; pays 1000 tnsoom. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Ако променената такса е 1000 tnsoom и транзакцията е само 250 байта, тогава &quot;за килобайт&quot; само плаща такса 250 tnsoom,,&lt;br&gt; тогава&quot;за последно&quot; заплаща 1000 tnsoom. За транзакции по-големи от килобайт едновременно се заплащат от килобайт.</translation>
     </message>
@@ -3264,7 +3281,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Разплащането само минималната такса ще продължи толкова дълго,докато транзакцията заема по-малък обем в блоковото пространство.&lt;br&gt; Но имайте предвид, че транзакцията може да се окаже без първоначално потвърждение ако се появи голямо търсене на soom транзакции отколкото мрежата може да обработи.</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="+146"/>
+        <source>Confirmation time target:</source>
+        <translation>Време за потвърждение:</translation>
+    </message>
+    <message>
+        <location line="+162"/>
+        <source>InstantSend</source>
+        <translation>InstantSend</translation>
+    </message>
+    <message>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>за килобайт</translation>
     </message>
@@ -3294,27 +3321,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Персонализиран:</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+55"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(Смарт таксата не е разпозната все още.Това ще отнеме няколко блока... )</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Confirmation time target:</source>
-        <translation>Време за потвърждение:</translation>
-    </message>
-    <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>нормално</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+35"/>
         <source>fast</source>
         <translation>бързо</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+139"/>
         <source>Confirm the send action</source>
         <translation>Потвърдете изпращането</translation>
     </message>
@@ -3324,7 +3346,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>И&amp;зпрати</translation>
     </message>
     <message>
-        <location line="-787"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>Изчисти всички полета от формуляра.</translation>
     </message>
@@ -3344,12 +3366,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Добави &amp;получател</translation>
     </message>
     <message>
-        <location line="+724"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>Баланс:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-541"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>Копирай количеството</translation>
     </message>
@@ -3399,7 +3421,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>и InstantSend</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+74"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+4"/>
@@ -3432,12 +3454,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Потвърди изпращането на монетите</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"/>
     </message>
@@ -3473,8 +3495,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Транзакцията беше отхвърлена! Това може да се случи, ако някои от монетите в портфейла ви, вече са изразходвани, например ако се използва копие от wallet.dat и монетите са изразходвани в копието, но не са отбелязани като изразходвани тук.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
@@ -3487,7 +3509,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Заявката за плащане е изтекла</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
@@ -3497,12 +3519,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Плати само задължителната такса от %1</translation>
     </message>
     <message numerus="yes">
-        <location line="+30"/>
+        <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation><numerusform>Очаква се да започне потвърждение в %n блока.</numerusform><numerusform>Очаква се да започне потвърждение в %n блока.</numerusform></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+102"/>
         <source>Warning: Invalid Soom address</source>
         <translation>Внимание: Невалиден Soom адрес</translation>
     </message>
@@ -3530,37 +3552,39 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+21"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+24"/>
         <source>This is a normal payment.</source>
         <translation>Това е нормално плащане.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Pay &amp;To</source>
         <translation>Плати &amp;На</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+56"/>
         <source>The Soom address to send the payment to</source>
         <translation>Soom адресът да изпрати плащането към </translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>зберете адрес</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>Вмъкни адрес</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>Премахване</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>Изберете използван преди адрес</translation>
     </message>
@@ -3570,9 +3594,9 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
-        <translation>Вмъкни адрес от клипборда</translation>
+        <translation>Вмъкни от клипборда</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -3580,34 +3604,36 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+559"/>
+        <location line="+19"/>
+        <location line="+513"/>
         <location line="+529"/>
         <source>Remove this entry</source>
         <translation>Премахване на този запис</translation>
     </message>
     <message>
-        <location line="-1076"/>
+        <location line="-1030"/>
         <source>Alt+D</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>&amp;Наименование</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-38"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Въведете наименование за този адрес, за да го добавите в списъка с адреси</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+57"/>
+        <location line="+644"/>
+        <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>С&amp;ума</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="-1035"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Soom than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>Таксата ще бъде приспадната от количеството за изпращане. Получателят ще получи по-малко количество Soom от това, което сте въвели в полето. Ако са избрани няколко получателя, таксата ще бъде разделена  по равно.</translation>
     </message>
@@ -3617,17 +3643,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Извадете таксата от сумата</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="-18"/>
         <source>A message that was attached to the soom: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Soom network.</source>
         <translation>Съобщението което беше прикрепено към soom: URI ще бъде запазено с транзакцията за ваше сведение. Забележка: Това съобщение няма да бъде изпратено през Soom мрежата.</translation>
     </message>
     <message>
-        <location line="+433"/>
+        <location line="+459"/>
         <source>This is an unauthenticated payment request.</source>
         <translation>Това  е не удостоверено искане за плащане.</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="+525"/>
         <source>This is an authenticated payment request.</source>
         <translation>Това  е удостоверено искане за плащане.</translation>
     </message>
@@ -3638,18 +3664,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Плащане на</translation>
     </message>
     <message>
-        <location line="-983"/>
+        <location line="-966"/>
         <source>Message</source>
         <translation>Съобщение</translation>
     </message>
     <message>
-        <location line="+488"/>
+        <location line="+471"/>
         <location line="+529"/>
         <source>Memo</source>
         <translation>Бележка</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Въведете наименование за този адрес, за да го добавите в списъка с адреси</translation>
     </message>
@@ -3657,7 +3683,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+95"/>
+        <location filename="../sendcoinsdialog.cpp" line="+96"/>
         <location line="+5"/>
         <source>&amp;Yes</source>
         <translation type="unfinished"/>
@@ -3699,19 +3725,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soom адресът да подпише съобщението</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+202"/>
+        <location line="+19"/>
+        <location line="+220"/>
         <source>Choose previously used address</source>
         <translation>Изберете използван преди адрес</translation>
     </message>
     <message>
-        <location line="-196"/>
-        <location line="+202"/>
+        <location line="-214"/>
+        <location line="+220"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-204"/>
         <source>Paste address from clipboard</source>
         <translation>Вмъкни адрес от клипборда</translation>
     </message>
@@ -3731,12 +3757,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Подпис</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+33"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Копиране на текущия подпис в системния клипборд</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+84"/>
         <source>Sign the message to prove you own this Soom address</source>
         <translation>Подпиши съобщението за да докажеш че притежаваш този Soom адрес</translation>
     </message>
@@ -3746,18 +3772,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Подпиши &amp;съобщение</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all sign message fields</source>
         <translation>Изчисти всички подписаните съобщения</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+149"/>
         <source>Clear &amp;All</source>
         <translation>&amp;Изчисти</translation>
     </message>
     <message>
-        <location line="-88"/>
+        <location line="-117"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Провери съобщението</translation>
     </message>
@@ -3772,7 +3798,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Soom адресът ,с който е подписано съобщението</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+106"/>
         <source>Verify the message to ensure it was signed with the specified Soom address</source>
         <translation>Проверете съобщението, за да сте сигурни че е подписано с определен Soom адрес</translation>
     </message>
@@ -3782,7 +3808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Провери &amp;Съобщение</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-22"/>
         <source>Reset all verify message fields</source>
         <translation>Изчисти всички проверени съобщения в полето</translation>
     </message>
@@ -3792,7 +3818,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Натиснете &quot;Подписване на съобщение&quot; за да създадете подпис</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>Въведеният адрес е невалиден.</translation>
@@ -3858,17 +3884,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Съобщението е потвърдено.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>зберете адрес</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>Вмъкни адрес</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>Вмъкни Подпис</translation>
     </message>
@@ -4160,16 +4187,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>Транзакция</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation type="unfinished"/>
     </message>
@@ -4562,7 +4585,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>&amp;Изнеси</translation>
     </message>
@@ -4572,12 +4595,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Запишете данните от текущия раздел във файл</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>Избрана сума:</translation>
     </message>
     <message>
-        <location line="+274"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>Запазване на портфейла</translation>
     </message>
@@ -4610,7 +4633,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>soom-core</name>
     <message>
-        <location filename="../soomstrings.cpp" line="+36"/>
+        <location filename="../soomstrings.cpp" line="+33"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Свързва се с посочения адрес и винаги слуша за него. Използвайте [хост]:порт за изписване при IPv6</translation>
     </message>
@@ -4620,7 +4643,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Не може да се заключи дата директорията %s. %s ядрото вече работи.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>Грешка: Очакването на входящи връзки е неуспешно (върната грешка %s)</translation>
     </message>
@@ -4640,17 +4663,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изпълнете командата когато има промяна в най-добрият блок (%s в cmd е подменена от  block hash)</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation>Име за създаване на URL за KeePass входа , който съхранява паролата за портфейла</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+20"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
         <translation>Заявка за адреси на пиъри чрез DNS справка, ако адресите са недостатъчно (по-подразбиране: 1 освен ако -свързан)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+21"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>Определя максималния размер на висок приоритет/ниска такса за транзакция в байтове (по подразбиране: %d)</translation>
     </message>
@@ -4660,37 +4683,42 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Задаване броя на нишките потвърждаващи скрипта  (%u до %d, 0 = автоматично, &lt;0 = да се оставят толкова ядра свободни, по подразбиране: %d)</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+17"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Това е предварителна тест версия - използвайте я на ваша отговорност - не използвайте за копане или за търговски приложения.</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>Не може да се свърже с %s на този компютър. %s ядрото най-вероятно вече работи.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-240"/>
+        <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
+        <translation>Използвайте йерархично детерминиращо генериране на ключ (HD) след bip39 / bip44. Има ефект само по време на създаване на портфейла / първия старт</translation>
+    </message>
+    <message>
+        <location line="+34"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Внимание! Изглежда няма пълно съгласуване в мрежата! Някой копачи изглежда изпитват проблеми.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>Внимание: Не е намерена пълна съвместимост с останалите в мрежата ! Може би се нуждаете от обновяване , или някой от другите нодове се нуждае от обновяване .</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-4"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>Внимание: wallet е развален, данните са спасени! Оригиналния %s е запазен като %s в %s; ако твоят баланс или транзакции са неверни трябва да възстановите от резервното копие.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+15"/>
         <source>You must specify a gatewayprivkey in the configuration. Please see documentation for help.</source>
         <translation>Трябва да посочите gatewayprivkey в конфигурацията. Моля прочетете документацията за помощ.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"/>
     </message>
@@ -4700,12 +4728,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Приемай команден ред и JSON-RPC команди</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-288"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
-        <translation>Приемай връзки отвън (по подразбиране: 1, ако няма  -proxy или -connect/-noconnect)</translation>
+        <translation>Приемай връзки отвън (по подразбиране: 1, ако няма -proxy или -connect/-noconnect)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+290"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Добави възел, към който да се свърже и поддържай връзката отворена</translation>
     </message>
@@ -4715,7 +4743,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Разреши DNS справка за -addnode, -seednode и -connect</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>Опции за създаване на блок:</translation>
     </message>
@@ -4730,17 +4758,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Не може да установи -%s адрес: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot write default address</source>
         <translation>Не може да напише адреса по подразбиране</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>Свързване само към определена възлова точка(и)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Свържи се с възел за зараждане на адреси на пиъри, след това прекъсни връзката</translation>
     </message>
@@ -4750,12 +4778,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Настройки на връзката:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Corrupted block database detected</source>
         <translation>Открита е повредена блок база данни</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>Опции за Откриване на грешки/Тестване:</translation>
     </message>
@@ -4785,12 +4813,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Грешка при инициализиране на средата на базата данни на портфейла %s!</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Error loading block database</source>
         <translation>Грешка при зареждане на блок базата данни</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
         <source>Error loading %s</source>
         <translation>Грешка при зареждане на %s</translation>
     </message>
@@ -4800,7 +4828,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Грешка при зареждане на %s: портфейлът е повреден</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+4"/>
         <source>Error opening block database</source>
         <translation>Грешка при отваряне на блок базата данни</translation>
     </message>
@@ -4825,7 +4853,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Неуспешно &quot;слушане&quot; на всеки порт. Използвайте -listen=0 ако искате това.</translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 =запазва tx meta data напр.акаунта на собственика и информация за искането за плащане,  2 = отпада tx meta data)</translation>
     </message>
@@ -4840,27 +4868,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+202"/>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Това е таксата за транзакция и може да се плати, ако оценките на таксите не са налични.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-198"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation>-maxtxfee  е с много голяма зададена стойност! Това е транзакционната такса, която ще платите ако направите единична транзакция.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Това е транзакционната такса, която ще платите ако направите транзакция.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>Размера на такса (в %s/kB), която ще бъде използвана има достатъчно данни(по подразбиране: %s)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
         <translation>Приема препредадените транзакции получени от белия списък на пиърите,  дори когато не са препредадени транзакциите (по подразбиране: %d)</translation>
     </message>
@@ -4880,7 +4908,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Свързват с даден адрес, за да слушат за JSON-RPC връзки. Използвайте [host]: port нотация за IPv6. Тази опция може да бъде променяна многократно (по подразбиране: свързват с всички интерфейси)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Създаване на нови файлове с достъп по подразбиране , вместо umask 077 (в сила само при изключена функционалност на портфейла)</translation>
     </message>
@@ -4900,7 +4928,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Грешка при зареждане %s: Не може да включите HD на вече съществуващ не-HD портфейл</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>Как цялостната проверка на блок от -checkblocks е (0-4, по подразбиране: %u)</translation>
     </message>
@@ -4930,7 +4958,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Уверете се, че шифровате портфейла си и изтривате всички некриптирани архиви, след като сте проверили, че този портфейл работи!</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation>Максимален размер на данните в данни съдържащите транзакции , които можем да предадем или изкопаем  (по подразбиране: %u)</translation>
     </message>
@@ -4945,27 +4973,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изходяща информация за грешки (по подразбиране: %u, задаването на &lt;category&gt; е опция)</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
-        <translation>Задай брой заявки, когато се използва генериране (-1 =всички ядра, по подразбиране: %d)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+42"/>
         <source>Show N confirmations for a successfully locked transaction (%u-%u, default: %u)</source>
         <translation>Покажи N потвърждения при успешно заключена транзакция (%u-%u, по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>Този продукт включва софтуер, разработен от проекта OpenSSL за използване в OpenSSL Toolkit %s и криптографски софтуер, написан от Eric Young и UPnP софтуер, написан от Thomas Bernard.</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
-        <translation>Използвайте йерархично детерминиращо генериране на ключ (HD) след bip39 / bip44. Има ефект само по време на създаване на портфейла / първия старт</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Използва отделен SOCKS5 прокси, за достигне на пиъри чрез Tor скрити услуги (по подразбиране: %s)</translation>
     </message>
@@ -4975,19 +4988,19 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Потребителски дефиниран мнемоничен за HD портфейла (bip39). Има ефект само по време на създаване на портфейла / първия старт (по подразбиране: произволно генериран)</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
+        <translation>Потребителски дефиниран мнемонична парола за HD портфейла (BIP39). Има ефект само по време на създаване на портфейла / първия старт (по подразбиране:празен низ )</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
         <translation>Дефинирани от потребителя части за HD портфейл (трябва да са в шестнадесети). Има ефект само  по време на създаването на портфейла / първия старт (по подразбиране: произволно генериран)</translation>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Warning: incorrect parameter -walletbackupsdir, path must exist! Using default path.</source>
-        <translation>Внимание: неправилен параметър -walletbackupsdir, пътят трябва да съществува! Използване на пътя по подразбиране.</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+35"/>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
-        <translation>Whitelist пиъри свързани от дадената мрежома маска или  IP адрес. Може да бъде определян многократно.</translation>
+        <translation>Whitelist пиъри свързани от дадената мрежома маска или IP адрес. Може да бъде определян многократно.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4995,27 +5008,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Whitelisted не могат да бъдат DoS забранени и техните транзакции ще бъдат винаги предадени, дори ако вече са в  mempool, полезно напр. за gateway</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
         <translation>Нужно е възстановяване на базата данни, използвайте -reindex-chainstate за промяна  на -txindex</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>(default: %s)</source>
         <translation>(по подразбиране: %s)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Accept public REST requests (default: %u)</source>
         <translation>Приема публични REST заявки (по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
         <translation>Винаги пускай заявка за адреси на пиъри през DNS справката (по подразбиране:  %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation>Опции за избор на верига:</translation>
     </message>
@@ -5030,37 +5043,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Свързване към KeePassHttp през порт &lt;port&gt; (по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>Запазени права (C) 2009-2018 Bitcoin Core разработчици</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>Запазени права (C) 2014-2018 Dash Core разработчиците</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>Запазени права (C) 2017-2018 Soom Core разработчиците</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Активиране на клиента да работи като gateway (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation>Грешка при зареждане %s: Не може да изключите HD на вече съществуващ HD портфейл</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-1"/>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>Грешка при зареждане на %s: портфейлът изисква по-нова версия на %s</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+13"/>
         <source>Failed to load fulfilled requests cache from</source>
         <translation>Неуспешно зареждане на  кеш с изпълнени заявки от</translation>
     </message>
@@ -5076,11 +5074,6 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Generate coins (default: %u)</source>
-        <translation>Генериране на монети (по подразбиране: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>Колко блока да проверява при стартиране (по подразбиране:  %u, 0 = всички)</translation>
     </message>
@@ -5125,17 +5118,72 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Невалиден -proxy address: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation>Невалидна сума за -paytxfee=&lt;amount&gt;: &apos;%s&apos; (трябва да бъде най-малко %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-2"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Невалидна сума за -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-295"/>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>Максимална крайна такса (в %s) използвана в единична транзакция, ако е зададена твърде малка, няма да бъдат възможни големи транзакции (по подразбиране: %s)</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Моля проверете дали датата и часът на вашият компютър са верни! Ако часовникът ви не е сверен, %s няма да работи правилно.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation>Редуциране на изискванията за пространство чрез изчистване (изтриване) стари блокове. Този режим е несъвместим с -txindex и -rescan. внимание: Изключването на тази настройка изисква повторно изтегляне на цялата блок-верига. (по подразбиране: 0 = изключено изчистване на блокове, &gt;%u = желан размер в MiB за използване на блок файлове)</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Този продукт включва софтуер, разработен от проекта OpenSSL за използване в OpenSSL Toolkit %s и криптографски софтуер, написан от Eric Young и UPnP софтуер, написан от Thomas Bernard.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Transaction index can&apos;t be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation>Потребител и хаш парола за JSON-RPC връзки.Полето&lt;userpw&gt;е във формат: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Клиентът се свързва нормално с двойка аргументи rpcuser = &lt;USERNAME&gt; / rpcpassword = &lt;PASSWORD&gt;. Тази опция може да бъде променяна многократно</translation>
+    </message>
+    <message>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Keypool изтече, моля поискайте първо keypoolrefill</translation>
     </message>
@@ -5210,6 +5258,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Прикрепва справката за грешки към времевия запис(по подразбиране:  %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Print this help message and exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
         <translation>Възстановяване състоянието на веригата и блок индекса от blk*.dat файловете на диска</translation>
@@ -5235,12 +5288,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Задайте максимален брой на генерираните ключове до &lt;n&gt; (по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Set minimum block size in bytes (default: %u)</source>
-        <translation>Задайте минимален размер на блок-а в байтове (подразбиране: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>Задай брой заявки обслужващи процеса RPC повикванията (по подразбиране:  %d)</translation>
     </message>
@@ -5271,6 +5319,11 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Starting network threads...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Synchroning blockchain...</source>
         <translation>Синхронизиране на блок-веригата...</translation>
     </message>
@@ -5290,7 +5343,22 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Синхронизиране на gateways ...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>The source code is available from %s.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Праг на прекъсване на връзката при непорядъчно държащи се пиъри (по подразбиране: %u)</translation>
     </message>
@@ -5305,7 +5373,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Tor контролира порта ако onion слушането е включено(по подразбиране: %s)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction must have at least one recipient</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation>Неуспешно стартиране на HTTP сървър. Виж debug log за подробности.</translation>
     </message>
@@ -5351,21 +5429,26 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+5"/>
+        <source>Wallet debugging/testing options:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
         <translation>Портфейлът трябва да бъде презаписан: рестартирайте %s за да завършите</translation>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-111"/>
         <source>Invalid gatewayprivkey. Please see documenation.</source>
         <translation>Невалиден частен ключ на Gateway. Моля вижте документацията.</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>Несъвместимост в gateway.conf</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Невалидна мрежова маска в -whitelist: &apos;%s&apos;</translation>
     </message>
@@ -5375,7 +5458,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Открит е невалиден порт в gateway.conf</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>KeePassHttp id for the established association</source>
         <translation>KeePassHttp id за осъществяване на връзка</translation>
     </message>
@@ -5390,7 +5473,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Пази поне &lt;n&gt; неосъществени транзакции в паметта (по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Открий собствения IP адрес (по подразбиране: 1, когато слуша и няма -externalip или -proxy)</translation>
     </message>
@@ -5420,7 +5503,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Изпълнена команда когато транзакцията в  InstantSend портфейла е успешно заключена (%s в cmd е заместен от TxID)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+12"/>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>Не може да се създаде копие, файлът вече съществува! Това може да се случи, ако сте рестартирали портфейла си преди по-малко от 60 секунди. Може да продължите, ако сте разбрали това.</translation>
     </message>
@@ -5475,17 +5558,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Поддържайте най-много &lt;n&gt; връзки към пиъри(без временните сервизни връзки)(по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>Максимална крайна такса (в %s) използвана в единична транзакция, ако е зададена твърде малка, няма да бъдат възможни големи транзакции (по подразбиране: %s)</translation>
-    </message>
-    <message>
-        <location line="+9"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong Soom Core will not work properly.</source>
-        <translation>Моля проверете дали датата и часът на вашият компютър са верни! Ако часовникът ви не е сверен, Soom Core няма да работи правилно.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+31"/>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation>Изчистването е конфигурирано под минимума от %d MiB.  Моля задайте по висока цифра.</translation>
     </message>
@@ -5500,12 +5573,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>произволни удостоверения за всяка прокси връзка. Това дава възможност за изолация Tor потока (по подразбиране: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
-        <translation>Редуциране на изискванията за пространство чрез изчистване (изтриване) стари блокове. Този режим е несъвместим с -txindex и -rescan. внимание: Изключването на тази настройка изисква повторно изтегляне на цялата блок-верига. (по подразбиране: 0 = изключено изчистване на блокове, &gt;%u = желан размер в MiB за използване на блок файлове)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+12"/>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>Повторно сканиране не е възможно в изчистен режим. Вие ще трябва да използвате -reindex, което ще изтегли цялата блок-верига отново.</translation>
     </message>
@@ -5530,17 +5598,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Сумата на транзакцията е твърде малка за приспадане на таксата</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation>Общата дължина на мрежовата версия на низ (%i) надвишава максималната дължина (%i). Намалете  броя или размера на коментарите.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
         <translation>Опитва се да поддържа изходящият трафик по зададената цел (в MiB за 24h), 0 = без лимит (по подразбиране: %d)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Открит е неподдържан аргумент -socks .Настройката SOCKS версия вече не е възможна, само SOCKS5 прокси се поддържа.</translation>
     </message>
@@ -5555,32 +5623,52 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Използвайте UPnP за определяне на порта за слушане (по подразбиране: 1 когато слуша без прокси)</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>User defined mnemonic passphrase for HD wallet (bip39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation>Потребителски дефиниран мнемонична парола за HD портфейла (bip39). Има ефект само по време на създаване на портфейла / първия старт (по подразбиране:празен низ )</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. This option can be specified multiple times</source>
-        <translation>Потребител и хаш парола за JSON-RPC връзки.Полето&lt;userpw&gt;е във формат: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Канонически питон скрипт е включена в share/rpcuser. Тази опция може да бъде променяна многократно</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+23"/>
         <source>Wallet is locked, can&apos;t replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
         <translation>Портфейлът е заключен, невъзможно е попълването на keypool! Автоматичното архивиране са изключени, моля отключете вашият портфейл за попълване на keypool.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: At least %d of %d gateways are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Every gateway (out of %d known ones) is running on a newer software version. Please check latest releases, it&apos;s very likely that you missed a major/critical update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation>ВНИМАНИЕ: Непозната версия на блока!Възможно е да са активирани неизвестни правила</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+16"/>
+        <source>You are starting in lite mode, all Soom-specific functionality is disabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation>Необходимо е повторно изграждане на базата данни използвайки -reindex за да се върнете в неизчистен режим.Това ще изтегли отново съществуващата блок-верига</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
+        <source>%s is not a valid backup folder!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%s is set very high!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>(%d could be used only on mainnet)</source>
         <translation>(%d може да бъде използвано само в основната мрежа)</translation>
     </message>
@@ -5605,7 +5693,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&lt;category&gt; може да бъде:</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+5"/>
+        <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Append comment to the user agent string</source>
         <translation>Добавяне на коментар към стринг на потребителският агент</translation>
     </message>
@@ -5620,7 +5713,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Автоматично създаване на скрита Tor услуга (по подразбиране: %d)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change index out of range</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Copyright (C)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>Включва публикуване на блок хеш в &lt;address&gt;</translation>
     </message>
@@ -5695,7 +5808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation>Внасяне на блокове от външен blk000??.dat  файл при стартиране</translation>
     </message>
@@ -5705,12 +5818,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>InstantSend опции:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Невалидно количество за -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+5"/>
+        <source>Invalid spork address specified with -sporkaddr</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation>Дръж мемпула за транзакциите под &lt;n&gt; мегабайта (по подразбиране: %u)</translation>
     </message>
@@ -5750,12 +5868,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Прави излъчващи транзакции от портфейла</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-37"/>
         <source>Gateway options:</source>
         <translation>Gateway опции:</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
         <translation>Минимум байта за sigop в транзакциите, които могат да се предадат и изкопаят (по подразбиране: %u)</translation>
     </message>
@@ -5785,7 +5903,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Парола за  JSON-RPC връзките</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Print version and exit</source>
         <translation>Версия за печат и изход</translation>
     </message>
@@ -5810,12 +5928,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Повторно сканиране на регистъра на блокове за липсващи в портфейла транзакции  при стартиране</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+53"/>
         <source>Upgrading UTXO database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation>Внимание: активирани непознати нови правила (versionbit %i)</translation>
     </message>
@@ -5830,12 +5948,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Дали да работи само в блоков режим (по подразбиране: %u)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>You can not start a gateway in lite mode.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location line="+2"/>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ опции за уведомяване:</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-79"/>
         <source>RPC server options:</source>
         <translation>Опции на RPC сървъра:</translation>
     </message>
@@ -5885,7 +6008,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Определи максималния размер на блока в байтове (по подразбиране: %d)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Set the gateway private key</source>
         <translation>Задаване на личен ключ на Gateway</translation>
     </message>
@@ -5920,7 +6043,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Въведете Ваш публичен адрес</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Synchronization pending...</source>
         <translation>Изчаква синхронизация ...</translation>
     </message>
@@ -5930,32 +6053,27 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Синхронизиране на gateways плащанията...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>The transaction amount is too small to pay the fee</source>
         <translation>Сумата на транзакцията е твърде малка за плащане на таксата</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>This help message</source>
-        <translation>Това помощно съобщение</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>This is experimental software.</source>
         <translation>Това е експериментален софтуер.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Transaction amount too small</source>
         <translation>Сумата на транзакцията е твърде малка</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transaction amounts must not be negative</source>
-        <translation>Сумите на транзакциите трябва да са положителни</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Transaction too large for fee policy</source>
         <translation>Транзакцията е твърде голяма за таксовите политики.</translation>
     </message>
@@ -5970,7 +6088,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Не може да се свърже с %s на този компютър (връща грешка %s)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>Неуспешно подписване на spork-съобщение. Грешен ключ?</translation>
     </message>
@@ -6000,7 +6118,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Портфейла %s е разположен извън папката с данни %s</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wallet options:</source>
         <translation>Настройки на портфейла:</translation>
     </message>
@@ -6015,12 +6133,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Премахване на всички транзакции от портфейла ...</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
         <translation>%s е повреден, възстановяването неуспешно</translation>
     </message>

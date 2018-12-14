@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="en">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -60,7 +58,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../addressbookpage.cpp" line="+102"/>
+        <location filename="../addressbookpage.cpp" line="+105"/>
         <source>C&amp;lose</source>
         <translation>C&amp;lose</translation>
     </message>
@@ -100,7 +98,7 @@
         <translation>These are your Soom addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+30"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Copy Address</translation>
     </message>
@@ -135,7 +133,7 @@
         <translation>There was an error trying to save the address list to %1. Please try again.</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -221,27 +219,27 @@
         <translation>Enter the old passphrase and new passphrase to the wallet.</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+71"/>
-        <location line="+14"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+14"/>
-        <location line="+13"/>
+        <location line="+5"/>
+        <location line="+75"/>
         <location line="+15"/>
-        <location line="+8"/>
-        <location line="+8"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+15"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <location line="+9"/>
+        <location line="+9"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <location line="+49"/>
+        <location line="-171"/>
+        <location line="+51"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-7"/>
         <source>Confirm wallet encryption</source>
         <translation>Confirm wallet encryption</translation>
     </message>
@@ -256,76 +254,76 @@
         <translation>Are you sure you wish to encrypt your wallet?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <location line="+14"/>
-        <location line="+69"/>
+        <location line="+12"/>
+        <location line="+15"/>
+        <location line="+74"/>
         <source>Wallet encrypted</source>
         <translation>Wallet encrypted</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+14"/>
+        <location line="-87"/>
+        <location line="+15"/>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
         <translation>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
-        <location line="-10"/>
+        <location line="-11"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
         <translation>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
+        <location line="+10"/>
+        <location line="+54"/>
         <location line="+9"/>
-        <location line="+50"/>
-        <location line="+8"/>
         <source>Wallet encryption failed</source>
         <translation>Wallet encryption failed</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-72"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+58"/>
+        <location line="+10"/>
+        <location line="+63"/>
         <source>The supplied passphrases do not match.</source>
         <translation>The supplied passphrases do not match.</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-49"/>
         <source>Wallet unlock failed</source>
         <translation>Wallet unlock failed</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+13"/>
-        <location line="+23"/>
+        <location line="+14"/>
+        <location line="+25"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>The passphrase entered for the wallet decryption was incorrect.</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-26"/>
         <source>Wallet decryption failed</source>
         <translation>Wallet decryption failed</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Wallet passphrase was successfully changed.</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Warning: The Caps Lock key is on!</translation>
@@ -347,7 +345,7 @@
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../soom.cpp" line="+562"/>
+        <location filename="../soom.cpp" line="+563"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -355,7 +353,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>A fatal error occurred. Soom Core can no longer continue safely and will quit.</source>
         <translation>A fatal error occurred. Soom Core can no longer continue safely and will quit.</translation>
     </message>
@@ -370,7 +368,7 @@
         <translation>Node</translation>
     </message>
     <message>
-        <location line="+173"/>
+        <location line="+178"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overview</translation>
     </message>
@@ -530,7 +528,12 @@
         <translation>Sign messages with your Soom addresses to prove you own them</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-105"/>
+        <source>Use the test chain</source>
+        <translation>Use the test chain</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Verify messages to ensure they were signed with specified Soom addresses</source>
         <translation>Verify messages to ensure they were signed with specified Soom addresses</translation>
     </message>
@@ -675,17 +678,14 @@
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <location line="+205"/>
+        <location line="+206"/>
         <source>%1 client</source>
         <translation>%1 client</translation>
     </message>
     <message numerus="yes">
-        <location line="+202"/>
+        <location line="+224"/>
         <source>%n active connection(s) to Soom network</source>
-        <translation>
-            <numerusform>%n active connection to Soom network</numerusform>
-            <numerusform>%n active connections to Soom network</numerusform>
-        </translation>
+        <translation><numerusform>%n active connection to Soom network</numerusform><numerusform>%n active connections to Soom network</numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -725,10 +725,7 @@
     <message numerus="yes">
         <location line="+9"/>
         <source>Processed %n block(s) of transaction history.</source>
-        <translation>
-            <numerusform>Processed %n block of transaction history.</numerusform>
-            <numerusform>Processed %n blocks of transaction history.</numerusform>
-        </translation>
+        <translation><numerusform>Processed %n block of transaction history.</numerusform><numerusform>Processed %n blocks of transaction history.</numerusform></translation>
     </message>
     <message>
         <location line="+26"/>
@@ -776,12 +773,22 @@
         <translation>Information</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+70"/>
+        <source>%1 New transactions</source>
+        <translation>%1 New transactions</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>New transaction</source>
+        <translation>New transaction</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Date: %1</source>
         <translation>Date: %1</translation>
     </message>
@@ -816,7 +823,7 @@
         <translation>Incoming transaction</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
         <translation>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</translation>
     </message>
@@ -912,7 +919,7 @@
         <translation>List mode</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>(1 locked)</source>
         <translation>(1 locked)</translation>
     </message>
@@ -1008,7 +1015,7 @@
         <translation>Copy change</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -1023,7 +1030,7 @@
         <translation>(%1 locked)</translation>
     </message>
     <message>
-        <location line="+171"/>
+        <location line="+175"/>
         <source>yes</source>
         <translation>yes</translation>
     </message>
@@ -1107,16 +1114,16 @@
         <translation>Edit sending address</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location line="+73"/>
-        <location line="+9"/>
-        <location line="+9"/>
-        <location line="+9"/>
+        <location line="+5"/>
+        <location line="+75"/>
+        <location line="+10"/>
+        <location line="+10"/>
+        <location line="+10"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-103"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
@@ -1126,17 +1133,17 @@
         <translation>The entered address &quot;%1&quot; is not a valid Soom address.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
         <translation>The entered address &quot;%1&quot; is already in the address book.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Could not unlock wallet.</source>
         <translation>Could not unlock wallet.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>New key generation failed.</source>
         <translation>New key generation failed.</translation>
     </message>
@@ -1294,21 +1301,21 @@
         <translation>Are you sure you want to start gateway %1?</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="+4"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+27"/>
-        <location line="+35"/>
+        <location line="-65"/>
+        <location line="+29"/>
+        <location line="+38"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-45"/>
         <source>Confirm all gateways start</source>
         <translation>Confirm all gateways start</translation>
     </message>
@@ -1318,7 +1325,7 @@
         <translation>Are you sure you want to start ALL gateways?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>Command is not available right now</source>
         <translation>Command is not available right now</translation>
     </message>
@@ -1328,7 +1335,7 @@
         <translation>You can&apos;t use this command until gateway list is synced</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -1450,13 +1457,13 @@
         <translation>Use a custom data directory:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+26"/>
-        <location line="+75"/>
+        <location filename="../intro.cpp" line="+27"/>
+        <location line="+77"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
@@ -1466,7 +1473,7 @@
         <translation>Error: Specified data directory &quot;%1&quot; cannot be created.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -1489,7 +1496,7 @@
         <translation>Form</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+112"/>
         <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</source>
         <translation>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Soom network, as detailed below.</translation>
     </message>
@@ -1578,12 +1585,12 @@
         <translation>Select payment request file</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+21"/>
+        <location filename="../openuridialog.cpp" line="+22"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
@@ -1686,18 +1693,18 @@
         <translation>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+55"/>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
         <translation>The user interface language can be set here. This setting will take effect after restarting %1.</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+108"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</translation>
     </message>
     <message>
-        <location line="-552"/>
+        <location line="-573"/>
         <source>Expert</source>
         <translation>Expert</translation>
     </message>
@@ -1818,6 +1825,16 @@
         <translation>M&amp;inimize on close</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Show balloon popups for new transactions.</source>
+        <translation>Show balloon popups for new transactions.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Show Transaction balloon popup</source>
+        <translation>&amp;Show Transaction balloon popup</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>&amp;Display</translation>
@@ -1840,7 +1857,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>User Interface Theme:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+21"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
     </message>
@@ -1881,12 +1898,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../optionsdialog.cpp" line="+247"/>
+        <location filename="../optionsdialog.cpp" line="+254"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="-148"/>
+        <location filename="../optionsdialog.cpp" line="-151"/>
         <source>default</source>
         <translation>default</translation>
     </message>
@@ -1896,28 +1913,28 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>none</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>Confirm options reset</source>
         <translation>Confirm options reset</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+51"/>
+        <location line="+53"/>
         <source>Client restart required to activate changes.</source>
         <translation>Client restart required to activate changes.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-53"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation>Client will be shut down. Do you want to proceed?</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>This change would require a client restart.</source>
         <translation>This change would require a client restart.</translation>
     </message>
@@ -2021,7 +2038,9 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Recent transactions</translation>
     </message>
     <message>
-        <location filename="../overviewpage.cpp" line="+147"/>
+        <location filename="../overviewpage.cpp" line="+154"/>
+        <location line="+1"/>
+        <location line="+16"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>out of sync</translation>
@@ -2184,10 +2203,10 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../soom.cpp" line="+96"/>
-        <location line="+9"/>
-        <location line="+16"/>
-        <location line="+23"/>
+        <location filename="../soom.cpp" line="+98"/>
+        <location line="+10"/>
+        <location line="+17"/>
+        <location line="+24"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -2207,7 +2226,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Enter a Soom address (e.g. %1)</translation>
     </message>
     <message>
-        <location line="+854"/>
+        <location line="+859"/>
         <source>%1 d</source>
         <translation>%1 d</translation>
     </message>
@@ -2245,51 +2264,33 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location line="+18"/>
         <source>%n second(s)</source>
-        <translation>
-            <numerusform>%n second</numerusform>
-            <numerusform>%n seconds</numerusform>
-        </translation>
+        <translation><numerusform>%n second</numerusform><numerusform>%n seconds</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n minute</numerusform>
-            <numerusform>%n minutes</numerusform>
-        </translation>
+        <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n hour</numerusform>
-            <numerusform>%n hours</numerusform>
-        </translation>
+        <translation><numerusform>%n hour</numerusform><numerusform>%n hours</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n day(s)</source>
-        <translation>
-            <numerusform>%n day</numerusform>
-            <numerusform>%n days</numerusform>
-        </translation>
+        <translation><numerusform>%n day</numerusform><numerusform>%n days</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <location line="+6"/>
         <source>%n week(s)</source>
-        <translation>
-            <numerusform>%n week</numerusform>
-            <numerusform>%n weeks</numerusform>
-        </translation>
+        <translation><numerusform>%n week</numerusform><numerusform>%n weeks</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+0"/>
         <source>%n year(s)</source>
-        <translation>
-            <numerusform>%n year</numerusform>
-            <numerusform>%n years</numerusform>
-        </translation>
+        <translation><numerusform>%n year</numerusform><numerusform>%n years</numerusform></translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2305,22 +2306,22 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../soom.cpp" line="-98"/>
+        <location filename="../soom.cpp" line="-102"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>Error: Specified data directory &quot;%1&quot; does not exist.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation>Error: Cannot parse configuration file: %1. Only use key=value syntax.</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Error: %1</source>
         <translation>Error: %1</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <source>Error reading gateway configuration file: %1</source>
         <translation>Error reading gateway configuration file: %1</translation>
     </message>
@@ -2368,7 +2369,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR Code Dialog</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Copy &amp;Address</source>
         <translation>Copy &amp;Address</translation>
     </message>
@@ -2420,12 +2421,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Information</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+324"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location line="-194"/>
+        <location line="-200"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
@@ -2436,13 +2437,13 @@ https://www.transifex.com/projects/p/soom/</translation>
         <location line="+23"/>
         <location line="+16"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+79"/>
         <location line="+16"/>
         <location line="+23"/>
         <location line="+82"/>
         <location line="+16"/>
         <location line="+16"/>
-        <location line="+573"/>
+        <location line="+540"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2464,7 +2465,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>N/A</translation>
     </message>
     <message>
-        <location line="-1091"/>
+        <location line="-1058"/>
         <source>Number of connections</source>
         <translation>Number of connections</translation>
     </message>
@@ -2489,12 +2490,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Last block time</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-224"/>
         <source>Debug log file</source>
         <translation>Debug log file</translation>
     </message>
     <message>
-        <location line="+140"/>
+        <location line="+146"/>
         <source>Current number of blocks</source>
         <translation>Current number of blocks</translation>
     </message>
@@ -2504,7 +2505,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Client version</translation>
     </message>
     <message>
-        <location line="-317"/>
+        <location line="-323"/>
         <source>Using BerkeleyDB version</source>
         <translation>Using BerkeleyDB version</translation>
     </message>
@@ -2514,7 +2515,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Block chain</translation>
     </message>
     <message>
-        <location line="+257"/>
+        <location line="+263"/>
         <source>Number of Gateways</source>
         <translation>Number of Gateways</translation>
     </message>
@@ -2524,7 +2525,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Memory Pool</translation>
     </message>
     <message>
-        <location line="-276"/>
+        <location line="-282"/>
         <source>Current number of transactions</source>
         <translation>Current number of transactions</translation>
     </message>
@@ -2534,7 +2535,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Memory usage</translation>
     </message>
     <message>
-        <location line="+87"/>
+        <location line="+93"/>
         <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
@@ -2549,7 +2550,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Clear console</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+62"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Network Traffic</translation>
     </message>
@@ -2587,8 +2588,8 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../rpcconsole.cpp" line="+511"/>
-        <location line="+795"/>
+        <location filename="../rpcconsole.cpp" line="+549"/>
+        <location line="+792"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Select a peer to view detailed information.</translation>
     </message>
@@ -2628,18 +2629,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Wallet Path</translation>
     </message>
     <message>
-        <location line="-1436"/>
-        <location line="+798"/>
+        <location line="-1403"/>
+        <location line="+765"/>
         <source>User Agent</source>
         <translation>User Agent</translation>
     </message>
     <message>
-        <location line="-947"/>
+        <location line="-920"/>
         <source>Datadir</source>
         <translation>Datadir</translation>
     </message>
     <message>
-        <location line="+388"/>
+        <location line="+394"/>
         <source>Decrease font size</source>
         <translation>Decrease font size</translation>
     </message>
@@ -2649,7 +2650,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Increase font size</translation>
     </message>
     <message>
-        <location line="+544"/>
+        <location line="+511"/>
         <source>Services</source>
         <translation>Services</translation>
     </message>
@@ -2774,7 +2775,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-reindex: Rebuild block chain index from current blk000??.dat files.</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-694"/>
+        <location filename="../rpcconsole.cpp" line="-693"/>
         <source>&amp;Disconnect</source>
         <translation>&amp;Disconnect</translation>
     </message>
@@ -2807,7 +2808,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>1 &amp;year</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+49"/>
         <source>&amp;Unban</source>
         <translation>&amp;Unban</translation>
     </message>
@@ -2943,12 +2944,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Soom network.</translation>
     </message>
     <message>
-        <location line="-135"/>
+        <location line="-150"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+96"/>
         <source>&amp;Label</source>
         <translation>&amp;Label</translation>
     </message>
@@ -2964,7 +2965,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Amount</translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="-112"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Request payment</translation>
     </message>
@@ -2979,17 +2980,17 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Clear</translation>
     </message>
     <message>
-        <location line="+165"/>
+        <location line="+180"/>
         <source>Request InstantSend</source>
         <translation>Request InstantSend</translation>
     </message>
     <message>
-        <location line="-149"/>
+        <location line="-164"/>
         <source>Request payments (generates QR codes and soom: URIs)</source>
         <translation>Request payments (generates QR codes and soom: URIs)</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -3019,7 +3020,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Remove</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+48"/>
+        <location filename="../receivecoinsdialog.cpp" line="+63"/>
         <source>Copy URI</source>
         <translation>Copy URI</translation>
     </message>
@@ -3047,7 +3048,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>QR Code</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+81"/>
         <source>Copy &amp;URI</source>
         <translation>Copy &amp;URI</translation>
     </message>
@@ -3062,7 +3063,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>&amp;Save Image...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+33"/>
+        <location filename="../receiverequestdialog.cpp" line="+34"/>
         <source>C&amp;lose</source>
         <translation>C&amp;lose</translation>
     </message>
@@ -3072,12 +3073,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Request payment to %1</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location filename="../forms/receiverequestdialog.ui" line="-78"/>
         <source>Payment information</source>
         <translation>Payment information</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location filename="../receiverequestdialog.cpp" line="+8"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
@@ -3169,7 +3170,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+638"/>
+        <location filename="../sendcoinsdialog.cpp" line="+655"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
@@ -3244,12 +3245,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Transaction Fee</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+46"/>
         <source>Choose...</source>
         <translation>Choose...</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+13"/>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
         <translation>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</translation>
     </message>
@@ -3285,12 +3286,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Confirmation time target:</translation>
     </message>
     <message>
-        <location line="+156"/>
+        <location line="+162"/>
         <source>InstantSend</source>
         <translation>InstantSend</translation>
     </message>
     <message>
-        <location line="-361"/>
+        <location line="-367"/>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
     </message>
@@ -3325,7 +3326,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>(Smart fee not initialized yet. This usually takes a few blocks...)</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+62"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
@@ -3345,7 +3346,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>S&amp;end</translation>
     </message>
     <message>
-        <location line="-747"/>
+        <location line="-753"/>
         <source>Clear all fields of the form.</source>
         <translation>Clear all fields of the form.</translation>
     </message>
@@ -3365,12 +3366,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Add &amp;Recipient</translation>
     </message>
     <message>
-        <location line="+684"/>
+        <location line="+690"/>
         <source>Balance:</source>
         <translation>Balance:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-549"/>
+        <location filename="../sendcoinsdialog.cpp" line="-551"/>
         <source>Copy quantity</source>
         <translation>Copy quantity</translation>
     </message>
@@ -3453,12 +3454,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Confirm send coins</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
@@ -3508,12 +3509,9 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Payment request expired.</translation>
     </message>
     <message numerus="yes">
-        <location line="+67"/>
+        <location line="+105"/>
         <source>%n block(s)</source>
-        <translation>
-            <numerusform>%n block</numerusform>
-            <numerusform>%n blocks</numerusform>
-        </translation>
+        <translation><numerusform>%n block</numerusform><numerusform>%n blocks</numerusform></translation>
     </message>
     <message>
         <location line="+28"/>
@@ -3523,10 +3521,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location line="+25"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation>
-            <numerusform>Estimated to begin confirmation within %n block.</numerusform>
-            <numerusform>Estimated to begin confirmation within %n blocks.</numerusform>
-        </translation>
+        <translation><numerusform>Estimated to begin confirmation within %n block.</numerusform><numerusform>Estimated to begin confirmation within %n blocks.</numerusform></translation>
     </message>
     <message>
         <location line="+102"/>
@@ -3572,22 +3567,24 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>The Soom address to send the payment to</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location filename="../sendcoinsentry.cpp" line="+54"/>
         <source>Choose the address</source>
         <translation>Choose the address</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+1"/>
         <source>Paste address</source>
         <translation>Paste address</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Remove</source>
         <translation>Remove</translation>
     </message>
     <message>
-        <location line="-62"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+19"/>
         <source>Choose previously used address</source>
         <translation>Choose previously used address</translation>
     </message>
@@ -3597,7 +3594,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+22"/>
         <source>Paste address from clipboard</source>
         <translation>Paste address from clipboard</translation>
     </message>
@@ -3619,7 +3616,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Alt+D</translation>
     </message>
     <message>
-        <location line="-121"/>
+        <location line="-133"/>
         <source>&amp;Label</source>
         <translation>&amp;Label</translation>
     </message>
@@ -3630,7 +3627,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     </message>
     <message>
         <location line="+57"/>
-        <location line="+632"/>
+        <location line="+644"/>
         <location line="+529"/>
         <source>A&amp;mount</source>
         <translation>A&amp;mount</translation>
@@ -3678,7 +3675,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Memo</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="-26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Enter a label for this address to add it to your address book</translation>
     </message>
@@ -3821,7 +3818,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Click &quot;Sign Message&quot; to generate signature</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+112"/>
         <location line="+80"/>
         <source>The entered address is invalid.</source>
         <translation>The entered address is invalid.</translation>
@@ -3887,18 +3884,18 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Message verified.</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="-291"/>
-        <location line="+220"/>
+        <location line="-210"/>
+        <location line="+3"/>
         <source>Choose the address</source>
         <translation>Choose the address</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-2"/>
         <source>Paste address</source>
         <translation>Paste address</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+1"/>
         <source>Paste Signature</source>
         <translation>Paste Signature</translation>
     </message>
@@ -3918,17 +3915,17 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+1"/>
         <source>The Bitcoin Core developers</source>
-        <translation type="unfinished"></translation>
+        <translation>The Bitcoin Core developers</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Dash Core developers</source>
-        <translation type="unfinished"></translation>
+        <translation>The Dash Core developers</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Soom Core developers</source>
-        <translation type="unfinished"></translation>
+        <translation>The Soom Core developers</translation>
     </message>
 </context>
 <context>
@@ -3944,10 +3941,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location filename="../transactiondesc.cpp" line="+33"/>
         <source>Open for %n more block(s)</source>
-        <translation>
-            <numerusform>Open for %n more block</numerusform>
-            <numerusform>Open for %n more blocks</numerusform>
-        </translation>
+        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4022,10 +4016,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location line="+2"/>
         <source>, broadcast through %n node(s)</source>
-        <translation>
-            <numerusform>, broadcast through %n node</numerusform>
-            <numerusform>, broadcast through %n nodes</numerusform>
-        </translation>
+        <translation><numerusform>, broadcast through %n node</numerusform><numerusform>, broadcast through %n nodes</numerusform></translation>
     </message>
     <message>
         <location line="+4"/>
@@ -4089,10 +4080,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location line="-144"/>
         <source>matures in %n more block(s)</source>
-        <translation>
-            <numerusform>matures in %n more block</numerusform>
-            <numerusform>matures in %n more blocks</numerusform>
-        </translation>
+        <translation><numerusform>matures in %n more block</numerusform><numerusform>matures in %n more blocks</numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4199,16 +4187,12 @@ https://www.transifex.com/projects/p/soom/</translation>
     <name>TransactionDescDialog</name>
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
+        <location filename="../transactiondescdialog.cpp" line="+23"/>
         <source>Transaction details</source>
         <translation>Transaction details</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+22"/>
-        <source>Details for %1</source>
-        <translation>Details for %1</translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location filename="../transactiondescdialog.cpp" line="+8"/>
         <source>&amp;Close</source>
         <translation>&amp;Close</translation>
     </message>
@@ -4238,10 +4222,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message numerus="yes">
         <location line="+58"/>
         <source>Open for %n more block(s)</source>
-        <translation>
-            <numerusform>Open for %n more block</numerusform>
-            <numerusform>Open for %n more blocks</numerusform>
-        </translation>
+        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4604,7 +4585,7 @@ https://www.transifex.com/projects/p/soom/</translation>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+49"/>
+        <location filename="../walletview.cpp" line="+50"/>
         <source>&amp;Export</source>
         <translation>&amp;Export</translation>
     </message>
@@ -4614,12 +4595,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Export the data in the current tab to a file</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+15"/>
         <source>Selected amount:</source>
         <translation>Selected amount:</translation>
     </message>
     <message>
-        <location line="+275"/>
+        <location line="+318"/>
         <source>Backup Wallet</source>
         <translation>Backup Wallet</translation>
     </message>
@@ -4707,12 +4688,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</translation>
     </message>
     <message>
-        <location line="+264"/>
+        <location line="+266"/>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
         <translation>Unable to bind to %s on this computer. %s is probably already running.</translation>
     </message>
     <message>
-        <location line="-238"/>
+        <location line="-240"/>
         <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
         <translation>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</translation>
     </message>
@@ -4762,7 +4743,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Allow DNS lookups for -addnode, -seednode and -connect</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Block creation options:</source>
         <translation>Block creation options:</translation>
     </message>
@@ -4782,12 +4763,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Cannot write default address</translation>
     </message>
     <message>
-        <location line="-278"/>
+        <location line="-279"/>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
         <translation>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</translation>
     </message>
     <message>
-        <location line="+283"/>
+        <location line="+284"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Connect to a node to retrieve peer addresses, and disconnect</translation>
     </message>
@@ -4802,7 +4783,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Corrupted block database detected</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Debugging/Testing options:</source>
         <translation>Debugging/Testing options:</translation>
     </message>
@@ -4872,7 +4853,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Failed to listen on any port. Use -listen=0 if you want this.</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-349"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>
@@ -4897,12 +4878,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</translation>
     </message>
     <message>
-        <location line="+448"/>
+        <location line="+450"/>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>This is the transaction fee you will pay if you send a transaction.</translation>
     </message>
     <message>
-        <location line="-445"/>
+        <location line="-447"/>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
         <translation>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</translation>
     </message>
@@ -5047,7 +5028,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Always query for peer addresses via DNS lookup (default: %u)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Chain selection options:</source>
         <translation>Chain selection options:</translation>
     </message>
@@ -5062,22 +5043,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Connect to KeePassHttp on port &lt;port&gt; (default: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Copyright (C) 2009-2018 The Bitcoin Core developers</source>
-        <translation>Copyright (C) 2009-2018 The Bitcoin Core developers</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2014-2018 The Dash Core developers</source>
-        <translation>Copyright (C) 2014-2018 The Dash Core developers</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copyright (C) 2017-2018 The Soom Core developers</source>
-        <translation>Copyright (C) 2017-2018 The Soom Core developers</translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+17"/>
         <source>Enable the client to act as a gateway (0-1, default: %u)</source>
         <translation>Enable the client to act as a gateway (0-1, default: %u)</translation>
     </message>
@@ -5162,7 +5128,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-293"/>
+        <location line="-295"/>
         <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
         <translation>Extra transactions to keep in memory for compact block reconstructions (default: %u)</translation>
     </message>
@@ -5217,7 +5183,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</translation>
     </message>
     <message>
-        <location line="+138"/>
+        <location line="+140"/>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>Keypool ran out, please call keypoolrefill first</translation>
     </message>
@@ -5477,12 +5443,12 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Invalid gatewayprivkey. Please see documenation.</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-52"/>
         <source>Could not parse gateway.conf</source>
         <translation>Could not parse gateway.conf</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Invalid netmask specified in -whitelist: &apos;%s&apos;</translation>
     </message>
@@ -5507,7 +5473,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</translation>
     </message>
     <message>
-        <location line="-332"/>
+        <location line="-334"/>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</translation>
     </message>
@@ -5747,6 +5713,11 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Automatically create Tor hidden service (default: %d)</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Core</translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Change index out of range</source>
         <translation>Change index out of range</translation>
@@ -5754,10 +5725,15 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+5"/>
         <source>Copyright (C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (C)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
+        <source>Dash Core</source>
+        <translation>Dash Core</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Enable publish hash block in &lt;address&gt;</source>
         <translation>Enable publish hash block in &lt;address&gt;</translation>
     </message>
@@ -6162,7 +6138,7 @@ https://www.transifex.com/projects/p/soom/</translation>
         <translation>Zapping all transactions from wallet...</translation>
     </message>
     <message>
-        <location line="-201"/>
+        <location line="-203"/>
         <source>%s corrupt, salvage failed</source>
         <translation>%s corrupt, salvage failed</translation>
     </message>
