@@ -5160,7 +5160,7 @@ https://www.transifex.com/projects/p/soom/</translation>
     <message>
         <location line="+14"/>
         <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
-        <translation>Speicherbedarf durch &quot;pruning&quot; (Abschneiden/Löschen von alten Blocks) verringern. Dieser Modus ist mit den Optionen -txindex und -rescan nicht kombinierbar.. Warnung: wenn man diese Option wieder abschaltet muß man die gesamte Blockchain erneut downloaden. (Standard: 0 = Pruning deaktiviert, &gt;%u = Maximalgröße für Block-Dateien)</translation>
+        <translation>Speicherbedarf durch &quot;pruning&quot; (Abschneiden/Löschen von alten Blocks) verringern. Dadurch kann der Pruneblockchain-RPC aufgerufen werden, um bestimmte Blöcke zu löschen, und das automatische Löschen von alten Blöcken wird ermöglicht, wenn eine Zielgröße in MiB angegeben wird. Dieser Modus ist mit den Optionen -txindex und -rescan nicht kombinierbar.. Warnung: wenn man diese Option wieder abschaltet muß man die gesamte Blockchain erneut downloaden. (Standard: 0 = Pruning deaktiviert, 1 = Manuelle Bereinigung über RPC zulassen, &gt;%u = Maximalgröße für Block-Dateien)</translation>
     </message>
     <message>
         <location line="+12"/>
