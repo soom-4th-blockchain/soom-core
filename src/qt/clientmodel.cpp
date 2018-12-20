@@ -57,6 +57,7 @@ ClientModel::ClientModel(OptionsModel *_optionsModel, QObject *parent) :
     pollGwTimer->start(MODEL_UPDATE_DELAY * 4);
 
     subscribeToCoreSignals();
+    m_locale = GUIUtil::GetLocale();
 }
 
 ClientModel::~ClientModel()
@@ -284,7 +285,7 @@ bool ClientModel::isReleaseVersion() const
 
 QString ClientModel::formatClientStartupTime() const
 {
-    return QDateTime::fromTime_t(nClientStartupTime).toString();
+    return QLocale{m_locale}.toString(QDateTime::fromTime_t(nClientStartupTime));
 }
 
 QString ClientModel::dataDir() const

@@ -9,6 +9,7 @@
 
 #include <QObject>
 #include <QDateTime>
+#include <QLocale>
 
 #include <atomic>
 
@@ -98,6 +99,8 @@ private:
 
     QTimer *pollTimer;
     QTimer *pollGwTimer;
+
+    QLocale m_locale;
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();

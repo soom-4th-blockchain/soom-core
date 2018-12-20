@@ -7,6 +7,7 @@
 
 #include <QDateTime>
 #include <QWidget>
+#include <QLocale>
 
 //! The required delta of headers to the estimated number of available headers until we show the IBD progress
 static constexpr int HEADER_HEIGHT_DELTA_SYNC = 24;
@@ -47,6 +48,7 @@ private:
     bool layerIsVisible;
     bool userClosed;
     bool foreverHidden;
+    QLocale m_locale;
 };
 
 #endif // BITCOIN_QT_MODALOVERLAY_H

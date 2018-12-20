@@ -14,6 +14,7 @@
 #include <QWidget>
 #include <QCompleter>
 #include <QThread>
+#include <QLocale>
 
 class ClientModel;
 class PlatformStyle;
@@ -169,6 +170,7 @@ private:
     int consoleFontSize;
     QCompleter *autoCompleter;
     QThread thread;
+    QLocale m_locale;
 
     /** Update UI with latest network info from model. */
     void updateNetworkState();

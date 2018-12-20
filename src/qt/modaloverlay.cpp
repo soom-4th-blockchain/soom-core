@@ -30,6 +30,7 @@ foreverHidden(false)
 
     blockProcessTime.clear();
     setVisible(false);
+    m_locale = GUIUtil::GetLocale();
 }
 
 ModalOverlay::~ModalOverlay()
@@ -118,7 +119,7 @@ void ModalOverlay::tipUpdate(int count, const QDateTime& blockDate, double nVeri
     }
 
     // show the last block date
-    ui->newestBlockDate->setText(blockDate.toString());
+    ui->newestBlockDate->setText(QLocale{m_locale}.toString(blockDate));
 
     // show the percentage done according to nVerificationProgress
     ui->percentageProgress->setText(QString::number(nVerificationProgress*100, 'f', 2)+"%");

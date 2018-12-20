@@ -501,6 +501,43 @@ void SubstituteFonts(const QString& language)
 #endif
 }
 
+/** Translate from selected language option to QLocale **/
+QLocale GetLocale()
+{
+    QSettings settings;
+    QString lang_territory = settings.value("language", "").toString();
+
+    if(lang_territory.isEmpty())
+        return QLocale::system();
+
+    QStringList languageArr;
+    languageArr << "en" << "ko_KR" << "ja" << "zh_CN" << "zh_TW" << "vi"
+                << "bg" << "de" << "es" << "fi" << "fr" << "it"
+                << "nl" << "pl" << "pt" << "ru" << "sk" << "sv";
+    switch(languageArr.indexOf(lang_territory))
+    {
+        case 0: return QLocale::English;
+        case 1: return QLocale::Korean;
+        case 2: return  QLocale::Japanese;
+        case 3: return  QLocale::Chinese;
+        case 4: return  QLocale::Chinese;
+        case 5: return  QLocale::Vietnamese;
+        case 6: return  QLocale::Bulgarian;
+        case 7: return  QLocale::German;
+        case 8: return  QLocale::Spanish;
+        case 9: return  QLocale::Finnish;
+        case 10: return  QLocale::French;
+        case 11: return  QLocale::Italian;
+        case 12: return  QLocale::Dutch;
+        case 13: return  QLocale::Polish;
+        case 14: return  QLocale::Portuguese;
+        case 15: return  QLocale::Russian;
+        case 16: return  QLocale::Slovak;
+        case 17: return  QLocale::Swedish;
+        default: return QLocale::system();
+    }
+}
+
 ToolTipToRichTextFilter::ToolTipToRichTextFilter(int _size_threshold, QObject *parent) :
     QObject(parent),
     size_threshold(_size_threshold)
