@@ -370,7 +370,7 @@ bool RPCConsole::RPCParseCommandLine(std::string &strResult, const std::string &
         }
         *pstrFilteredOut = strCommand;
         for (auto i = filter_ranges.rbegin(); i != filter_ranges.rend(); ++i) {
-            pstrFilteredOut->replace(i->first, i->second - i->first, "(\A1\A6)");
+            pstrFilteredOut->replace(i->first, i->second - i->first, "(\\A1\\A6)");
         }
     }
     switch(state) // final state

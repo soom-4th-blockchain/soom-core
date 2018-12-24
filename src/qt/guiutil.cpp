@@ -508,7 +508,7 @@ QLocale GetLocale()
     QString lang_territory = settings.value("language", "").toString();
 
     if(lang_territory.isEmpty())
-        return QLocale::system();
+        return QLocale::system().language();
 
     QStringList languageArr;
     languageArr << "en" << "ko_KR" << "ja" << "zh_CN" << "zh_TW" << "vi"
@@ -534,7 +534,7 @@ QLocale GetLocale()
         case 15: return  QLocale::Russian;
         case 16: return  QLocale::Slovak;
         case 17: return  QLocale::Swedish;
-        default: return QLocale::system();
+        default: return QLocale::system().language();
     }
 }
 
