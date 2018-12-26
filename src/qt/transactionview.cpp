@@ -47,6 +47,8 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     // Build filter row
     setContentsMargins(0,0,0,0);
 
+    useExtraSpacing = platformStyle->getUseExtraSpacing();
+    resizing = false;
     QHBoxLayout *hlayout = new QHBoxLayout();
     hlayout->setContentsMargins(0,0,0,0);
     if (platformStyle->getUseExtraSpacing()) {
@@ -182,6 +184,7 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     connect(view, SIGNAL(doubleClicked(QModelIndex)), this, SIGNAL(doubleClicked(QModelIndex)));
     connect(view, SIGNAL(clicked(QModelIndex)), this, SLOT(computeSum()));
     connect(view, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextualMenu(QPoint)));
+    connect(view->horizontalHeader(), SIGNAL(sectionResized(int, int, int)), this, SLOT(resizeFilter(int, int, int)));
 
     connect(abandonAction, SIGNAL(triggered()), this, SLOT(abandonTx()));
     connect(copyAddressAction, SIGNAL(triggered()), this, SLOT(copyAddress()));
@@ -192,6 +195,46 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     connect(copyTxPlainText, SIGNAL(triggered()), this, SLOT(copyTxPlainText()));
     connect(editLabelAction, SIGNAL(triggered()), this, SLOT(editLabel()));
     connect(showDetailsAction, SIGNAL(triggered()), this, SLOT(showDetails()));
+}
+
+/** Synchronize filter width to table column width when the table column width changes. **/
+void TransactionView::resizeFilter(int idx, int oldSize, int newSize)
+{
+    // It does not work during the resize event
+    if(resizing)
+        return;
+
+    // Ignore garbage values when sorting by clicking on horizon header
+    if(idx ==1 && oldSize == 23 && newSize == 0)
+        return;
+    if(idx ==5 && oldSize == 100)
+        return;
+
+    int colWidth = transactionView->columnWidth(idx);
+
+    if (!useExtraSpacing)
+        colWidth -= 1;
+
+    switch(idx)
+    {
+    case TransactionTableModel::Status:
+        watchOnlyWidget->setFixedWidth(colWidth);
+        break;
+    case TransactionTableModel::Date:
+        dateWidget->setFixedWidth(colWidth);
+        break;
+    case TransactionTableModel::Type:
+        typeWidget->setFixedWidth(colWidth);
+        break;
+    case TransactionTableModel::ToAddress:
+        addressWidget->setGeometry(addressWidget->x(), addressWidget->y(), colWidth, addressWidget->height());
+        break;
+    case TransactionTableModel::Amount:
+        amountWidget->setFixedWidth(colWidth);
+        break;
+    default:
+        return;
+    }
 }
 
 void TransactionView::setModel(WalletModel *_model)
@@ -620,8 +663,11 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
 // sizes as the tables width is proportional to the dialogs width.
 void TransactionView::resizeEvent(QResizeEvent* event)
 {
+    addressWidget->setMinimumWidth(MINIMUM_COLUMN_WIDTH);
+    resizing = true;
     QWidget::resizeEvent(event);
     columnResizingFixer->stretchColumnWidth(TransactionTableModel::ToAddress);
+    resizing = false;
 }
 
 // Need to override default Ctrl+C action for amount as default behaviour is just to copy DisplayRole text

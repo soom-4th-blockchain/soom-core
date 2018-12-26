@@ -69,6 +69,8 @@ private:
     QLineEdit *addressWidget;
     QLineEdit *amountWidget;
 
+    bool useExtraSpacing;
+    bool resizing;
     QMenu *contextMenu;
     QSignalMapper *mapperThirdPartyTxUrls;
 
@@ -99,6 +101,7 @@ private Q_SLOTS:
     void openThirdPartyTxUrl(QString url);
     void updateWatchOnlyColumn(bool fHaveWatchOnly);
     void abandonTx();
+    void resizeFilter(int idx, int oldSize, int newSize);
 
 Q_SIGNALS:
     void doubleClicked(const QModelIndex&);
