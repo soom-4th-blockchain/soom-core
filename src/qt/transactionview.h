@@ -70,7 +70,6 @@ private:
     QLineEdit *amountWidget;
 
     bool useExtraSpacing;
-    bool resizing;
     QMenu *contextMenu;
     QSignalMapper *mapperThirdPartyTxUrls;
 

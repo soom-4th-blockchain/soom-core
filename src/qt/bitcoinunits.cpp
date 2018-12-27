@@ -174,7 +174,7 @@ QString BitcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool p
 QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QSettings settings;
-    int digits = settings.value("digits").toInt();
+//    int digits = settings.value("digits").toInt();
 
     QString result = format(unit, amount, plussign, separators);
 //    if(decimals(unit) > digits) result.chop(decimals(unit) - digits);

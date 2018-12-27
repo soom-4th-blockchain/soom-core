@@ -48,7 +48,6 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     setContentsMargins(0,0,0,0);
 
     useExtraSpacing = platformStyle->getUseExtraSpacing();
-    resizing = false;
     QHBoxLayout *hlayout = new QHBoxLayout();
     hlayout->setContentsMargins(0,0,0,0);
     if (platformStyle->getUseExtraSpacing()) {
@@ -200,10 +199,6 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
 /** Synchronize filter width to table column width when the table column width changes. **/
 void TransactionView::resizeFilter(int idx, int oldSize, int newSize)
 {
-    // It does not work during the resize event
-    if(resizing)
-        return;
-
     // Ignore garbage values when sorting by clicking on horizon header
     if(idx ==1 && oldSize == 23 && newSize == 0)
         return;
@@ -664,10 +659,10 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
 void TransactionView::resizeEvent(QResizeEvent* event)
 {
     addressWidget->setMinimumWidth(MINIMUM_COLUMN_WIDTH);
-    resizing = true;
+    disconnect(transactionView->horizontalHeader(), SIGNAL(sectionResized(int, int, int)), this, SLOT(resizeFilter(int, int, int)));
     QWidget::resizeEvent(event);
     columnResizingFixer->stretchColumnWidth(TransactionTableModel::ToAddress);
-    resizing = false;
+    connect(transactionView->horizontalHeader(), SIGNAL(sectionResized(int, int, int)), this, SLOT(resizeFilter(int, int, int)));
 }
 
 // Need to override default Ctrl+C action for amount as default behaviour is just to copy DisplayRole text
