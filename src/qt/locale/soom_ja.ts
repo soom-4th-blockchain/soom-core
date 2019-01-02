@@ -780,7 +780,7 @@
     <message>
         <location line="+70"/>
         <source>%1 New transactions</source>
-        <translation>%1 の新しい取引があります。</translation>
+        <translation>%1件の新しい取引があります。</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1827,12 +1827,12 @@
     <message>
         <location line="+7"/>
         <source>Show balloon popups for new transactions.</source>
-        <translation>新しいトランザクションのポップアップを表示します。</translation>
+        <translation>新しい取引に対するメッセージを表示します。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Show Transaction balloon popup</source>
-        <translation>取引のポップアップを表示する (&amp;S)</translation>
+        <translation>取引メッセージ表示 (&amp;S)</translation>
     </message>
     <message>
         <location line="+21"/>

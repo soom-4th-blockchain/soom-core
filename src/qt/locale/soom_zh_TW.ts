@@ -780,7 +780,7 @@
     <message>
         <location line="+70"/>
         <source>%1 New transactions</source>
-        <translation>有%1筆新交易。</translation>
+        <translation>%1 的新交易。</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1827,12 +1827,12 @@
     <message>
         <location line="+7"/>
         <source>Show balloon popups for new transactions.</source>
-        <translation>顯示新事務的彈出窗口。</translation>
+        <translation>顯示新交易信息彈窗。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Show Transaction balloon popup</source>
-        <translation>顯示事務彈出窗口(&amp;S)</translation>
+        <translation>顯示交易信息彈窗(&amp;S)</translation>
     </message>
     <message>
         <location line="+21"/>
