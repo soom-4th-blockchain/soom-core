@@ -233,7 +233,7 @@ void CGatewayPayments::ProcessMessage(CNode* pfrom, const std::string& strComman
         if (!gatewaySync.IsSynced()) return;
 
         // DEPRECATED, should be removed on next protocol bump
-        if(pfrom->nVersion == 70208) {
+        if(pfrom->nVersion == 70209) {
             int nCountNeeded;
             vRecv >> nCountNeeded;
         }

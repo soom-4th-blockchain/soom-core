@@ -106,7 +106,7 @@ void CGatewayMan::AskForGW(CNode* pnode, const COutPoint& outpoint, CConnman& co
     }
     mWeAskedForGatewayListEntry[outpoint][addrSquashed] = GetTime() + GWEG_UPDATE_SECONDS;
 
-    if (pnode->GetSendVersion() == 70208) {
+    if (pnode->GetSendVersion() == 70209) {
         connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, CTxIn(outpoint)));
     } else {
         connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, outpoint));
@@ -390,7 +390,7 @@ void CGatewayMan::GwegUpdate(CNode* pnode, CConnman& connman)
         }
     }
 
-    if (pnode->GetSendVersion() == 70208) {
+    if (pnode->GetSendVersion() == 70209) {
         connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, CTxIn()));
     } else {
         connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GWEG, COutPoint()));
@@ -834,7 +834,7 @@ void CGatewayMan::ProcessMessage(CNode* pfrom,const std::string& strCommand, CDa
 
         COutPoint gatewayOutpoint;
 
-        if (pfrom->nVersion == 70208) {
+        if (pfrom->nVersion == 70209) {
             CTxIn vin;
             vRecv >> vin;
             gatewayOutpoint = vin.prevout;

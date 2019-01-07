@@ -183,7 +183,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
                 gwnodeman.GwegUpdate(pnode, connman);
             } else if(nRequestedGatewayAttempt < 6) {
                 //sync payment votes
-                if(pnode->nVersion == 70208) {
+                if(pnode->nVersion == 70209) {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC, gwpayments.GetStorageLimit())); //sync payment votes
                 } else {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC)); //sync payment votes
@@ -316,7 +316,7 @@ void CGatewaySync::ProcessTick(CConnman& connman)
 
                 // ask node for all payment votes it has (new nodes will only return votes for future payments)
                 //sync payment votes
-                if(pnode->nVersion == 70208) {
+                if(pnode->nVersion == 70209) {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC, gwpayments.GetStorageLimit()));
                 } else {
                     connman.PushMessage(pnode, msgMaker.Make(NetMsgType::GATEWAYPAYMENTSYNC));
