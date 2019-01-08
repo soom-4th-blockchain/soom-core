@@ -59,7 +59,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, UniValue& out, bool fInclud
     out.push_back(Pair("addresses", a));
 }
 
-void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
+void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry, bool showBanned = false)
 {
     uint256 txid = tx.GetHash();
     entry.push_back(Pair("txid", txid.GetHex()));
@@ -99,6 +99,12 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
     entry.push_back(Pair("vin", vin));
     UniValue vout(UniValue::VARR);
     for (unsigned int i = 0; i < tx.vout.size(); i++) {
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+        if(!showBanned && CheckValidVout(tx, i) == false)
+        {
+            continue;
+        }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------		
         const CTxOut& txout = tx.vout[i];
         UniValue out(UniValue::VOBJ);
         out.push_back(Pair("value", ValueFromAmount(txout.nValue)));
@@ -452,6 +458,12 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
         }
 
         CTxIn in(COutPoint(txid, nOutput), CScript(), nSequence);
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+        if(CheckValidVout(in) == false)
+        {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter, vout banned");             
+        }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
 
         rawTx.vin.push_back(in);
     }
@@ -546,7 +558,7 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
 
     UniValue result(UniValue::VOBJ);
-    TxToJSON(CTransaction(std::move(mtx)), uint256(), result);
+    TxToJSON(CTransaction(std::move(mtx)), uint256(), result, true);
 
     return result;
 }
@@ -687,6 +699,15 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
         try {
             CMutableTransaction tx;
             ssData >> tx;
+
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+            for(const auto & txin : tx.vin) {
+                if( CheckValidVout(txin) == false) {	
+                     throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "vout banned");
+                }
+            }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
             txVariants.push_back(tx);
         }
         catch (const std::exception&) {
@@ -763,6 +784,14 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
                 throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "vout must be positive");
 
             COutPoint out(txid, nOut);
+
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+			if(CheckValidVout(out) == false)
+            {
+                throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "vout banned");
+            } 
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
             std::vector<unsigned char> pkData(ParseHexO(prevOut, "scriptPubKey"));
             CScript scriptPubKey(pkData.begin(), pkData.end());
 

@@ -1673,6 +1673,12 @@ void CWalletTx::GetAmounts(std::list<COutputEntry>& listReceived,
     // Sent/received.
     for (unsigned int i = 0; i < tx->vout.size(); ++i)
     {
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+        if(CheckValidVout(*this, i) == false)
+        {
+            continue;
+		}	
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
         const CTxOut& txout = tx->vout[i];
         isminetype fIsMine = pwallet->IsMine(txout);
         // Only need to handle txouts if AT LEAST one of these is true:
@@ -2267,6 +2273,12 @@ void CWallet::AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed, 
                 } else {
                     found = true;
                 }
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+                if(CheckValidVout(*pcoin, i) == false)
+				{
+				    found = false;
+				}
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
                 if(!found) continue;
 
                 isminetype mine = IsMine(pcoin->tx->vout[i]);

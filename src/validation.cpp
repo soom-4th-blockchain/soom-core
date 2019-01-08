@@ -96,7 +96,96 @@ CAmount maxTxFee = DEFAULT_TRANSACTION_MAXFEE;
 
 CTxMemPool mempool(::minRelayTxFee);
 std::map<uint256, int64_t> mapRejectedBlocks GUARDED_BY(cs_main);
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+bool banfilterflag = false;
+CBloomFilter banfilter(100, 0.000001, 0, BLOOM_UPDATE_ALL);
 
+const std::multimap<std::string, int> mapUnvalidVout={
+    {"abaf0d35844bd8afd652ee2a9700c2b0b0076b2be0199353488293666f2f0549", 1},
+    {"c7d1fe17d4f939b2d365d19b18c5f6b69d09ffe89b8db701a6380e0bcf530794", 1},
+    {"0f65b0dde6b817eabcbcd758193b5a121f6dbddd0c867162ac4b64069b603ab7", 0},
+    {"1382450b58dd44e4d5af4c0b19af6e7cb4bfaf387fbe7d03bed64aacb036f03d", 1},
+    {"4e8eaec84c4a47b37779cb582bffe7e79287b0616e523385b808e58251391e77", 0}, // 5    
+    {"50d552222e7c6680c53be9e646655875afe4c5cc3a6150ec6e5869456175f75d", 0},
+    {"50d552222e7c6680c53be9e646655875afe4c5cc3a6150ec6e5869456175f75d", 1},
+    {"3ec89e94ff24ef4949a38e50864c7bf6849a1df69245c61335e69613d16e5000", 0},
+    {"3ec89e94ff24ef4949a38e50864c7bf6849a1df69245c61335e69613d16e5000", 1},
+    {"d90bce5f9ddb07a4be9e268676753fbcb03592c9e3cde73049b4cce85b1552a7", 0}, // 10
+    {"d90bce5f9ddb07a4be9e268676753fbcb03592c9e3cde73049b4cce85b1552a7", 1},
+    {"f6c6e24b87e0541d666630237bd1dd32fd48651904c4eea87559cb2cbb644b40", 1},
+    {"05c2f6cff38bf4678cee404c18575946650fb298041f0b16fccf775cafd4b504", 0},
+    {"05c2f6cff38bf4678cee404c18575946650fb298041f0b16fccf775cafd4b504", 1},
+    {"f5b96936c2c8b7f05a28a0e2d70540c8d80bdc47df937ddd06c8486e762c89ae", 0}, // 15
+    {"14d035bcbdfdcf89d0b38864cc68b41c630827b136bde638d9a835aa50014d4d", 0},
+    {"f5b96936c2c8b7f05a28a0e2d70540c8d80bdc47df937ddd06c8486e762c89ae", 1},
+    {"0753d57ce93157fa031d402153e8f79d4c72c067a642912cbf96f0a9064f7328", 0},    
+    {"53c41fbee792b6e116203abcb7ffccc954087e473201536a19caa6e1651d8a59", 1},
+    {"25a50f56672496bb22d0bae3daa921ca9c3dc5c8ff25c6b7dccc7141a345a20f", 1}, // 20
+    {"fd0feae42bd184c4a99bbeee86856c594e2db3149b023c7768d44d52236f044a", 1},
+    {"d9bf57be190015c02e5f4caa1a55e775bd6ff8003292791b0d091be39f2eb982", 0},
+    {"2fd3809465fe1d375a4717dd1d5b80e342ffb616a8a57f9b027d9fb38ececce2", 0},
+    {"3651df627a6d79524d85e10a67d537ecfb5807a29bb0ef9536983732a99bb1ea", 0}, 
+	{"0e15ce64b87bb43333887947497e174caea21d73c4d80030d8a7ac6c5e249f6d", 0}, // 25
+    {"c5f08b56de520a0f06e097e3d4122e0c885710ce2ff290fd421f5731e12fcf1c", 1},	
+    {"992deaf261aea88acbd2fa4408f4150d764a330c45ce35d59045c3ba5168d2eb", 1},
+    {"e29ab9e7bed0e81d54c9a1268a061412ec9b98a28f63628c767a6de2c2be1371", 1},
+    {"112e365ef04e221e53aab125ed6deb1d2a364261b4dba9cb38541a7a72815e7a", 1}, 
+    {"9db39e52c7ab642dda242206e04095e7c18dd4626a48702ab68579fdddb798d7", 1}, // 30
+    {"a30548cf55fe893c1c741205de0521cf9e7307fe5f43cc4285f220414c5b64c5", 1},
+    {"e61548fcfb1fc485818eab637ea47893bd2942930097763a274c8ff0fbecce1a", 1},
+    {"1b8228a4e1ba2218af7f39043524ef553e6e6a682f9b272c585cec58f1655a11", 1},
+    {"90f1225cfbd22aed3cee811f17b84c81ca2f5e0d7fe656b62f50e80abbe8ccdf", 1}, 
+    {"b360e0c92fe6e5d49bef6d7b4c2e5d7dc2e998b9bb697e7649ed09df26bec41b", 1}, // 35
+    {"a1c79fb3c332d9bbd3c73f27736488f8e05890f2e29fecd0530970f6427815b6", 1},
+    {"94d0b6e946efdbc2cdf5b06f189fd97cb516b46d008f49f57ef247ce3b6a59fd", 1},
+    {"5fb9507a30a90196887d767c21d67541b4966a62fc74f446fc8c93fe05ad45f6", 1},
+    {"86c569b3794ae66b86b0a3fd832c532e1997aa6334b3026462e6df866b1e59f4", 1}, 
+    {"8add3357a96e669da4388d76d02af4b480b54d79c14a484dd1e4dedfec2612af", 1}, // 40
+    {"3651df627a6d79524d85e10a67d537ecfb5807a29bb0ef9536983732a99bb1ea", 1},
+    {"04b66e090065f2afaff62a1603169055fa43d855ffa31666d8f563fbc3e92f97", 1},
+    {"181f68a2f334e7ab7bedc5742bd1252c66a429cba4e87af16d867b42e522611f", 1}, 
+    {"47f1c8c8c6b5ba3871bd3907a25222530269de377ea79b874ebe4d71656611b9", 1},
+	{"00c513694d3fd484645f04b1c86495a43ea0b4b0fa5dc93952ffb1dca95e2c72", 1}, // 45
+    {"f989cdaf91e31480f88a7e5211f2324965d02768b0a151a73ed76e763b034320", 1},
+    {"4c61f9d6c543fbf63ac79c7e2418fd6363a409553b8439ea9d4ec0ba35be81ad", 1},
+    {"98a235f0328512b19f1c75e83cfddb861e1d6c678c6701d9faee4eb915bf5261", 1}, 
+	{"5f46d64e86c8f7cf5d2518c8748305ddc5ea98cebe43e141acad4fefa2f048d4", 1},
+    {"ffe50590f179c6980ae2e0f051fe7900eea76d7d3993fd4c9de59844d3c71e06", 1}, // 50
+    {"b1dba4e86ba70d1fdec87c3a6e0674a3e04d9d6577b505da6bc438f0a3a3e202", 1},
+    {"295ed9b931566b846ce39aac52d03d41e56f547e69a895acaf6904e535173aef", 1},
+    {"7e20bad1c2b09a4ea4f69fb12cf3910e9b7bac88e3df80f3d6f56ecd8b443fd6", 1},  
+	{"9375e28dc2fdfc9c377cc4ed264137313ede2ae3ae3bd7cfc92996451f37535d", 1},
+    {"9c0571a8d63884a0b3cbe3575b00d8630c1149ab40fade8a69445bbf2913d031", 1}, // 55
+    {"66700e0756b1db77adc226991fe26a6618d3b1c5da0eb21aa9c5abd557d78df1", 0},
+    {"4ad9325445af00f858fe63e21a2178514e15135cf74379b55b1c6c00231e2502", 1},
+    {"204251e192f718f7b4aa910bcab42543af7c1f2687eca24c513fa823266e83d3", 1}, 
+	{"300f7fe43b583a7b612c9a413aff2b43bc0bb5bfdd8a93603a9a585247a4d82d", 1},
+    {"62253fabcd1d14403b8e47d5ff80e1fc5828b54978ea0882a733a599a0ba1cb5", 1}, // 60
+    {"a6bffd7a25b93bd888f7d99ffeff65930ed528cc031b2e387e8a1834c374942b", 1},
+    {"c02de6b5e1b3bc913af1ee46f32ac6ff3b6064aaf2aa838d3781bfb19012558c", 1},
+    {"4efd8bdc84e7531cc60c3d79307e09ec5092e14cc887f20bbf98f2e1974a1898", 1}, 
+	{"a8d5805e58f772ad89aa4fe66cace5de9b6ca8f587a8c3f9cc8af0157c69eaa0", 1},
+    {"0f18891440d3a057b342e90085b18c8e13768ce62829bf84255bf6bccad35c50", 1}, // 65
+    {"fe2fa6d76d7b94b95faebe0726452b14e7c868b0f95be15161f642c5e98bbc81", 1},
+    {"3f5af1aec7c09171febc34b745952745f28916fa552663349a37bb77a726339b", 1},
+    {"b795fc5d928918e9f51cacad53ef1190e154dee9271a41938f0536674b7e4d30", 1}, 
+	{"9e6585ad61085465cd68883e717dbc6977c9986ca6fc9395cb218d5f2e5ef265", 1},
+    {"9c7f1f2712863583ac4e0798a4cf61eeef568fdb62604e89fa50f3a264ef52b7", 1}, // 70
+    {"3e69f8c137349d89ab138c6a3e981d489f8b155bc3c0c91bee65daf5d2fc8a9b", 1},
+    {"dd7baa0b1effc9dd39946fcd1a15ab4031eebfda4e95033854d17001c835b1fd", 1},
+    {"d0262784a108e30f1f573d0850db940a99789656470933468b1185a392bc5ca9", 1}, 
+	{"c83df37ab312913d30a5398772ad9be03b3485d47ed26eefbc0bcf23d99bff72", 1},
+    {"28860dcc6c89f4075442591b90ae3233606bc3e88910048383b6f3bd1e618f86", 1}, // 75
+    {"7c938728503d058089a6ff1f6f9d18eac966db3c360f6a8c6a0b879d4e8c0dc0", 1},
+    {"63e4be442480ba1b758174a5124eda0751289d555483575cf443a2c4814f2c96", 1},
+    {"28eaa00e811895f886e96b858b2f7e88d64de586fb9ef49cc511244ebec56147", 1}, 
+	{"18c657303af70a237b1431670e6ae9191f5afa6f1a71debc8c4048ddd4c0065d", 1},
+    {"1feb4a3e11084f25a6613e33ec3ecd5042021c11f03d4645490382e446d185b4", 1}, // 80
+    {"17e7ece88c6a74abc50408349c7a95e0d9a083e7bfd11f1a99882055459b8792", 1},
+    {"c50f0810070c34e9c4daea50b2cda78b96b354b4b2b01e0bf047fdeea452fee5", 1},
+    {"7c8cfdf99f02339fc67e9c97e3ef36c73bfc0ce0e07615b5f4f57352fefe43fe", 1}  // 83
+};
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
 static void CheckBlockIndex(const Consensus::Params& consensusParams);
 
 /** Constant stuff for coinbase transactions we create: */
@@ -594,6 +683,63 @@ static bool IsCurrentForFeeEstimation()
     return true;
 }
 
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+bool CheckValidVout(const CTransaction &tx, int idx) 
+{
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN)
+    {
+        if(banfilter.contains(uint256S(tx.GetHash().GetHex().c_str())))
+        {
+            for(const auto & mi : mapUnvalidVout){	
+                const std::string strTxhash = mi.first;
+                const int nRefCount = mi.second;
+                if(tx.GetHash().GetHex() == strTxhash && nRefCount == idx) {	
+                    return false;
+                }
+            }
+         }
+    }		 
+    return true;
+}
+
+bool CheckValidVout(const CTxIn& txin) 
+{
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN)
+    {        
+        if(banfilter.contains(uint256S(txin.prevout.hash.GetHex().c_str())))
+        {
+            for(const auto & mi : mapUnvalidVout){	
+                const std::string strTxhash = mi.first;
+                const int nRefCount = mi.second;
+                if( txin.prevout.hash.GetHex() == strTxhash && (int)(txin.prevout.n) == nRefCount ) {	
+                    return false;
+                }
+             }
+         }
+    }
+    return true;
+}
+
+bool CheckValidVout(const COutPoint &out) 
+{
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN)
+    {
+        if(banfilter.contains(uint256S(out.hash.GetHex().c_str())))
+        {
+             for(const auto & mi : mapUnvalidVout){	
+                 const std::string strTxhash = mi.first;
+                 const int nRefCount = mi.second;
+                 if( out.hash.GetHex() == strTxhash && (int)(out.n) == nRefCount ) {	
+                      return false;
+                 }
+
+             }	
+        }
+    }
+    return true;
+}
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
 bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const CTransactionRef& ptx, bool fLimitFree,
                               bool* pfMissingInputs, int64_t nAcceptTime, std::list<CTransactionRef>* plTxnReplaced,
                               bool fOverrideMempoolLimit, const CAmount& nAbsurdFee,
@@ -604,6 +750,14 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
     AssertLockHeld(cs_main);
     if (pfMissingInputs)
         *pfMissingInputs = false;
+
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+    for(const auto & txin : tx.vin) {
+        if( CheckValidVout(txin) == false) {	
+            return state.DoS(0, false, REJECT_NONSTANDARD, "non-valid");
+        }
+    }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
 
     if (!CheckTransaction(tx, state))
         return false; // state filled in by CheckTransaction
@@ -3269,6 +3423,27 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
         if (block.vtx[i]->IsCoinBase())
             return state.DoS(100, false, REJECT_INVALID, "bad-cb-multiple", false, "more than one coinbase");
 
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
+    if(Params().NetworkIDString() == CBaseChainParams::MAIN)
+    {
+        int nHeight = (int)chainActive.Height();
+        CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(Params().Checkpoints());
+        if (pcheckpoint && nHeight >= pcheckpoint->nHeight)
+      	{
+            for(const auto& tx : block.vtx) 
+            {	
+                for (const auto& txin : tx->vin) 
+            	{
+                    if( CheckValidVout(txin) == false) {	
+                    	 return state.DoS(100, error("CheckBlock(): bad vin in transaction"), 
+                        	         REJECT_INVALID, "bad-vin-transaction");
+                    }
+                }	     		
+             }
+       	}
+    }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
 
     // SOOM : CHECK TRANSACTIONS FOR INSTANTSEND
 
@@ -4100,6 +4275,17 @@ static bool AddGenesisBlock(const CChainParams& chainparams, const CBlock& block
 
 bool InitBlockIndex(const CChainParams& chainparams)
 {
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+    if( banfilterflag == false)
+    {	
+        banfilterflag = true;	
+        for(const auto & mi : mapUnvalidVout){	
+            const std::string strTxhash = mi.first;
+            banfilter.insert(uint256S(strTxhash.c_str()));	
+        }	
+    }
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
     LOCK(cs_main);
 
     // Check whether we're already initialized

@@ -413,6 +413,15 @@ bool IsFinalTx(const CTransaction &tx, int nBlockHeight, int64_t nBlockTime);
  * See consensus/consensus.h for flag definitions.
  */
 bool CheckFinalTx(const CTransaction &tx, int flags = -1);
+//!/ hcdo check banned tx  --------------------------------------------------------------------------------------------
+
+/**
+ * Check if transaction is banned.
+ */
+bool CheckValidVout(const CTransaction &tx, int idx); 
+bool CheckValidVout(const CTxIn& txin);
+bool CheckValidVout(const COutPoint &out);
+//#/ hcdo check banned tx  --------------------------------------------------------------------------------------------
 
 /**
  * Test whether the LockPoints height and time are still valid on the current chain
