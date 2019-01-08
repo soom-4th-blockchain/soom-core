@@ -31,7 +31,7 @@
 
 using namespace std;
 
-extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry);
+extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry, bool showBanned = false);
 void ScriptPubKeyToJSON(const CScript& scriptPubKey, UniValue& out, bool fIncludeHex);
 
 double GetDifficulty(const CBlockIndex* blockindex)

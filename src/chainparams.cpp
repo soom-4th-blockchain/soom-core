@@ -106,10 +106,10 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800; // May 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
-
-
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1543104000; // November 25, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1558742400; // May 25, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nWindowSize = 10080;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nThreshold = 7056; // 70% of 10,080
 	 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -190,11 +190,17 @@ public:
             boost::assign::map_list_of
             (  2000, uint256S("0x000000000002cc28d7e340b9e6253d23dbf7fa811817833f1242987797248469"))
             (  4000, uint256S("0x000000000000de97cda98fc8329329c2c5da6f496aaad45b841c8f17355f9884"))
-            (  8000, uint256S("0x0000000000000dc94a4a8917eba2865d3c52961e2fc0e94f56c98f70fde1b2f0")),
-            1533447343, // * UNIX timestamp of last checkpoint block
-            0,    // * total number of transactions between genesis and last checkpoint
+            (  8000, uint256S("0x0000000000000dc94a4a8917eba2865d3c52961e2fc0e94f56c98f70fde1b2f0"))
+            (  16000, uint256S("0x00000000000019270988588f6168f60319de078817f0357aafd3a705c2f9f513"))
+            (  32000, uint256S("0x00000000000039e8715f688f58f7f3b1a92ce78dba4f9c36466a11407f0742a6"))
+            (  64000, uint256S("0x00000000000009a018f88704f2144654a09b105456368e6d8077340d9f318ca8"))
+            ( 128000, uint256S("0x000000000000128d1efa28b1ab609772b62483e9522e6f8597828357f85e1ac0"))
+			( 151500, uint256S("0x0000000000000e251e38565cedb7313b197dd12091ef5a8e0b6df0640865cadb")),
+
+            1543036609, // * UNIX timestamp of last checkpoint block
+            164000,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0        // * estimated number of transactions per day after checkpoint
+            1488        // * estimated number of transactions per day after checkpoint
         };
     }
 };
@@ -237,10 +243,10 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1456790400; // March 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
-
-
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1543104000; // November 25, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1558742400; // May 25, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nWindowSize = 100;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nThreshold = 50; // 50% of 100
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00"); 
