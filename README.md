@@ -1,4 +1,4 @@
-Soom Core staging tree 1.0.2
+Soom Core staging tree 1.0.3
 ===============================
 
 
