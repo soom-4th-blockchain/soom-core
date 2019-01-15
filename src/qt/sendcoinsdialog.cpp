@@ -961,6 +961,7 @@ void SendCoinsDialog::coinControlUpdateLabels()
     {
         // in case coin control is disabled (=default), hide minimum absolute fee UI controls
         ui->radioCustomAtLeast->setVisible(false);
+        ui->labelCoinControlInsuffFunds->hide();
         return;
     }
 
@@ -987,7 +988,7 @@ void SendCoinsDialog::coinControlUpdateLabels()
         // show coin control stats
         ui->labelCoinControlAutomaticallySelected->hide();
         ui->widgetCoinControl->show();
-        ui->labelCoinControlInsuffFunds->hide();
+        //ui->labelCoinControlInsuffFunds->hide();
     }
     else
     {
