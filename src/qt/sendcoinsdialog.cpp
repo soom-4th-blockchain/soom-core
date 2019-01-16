@@ -262,14 +262,17 @@ void SendCoinsDialog::on_sendButton_clicked()
 
     QString strFunds = tr("using") + " <b>" + tr("any available funds") + "</b>";
     QString strFee = "";
-	recipients[0].inputType = ALL_COINS;
+
 
     if(ui->checkUseInstantSend->isChecked()) {
-        recipients[0].fUseInstantSend = true;
+
         strFunds += " ";
         strFunds += tr("and InstantSend");
-    } else {
-        recipients[0].fUseInstantSend = false;
+    }
+	
+    for (SendCoinsRecipient& rcp : recipients) {
+        rcp.inputType = ALL_COINS;
+        rcp.fUseInstantSend = ui->checkUseInstantSend->isChecked();
     }
 
     fNewRecipientAllowed = false;
@@ -389,7 +392,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     }
 
     // Show total amount + all alternative units
-    questionString.append(tr("Total Amount = <b>%1</b><br>= %2")
+    questionString.append(tr("Total Amount = <b>%1</b><br />= %2")
         .arg(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount))
         .arg(alternativeUnits.join("<br />= ")));
 
