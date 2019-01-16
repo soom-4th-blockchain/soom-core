@@ -83,6 +83,25 @@
            </widget>
           </item>
           <item>
+           <widget class="QLabel" name="labelCoinControlInsuffFunds">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color:red;font-weight:bold;</string>
+            </property>
+            <property name="text">
+             <string>Insufficient funds!</string>
+            </property>
+            <property name="margin">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
             <property name="maximumSize">
              <size>
@@ -115,7 +134,7 @@
             <property name="maximumSize">
              <size>
               <width>80</width>
-              <height>28</height>
+              <height>27</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -553,7 +572,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayoutCoinControl" stretch="0,0,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayoutCoinControl" stretch="0,0,0">
      <property name="spacing">
       <number>8</number>
      </property>
@@ -563,22 +582,6 @@
      <property name="bottomMargin">
       <number>0</number>
      </property>
-     <item>
-      <widget class="QLabel" name="labelCoinControlInsuffFunds">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Insufficient funds!</string>
-       </property>
-       <property name="margin">
-        <number>5</number>
-       </property>
-      </widget>
-     </item>
      <item>
       <spacer name="verticalSpacer_7">
        <property name="orientation">
@@ -1389,12 +1392,11 @@
    <header>qvalidatedlineedit.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../soom.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="groupFee"/>
   <buttongroup name="groupCustomFee"/>
+  <buttongroup name="groupFee"/>
  </buttongroups>
 </ui>
+

@@ -1692,7 +1692,7 @@ background-color:transparent;
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QPushButton#pushButtonCoinControl { /* Coin Control Inputs Button */
 padding-left:10px;
 padding-right:10px;
-min-height:25px;
+min-height:27px;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameFee .QPushButton#buttonMinimizeFee { /* Hide Button */
