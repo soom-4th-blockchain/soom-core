@@ -29,7 +29,6 @@
 #include <QSettings>
 #include <QTextDocument>
 #include <QTimer>
-#include <QGraphicsDropShadowEffect>
 
 #define SEND_CONFIRM_DELAY   3
 
@@ -45,28 +44,14 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle *_platformStyle, QWidget *p
     ui->setupUi(this);
     QString theme = GUIUtil::getThemeName();
 
-//    if (!platformStyle->getImagesOnButtons()) {
-//        ui->addButton->setIcon(QIcon());
-//        ui->clearButton->setIcon(QIcon());
-//        ui->sendButton->setIcon(QIcon());
-//    } else {
-//        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/add"));
-//        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
-//        ui->sendButton->setIcon(QIcon(":/icons/" + theme + "/send"));
-//    }
-
-    if(theme == "light") {
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-        shadow->setBlurRadius(9.0);
-        shadow->setColor(QColor(0, 0, 0, 160));
-        shadow->setOffset(4.0);
-        ui->labelCoinControlFeatures->setGraphicsEffect(shadow);
-
-        QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
-        shadow2->setBlurRadius(9.0);
-        shadow2->setColor(QColor(0, 0, 0, 160));
-        shadow2->setOffset(4.0);
-        ui->labelFeeHeadline->setGraphicsEffect(shadow2);
+    if (!platformStyle->getImagesOnButtons()) {
+        ui->addButton->setIcon(QIcon());
+        ui->clearButton->setIcon(QIcon());
+        ui->sendButton->setIcon(QIcon());
+    } else {
+        ui->addButton->setIcon(QIcon(":/icons/" + theme + "/add"));
+        ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
+        ui->sendButton->setIcon(QIcon(":/icons/" + theme + "/send"));
     }
 
     GUIUtil::setupAddressWidget(ui->lineEditCoinControlChange, this);
@@ -414,13 +399,10 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     // Display message box
     SendConfirmationDialog confirmationDialog(tr("Confirm send coins"),
         questionString.arg(formatted.join("<br />")), SEND_CONFIRM_DELAY, this);
-    confirmationDialog.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-    confirmationDialog.setButtonText(QMessageBox::Yes, tr("&Yes"));
-    confirmationDialog.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    confirmationDialog.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
+    confirmationDialog.button(QMessageBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
     confirmationDialog.exec();
-
     QMessageBox::StandardButton retval = (QMessageBox::StandardButton)confirmationDialog.result();
+
     if(retval != QMessageBox::Yes)
     {
         fNewRecipientAllowed = true;
@@ -700,44 +682,6 @@ void SendCoinsDialog::updateFeeSectionControls()
     ui->radioCustomPerKilobyte  ->setEnabled(ui->radioCustomFee->isChecked() && !ui->checkBoxMinimumFee->isChecked());
     ui->radioCustomAtLeast      ->setEnabled(ui->radioCustomFee->isChecked() && !ui->checkBoxMinimumFee->isChecked() && CoinControlDialog::coinControl->HasSelected());
     ui->customFee               ->setEnabled(ui->radioCustomFee->isChecked() && !ui->checkBoxMinimumFee->isChecked());
-
-    QString theme = GUIUtil::getThemeName();
-    if (ui->radioSmartFee->isChecked())
-    {
-        ui->checkBoxMinimumFee      ->setStyleSheet("QCheckBox { color: #4E586D; }");
-        ui->labelMinFeeWarning      ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->radioCustomPerKilobyte  ->setStyleSheet("QRadioButton { color: #4E586D; }");
-        ui->radioCustomAtLeast      ->setStyleSheet("QRadioButton { color: #4E586D; }");
-        ui->labelSmartFee           ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        ui->labelSmartFee2          ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        ui->labelSmartFee3          ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        ui->labelFeeEstimation      ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        ui->labelSmartFeeNormal     ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");;
-        ui->labelSmartFeeFast       ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        ui->confirmationTargetLabel ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-    }
-    else
-    {
-        ui->checkBoxMinimumFee      ->setStyleSheet(theme == "default" ? "QCheckBox { color: #ffffff; }" : "QCheckBox { color: #000000; }");
-        ui->labelMinFeeWarning      ->setStyleSheet(theme == "default" ? "QLabel { color: #ffffff; }" : "QLabel { color: #000000; }");
-        if (ui->checkBoxMinimumFee->isChecked())
-        {
-            ui->radioCustomPerKilobyte  ->setStyleSheet("QRadioButton { color: #4E586D; }");
-            ui->radioCustomAtLeast      ->setStyleSheet("QRadioButton { color: #4E586D; }");
-        }
-        else
-        {
-            ui->radioCustomPerKilobyte  ->setStyleSheet(theme == "default" ? "QRadioButton { color: #ffffff; }" : "QRadioButtonckBox { color: #000000; }");
-            ui->radioCustomAtLeast      ->setStyleSheet(theme == "default" ? "QRadioButton { color: #ffffff; }" : "QRadioButtonckBox { color: #000000; }");
-        }
-        ui->labelSmartFee           ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->labelSmartFee2          ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->labelSmartFee3          ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->labelFeeEstimation      ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->labelSmartFeeNormal     ->setStyleSheet("QLabel { color: #4E586D; }");;
-        ui->labelSmartFeeFast       ->setStyleSheet("QLabel { color: #4E586D; }");
-        ui->confirmationTargetLabel ->setStyleSheet("QLabel { color: #4E586D; }");
-    }
 }
 
 void SendCoinsDialog::updateGlobalFeeVariables()
@@ -797,7 +741,8 @@ void SendCoinsDialog::updateSmartFeeLabel()
         ui->labelSmartFee->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                                                 std::max(CWallet::fallbackFee.GetFeePerK(), CWallet::GetRequiredFee(1000))) + "/kB");
         ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
-        ui->labelFeeEstimation->setText("");      
+        ui->labelFeeEstimation->setText("");
+        ui->fallbackFeeWarningLabel->setVisible(true);
     }
     else
     {
@@ -805,6 +750,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
                                                                 std::max(feeRate.GetFeePerK(), CWallet::GetRequiredFee(1000))) + "/kB");
         ui->labelSmartFee2->hide();
         ui->labelFeeEstimation->setText(tr("Estimated to begin confirmation within %n block(s).", "", estimateFoundAtBlocks));
+        ui->fallbackFeeWarningLabel->setVisible(false);
     }
 
     updateFeeMinimizedLabel();

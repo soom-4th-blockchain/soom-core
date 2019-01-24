@@ -25,7 +25,6 @@
 #include <QPainter>
 #include <QSettings>
 #include <QTimer>
-#include <QGraphicsDropShadowEffect>
 
 #define ICON_OFFSET 16
 #define DECORATION_SIZE 54
@@ -149,28 +148,8 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
     // init "out of sync" warning labels
-    if(theme == "light")
-    {
-        ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
-        ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
-
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-        shadow->setBlurRadius(9.0);
-        shadow->setColor(QColor(0, 0, 0, 160));
-        shadow->setOffset(4.0);
-        ui->label_4->setGraphicsEffect(shadow);
-
-        QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
-        shadow2->setBlurRadius(9.0);
-        shadow2->setColor(QColor(0, 0, 0, 160));
-        shadow2->setOffset(4.0);
-        ui->label_5->setGraphicsEffect(shadow2);
-    }
-    else    // default
-    {
-        ui->labelWalletStatus->setText(tr("out of sync"));
-        ui->labelTransactionsStatus->setText(tr("out of sync"));
-    }
+    ui->labelWalletStatus->setText(tr("out of sync"));
+    ui->labelTransactionsStatus->setText(tr("out of sync"));
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);

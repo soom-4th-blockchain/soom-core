@@ -324,10 +324,8 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
 
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
-            QMessageBox critical(QMessageBox::Critical, tr("Payment request error"),
-                tr("Cannot start soom: click-to-pay handler"), QMessageBox::Ok, 0);
-            critical.setButtonText(QMessageBox::Ok, tr("&OK"));
-            critical.exec();
+            QMessageBox::critical(0, tr("Payment request error"),
+                tr("Cannot start soom: click-to-pay handler"));
         }
         else {
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));

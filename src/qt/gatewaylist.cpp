@@ -357,10 +357,7 @@ void GatewayList::on_startButton_clicked()
         tr("Are you sure you want to start gateway %1?").arg(QString::fromStdString(strAlias)),
         QMessageBox::Yes | QMessageBox::Cancel,
         this);
-    question.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
-    question.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
+    question.button(QMessageBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
     int retval = question.exec();
     if(retval != QMessageBox::Yes) return;
@@ -386,10 +383,7 @@ void GatewayList::on_startAllButton_clicked()
         tr("Are you sure you want to start ALL gateways?"),
         QMessageBox::Yes | QMessageBox::Cancel,
         this);
-    question.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
-    question.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
+    question.button(QMessageBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
     int retval = question.exec();
     if(retval != QMessageBox::Yes) return;
@@ -411,11 +405,8 @@ void GatewayList::on_startAllButton_clicked()
 void GatewayList::on_startMissingButton_clicked()
 {
     if(!gatewaySync.IsGatewayListSynced()) {
-        QMessageBox critical(QMessageBox::Critical, tr("Command is not available right now"),
-            tr("You can't use this command until gateway list is synced"), QMessageBox::Ok, this);
-        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-        critical.setButtonText(QMessageBox::Ok, tr("&OK"));
-        critical.exec();
+        QMessageBox::critical(this, tr("Command is not available right now"),
+            tr("You can't use this command until gateway list is synced"));
         return;
     }
 
@@ -424,10 +415,7 @@ void GatewayList::on_startMissingButton_clicked()
         tr("Are you sure you want to start MISSING gateways?"),
         QMessageBox::Yes | QMessageBox::Cancel,
         this);
-    question.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-    question.setButtonText(QMessageBox::Yes, tr("&Yes"));
-    question.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
+    question.button(QMessageBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
     int retval = question.exec();
     if(retval != QMessageBox::Yes) return;

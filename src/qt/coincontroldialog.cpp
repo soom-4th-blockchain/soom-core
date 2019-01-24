@@ -34,7 +34,6 @@
 #include <QString>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
-#include <QtWidgets/QDialogButtonBox>
 
 QList<CAmount> CoinControlDialog::payAmounts;
 CCoinControl* CoinControlDialog::coinControl = new CCoinControl();
@@ -148,9 +147,6 @@ CoinControlDialog::CoinControlDialog(const PlatformStyle *_platformStyle, QWidge
     ui->treeWidget->setColumnWidth(COLUMN_CONFIRMATIONS, 120);
     ui->treeWidget->setColumnHidden(COLUMN_TXHASH, true);         // store transaction hash in this column, but don't show it
     ui->treeWidget->setColumnHidden(COLUMN_VOUT_INDEX, true);     // store vout index in this column, but don't show it
-
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
 
     // default view is sorted by amount desc
     sortView(COLUMN_AMOUNT, Qt::DescendingOrder);
@@ -465,11 +461,7 @@ void CoinControlDialog::updateLabelLocked()
        ui->labelLocked->setText(tr("(%1 locked)").arg(vOutpts.size()));
 //       ui->labelLocked->setVisible(true);
     }
-    else
-    {
-        ui->labelLocked->setText("");
-//        ui->labelLocked->setVisible(false);
-    }
+    else ui->labelLocked->setVisible(false);
 }
 
 void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)

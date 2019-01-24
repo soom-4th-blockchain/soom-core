@@ -27,7 +27,6 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QSortFilterProxyModel>
-#include <QGraphicsDropShadowEffect>
 
 AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode, Tabs _tab, Button btn, QWidget *parent) :
     QDialog(parent),
@@ -45,12 +44,10 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
         ui->deleteAddress->setIcon(QIcon());
         ui->exportButton->setIcon(QIcon());
     } else {
-        if(theme == "light") {
-            ui->newAddress->setIcon(QIcon(":/icons/" + theme + "/add"));
-            ui->copyAddress->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
-            ui->deleteAddress->setIcon(QIcon(":/icons/" + theme + "/remove"));
-            ui->exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
-        }
+        ui->newAddress->setIcon(QIcon(":/icons/" + theme + "/add"));
+        ui->copyAddress->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
+        ui->deleteAddress->setIcon(QIcon(":/icons/" + theme + "/remove"));
+        ui->exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
     }
 
     switch(mode)
@@ -104,14 +101,6 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
     default:
         ui->closeButton->setText(tr("C&lose"));
         break;
-    }
-
-    if(theme == "light") {
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-        shadow->setBlurRadius(9.0);
-        shadow->setColor(QColor(0, 0, 0, 160));
-        shadow->setOffset(4.0);
-        ui->labelExplanation->setGraphicsEffect(shadow);
     }
 
     // Context menu actions
@@ -357,11 +346,8 @@ void AddressBookPage::on_exportButton_clicked()
     writer.addColumn("Address", AddressTableModel::Address, Qt::EditRole);
 
     if(!writer.write()) {
-        QMessageBox critical(QMessageBox::Critical, tr("Exporting Failed"),
-            tr("There was an error trying to save the address list to %1. Please try again.").arg(filename), QMessageBox::Ok, this);
-        critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-        critical.setButtonText(QMessageBox::Ok, tr("&OK"));
-        critical.exec();
+        QMessageBox::critical(this, tr("Exporting Failed"),
+            tr("There was an error trying to save the address list to %1. Please try again.").arg(filename));
     }
 }
 

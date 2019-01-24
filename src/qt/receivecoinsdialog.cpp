@@ -21,7 +21,6 @@
 #include <QMessageBox>
 #include <QScrollBar>
 #include <QTextDocument>
-#include <QGraphicsDropShadowEffect>
 
 ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *_platformStyle, QWidget *parent) :
     QDialog(parent),
@@ -43,20 +42,6 @@ ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *_platformStyle, QWid
         ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receive"));
         ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/message"));
         ui->removeRequestButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
-    }
-
-    if(theme == "light") {
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-        shadow->setBlurRadius(9.0);
-        shadow->setColor(QColor(0, 0, 0, 160));
-        shadow->setOffset(4.0);
-        ui->label_5->setGraphicsEffect(shadow);
-
-        QGraphicsDropShadowEffect *shadow2 = new QGraphicsDropShadowEffect;
-        shadow2->setBlurRadius(9.0);
-        shadow2->setColor(QColor(0, 0, 0, 160));
-        shadow2->setOffset(4.0);
-        ui->label_6->setGraphicsEffect(shadow2);
     }
 
     // context menu actions

@@ -43,10 +43,7 @@ EditAddressDialog::EditAddressDialog(Mode _mode, QWidget *parent) :
         break;
     }
 
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
-    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
     mapper = new QDataWidgetMapper(this);
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
@@ -114,44 +111,24 @@ void EditAddressDialog::accept()
             // No changes were made during edit operation. Just reject.
             break;
         case AddressTableModel::INVALID_ADDRESS:
-        {
-            QMessageBox warning(QMessageBox::Warning, windowTitle(),
+            QMessageBox::warning(this, windowTitle(),
                 tr("The entered address \"%1\" is not a valid Soom address.").arg(ui->addressEdit->text()),
-                QMessageBox::Ok, this);
-            warning.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-            warning.setButtonText(QMessageBox::Ok, tr("&OK"));
-            warning.exec();
-        }
+                QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:
-        {
-            QMessageBox warning2(QMessageBox::Warning, windowTitle(),
+            QMessageBox::warning(this, windowTitle(),
                 tr("The entered address \"%1\" is already in the address book.").arg(ui->addressEdit->text()),
-                QMessageBox::Ok, this);
-            warning2.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-            warning2.setButtonText(QMessageBox::Ok, tr("&OK"));
-            warning2.exec();
-        }
+                QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::WALLET_UNLOCK_FAILURE:
-        {
-            QMessageBox critical(QMessageBox::Critical, windowTitle(),
+            QMessageBox::critical(this, windowTitle(),
                 tr("Could not unlock wallet."),
-                QMessageBox::Ok, this);
-            critical.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-            critical.setButtonText(QMessageBox::Ok, tr("&OK"));
-            critical.exec();
-        }
+                QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::KEY_GENERATION_FAILURE:
-        {
-            QMessageBox critical2(QMessageBox::Critical, windowTitle(),
+            QMessageBox::critical(this, windowTitle(),
                 tr("New key generation failed."),
-                QMessageBox::Ok, this);
-            critical2.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-            critical2.setButtonText(QMessageBox::Ok, tr("&OK"));
-            critical2.exec();
-        }
+                QMessageBox::Ok, QMessageBox::Ok);
             break;
 
         }

@@ -50,24 +50,20 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     QPushButton *exportButton = new QPushButton(tr("&Export"), this);
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
 
-    QString theme = GUIUtil::getThemeName();
     if (platformStyle->getImagesOnButtons()) {
-        if(theme == "light")
-            exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
+        QString theme = GUIUtil::getThemeName();
+        exportButton->setIcon(QIcon(":/icons/" + theme + "/export"));
     }
     hbox_buttons->addStretch();
 
     // Sum of selected transactions
     QLabel *transactionSumLabel = new QLabel(); // Label
 
-    if(theme == "default")
-        transactionSumLabel->setStyleSheet("QLabel { background-color:transparent; color:#ffffff; font-size:12px; font-weight:bold; text-align:center; }");
     transactionSumLabel->setObjectName("transactionSumLabel"); // Label ID as CSS-reference
     transactionSumLabel->setText(tr("Selected amount:"));
     hbox_buttons->addWidget(transactionSumLabel);
 
     transactionSum = new QLabel(); // Amount
-    transactionSum->setStyleSheet("QLabel { background-color:transparent; color:#ffffff; font-size:13px; text-align:center; }");
     transactionSum->setObjectName("transactionSum"); // Label ID as CSS-reference
     transactionSum->setMinimumSize(200, 8);
     transactionSum->setTextInteractionFlags(Qt::TextSelectableByMouse);
@@ -85,16 +81,12 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     usedReceivingAddressesPage = new AddressBookPage(platformStyle, AddressBookPage::ForEditing, AddressBookPage::ReceivingTab, AddressBookPage::Close, this);
 
     signVerifyMessagePage->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
-//    usedSendingAddressesPage->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
-//    usedReceivingAddressesPage->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
     addWidget(signVerifyMessagePage);
-//    addWidget(usedSendingAddressesPage);
-//    addWidget(usedReceivingAddressesPage);
 
     QSettings settings;
     if (!fLiteMode && settings.value("fShowGatewaysTab").toBool()) {
@@ -122,10 +114,6 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     connect(transactionView, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
     // Pass through messages from signVerifyMessagePage
     connect(signVerifyMessagePage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
-    // Pass through messages from usedSendingAddressesPage
-//    connect(usedSendingAddressesPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
-    // Pass through messages from usedReceivingAddressesPage
-//    connect(usedReceivingAddressesPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
 
     // Initialize Limit Popup Timer
     newTxCount = 0;
@@ -279,18 +267,9 @@ void WalletView::gotoSendCoinsPage(QString addr)
 void WalletView::gotoSignMessageTab(QString addr)
 {
     // calls show() in showTab_SM()
-//    SignVerifyMessageDialog *signVerifyMessageDialog = new SignVerifyMessageDialog(platformStyle, this);
-//    signVerifyMessageDialog->setAttribute(Qt::WA_DeleteOnClose);
-//    signVerifyMessageDialog->setModel(walletModel);
-//    signVerifyMessageDialog->showTab_SM(true);
-
-//    if (!addr.isEmpty())
-//        signVerifyMessageDialog->setAddress_SM(addr);
-
     signVerifyMessagePage->setAttribute(Qt::WA_DeleteOnClose);
     signVerifyMessagePage->setModel(walletModel);
     signVerifyMessagePage->showTab_SM(true);
-
     setCurrentWidget(signVerifyMessagePage);
 
     if (!addr.isEmpty())
@@ -300,18 +279,9 @@ void WalletView::gotoSignMessageTab(QString addr)
 void WalletView::gotoVerifyMessageTab(QString addr)
 {
     // calls show() in showTab_VM()
-//    SignVerifyMessageDialog *signVerifyMessageDialog = new SignVerifyMessageDialog(platformStyle, this);
-//    signVerifyMessageDialog->setAttribute(Qt::WA_DeleteOnClose);
-//    signVerifyMessageDialog->setModel(walletModel);
-//    signVerifyMessageDialog->showTab_VM(true);
-
-//    if (!addr.isEmpty())
-//        signVerifyMessageDialog->setAddress_VM(addr);
-
     signVerifyMessagePage->setAttribute(Qt::WA_DeleteOnClose);
     signVerifyMessagePage->setModel(walletModel);
     signVerifyMessagePage->showTab_VM(true);
-
     setCurrentWidget(signVerifyMessagePage);
 
     if (!addr.isEmpty())

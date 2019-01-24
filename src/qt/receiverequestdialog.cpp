@@ -102,8 +102,7 @@ ReceiveRequestDialog::ReceiveRequestDialog(QWidget *parent) :
     ui->lblQRCode->setVisible(false);
 #endif
 
-    ui->buttonBox->button(QDialogButtonBox::Close)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-    ui->buttonBox->button(QDialogButtonBox::Close)->setText(tr("C&lose"));
+    ui->buttonBox->button(QDialogButtonBox::Close)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
     connect(ui->btnSaveAs, SIGNAL(clicked()), ui->lblQRCode, SLOT(saveImage()));
 }

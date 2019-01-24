@@ -134,8 +134,6 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent, HelpMode helpMode) :
         ui->aboutLogo->setVisible(false);
     }
 
-    ui->okButton->button(QDialogButtonBox::Ok)->setText(tr("&OK"));
-
     // Theme dependent Gfx in About popup
     QString helpMessageGfx = ":/images/" + GUIUtil::getThemeName() + "/about";
     QPixmap pixmap = QPixmap(helpMessageGfx);

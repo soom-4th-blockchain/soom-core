@@ -104,9 +104,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     sendCoinsAction(0),
     sendCoinsMenuAction(0),
     usedSendingAddressesAction(0),
-//    usedSendingAddressesMenuAction(0),
     usedReceivingAddressesAction(0),
-//    usedReceivingAddressesMenuAction(0),
     signMessageAction(0),
     verifyMessageAction(0),
     aboutAction(0),
@@ -202,8 +200,6 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     // Disable size grip because it looks ugly and nobody needs it
     statusBar()->setSizeGripEnabled(false);
 
-    QString theme = GUIUtil::getThemeName();
-
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setContentsMargins(0,0,0,0);
@@ -212,8 +208,6 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
     unitDisplayControl = new UnitDisplayStatusBarControl(platformStyle);
-    if(theme == "default")
-        unitDisplayControl->setStyleSheet("QLabel { background-color: #191A24; color: #ffffff; font-size:11px; }");
     labelWalletEncryptionIcon = new QLabel();
     labelWalletHDStatusIcon = new QLabel();
     labelConnectionsIcon = new GUIUtil::ClickableLabel();
@@ -253,13 +247,10 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
 
-    const std::string MAIN = "main";
-    const std::string TESTNET = "test";
-    const std::string REGTEST = "regtest";
-
     std::string chain = ChainNameFromCommandLine();
-    if (chain != MAIN)
+    if (chain != CBaseChainParams::MAIN)
     {
+        QString theme = GUIUtil::getThemeName();
         QLabel* networkStyles = new QLabel(this);
         networkStyles->setFrameStyle(QFrame::Panel | QFrame::Sunken);
         networkStyles->setAlignment(Qt::AlignCenter);
@@ -268,7 +259,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
         else    // "default"
             networkStyles->setStyleSheet("QLabel { background-color:#191A24; color:#75CFFC; border:1px solid #75CFFC; border-radius:5px; padding:1px; text-align:center; font-size:11px; }");
 
-        if (chain == TESTNET)
+        if (chain == CBaseChainParams::TESTNET)
         {
             networkStyles->setText(" TESTNET ");
             networkStyles->setToolTip(tr("Use the test chain"));
@@ -386,45 +377,6 @@ void BitcoinGUI::createActions()
 #endif
     tabGroup->addAction(signMessageAction);
 
-    verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/message"), tr("&Verify Message"), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Soom addresses"));
-    verifyMessageAction->setToolTip(verifyMessageAction->statusTip());
-    verifyMessageAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    verifyMessageAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
-#else
-    verifyMessageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-#endif
-
-//    usedSendingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), tr("Sending &addresses"), this);
-//    usedSendingAddressesAction->setStatusTip(tr("Show the list of used sending addresses and labels"));
-//    usedSendingAddressesAction->setToolTip(usedSendingAddressesAction->statusTip());
-//    usedSendingAddressesAction->setCheckable(true);
-//#ifdef Q_OS_MAC
-//    usedSendingAddressesAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
-//#else
-//    usedSendingAddressesAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
-//#endif
-//    tabGroup->addAction(usedSendingAddressesAction);
-
-//    usedSendingAddressesMenuAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), usedSendingAddressesAction->text(), this);
-//    usedSendingAddressesMenuAction->setStatusTip(usedSendingAddressesAction->statusTip());
-//    usedSendingAddressesMenuAction->setToolTip(usedSendingAddressesMenuAction->statusTip());
-
-//    usedReceivingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), tr("R&eceiving addresses"), this);
-//    usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
-//    usedReceivingAddressesAction->setToolTip(usedReceivingAddressesAction->statusTip());
-//    usedReceivingAddressesAction->setCheckable(true);
-//#ifdef Q_OS_MAC
-//    usedReceivingAddressesAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_8));
-//#else
-//    usedReceivingAddressesAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
-//#endif
-//    tabGroup->addAction(usedReceivingAddressesAction);
-
-//    usedReceivingAddressesMenuAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), usedReceivingAddressesAction->text(), this);
-//    usedReceivingAddressesMenuAction->setStatusTip(usedReceivingAddressesAction->statusTip());
-//    usedReceivingAddressesMenuAction->setToolTip(usedReceivingAddressesMenuAction->statusTip());
 #ifdef ENABLE_WALLET
     QSettings settings;
     if (!fLiteMode && settings.value("fShowGatewaysTab").toBool()) {
@@ -456,20 +408,8 @@ void BitcoinGUI::createActions()
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-
     connect(signMessageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
-    connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
-//    connect(usedSendingAddressesAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(usedSendingAddressesAction, SIGNAL(triggered()), this, SLOT(gotoUsedSendingAddressesPage()));
-//    connect(usedSendingAddressesMenuAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(usedSendingAddressesMenuAction, SIGNAL(triggered()), this, SLOT(gotoUsedSendingAddressesPage()));
-
-//    connect(usedReceivingAddressesAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(usedReceivingAddressesAction, SIGNAL(triggered()), this, SLOT(gotoUsedReceivingAddressesPage()));
-//    connect(usedReceivingAddressesMenuAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(usedReceivingAddressesMenuAction, SIGNAL(triggered()), this, SLOT(gotoUsedReceivingAddressesPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(/*QIcon(":/icons/" + theme + "/quit"), */tr("E&xit"), this);
@@ -477,7 +417,7 @@ void BitcoinGUI::createActions()
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     aboutAction = new QAction(/*QIcon(":/icons/" + theme + "/about"), */tr("&About %1").arg(tr(PACKAGE_NAME)), this);
-    aboutAction->setStatusTip(tr("Show information about %1"));
+    aboutAction->setStatusTip(tr("Show information about %1").arg(tr(PACKAGE_NAME)));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutAction->setEnabled(false);
     aboutQtAction = new QAction(/*QIcon(":/icons/" + theme + "/about_qt"), */tr("About &Qt"), this);
@@ -664,20 +604,15 @@ void BitcoinGUI::createToolBars()
         toolbar->addWidget(coinImage);
         toolbar->addSeparator();
         toolbar->addAction(overviewAction);
-        toolbar->addSeparator();
         toolbar->addAction(sendCoinsAction);
-        toolbar->addSeparator();
         toolbar->addAction(receiveCoinsAction);
-        toolbar->addSeparator();
         toolbar->addAction(historyAction);
-        toolbar->addSeparator();
         toolbar->addAction(signMessageAction);
 //        toolbar->addAction(usedSendingAddressesAction);
 //        toolbar->addAction(usedReceivingAddressesAction);
         QSettings settings;
         if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction)
         {
-            toolbar->addSeparator();
             toolbar->addAction(gatewayAction);
         }
         toolbar->setMovable(false); // remove unused icon in upper left corner
@@ -853,7 +788,6 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     backupWalletAction->setEnabled(enabled);
     changePassphraseAction->setEnabled(enabled);
     signMessageAction->setEnabled(enabled);
-    verifyMessageAction->setEnabled(enabled);
     usedSendingAddressesAction->setEnabled(enabled);
 //    usedSendingAddressesMenuAction->setEnabled(enabled);
     usedReceivingAddressesAction->setEnabled(enabled);
@@ -1333,8 +1267,6 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
 
         showNormalIfMinimized();
         QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons, this);
-        mBox.button(QMessageBox::Ok)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-        mBox.setButtonText(QMessageBox::Ok, tr("&OK"));
 
         int r = mBox.exec();
         if (ret != NULL)
@@ -1410,13 +1342,13 @@ void BitcoinGUI::incomingTransaction(const QString& date, int unit, const CAmoun
     else
     {
         // On new transaction, make an info balloon
-        QString msg = tr("Date: %1").arg(date) + "\n" +
-                      tr("Amount: %1").arg(BitcoinUnits::formatWithUnit(unit, amount, true)) + "\n" +
-                      tr("Type: %1").arg(type) + "\n";
+        QString msg = tr("Date: %1\n").arg(date) +
+                      tr("Amount: %1\n").arg(BitcoinUnits::formatWithUnit(unit, amount, true)) +
+                      tr("Type: %1\n").arg(type);
         if (!label.isEmpty())
-            msg += tr("Label: %1").arg(label) + "\n";
+            msg += tr("Label: %1\n").arg(label);
         if (!address.isEmpty())
-            msg += tr("Address: %1").arg(address);
+            msg += tr("Address: %1\n").arg(address);
         message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
                  msg, CClientUIInterface::MSG_INFORMATION);
     }
@@ -1652,12 +1584,6 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-
-    QString theme = GUIUtil::getThemeName();
-    if(theme == "light")
-        setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
-    else    // "default"
-        setStyleSheet(QString("QLabel { color : %1 }").arg("#ffffff"));
 }
 
 /** So that it responds to button clicks */

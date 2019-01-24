@@ -139,7 +139,7 @@
          <string>Choose previously used address</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Choose the address</string>
         </property>
         <property name="iconSize">
          <size>
@@ -173,7 +173,7 @@
          <string>Paste address from clipboard</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Paste address</string>
         </property>
         <property name="iconSize">
          <size>
@@ -204,7 +204,7 @@
          <string>Remove this entry</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Remove</string>
         </property>
         <property name="iconSize">
          <size>
@@ -717,7 +717,7 @@
          <string>Remove this entry</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Remove</string>
         </property>
        </widget>
       </item>
@@ -1246,7 +1246,7 @@
          <string>Remove this entry</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Remove</string>
         </property>
        </widget>
       </item>

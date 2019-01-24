@@ -49,6 +49,11 @@
         <file alias="fontbigger">res/icons/default/fontbigger.png</file>
         <file alias="fontsmaller">res/icons/default/fontsmaller.png</file>
         <file alias="network_disabled">res/icons/default/network_disabled.png</file>
+        <file alias="add">res/icons/default/add.png</file>
+        <file alias="editcopy">res/icons/default/editcopy.png</file>
+        <file alias="export">res/icons/default/export.png</file>
+        <file alias="address-book">res/icons/default/address-book.png</file>
+        <file alias="editpaste">res/icons/default/editpaste.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>

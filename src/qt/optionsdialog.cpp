@@ -248,10 +248,7 @@ void OptionsDialog::on_resetButton_clicked()
             tr("Client restart required to activate changes.") + "<br><br>" + tr("Client will be shut down. Do you want to proceed?"),
             QMessageBox::Yes | QMessageBox::Cancel,
             this);
-        question.button(QMessageBox::Yes)->setStyleSheet(QString("text-align:center; min-width:60px; "));
-        question.setButtonText(QMessageBox::Yes, tr("&Yes"));
-        question.button(QMessageBox::Cancel)->setStyleSheet(QString("text-align:center; background-color:#ffffff; color:#4E586D; min-width:60px; "));
-        question.setButtonText(QMessageBox::Cancel, tr("&Cancel"));
+        question.button(QMessageBox::Cancel)->setStyleSheet(QString("background-color:#ffffff; color:#4E586D;"));
 
         int btnRetVal = question.exec();
         if(btnRetVal == QMessageBox::Cancel)
@@ -294,8 +291,6 @@ void OptionsDialog::on_hideTrayIcon_stateChanged(int fState)
 
 void OptionsDialog::showRestartWarning(bool fPersistent)
 {
-    ui->statusLabel->setStyleSheet("QLabel { color: red; }");
-
     if(fPersistent)
     {
         ui->statusLabel->setText(tr("Client restart required to activate changes."));
@@ -329,7 +324,6 @@ void OptionsDialog::updateProxyValidationState()
     else
     {
         setOkButtonState(false);
-        ui->statusLabel->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel->setText(tr("The supplied proxy address is invalid."));
     }
 }

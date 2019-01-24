@@ -40,27 +40,13 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle *_platformS
     ui->clearButton_SM->setIcon(QIcon());
     ui->verifyMessageButton_VM->setIcon(QIcon());
     ui->clearButton_VM->setIcon(QIcon());
-#else
-//    ui->signMessageButton_SM->setIcon(QIcon(":/icons/" + theme + "/message"));
-//    ui->clearButton_SM->setIcon(QIcon(":/icons/" + theme + "/remove"));
-//    ui->verifyMessageButton_VM->setIcon(QIcon(":/icons/" + theme + "/transaction2"));
-//    ui->clearButton_VM->setIcon(QIcon(":/icons/" + theme + "/remove"));
 #endif
 
     // These icons are needed on Mac also
-    if(theme == "light") {
-        ui->addressBookButton_SM->setIcon(QIcon(":/icons/" + theme + "/address-book"));
-        ui->pasteButton_SM->setIcon(QIcon(":/icons/" + theme + "/editpaste"));
-        ui->copySignatureButton_SM->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
-        ui->addressBookButton_VM->setIcon(QIcon(":/icons/" + theme + "/address-book"));
-    }
-    else    // "default"
-    {
-        ui->addressBookButton_SM->setText(tr("Choose the address"));
-        ui->pasteButton_SM->setText(tr("Paste address"));
-        ui->copySignatureButton_SM->setText(tr("Paste Signature"));
-        ui->addressBookButton_VM->setText(tr("Choose the address"));
-    }
+    ui->addressBookButton_SM->setIcon(QIcon(":/icons/" + theme + "/address-book"));
+    ui->pasteButton_SM->setIcon(QIcon(":/icons/" + theme + "/editpaste"));
+    ui->copySignatureButton_SM->setIcon(QIcon(":/icons/" + theme + "/editcopy"));
+    ui->addressBookButton_VM->setIcon(QIcon(":/icons/" + theme + "/address-book"));
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
     GUIUtil::setupAddressWidget(ui->addressIn_VM, this);
