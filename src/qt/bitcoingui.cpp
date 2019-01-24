@@ -600,6 +600,7 @@ void BitcoinGUI::createToolBars()
 
         QToolBar *toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolbar->setIconSize(QSize(40, 40));
         toolbar->addSeparator();
         toolbar->addWidget(coinImage);
         toolbar->addSeparator();
@@ -995,16 +996,14 @@ void BitcoinGUI::updateToolbarState(int status)
 {
     QString theme = GUIUtil::getThemeName();
 
-    if(theme == "default") {
-        overviewAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::overview_selected ? "/overview_selected" : "/overview")));
-        sendCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::send_selected ? "/send_selected" : "/send")));
-        receiveCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::receive_selected ? "/receive_selected" : "/receive")));
-        historyAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::history_selected ? "/history_selected" : "/history")));
-        signMessageAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::message_selected ? "/message_selected" : "/message")));
-        QSettings settings;
-        if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction)
-            gatewayAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::gateways_selected ? "/gateways_selected" : "/gateways")));
-    }
+    overviewAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::overview_selected ? "/overview_selected" : "/overview")));
+    sendCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::send_selected ? "/send_selected" : "/send")));
+    receiveCoinsAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::receive_selected ? "/receive_selected" : "/receive")));
+    historyAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::history_selected ? "/history_selected" : "/history")));
+    signMessageAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::message_selected ? "/message_selected" : "/message")));
+    QSettings settings;
+    if (!fLiteMode && settings.value("fShowGatewaysTab").toBool() && gatewayAction)
+        gatewayAction->setIcon(QIcon(":/icons/" + theme + (status == ToolbarStatus::gateways_selected ? "/gateways_selected" : "/gateways")));
 }
 
 void BitcoinGUI::updateNetworkState()

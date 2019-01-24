@@ -39,8 +39,8 @@ ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *_platformStyle, QWid
         ui->removeRequestButton->setIcon(QIcon());
     } else {
         ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
-        ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receive"));
-        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/message"));
+        ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receive_btn"));
+        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/message_btn"));
         ui->removeRequestButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
     }
 
