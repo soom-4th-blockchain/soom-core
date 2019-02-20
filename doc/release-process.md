@@ -19,7 +19,7 @@ Before every minor and major release:
 
 Before every major release:
 
-* Update hardcoded [seeds](/contrib/seeds/README.md). 
+* Update hardcoded [seeds](/contrib/seeds/README.md).
 
 
 ### First time / New builders
@@ -39,7 +39,7 @@ Check out the source code in the following directory hierarchy.
     - `_CLIENT_VERSION_MINOR`
     - `_CLIENT_VERSION_REVISION`
     - Don't forget to set `_CLIENT_VERSION_IS_RELEASE` to `true`
-- `src/clientversion.h`
+- `src/clientversion.h`: (this mirrors `configure.ac`)
     - `CLIENT_VERSION_MAJOR`
     - `CLIENT_VERSION_MINOR`
     - `CLIENT_VERSION_REVISION`
@@ -62,13 +62,13 @@ Tag version (or release candidate) in git
 
 ### Setup and perform Gitian builds
 
-If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--build" command. Otherwise ignore this.
+If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--build" command. Otherwise ignore this.
 
 Setup Gitian descriptors:
 
     pushd ./soom-core
-    export SIGNER=(your Gitian key)
-    export VERSION=(new version, e.g. 1.0.2.0)
+    export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
+    export VERSION=(new version, e.g. 1.0.4)
     git fetch
     git checkout v${VERSION}
     popd

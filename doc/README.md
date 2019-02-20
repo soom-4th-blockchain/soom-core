@@ -1,4 +1,4 @@
-Soom Core 1.0.2.0
+Soom Core 1.0.4.0
 =====================
 
 This is the official reference wallet for Soom digital currency and comprises the backbone of the Soom peer-to-peer network. You can [download Soom Core](http://foutrhblockchain.org/downloads/) or [build it yourself](#building) using the guides below.
@@ -41,8 +41,9 @@ The Soom Core repo's [root README](/README.md) contains relevant information on 
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
 - Source Code Documentation ***TODO***
-
+- [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
+- [Travis CI](travis-ci.md)
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Shared Libraries](shared-libraries.md)
 - [BIPS](bips.md)

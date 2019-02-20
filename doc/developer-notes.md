@@ -242,9 +242,9 @@ General Soom Core
   - *Rationale*: Makes sure that they pass thorough testing, and that the tester will keep passing
      on the master branch. Otherwise all new pull requests will start failing the tests, resulting in
      confusion and mayhem
- 
+
   - *Explanation*: If the test suite is to be updated for a change, this has to
-    be done first 
+    be done first
 
 Wallet
 -------
@@ -340,7 +340,7 @@ Strings and formatting
 - For `strprintf`, `LogPrint`, `LogPrintf` formatting characters don't need size specifiers
 
   - *Rationale*: Soom Core uses tinyformat, which is type safe. Leave them out to avoid confusion
-  
+
 Variable names
 --------------
 
@@ -427,7 +427,7 @@ directly upstream without being PRed directly against the project.  They will be
 subtree merge.
 
 Others are external projects without a tight relationship with our project.  Changes to these should also
-be sent upstream but bugfixes may also be prudent to PR against Dash Core so that they can be integrated
+be sent upstream but bugfixes may also be prudent to PR against Soom Core so that they can be integrated
 quickly.  Cosmetic changes should be purely taken upstream.
 
 There is a tool in contrib/devtools/git-subtree-check.sh to check a subtree directory for consistency with

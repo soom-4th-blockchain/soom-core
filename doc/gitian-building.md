@@ -147,7 +147,7 @@ To select a different button, press `Tab`.
 ![](gitian-building/debian_install_9_user_password.png)
 
 - The installer will set up the clock using a time server; this process should be automatic
-- Set up the clock: choose a time zone (depends on the locale settings that you picked earlier; specifics don't matter)  
+- Set up the clock: choose a time zone (depends on the locale settings that you picked earlier; specifics don't matter)
 
 ![](gitian-building/debian_install_10_configure_clock.png)
 
@@ -270,14 +270,14 @@ echo "%sudo ALL=NOPASSWD: /usr/bin/lxc-execute" >> /etc/sudoers.d/gitian-lxc
 # make /etc/rc.local script that sets up bridge between guest and host
 echo '#!/bin/sh -e' > /etc/rc.local
 echo 'brctl addbr lxcbr0' >> /etc/rc.local
-echo 'ifconfig lxcbr0 10.0.3.2/24 up' >> /etc/rc.local
+echo 'ifconfig lxcbr0 10.0.3.1/24 up' >> /etc/rc.local
 echo 'iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE' >> /etc/rc.local
 echo 'echo 1 > /proc/sys/net/ipv4/ip_forward' >> /etc/rc.local
 echo 'exit 0' >> /etc/rc.local
 # make sure that USE_LXC is always set when logging in as debian,
 # and configure LXC IP addresses
 echo 'export USE_LXC=1' >> /home/debian/.profile
-echo 'export GITIAN_HOST_IP=10.0.3.2' >> /home/debian/.profile
+echo 'export GITIAN_HOST_IP=10.0.3.1' >> /home/debian/.profile
 echo 'export LXC_GUEST_IP=10.0.3.5' >> /home/debian/.profile
 reboot
 ```
@@ -326,7 +326,7 @@ Execute the following as user `debian`:
 
 ```bash
 cd gitian-builder
-bin/make-base-vm --lxc --arch amd64 --suite trusty
+bin/make-base-vm --lxc --arch amd64 --suite bionic
 ```
 
 There will be a lot of warnings printed during the build of the image. These can be ignored.
@@ -344,7 +344,7 @@ There will be a lot of warnings printed during the build of the image. These can
 Getting and building the inputs
 --------------------------------
 
-At this point you have two options, you can either use the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)) or you could manually do everything by following this guide. If you're using the automated script, then run it with the "--setup" command. Afterwards, run it with the "--build" command (example: "contrib/gitian-building.sh -b signer 0.13.0"). Otherwise ignore this.
+At this point you have two options, you can either use the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)) or you could manually do everything by following this guide. If you're using the automated script, then run it with the "--setup" command. Afterwards, run it with the "--build" command (example: "contrib/gitian-building.sh -b signer 0.13.0"). Otherwise ignore this.
 
 Follow the instructions in [doc/release-process.md](release-process.md#fetch-and-create-inputs-first-time-or-when-dependency-versions-change)
 in the Soom Core repository under 'Fetch and create inputs' to install sources which require
@@ -371,14 +371,14 @@ tail -f var/build.log
 Output from `gbuild` will look something like
 
 ```bash
-    Initialized empty Git repository in /home/debian/gitian-builder/inputs/soom/.git/
+    Initialized empty Git repository in /home/debian/gitian-builder/inputs/soom-core/.git/
     remote: Counting objects: 57959, done.
     remote: Total 57959 (delta 0), reused 0 (delta 0), pack-reused 57958
     Receiving objects: 100% (57959/57959), 53.76 MiB | 484.00 KiB/s, done.
     Resolving deltas: 100% (41590/41590), done.
     From https://github.com/soom-4th-blockchain/soom-core
     ... (new tags, new branch etc)
-    --- Building for trusty amd64 ---
+    --- Building for bionic amd64 ---
     Stopping target if it is up
     Making a new image copy
     stdin: is not a tty
@@ -402,18 +402,18 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/crowning-/soom.git
+URL=https://github.com/crowning-/soom-core.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
-./bin/gbuild --commit soom=${COMMIT} --url soom=${URL} ../soom/contrib/gitian-descriptors/gitian-linux.yml
-./bin/gbuild --commit soom=${COMMIT} --url soom=${URL} ../soom/contrib/gitian-descriptors/gitian-win.yml
-./bin/gbuild --commit soom=${COMMIT} --url soom=${URL} ../soom/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --commit soom-core=${COMMIT} --url soom-core=${URL} ../soom-core/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --commit soom-core=${COMMIT} --url soom-core=${URL} ../soom-core/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --commit soom-core=${COMMIT} --url soom-core=${URL} ../soom-core/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
 Building fully offline
 -----------------------
 
 For building fully offline including attaching signatures to unsigned builds, the detached-sigs repository
-and the soom git repository with the desired tag must both be available locally, and then gbuild must be
+and the soom-core git repository with the desired tag must both be available locally, and then gbuild must be
 told where to find them. It also requires an apt-cacher-ng which is fully-populated but set to offline mode, or
 manually disabling gitian-builder's use of apt-get to update the VM build environment.
 
@@ -427,14 +427,14 @@ So, if you use LXC:
 export PATH="$PATH":/path/to/gitian-builder/libexec
 export USE_LXC=1
 cd /path/to/gitian-builder
-./libexec/make-clean-vm --suite trusty --arch amd64
+./libexec/make-clean-vm --suite bionic --arch amd64
 
-LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root apt-get update
-LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root \
+LXC_ARCH=amd64 LXC_SUITE=bionic on-target -u root apt-get update
+LXC_ARCH=amd64 LXC_SUITE=bionic on-target -u root \
   -e DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
-  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../soom/contrib/gitian-descriptors/*|sort|uniq )
-LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root apt-get -q -y purge grub
-LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root -e DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
+  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../soom-core/contrib/gitian-descriptors/*|sort|uniq )
+LXC_ARCH=amd64 LXC_SUITE=bionic on-target -u root apt-get -q -y purge grub
+LXC_ARCH=amd64 LXC_SUITE=bionic on-target -u root -e DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
 ```
 
 And then set offline mode for apt-cacher-ng:
@@ -454,10 +454,10 @@ Then when building, override the remote URLs that gbuild would otherwise pull fr
 cd /some/root/path/
 git clone https://github.com/soom-4th-blockchain/soom-core-detached-sigs.git
 
-BTCPATH=/some/root/path/soom.git
+BTCPATH=/some/root/path/soom-core.git
 SIGPATH=/some/root/path/soom-detached-sigs.git
 
-./bin/gbuild --url soom=${BTCPATH},signature=${SIGPATH} ../soom/contrib/gitian-descriptors/gitian-win-signer.yml
+./bin/gbuild --url soom-core=${BTCPATH},signature=${SIGPATH} ../soom-core/contrib/gitian-descriptors/gitian-win-signer.yml
 ```
 
 Signing externally
@@ -484,6 +484,6 @@ Uploading signatures (not yet implemented)
 ---------------------
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
-[soom/gitian.sigs](https://github.com/soom-4th-blockchain/gitian.sigs/) repository, or if that's not possible to create a pull
+[soom-core/gitian.sigs](https://github.com/soom-4th-blockchain/gitian.sigs/) repository, or if that's not possible to create a pull
 request.
 There will be an official announcement when this repository is online.

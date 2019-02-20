@@ -1,6 +1,6 @@
 # Linearize
 Construct a linear, no-fork, best version of the Soom blockchain. The scripts
-run using Python 3 but are compatible with Python 2. 
+run using Python 3 but are compatible with Python 2.
 
 ## Step 0: Install soom_hash
 

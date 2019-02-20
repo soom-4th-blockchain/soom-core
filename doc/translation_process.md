@@ -12,17 +12,17 @@ See the [Transifex Soom project](https://www.transifex.com/projects/p/soom/) to 
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:
-`soom_xx_YY.ts or dash_xx.ts`
+`soom_xx_YY.ts or soom_xx.ts`
 
-`src/qt/locale/soom_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `dash_en.ts`.
+`src/qt/locale/soom_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `soom_en.ts`.
 
-To automatically regenerate the `dash_en.ts` file, run the following commands:
+To automatically regenerate the `soom_en.ts` file, run the following commands:
 ```sh
 cd src/
 make translate
 ```
 
-`contrib/dash-qt.pro` takes care of generating `.qm` (binary compiled) files from `.ts` (source files) files. It’s mostly automated, and you shouldn’t need to worry about it.
+`contrib/soom-qt.pro` takes care of generating `.qm` (binary compiled) files from `.ts` (source files) files. It’s mostly automated, and you shouldn’t need to worry about it.
 
 **Example Qt translation**
 ```cpp
@@ -36,7 +36,7 @@ When an updated source file is merged into the GitHub repo, Transifex will autom
 
 To create the pull-request, use the following commands:
 ```
-git add src/qt/dashstrings.cpp src/qt/locale/dash_en.ts
+git add src/qt/soomstrings.cpp src/qt/locale/soom_en.ts
 git commit
 ```
 
@@ -44,7 +44,7 @@ git commit
 ### Creating a Transifex account
 Visit the [Transifex Signup](https://www.transifex.com/signup/) page to create an account. Take note of your username and password, as they will be required to configure the command-line tool.
 
-You can find the Soom translation project at [https://www.transifex.com/projects/p/dash/](https://www.transifex.com/projects/p/dash/).
+You can find the Soom translation project at [https://www.transifex.com/projects/p/soom/](https://www.transifex.com/projects/p/soom/).
 
 ### Installing the Transifex client command-line tool
 The client it used to fetch updated translations. If you are having problems, or need more details, see [http://docs.transifex.com/developer/client/setup](http://docs.transifex.com/developer/client/setup)

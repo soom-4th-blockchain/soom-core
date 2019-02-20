@@ -35,7 +35,7 @@ block hash)
 \fB\-assumevalid=\fR<hex>
 .IP
 If this block is in the chain assume that it and its ancestors are valid
-and potentially skip their script verification (0 to verify all,
+and potentially skip their script verification (0 to verify all)
 .HP
 \fB\-conf=\fR<file>
 .IP
@@ -77,7 +77,7 @@ Extra transactions to keep in memory for compact block reconstructions
 .HP
 \fB\-par=\fR<n>
 .IP
-Set the number of script verification threads (\fB\-4\fR to 16, 0 = auto, <0 =
+Set the number of script verification threads (\fB\-2\fR to 16, 0 = auto, <0 =
 leave that many cores free, default: 0)
 .HP
 \fB\-pid=\fR<file>
@@ -416,6 +416,11 @@ Enable publish hash transaction in <address>
 .IP
 Enable publish hash transaction (locked via InstantSend) in <address>
 .HP
+\fB\-zmqpubhashinstantsenddoublespend=\fR<address>
+.IP
+Enable publish transaction hashes of attempted InstantSend double spend
+in <address>
+.HP
 \fB\-zmqpubrawblock=\fR<address>
 .IP
 Enable publish raw block in <address>
@@ -427,6 +432,11 @@ Enable publish raw transaction in <address>
 \fB\-zmqpubrawtxlock=\fR<address>
 .IP
 Enable publish raw transaction (locked via InstantSend) in <address>
+.HP
+\fB\-zmqpubrawinstantsenddoublespend=\fR<address>
+.IP
+Enable publish raw transactions of attempted InstantSend double spend in
+<address>
 .PP
 Debugging/Testing options:
 .HP
@@ -465,7 +475,7 @@ relaying, mining and transaction creation (default: 0.00001)
 .IP
 Maximum total fees (in SOOM) to use in a single wallet transaction or
 raw transaction; setting this too low may abort large
-transactions (default: 0.20)
+transactions (default: 0.10)
 .HP
 \fB\-printtoconsole\fR
 .IP
@@ -497,6 +507,12 @@ Disable all Soom specific functionality (gateway, InstantSend) (0\-1, default: 0
 .IP
 Override spork address. Only useful for regtest and devnet. Using this
 on mainnet or testnet will ban you.
+.HP
+\fB\-minsporkkeys=\fR<n>
+.IP
+Overrides minimum spork signers to change spork value. Only useful for
+regtest and devnet. Using this on mainnet or testnet will ban
+you.
 .PP
 Gateway options:
 .HP
@@ -523,11 +539,6 @@ InstantSend options:
 Enable InstantSend, show confirmations for locked transactions (0\-1,
 default: 1)
 .HP
-\fB\-instantsenddepth=\fR<n>
-.IP
-Show N confirmations for a successfully locked transaction (0\-60,
-default: 5)
-.HP
 \fB\-instantsendnotify=\fR<cmd>
 .IP
 Execute command when a wallet InstantSend transaction is successfully
@@ -547,10 +558,6 @@ Relay and mine data carrier transactions (default: 1)
 .IP
 Maximum size of data in data carrier transactions we relay and mine
 (default: 83)
-.HP
-\fB\-mempoolreplacement\fR
-.IP
-Enable transaction replacement in the memory pool (default: 0)
 .PP
 Block creation options:
 .HP
@@ -621,9 +628,9 @@ option can be specified multiple times
 .IP
 Set the number of threads to service RPC calls (default: 4)
 .SH COPYRIGHT
-Copyright (C) 2017-2018 The Soom Core developers
-Copyright (C) 2014-2017 The Dash Core developers
-Copyright (C) 2009-2017 The Bitcoin Core developers
+Copyright (C) 2017-2019 The Soom Core developers
+Copyright (C) 2014-2018 The Dash Core developers
+Copyright (C) 2009-2018 The Bitcoin Core developers
 
 Please contribute if you find Soom Core useful. Visit <http://www.fourthblockchain.org> for
 further information about the software.

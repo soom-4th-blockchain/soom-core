@@ -1,4 +1,4 @@
-Protocol Documentation - 1.0.2
+Protocol Documentation - 1.0.4
 =====================================
 
 This document describes the protocol extensions for all additional functionality build into the Soom protocol. This doesn't include any of the Bitcoin protocol, which has been left intact in the Soom project. For more information about the core protocol, please see https://en.bitcoin.it/w/index.php?title#Protocol_documentation&action#edit
@@ -150,17 +150,17 @@ Spork
 | 66* | vchSig | char[] | Unclear if 66 is the correct size, but this is what it appears to be in most cases |
 
 #### Defined Sporks (per src/sporks.h)
- 
-| Spork ID | Number | Name | Description | 
+
+| Spork ID | Number | Name | Description |
 | ---------- | ---------- | ----------- | ----------- |
 | 10001 | 2 | INSTANTSEND_ENABLED | Turns on and off InstantSend network wide
 | 10002 | 3 | INSTANTSEND_BLOCK_FILTERING | Turns on and off InstantSend block filtering
 | 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 5000 soom)
-| 10005 | 6 | NEW_SIGS | Turns on and off new signature format for Dash-specific messages
+| 10005 | 6 | NEW_SIGS | Turns on and off new signature format for Soom-specific messages
 | 10007 | 8 | GATEWAY_PAYMENT_ENFORCEMENT | Requires gateways to be paid by miners when blocks are processed
 | 10009 | 10 | GATEWAY_PAY_UPDATED_NODES | Only current protocol version gateway's will be paid (not older nodes)
 | 10011 | 12 | RECONSIDER_BLOCKS |
-| 10013 | 14 | REQUIRE_SENTINEL_FLAG | Only gateway's running sentinel will be paid 
+| 10013 | 14 | REQUIRE_SENTINEL_FLAG | Only gateway's running sentinel will be paid
 
 ## Undocumented messages
 

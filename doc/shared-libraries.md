@@ -11,7 +11,7 @@ The interface is defined in the C header `soomconsensus.h` located in  `src/scri
 
 #### Version
 
-`soomconsensus_version` returns an `unsigned int` with the the API version *(currently at an experimental `0`)*.
+`soomconsensus_version` returns an `unsigned int` with the API version *(currently at an experimental `0`)*.
 
 #### Script Validation
 

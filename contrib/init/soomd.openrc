@@ -1,6 +1,6 @@
 #!/sbin/runscript
 
-# backward compatibility for existing gentoo layout 
+# backward compatibility for existing gentoo layout
 #
 if [ -d "/var/lib/soomcore/.soomcore" ]; then
 	BITCOIND_DEFAULT_DATADIR="/var/lib/soomcore/.soomcore"

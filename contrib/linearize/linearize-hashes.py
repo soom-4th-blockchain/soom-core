@@ -134,4 +134,3 @@ if __name__ == '__main__':
 	settings['rev_hash_bytes'] = settings['rev_hash_bytes'].lower()
 
 	get_block_hashes(settings)
-

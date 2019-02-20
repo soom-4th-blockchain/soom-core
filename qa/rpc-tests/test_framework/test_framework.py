@@ -12,13 +12,17 @@ import sys
 import shutil
 import tempfile
 import traceback
+from time import time, sleep
 
 from .util import (
     initialize_chain,
+    start_node,
     start_nodes,
     connect_nodes_bi,
+    connect_nodes,
     sync_blocks,
     sync_mempools,
+    sync_gateways,
     stop_nodes,
     stop_node,
     enable_coverage,
@@ -27,7 +31,11 @@ from .util import (
     PortSeed,
     set_cache_mocktime,
     set_genesis_mocktime,
-    get_mocktime
+    get_mocktime,
+    set_mocktime,
+    set_node_times,
+    p2p_port,
+    satoshi_round
 )
 from .authproxy import JSONRPCException
 
@@ -193,6 +201,173 @@ class BitcoinTestFramework(object):
         else:
             print("Failed")
             sys.exit(1)
+
+
+GATEWAY_COLLATERAL = 5000
+
+
+class GatewayInfo:
+    def __init__(self, key, blsKey, collateral_id, collateral_out):
+        self.key = key
+        self.blsKey = blsKey
+        self.collateral_id = collateral_id
+        self.collateral_out = collateral_out
+
+
+class DashTestFramework(BitcoinTestFramework):
+    def __init__(self, num_nodes, gateways_count, extra_args):
+        super().__init__()
+        self.gw_count = gateways_count
+        self.num_nodes = num_nodes
+        self.gwinfo = []
+        self.setup_clean_chain = True
+        self.is_network_split = False
+        # additional args
+        self.extra_args = extra_args
+
+    def create_simple_node(self):
+        idx = len(self.nodes)
+        args = self.extra_args
+        self.nodes.append(start_node(idx, self.options.tmpdir,
+                                     args))
+        for i in range(0, idx):
+            connect_nodes(self.nodes[i], idx)
+
+    def get_gwconf_file(self):
+        return os.path.join(self.options.tmpdir, "node0/regtest/gateway.conf")
+
+    def prepare_gateways(self):
+        for idx in range(0, self.gw_count):
+            key = self.nodes[0].gateway("genkey")
+            blsKey = self.nodes[0].bls('generate')['secret']
+            address = self.nodes[0].getnewaddress()
+            txid = self.nodes[0].sendtoaddress(address, GATEWAY_COLLATERAL)
+            txrow = self.nodes[0].getrawtransaction(txid, True)
+            collateral_vout = 0
+            for vout_idx in range(0, len(txrow["vout"])):
+                vout = txrow["vout"][vout_idx]
+                if vout["value"] == GATEWAY_COLLATERAL:
+                    collateral_vout = vout_idx
+            self.nodes[0].lockunspent(False,
+                                      [{"txid": txid, "vout": collateral_vout}])
+            self.gwinfo.append(GatewayInfo(key, blsKey, txid, collateral_vout))
+
+    def write_gw_config(self):
+        conf = self.get_gwconf_file()
+        f = open(conf, 'a')
+        for idx in range(0, self.gw_count):
+            f.write("gw%d 127.0.0.1:%d %s %s %d\n" % (idx + 1, p2p_port(idx + 1),
+                                                      self.gwinfo[idx].key,
+                                                      self.gwinfo[idx].collateral_id,
+                                                      self.gwinfo[idx].collateral_out))
+        f.close()
+
+    def create_gateways(self):
+        for idx in range(0, self.gw_count):
+            args = ['-externalip=127.0.0.1', '-gateway=1',
+                    '-gatewayprivkey=%s' % self.gwinfo[idx].key,
+                    '-gatewayblsprivkey=%s' % self.gwinfo[idx].blsKey] + self.extra_args
+            self.nodes.append(start_node(idx + 1, self.options.tmpdir, args))
+            for i in range(0, idx + 1):
+                connect_nodes(self.nodes[i], idx + 1)
+
+    def setup_network(self):
+        self.nodes = []
+        # create faucet node for collateral and transactions
+        args = self.extra_args
+        self.nodes.append(start_node(0, self.options.tmpdir, args))
+        required_balance = GATEWAY_COLLATERAL * self.gw_count + 1
+        while self.nodes[0].getbalance() < required_balance:
+            set_mocktime(get_mocktime() + 1)
+            set_node_times(self.nodes, get_mocktime())
+            self.nodes[0].generate(1)
+        # create gateways
+        self.prepare_gateways()
+        self.write_gw_config()
+        stop_node(self.nodes[0], 0)
+        args = ["-sporkkey=cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK"] + \
+               self.extra_args
+        self.nodes[0] = start_node(0, self.options.tmpdir,
+                                   args)
+        self.create_gateways()
+        # create connected simple nodes
+        for i in range(0, self.num_nodes - self.gw_count - 1):
+            self.create_simple_node()
+        set_mocktime(get_mocktime() + 1)
+        set_node_times(self.nodes, get_mocktime())
+        self.nodes[0].generate(1)
+        # sync nodes
+        self.sync_all()
+        set_mocktime(get_mocktime() + 1)
+        set_node_times(self.nodes, get_mocktime())
+        sync_gateways(self.nodes, True)
+        for i in range(1, self.gw_count + 1):
+            res = self.nodes[0].gateway("start-alias", "gw%d" % i)
+            assert (res["result"] == 'successful')
+        gw_info = self.nodes[0].gatewaylist("status")
+        assert (len(gw_info) == self.gw_count)
+        for status in gw_info.values():
+            assert (status == 'ENABLED')
+
+    def enforce_gateway_payments(self):
+        self.nodes[0].spork('SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT', 0)
+
+    def create_raw_trx(self, node_from, node_to, amount, min_inputs, max_inputs):
+        assert (min_inputs <= max_inputs)
+        # fill inputs
+        inputs = []
+        balances = node_from.listunspent()
+        in_amount = 0.0
+        last_amount = 0.0
+        for tx in balances:
+            if len(inputs) < min_inputs:
+                input = {}
+                input["txid"] = tx['txid']
+                input['vout'] = tx['vout']
+                in_amount += float(tx['amount'])
+                inputs.append(input)
+            elif in_amount > amount:
+                break
+            elif len(inputs) < max_inputs:
+                input = {}
+                input["txid"] = tx['txid']
+                input['vout'] = tx['vout']
+                in_amount += float(tx['amount'])
+                inputs.append(input)
+            else:
+                input = {}
+                input["txid"] = tx['txid']
+                input['vout'] = tx['vout']
+                in_amount -= last_amount
+                in_amount += float(tx['amount'])
+                inputs[-1] = input
+            last_amount = float(tx['amount'])
+
+        assert (len(inputs) > 0)
+        assert (in_amount > amount)
+        # fill outputs
+        receiver_address = node_to.getnewaddress()
+        change_address = node_from.getnewaddress()
+        fee = 0.001
+        outputs = {}
+        outputs[receiver_address] = satoshi_round(amount)
+        outputs[change_address] = satoshi_round(in_amount - amount - fee)
+        rawtx = node_from.createrawtransaction(inputs, outputs)
+        return node_from.signrawtransaction(rawtx)
+
+    def wait_for_instantlock(self, txid, node):
+        # wait for instantsend locks
+        start = time()
+        locked = False
+        while True:
+            is_trx = node.gettransaction(txid)
+            if is_trx['instantlock']:
+                locked = True
+                break
+            if time() > start + 10:
+                break
+            sleep(0.1)
+        return locked
 
 
 # Test framework for doing p2p comparison testing, which sets up some bitcoind

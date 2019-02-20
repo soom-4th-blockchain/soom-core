@@ -30,7 +30,7 @@ from .authproxy import AuthServiceProxy, JSONRPCException
 COVERAGE_DIR = None
 
 # The maximum number of nodes a single test can spawn
-MAX_NODES = 8
+MAX_NODES = 15
 # Don't assign rpc or p2p ports lower than this
 PORT_MIN = 11000
 # The number of ports to "reserve" for p2p and rpc, each
@@ -105,11 +105,15 @@ def get_gwsync_status(node):
     result = node.gwsync("status")
     return result['IsSynced']
 
-def wait_to_sync(node):
-    synced = False
-    while not synced:
+def wait_to_sync(node, fast_gwsync=False):
+    while True:
         synced = get_gwsync_status(node)
-        time.sleep(0.5)
+        if synced:
+            break
+        time.sleep(0.2)
+        if fast_gwsync:
+            # skip gwsync states
+            node.gwsync("next")
 
 def p2p_port(n):
     assert(n <= MAX_NODES)
@@ -191,9 +195,9 @@ def sync_mempools(rpc_connections, *, wait=1, timeout=60):
         timeout -= wait
     raise AssertionError("Mempool sync failed")
 
-def sync_gateways(rpc_connections):
+def sync_gateways(rpc_connections, fast_gwsync=False):
     for node in rpc_connections:
-        wait_to_sync(node)
+        wait_to_sync(node, fast_gwsync)
 
 bitcoind_processes = {}
 
