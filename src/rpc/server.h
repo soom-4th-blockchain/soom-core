@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Soom Core developers
+// Copyright (c) 2017-2019 The Soom Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -154,7 +154,7 @@ private:
 public:
     CRPCTable();
     const CRPCCommand* operator[](const std::string& name) const;
-    std::string help(const std::string& name) const;
+    std::string help(const std::string& strCommand, const std::string& strSubCommand) const;
 
     /**
      * Execute a method.
@@ -188,6 +188,11 @@ extern uint256 ParseHashV(const UniValue& v, std::string strName);
 extern uint256 ParseHashO(const UniValue& o, std::string strKey);
 extern std::vector<unsigned char> ParseHexV(const UniValue& v, std::string strName);
 extern std::vector<unsigned char> ParseHexO(const UniValue& o, std::string strKey);
+
+extern int32_t ParseInt32V(const UniValue& v, const std::string &strName);
+extern int64_t ParseInt64V(const UniValue& v, const std::string &strName);
+extern double ParseDoubleV(const UniValue& v, const std::string &strName);
+extern bool ParseBoolV(const UniValue& v, const std::string &strName);
 
 extern int64_t nWalletUnlockTime;
 extern CAmount AmountFromValue(const UniValue& value);

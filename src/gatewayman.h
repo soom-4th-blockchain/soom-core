@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -25,7 +25,7 @@ public:
 private:
     static const std::string SERIALIZATION_VERSION_STRING;
 
-    static const int GWEG_UPDATE_SECONDS        = 3 * 60 * 60;
+    static const int GWEG_UPDATE_SECONDS        = 1.2 * 60 * 60;
 
     static const int LAST_PAID_SCAN_BLOCKS;
 
@@ -37,8 +37,8 @@ private:
     static const int GWB_RECOVERY_QUORUM_TOTAL      = 10;
     static const int GWB_RECOVERY_QUORUM_REQUIRED   = 6;
     static const int GWB_RECOVERY_MAX_ASK_ENTRIES   = 10;
-    static const int GWB_RECOVERY_WAIT_SECONDS      = 60;
-    static const int GWB_RECOVERY_RETRY_SECONDS     = 3 * 60 * 60;
+    static const int GWB_RECOVERY_WAIT_SECONDS      = 24;
+    static const int GWB_RECOVERY_RETRY_SECONDS     = 1.2 * 60 * 60;
 
 
     // critical section to protect the inner data structures
@@ -66,7 +66,11 @@ private:
     std::map<CService, std::pair<int64_t, CGatewayVerification> > mapPendingGWV;
     CCriticalSection cs_mapPendingGWV;
 
+    /// Set when gateways are added, cleared when CGovernanceManager is notified
+    bool fGatewaysAdded;
 
+    /// Set when gateways are removed, cleared when CGovernanceManager is notified
+    bool fGatewaysRemoved;
     int64_t nLastSentinelPingTime;
 
     friend class CGatewaySync;
@@ -98,7 +102,7 @@ public:
             READWRITE(strVersion);
         }
         else {
-            strVersion = SERIALIZATION_VERSION_STRING; 
+            strVersion = SERIALIZATION_VERSION_STRING;
             READWRITE(strVersion);
         }
 
@@ -124,10 +128,9 @@ public:
 
     /// Ask (source) node for gwb
     void AskForGW(CNode *pnode, const COutPoint& outpoint, CConnman& connman);
-    void AskForGwb(CNode *pnode, const uint256 &hash);
 
     bool PoSeBan(const COutPoint &outpoint);
-  
+
     /// Check all Gateways
     void Check();
 
@@ -135,6 +138,9 @@ public:
     void CheckAndRemove(CConnman& connman);
     /// This is dummy overload to be used for dumping/loading gwcache.dat
     void CheckAndRemove() {}
+
+    void AddDeterministicGateways();
+    void RemoveNonDeterministicGateways();
 
     /// Clear Gateway vector
     void Clear();
@@ -155,8 +161,9 @@ public:
     bool Get(const COutPoint& outpoint, CGateway& gatewayRet);
     bool Has(const COutPoint& outpoint);
 
+    bool GetGatewayInfo(const uint256& proTxHash, gateway_info_t& gwInfoRet);
     bool GetGatewayInfo(const COutPoint& outpoint, gateway_info_t& gwInfoRet);
-    bool GetGatewayInfo(const CPubKey& pubKeyGateway, gateway_info_t& gwInfoRet);
+    bool GetGatewayInfo(const CKeyID& keyIDOperator, gateway_info_t& gwInfoRet);
     bool GetGatewayInfo(const CScript& payee, gateway_info_t& gwInfoRet);
 
     /// Find an entry in the gateway list that is next to be paid
@@ -167,10 +174,11 @@ public:
     /// Find a random entry
     gateway_info_t FindRandomNotInVec(const std::vector<COutPoint> &vecToExclude, int nProtocolVersion = -1);
 
-    std::map<COutPoint, CGateway> GetFullGatewayMap() { return mapGateways; }
+    std::map<COutPoint, CGateway> GetFullGatewayMap();
 
     bool GetGatewayRanks(rank_pair_vec_t& vecGatewayRanksRet, int nBlockHeight = -1, int nMinProtocol = 0);
     bool GetGatewayRank(const COutPoint &outpoint, int& nRankRet, int nBlockHeight = -1, int nMinProtocol = 0);
+    bool GetGatewayRank(const COutPoint &outpoint, int& nRankRet, uint256& blockHashRet, int nBlockHeight = -1, int nMinProtocol = 0);
 
     void ProcessGatewayConnections(CConnman& connman);
     std::pair<CService, std::set<uint256> > PopScheduledGwbRequestConnection();
@@ -180,7 +188,8 @@ public:
 
     void DoFullVerificationStep(CConnman& connman);
     void CheckSameAddr();
-    bool SendVerifyRequest(const CAddress& addr, const std::vector<const CGateway*>& vSortedByAddr, CConnman& connman);
+    bool CheckVerifyRequestAddr(const CAddress& addr, CConnman& connman);
+    void PrepareVerifyRequest(const CAddress& addr, CConnman& connman);
     void ProcessPendingGwvRequests(CConnman& connman);
     void SendVerifyReply(CNode* pnode, CGatewayVerification& gwv, CConnman& connman);
     void ProcessVerifyReply(CNode* pnode, CGatewayVerification& gwv);
@@ -201,7 +210,7 @@ public:
     bool IsSentinelPingActive();
     void UpdateLastSentinelPingTime();
 
-    void CheckGateway(const CPubKey& pubKeyGateway, bool fForce);
+    void CheckGateway(const CKeyID& keyIDOperator, bool fForce);
 
     bool IsGatewayPingedWithin(const COutPoint& outpoint, int nSeconds, int64_t nTimeToCheckAt = -1);
     void SetGatewayLastPing(const COutPoint& outpoint, const CGatewayPing& gwp);
@@ -210,6 +219,13 @@ public:
 
     void WarnGatewayDaemonUpdates();
 
+    /**
+     * Called to notify CManager that the gateway index has been updated.
+     * Must be called while not holding the CGatewayMan::cs mutex
+     */
+    void NotifyGatewayUpdates(CConnman& connman, bool forceAddedChecks = false, bool forceRemovedChecks = false);
+
+    void DoMaintenance(CConnman &connman);
 };
 
 #endif

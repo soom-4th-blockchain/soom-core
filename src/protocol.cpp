@@ -49,11 +49,17 @@ const char *GETSPORKS="getsporks";
 const char *GATEWAYPAYMENTVOTE="gww";
 const char *GATEWAYPAYMENTBLOCK="gwwb";
 const char *GATEWAYPAYMENTSYNC="gwget";
+const char *GWQUORUM="gw quorum"; // not implemented
 const char *GWANNOUNCE="gwb";
 const char *GWPING="gwp";
 const char *GWEG="gweg";
 const char *SYNCSTATUSCOUNT="ssc";
 const char *GWVERIFY="gwv";
+const char *GETGWLISTDIFF="getgwlistd";
+const char *GWLISTDIFF="gwlistdiff";
+const char *QFCOMMITMENT="qfcommit";
+const char *QDCOMMITMENT="qdcommit";
+const char *QCONTRIB="qcontrib";
 };
 
 static const char* ppszTypeName[] =
@@ -68,10 +74,15 @@ static const char* ppszTypeName[] =
     NetMsgType::TXLOCKVOTE,
     NetMsgType::SPORK,
     NetMsgType::GATEWAYPAYMENTVOTE,
-    NetMsgType::GATEWAYPAYMENTBLOCK, 
+    NetMsgType::GATEWAYPAYMENTBLOCK,
+    NetMsgType::GWQUORUM, // not implemented
     NetMsgType::GWANNOUNCE,
     NetMsgType::GWPING,
     NetMsgType::GWVERIFY,
+    "compact block", // Should never occur
+    NetMsgType::QFCOMMITMENT,
+    NetMsgType::QDCOMMITMENT,
+    NetMsgType::QCONTRIB,
 };
 
 /** All known message types. Keep this in the same order as the list of
@@ -118,6 +129,11 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::GWEG,
     NetMsgType::SYNCSTATUSCOUNT,
     NetMsgType::GWVERIFY,
+    NetMsgType::GETGWLISTDIFF,
+    NetMsgType::GWLISTDIFF,
+    NetMsgType::QFCOMMITMENT,
+    NetMsgType::QDCOMMITMENT,
+    NetMsgType::QCONTRIB,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes+ARRAYLEN(allNetMessageTypes));
 

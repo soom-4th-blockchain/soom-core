@@ -13,6 +13,7 @@
 
 #include "support/allocators/secure.h"
 #include "chainparamsbase.h"
+#include "ctpl.h"
 #include "random.h"
 #include "serialize.h"
 #include "sync.h"
@@ -110,7 +111,7 @@ namespace boost {
 
 
 //Soom only features
-bool fLocalGateWay = false; // add hcdo 180611 for test gateway in local 
+bool fLocalGateWay = false; // add hcdo 180611 for test gateway in local
 bool fGatewayMode = false;
 bool fLiteMode = false;
 /**
@@ -285,7 +286,7 @@ bool LogAcceptCategory(const char* category)
                     ptrCategory->insert(std::string("gateway"));
                     ptrCategory->insert(std::string("spork"));
                     ptrCategory->insert(std::string("keepass"));
-                    ptrCategory->insert(std::string("gwpayments"));            
+                    ptrCategory->insert(std::string("gwpayments"));
                 }
             } else {
                 ptrCategory.reset(new std::set<std::string>());
@@ -661,10 +662,10 @@ void createConf(const std::string& confPath)       //Automatic soom.conf generat
 
     pConf   << std::string("rpcuser=soomrpcuser")
             //+  randomStrGen(5)
-            + std::string("\nrpcpassword=x") 
+            + std::string("\nrpcpassword=x")
             //+ randomStrGen(15)
 //#/ start jhhong createConf 180828
-			+ std::string("\nrpcallowip=127.0.0.1") 
+			+ std::string("\nrpcallowip=127.0.0.1")
 //@/ end jhhong createConf
             + std::string(nodes);
 
@@ -930,6 +931,25 @@ std::string GetThreadName()
     // no get_name here
 #endif
     return std::string(name);
+}
+
+void RenameThreadPool(ctpl::thread_pool& tp, const char* baseName)
+{
+    auto cond = std::make_shared<std::condition_variable>();
+    auto mutex = std::make_shared<std::mutex>();
+    std::atomic<int> doneCnt(0);
+    for (size_t i = 0; i < tp.size(); i++) {
+        tp.push([baseName, i, cond, mutex, &doneCnt](int threadId) {
+            RenameThread(strprintf("%s-%d", baseName, i).c_str());
+            doneCnt++;
+            std::unique_lock<std::mutex> l(*mutex);
+            cond->wait(l);
+        });
+    }
+    while (doneCnt != tp.size()) {
+        MilliSleep(10);
+    }
+    cond->notify_all();
 }
 
 void SetupEnvironment()

@@ -57,6 +57,61 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
+// this one is for testing only
+static Consensus::LLGQParams llgq10_60 = {
+        .type = Consensus::LLGQ_10_60,
+        .name = "llgq_10",
+        .size = 10,
+        .minSize = 6,
+        .threshold = 6,
+
+        .dkgInterval = 24, // one DKG per hour
+        .dkgPhaseBlocks = 2,
+        .dkgMiningWindowStart = 10, // dkgPhaseBlocks * 5 = after finalization
+        .dkgMiningWindowEnd = 18,
+};
+
+static Consensus::LLGQParams llgq50_60 = {
+        .type = Consensus::LLGQ_50_60,
+        .name = "llgq_50_60",
+        .size = 50,
+        .minSize = 40,
+        .threshold = 30,
+
+        .dkgInterval = 24, // one DKG per hour
+        .dkgPhaseBlocks = 2,
+        .dkgMiningWindowStart = 10, // dkgPhaseBlocks * 5 = after finalization
+        .dkgMiningWindowEnd = 18,
+};
+
+static Consensus::LLGQParams llgq400_60 = {
+        .type = Consensus::LLGQ_400_60,
+        .name = "llgq_400_51",
+        .size = 400,
+        .minSize = 300,
+        .threshold = 240,
+
+        .dkgInterval = 24 * 12, // one DKG every 12 hours
+        .dkgPhaseBlocks = 4,
+        .dkgMiningWindowStart = 20, // dkgPhaseBlocks * 5 = after finalization
+        .dkgMiningWindowEnd = 28,
+};
+
+// Used for deployment and min-proto-version signalling, so it needs a higher threshold
+static Consensus::LLGQParams llgq400_85 = {
+        .type = Consensus::LLGQ_400_85,
+        .name = "llgq_400_85",
+        .size = 400,
+        .minSize = 350,
+        .threshold = 340,
+
+        .dkgInterval = 24 * 24, // one DKG every 24 hours
+        .dkgPhaseBlocks = 4,
+        .dkgMiningWindowStart = 20, // dkgPhaseBlocks * 5 = after finalization
+        .dkgMiningWindowEnd = 48, // give it a larger mining window to make sure it is mined
+};
+
+
 /**
  * Main network
  */
@@ -82,8 +137,8 @@ public:
         consensus.nGatewayMinimumConfirmations = 15;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x000000005bf291276cd33777ea78dde7b5303cea5aba4af0345469fc5f9684f5");
-		consensus.BIP65Height = 1; 
-        consensus.BIP66Height = 1; 
+		consensus.BIP65Height = 1;
+        consensus.BIP66Height = 1;
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Soom: 1 day
         consensus.nPowTargetSpacing =  60; // Soom: 1 minutes
@@ -94,7 +149,7 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
      	consensus.nFoundationPaymentsStartBlock = 101;
-	 
+
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -112,13 +167,20 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1563148800; // Jul 5th, 2019
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 3226; // 80% of 4032
-	 
+
+        // Deployment of DIP0003
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].bit = 2;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nStartTime = 1546300800; // Jan 1st, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nTimeout = 1577836800; // Jan 1st, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nWindowSize = 4032;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nThreshold = 3226; // 80% of 4032
+
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
-       
+
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -135,8 +197,8 @@ public:
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1533447343, 8362638, 0x1e0ffff0, 1, 50 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();		
-		
+        consensus.hashGenesisBlock = genesis.GetHash();
+
         assert(consensus.hashGenesisBlock == uint256S("0x0000044a4be97131d4d115f8db2307ab17c39239b9db2d87f3b2921afab7b001"));
         assert(genesis.hashMerkleRoot == uint256S("0x47eec0209382963a4f867534b242cd795688b38471f3b85236de04f4e77d19f4"));
 
@@ -170,22 +232,31 @@ public:
 
 //#/ start jhhong add fixed-seed 180731
 		vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
-		//vFixedSeeds.clear(); //doesn't have any fixed seeds. 
+		//vFixedSeeds.clear(); //doesn't have any fixed seeds.
 //@/ end jhhong add fixed-seed
 //#/ start jhhong add dns seed 180731
-		//vSeeds.clear();  // doesn't have any DNS seeds. 
+		//vSeeds.clear();  // doesn't have any DNS seeds.
 //@/ end jhhong add dns seed
-        
+        // long living quorum params
+        consensus.llgqs[Consensus::LLGQ_50_60] = llgq50_60;
+        consensus.llgqs[Consensus::LLGQ_400_60] = llgq400_60;
+        consensus.llgqs[Consensus::LLGQ_400_85] = llgq400_85;
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
+        fRequireRoutableExternalIP = true;
         fMineBlocksOnDemand = false;
         fAllowMultipleAddressesFromGroup = false;
         fAllowMultiplePorts = false;
 
+        nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 		strFoundationAddress = "M8iNkrKZ1deRmzHc6wrqyRKhamEsKpQgcd";
-        strSporkAddress = "MJWpvWvQpVs24HE8vd8BntvFwYpBMReU2J";
+        vSporkAddresses = {"MJWpvWvQpVs24HE8vd8BntvFwYpBMReU2J"};
+        nMinSporkKeys = 1;
+        fBIP9CheckGatewaysUpgraded = true;
+        consensus.fLLGQAllowDummyCommitments = false;
+
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (  2000, uint256S("0x000000000002cc28d7e340b9e6253d23dbf7fa811817833f1242987797248469"))
@@ -223,8 +294,8 @@ public:
         consensus.nGatewayMinimumConfirmations = 1;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x000004ca73d9b8b2a7e7aa9b5799fb788550f2a1fa07cf1c470926af15c7b0ba");
-		consensus.BIP65Height = 1; 
-        consensus.BIP66Height = 1; 
+		consensus.BIP65Height = 1;
+        consensus.BIP66Height = 1;
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Soom: 1 day
         consensus.nPowTargetSpacing =  60; // Soom: 1 minutes
@@ -253,12 +324,17 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1563148800; // Jul 5th, 2019
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nWindowSize = 100;
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 50; // 50% of 100
-
+        // Deployment of DIP0003
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].bit = 2;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nStartTime = 1544655600; // Dec 13th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nTimeout = 1576191600; // Dec 13th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nWindowSize = 100;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nThreshold = 50; // 50% of 100
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); 
+        consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00"); 
+        consensus.defaultAssumeValid = uint256S("0x00");
 
         pchMessageStart[0] = 0xde;
         pchMessageStart[1] = 0xf2;
@@ -270,7 +346,7 @@ public:
 
         genesis = CreateGenesisBlock(1533447343, 4430630, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-		
+
         assert(consensus.hashGenesisBlock == uint256S("0x0000059f3300f9caa0d4c8697abf1281c25099d9bc0fc1a8e996c5b714a49c49"));
         assert(genesis.hashMerkleRoot == uint256S("0x47eec0209382963a4f867534b242cd795688b38471f3b85236de04f4e77d19f4"));
 
@@ -295,17 +371,27 @@ public:
         // Testnet Soom BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
+        // long living quorum params
+        consensus.llgqs[Consensus::LLGQ_50_60] = llgq50_60;
+        consensus.llgqs[Consensus::LLGQ_400_60] = llgq400_60;
+        consensus.llgqs[Consensus::LLGQ_400_85] = llgq400_85;
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
+        fRequireRoutableExternalIP = true;
         fMineBlocksOnDemand = false;
         fAllowMultipleAddressesFromGroup = false;
         fAllowMultiplePorts = false;
 
+        nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
 		strFoundationAddress = "yQJVxpZiMRe5GAj6f9mtnxoPhifiHgwXLm";
-        strSporkAddress = "yTPWxZAH9erjunaSSwJxR7CHdaar7bRRPV";        
+        vSporkAddresses = {"yTPWxZAH9erjunaSSwJxR7CHdaar7bRRPV"};
+        nMinSporkKeys = 1;
+        fBIP9CheckGatewaysUpgraded = true;
+        consensus.fLLGQAllowDummyCommitments = true;
+
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (      0, uint256S("0x0000059f3300f9caa0d4c8697abf1281c25099d9bc0fc1a8e996c5b714a49c49"))
@@ -333,12 +419,13 @@ public:
         consensus.nGatewayPaymentsStartBlock = 240;
         consensus.nGatewayPaymentsIncreaseBlock = 350;
         consensus.nGatewayPaymentsIncreasePeriod = 10;
+        consensus.nInstantSendConfirmationsRequired = 2;
         consensus.nInstantSendKeepLock = 6;
         consensus.nGatewayMinimumConfirmations = 1;
         consensus.BIP34Height = 100000000; // BIP34 has not activated on regtest (far in the future so block v1 are not rejected in tests)
         consensus.BIP34Hash = uint256();
-		consensus.BIP65Height = 1; 
-		consensus.BIP66Height = 1; 
+		consensus.BIP65Height = 1;
+		consensus.BIP66Height = 1;
 		consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Soom: 1 day
         consensus.nPowTargetSpacing = 60; // Soom: 1 minutes
@@ -349,7 +436,7 @@ public:
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
      	consensus.nFoundationPaymentsStartBlock = 101;
-		
+
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
@@ -359,7 +446,9 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 999999999999ULL;
-
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].bit = 2;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nStartTime = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nTimeout = 999999999999ULL;
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
@@ -375,7 +464,7 @@ public:
 
         genesis = CreateGenesisBlock(1533447343, 58114, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-		
+
         assert(consensus.hashGenesisBlock == uint256S("0x2851bcc4e828d21ad4291244d5154227a9b6f9f179a5a0e076cc6d6817cb9ed9"));
         assert(genesis.hashMerkleRoot == uint256S("0x47eec0209382963a4f867534b242cd795688b38471f3b85236de04f4e77d19f4"));
 
@@ -385,6 +474,7 @@ public:
         fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
+        fRequireRoutableExternalIP = false;
         fMineBlocksOnDemand = true;
         fAllowMultipleAddressesFromGroup = true;
         fAllowMultiplePorts = true;
@@ -393,7 +483,11 @@ public:
 
         strFoundationAddress = "yj17EQ3CcimHaE6ffNpm1unkeidbZqgVzK";
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
-        strSporkAddress = "yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW";
+        vSporkAddresses = {"yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW"};
+        nMinSporkKeys = 1;
+        // regtest usually has no gateways in most tests, so don't check for upgraged MNs
+        fBIP9CheckGatewaysUpgraded = false;
+        consensus.fLLGQAllowDummyCommitments = true;
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
@@ -418,6 +512,9 @@ public:
 
         // Regtest Soom BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
+        // long living quorum params
+        consensus.llgqs[Consensus::LLGQ_10_60] = llgq10_60;
+        consensus.llgqs[Consensus::LLGQ_50_60] = llgq50_60;
    }
 
     void UpdateBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)

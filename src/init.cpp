@@ -62,9 +62,14 @@
 #include "spork.h"
 #include "warnings.h"
 
+#include "evo/deterministicgws.h"
+
+#include "llgq/quorums_init.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <memory>
+
+#include "bls/bls.h"
 
 #ifndef WIN32
 #include <signal.h>
@@ -228,6 +233,12 @@ void PrepareShutdown()
     StopREST();
     StopRPC();
     StopHTTPServer();
+
+    // fRPCInWarmup should be `false` if we completed the loading sequence
+    // before a shutdown request was received
+    std::string statusmessage;
+    bool fRPCInWarmup = RPCIsInWarmup(&statusmessage);
+
 #ifdef ENABLE_WALLET
     if (pwalletMain)
         pwalletMain->Flush(false);
@@ -237,14 +248,21 @@ void PrepareShutdown()
     peerLogic.reset();
     g_connman.reset();
 
+    if (!fLiteMode && !fRPCInWarmup) {
     // STORE DATA CACHES INTO SERIALIZED DAT FILES
-    if (!fLiteMode) {
         CFlatDB<CGatewayMan> flatdb1("gwcache.dat", "magicGatewayCache");
         flatdb1.Dump(gwnodeman);
         CFlatDB<CGatewayPayments> flatdb2("gwpayments.dat", "magicGatewayPaymentsCache");
         flatdb2.Dump(gwpayments);
         CFlatDB<CNetFulfilledRequestManager> flatdb4("netfulfilled.dat", "magicFulfilledCache");
         flatdb4.Dump(netfulfilledman);
+        if(fEnableInstantSend)
+        {
+            CFlatDB<CInstantSend> flatdb5("instantsend.dat", "magicInstantSendCache");
+            flatdb5.Dump(instantsend);
+        }
+        CFlatDB<CSporkManager> flatdb6("sporks.dat", "magicSporkCache");
+        flatdb6.Dump(sporkManager);
     }
 
     UnregisterNodeSignals(GetNodeSignals());
@@ -275,6 +293,11 @@ void PrepareShutdown()
         pcoinsdbview = NULL;
         delete pblocktree;
         pblocktree = NULL;
+        llgq::DestroyLLGQSystem();
+        delete deterministicGWManager;
+        deterministicGWManager = NULL;
+        delete evoDb;
+        evoDb = NULL;
     }
 #ifdef ENABLE_WALLET
     if (pwalletMain)
@@ -294,6 +317,13 @@ void PrepareShutdown()
         delete pgwNotificationInterface;
         pgwNotificationInterface = NULL;
     }
+    if (fGatewayMode) {
+        UnregisterValidationInterface(activeGatewayManager);
+    }
+
+    // make sure to clean up BLS keys before global destructors are called (they have allocated from the secure memory pool)
+    activeGatewayInfo.blsKeyOperator.reset();
+    activeGatewayInfo.blsPubKeyOperator.reset();
 
 #ifndef WIN32
     try {
@@ -479,9 +509,11 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-zmqpubhashblock=<address>", _("Enable publish hash block in <address>"));
     strUsage += HelpMessageOpt("-zmqpubhashtx=<address>", _("Enable publish hash transaction in <address>"));
     strUsage += HelpMessageOpt("-zmqpubhashtxlock=<address>", _("Enable publish hash transaction (locked via InstantSend) in <address>"));
+    strUsage += HelpMessageOpt("-zmqpubhashinstantsenddoublespend=<address>", _("Enable publish transaction hashes of attempted InstantSend double spend in <address>"));
     strUsage += HelpMessageOpt("-zmqpubrawblock=<address>", _("Enable publish raw block in <address>"));
     strUsage += HelpMessageOpt("-zmqpubrawtx=<address>", _("Enable publish raw transaction in <address>"));
     strUsage += HelpMessageOpt("-zmqpubrawtxlock=<address>", _("Enable publish raw transaction (locked via InstantSend) in <address>"));
+    strUsage += HelpMessageOpt("-zmqpubrawinstantsenddoublespend=<address>", _("Enable publish raw transactions of attempted InstantSend double spend in <address>"));
 #endif
 
     strUsage += HelpMessageGroup(_("Debugging/Testing options:"));
@@ -539,16 +571,17 @@ std::string HelpMessage(HelpMessageMode mode)
     AppendParamsHelpMessages(strUsage, showDebug);
     strUsage += HelpMessageOpt("-litemode=<n>", strprintf(_("Disable all Soom specific functionality (gateways, InstantSend) (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-sporkaddr=<hex>", strprintf(_("Override spork address. Only useful for regtest. Using this on mainnet or testnet will ban you.")));
+    strUsage += HelpMessageOpt("-minsporkkeys=<n>", strprintf(_("Overrides minimum spork signers to change spork value. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
 
     strUsage += HelpMessageGroup(_("Gateway options:"));
     strUsage += HelpMessageOpt("-gateway=<n>", strprintf(_("Enable the client to act as a gateway (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-gwconf=<file>", strprintf(_("Specify gateway configuration file (default: %s)"), "gateway.conf"));
     strUsage += HelpMessageOpt("-gwconflock=<n>", strprintf(_("Lock gateways from gateway configuration file (default: %u)"), 1));
     strUsage += HelpMessageOpt("-gatewayprivkey=<n>", _("Set the gateway private key"));
+    strUsage += HelpMessageOpt("-gatewayblsprivkey=<hex>", _("Set the gateway BLS private key"));
 
     strUsage += HelpMessageGroup(_("InstantSend options:"));
     strUsage += HelpMessageOpt("-enableinstantsend=<n>", strprintf(_("Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-instantsenddepth=<n>", strprintf(_("Show N confirmations for a successfully locked transaction (%u-%u, default: %u)"), MIN_INSTANTSEND_DEPTH, MAX_INSTANTSEND_DEPTH, DEFAULT_INSTANTSEND_DEPTH));
     strUsage += HelpMessageOpt("-instantsendnotify=<cmd>", _("Execute command when a wallet InstantSend transaction is successfully locked (%s in cmd is replaced by TxID)"));
 
 
@@ -561,7 +594,6 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-bytespersigop", strprintf(_("Minimum bytes per sigop in transactions we relay and mine (default: %u)"), DEFAULT_BYTES_PER_SIGOP));
     strUsage += HelpMessageOpt("-datacarrier", strprintf(_("Relay and mine data carrier transactions (default: %u)"), DEFAULT_ACCEPT_DATACARRIER));
     strUsage += HelpMessageOpt("-datacarriersize", strprintf(_("Maximum size of data in data carrier transactions we relay and mine (default: %u)"), MAX_OP_RETURN_RELAY));
-    strUsage += HelpMessageOpt("-mempoolreplacement", strprintf(_("Enable transaction replacement in the memory pool (default: %u)"), DEFAULT_ENABLE_REPLACEMENT));
 
     strUsage += HelpMessageGroup(_("Block creation options:"));
     strUsage += HelpMessageOpt("-blockmaxsize=<n>", strprintf(_("Set maximum block size in bytes (default: %d)"), DEFAULT_BLOCK_MAX_SIZE));
@@ -757,6 +789,30 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
         StartShutdown();
     }
     } // End scope of CImportingNow
+
+    // force UpdatedBlockTip to initialize nCachedBlockHeight for GW payments
+    // but don't call it directly to prevent triggering of other listeners like zmq etc.
+    // GetMainSignals().UpdatedBlockTip(chainActive.Tip());
+    pgwNotificationInterface->InitializeCurrentBlockTip();
+
+    bool fDIP003Active;
+    {
+        LOCK(cs_main);
+        if (chainActive.Tip()->pprev) {
+            fDIP003Active = VersionBitsState(chainActive.Tip()->pprev, Params().GetConsensus(), Consensus::DEPLOYMENT_DIP0003, versionbitscache) == THRESHOLD_ACTIVE;
+        }
+    }
+
+    if (activeGatewayManager && fDIP003Active)
+        activeGatewayManager->Init();
+
+#ifdef ENABLE_WALLET
+    // we can't do this before DIP3 is fully initialized
+    if (pwalletMain) {
+        pwalletMain->AutoLockGatewayCollaterals();
+    }
+#endif
+
     LoadMempool();
     fDumpMempoolLater = !fRequestShutdown;
 }
@@ -773,6 +829,10 @@ bool InitSanityCheck(void)
     }
     if (!glibc_sanity_test() || !glibcxx_sanity_test())
         return false;
+
+    if (!BLSInit()) {
+        return false;
+    }
 
     return true;
 }
@@ -965,7 +1025,7 @@ bool AppInitBasicSetup()
 
     if (!SetupNetworking())
         return InitError("Initializing networking failed");
-	fLocalGateWay = GetBoolArg("-localgw", false);  // add hcdo 180611 for test gateway in local 
+	fLocalGateWay = GetBoolArg("-localgw", false);  // add hcdo 180611 for test gateway in local
 #ifndef WIN32
     if (!GetBoolArg("-sysperms", false)) {
         umask(077);
@@ -1183,15 +1243,6 @@ bool AppInitParameterInteraction()
 
     nMaxTipAge = GetArg("-maxtipage", DEFAULT_MAX_TIP_AGE);
 
-    fEnableReplacement = GetBoolArg("-mempoolreplacement", DEFAULT_ENABLE_REPLACEMENT);
-    if ((!fEnableReplacement) && IsArgSet("-mempoolreplacement")) {
-        // Minimal effort at forwards compatibility
-        std::string strReplacementModeList = GetArg("-mempoolreplacement", "");  // default is impossible
-        std::vector<std::string> vstrReplacementModes;
-        boost::split(vstrReplacementModes, strReplacementModeList, boost::is_any_of(","));
-        fEnableReplacement = (std::find(vstrReplacementModes.begin(), vstrReplacementModes.end(), "fee") != vstrReplacementModes.end());
-    }
-
     if (mapMultiArgs.count("-bip9params")) {
         // Allow overriding BIP9 parameters for testing
         if (!chainparams.MineBlocksOnDemand()) {
@@ -1308,13 +1359,28 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             threadGroup.create_thread(&ThreadScriptCheck);
     }
 
-    if (!sporkManager.SetSporkAddress(GetArg("-sporkaddr", Params().SporkAddress())))
-        return InitError(_("Invalid spork address specified with -sporkaddr"));
+    std::vector<std::string> vSporkAddresses;
+    if (mapMultiArgs.count("-sporkaddr")) {
+        vSporkAddresses = mapMultiArgs.at("-sporkaddr");
+    } else {
+        vSporkAddresses = Params().SporkAddresses();
+    }
+    for (const auto& address: vSporkAddresses) {
+        if (!sporkManager.SetSporkAddress(address)) {
+            return InitError(_("Invalid spork address specified with -sporkaddr"));
+        }
+    }
 
-    if (IsArgSet("-sporkkey")) // spork priv key
-    {
-        if (!sporkManager.SetPrivKey(GetArg("-sporkkey", "")))
+    int minsporkkeys = GetArg("-minsporkkeys", Params().MinSporkKeys());
+    if (!sporkManager.SetMinSporkKeys(minsporkkeys)) {
+        return InitError(_("Invalid minimum number of spork signers specified with -minsporkkeys"));
+    }
+
+
+    if (IsArgSet("-sporkkey")) { // spork priv key
+        if (!sporkManager.SetPrivKey(GetArg("-sporkkey", ""))) {
             return InitError(_("Unable to sign spork message, wrong key?"));
+        }
     }
 
     // Start the lightweight task scheduler thread
@@ -1463,7 +1529,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         if (!mapMultiArgs.count("-bind") && !mapMultiArgs.count("-whitebind")) {
             struct in_addr inaddr_any;
             inaddr_any.s_addr = INADDR_ANY;
-            fBound |= Bind(connman, CService(in6addr_any, GetListenPort()), BF_NONE);
+            fBound |= Bind(connman, CService((in6_addr)IN6ADDR_ANY_INIT, GetListenPort()), BF_NONE);
             fBound |= Bind(connman, CService(inaddr_any, GetListenPort()), !fBound ? BF_REPORT_ERROR : BF_NONE);
         }
         if (!fBound)
@@ -1503,7 +1569,30 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         nMaxOutboundLimit = GetArg("-maxuploadtarget", DEFAULT_MAX_UPLOAD_TARGET)*1024*1024;
     }
 
-    // ********************************************************* Step 7: load block chain
+    // ********************************************************* Step 7a: check lite mode and load sporks
+
+    // lite mode disables all Soom-specific functionality
+    fLiteMode = GetBoolArg("-litemode", false);
+    LogPrintf("fLiteMode %d\n", fLiteMode);
+
+    if(fLiteMode) {
+        InitWarning(_("You are starting in lite mode, all Soom-specific functionality is disabled."));
+    }
+
+    if((!fLiteMode && fTxIndex == false)
+       && chainparams.NetworkIDString() != CBaseChainParams::REGTEST) {
+        return InitError(_("Transaction index can't be disabled in full mode. Either start with -litemode command line switch or enable transaction index."));
+    }
+
+    if (!fLiteMode) {
+        uiInterface.InitMessage(_("Loading sporks cache..."));
+        CFlatDB<CSporkManager> flatdb6("sporks.dat", "magicSporkCache");
+        if (!flatdb6.Load(sporkManager)) {
+            return InitError(_("Failed to load sporks cache from") + "\n" + (GetDataDir() / "sporks.dat").string());
+        }
+    }
+
+    // ********************************************************* Step 7b: load block chain
 
     fReindex = GetBoolArg("-reindex", false);
     bool fReindexChainState = GetBoolArg("-reindex-chainstate", false);
@@ -1547,6 +1636,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     nTotalCache -= nCoinDBCache;
     nCoinCacheUsage = nTotalCache; // the rest goes to in-memory cache
     int64_t nMempoolSizeMax = GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000;
+    int64_t nEvoDbCache = 1024 * 1024 * 16; // TODO
     LogPrintf("Cache configuration:\n");
     LogPrintf("* Using %.1fMiB for block index database\n", nBlockTreeDBCache * (1.0 / 1024 / 1024));
     LogPrintf("* Using %.1fMiB for chain state database\n", nCoinDBCache * (1.0 / 1024 / 1024));
@@ -1569,11 +1659,17 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
                 delete pcoinsdbview;
                 delete pcoinscatcher;
                 delete pblocktree;
+                llgq::DestroyLLGQSystem();
+                delete deterministicGWManager;
+                delete evoDb;
 
+                evoDb = new CEvoDB(nEvoDbCache, false, fReindex || fReindexChainState);
+                deterministicGWManager = new CDeterministicGWManager(*evoDb);
                 pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReindex);
                 pcoinsdbview = new CCoinsViewDB(nCoinDBCache, false, fReindex || fReindexChainState);
                 pcoinscatcher = new CCoinsViewErrorCatcher(pcoinsdbview);
                 pcoinsTip = new CCoinsViewCache(pcoinscatcher);
+                llgq::InitLLGQSystem(*evoDb);
 
                 if (fReindex) {
                     pblocktree->WriteReindexing(true);
@@ -1742,21 +1838,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         uiInterface.NotifyBlockTip.disconnect(BlockNotifyGenesisWait);
     }
 
-    // ********************************************************* Step 11a: setup gateway
+    // ********************************************************* Step 11a: setup gateway related stuff
     fGatewayMode = GetBoolArg("-gateway", false);
     // TODO: gateway should have no wallet
-
-    //lite mode disables all Soom-specific functionality
-    fLiteMode = GetBoolArg("-litemode", false);
-
-    if(fLiteMode) {
-        InitWarning(_("You are starting in lite mode, all Soom-specific functionality is disabled."));
-    }
-
-    if((!fLiteMode && fTxIndex == false)
-       && chainparams.NetworkIDString() != CBaseChainParams::REGTEST) { // TODO remove this when pruning is fixed.
-        return InitError(_("Transaction index can't be disabled in full mode. Either start with -litemode command line switch or enable transaction index."));
-    }
 
     if(fLiteMode && fGatewayMode) {
         return InitError(_("You can not start a gateway in lite mode."));
@@ -1765,15 +1849,45 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     if(fGatewayMode) {
         LogPrintf("GATEWAY:\n");
 
-        std::string strGateWayPrivKey = GetArg("-gatewayprivkey", "");
-        if(!strGateWayPrivKey.empty()) {
-            if(!CMessageSigner::GetKeysFromSecret(strGateWayPrivKey, activeGateway.keyGateway, activeGateway.pubKeyGateway))
+        std::string strGatewayPrivKey = GetArg("-gatewayprivkey", "");
+        if(!strGatewayPrivKey.empty()) {
+            CPubKey pubKeyGateway;
+            if(!CMessageSigner::GetKeysFromSecret(strGatewayPrivKey, activeGatewayInfo.legacyKeyOperator, pubKeyGateway))
                 return InitError(_("Invalid gatewayprivkey. Please see documenation."));
 
-            LogPrintf("  pubKeyGateway: %s\n", CBitcoinAddress(activeGateway.pubKeyGateway.GetID()).ToString());
+            activeGatewayInfo.legacyKeyIDOperator = pubKeyGateway.GetID();
+
+            LogPrintf("  keyIDOperator: %s\n", CBitcoinAddress(activeGatewayInfo.legacyKeyIDOperator).ToString());
         } else {
             return InitError(_("You must specify a gatewayprivkey in the configuration. Please see documentation for help."));
         }
+
+        std::string strGatewayBLSPrivKey = GetArg("-gatewayblsprivkey", "");
+        if(!strGatewayBLSPrivKey.empty()) {
+            auto binKey = ParseHex(strGatewayBLSPrivKey);
+            CBLSSecretKey keyOperator;
+            keyOperator.SetBuf(binKey);
+            if (keyOperator.IsValid()) {
+                activeGatewayInfo.blsKeyOperator = std::make_unique<CBLSSecretKey>(keyOperator);
+                activeGatewayInfo.blsPubKeyOperator = std::make_unique<CBLSPublicKey>(activeGatewayInfo.blsKeyOperator->GetPublicKey());
+                LogPrintf("  blsPubKeyOperator: %s\n", keyOperator.GetPublicKey().ToString());
+            } else {
+                return InitError(_("Invalid gatewayblsprivkey. Please see documenation."));
+            }
+        } else {
+            InitWarning(_("You should specify a gatewayblsprivkey in the configuration. Please see documentation for help."));
+        }
+
+        // init and register activeGatewayManager
+        activeGatewayManager = new CActiveDeterministicGatewayManager();
+        RegisterValidationInterface(activeGatewayManager);
+    }
+
+    if (activeGatewayInfo.blsKeyOperator == nullptr) {
+        activeGatewayInfo.blsKeyOperator = std::make_unique<CBLSSecretKey>();
+    }
+    if (activeGatewayInfo.blsPubKeyOperator == nullptr) {
+        activeGatewayInfo.blsPubKeyOperator = std::make_unique<CBLSPublicKey>();
     }
 
 #ifdef ENABLE_WALLET
@@ -1800,14 +1914,8 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
  #endif // ENABLE_WALLET
 
     fEnableInstantSend = GetBoolArg("-enableinstantsend", 1);
-    nInstantSendDepth = GetArg("-instantsenddepth", DEFAULT_INSTANTSEND_DEPTH);
-    nInstantSendDepth = std::min(std::max(nInstantSendDepth, MIN_INSTANTSEND_DEPTH), MAX_INSTANTSEND_DEPTH);
 
-    LogPrintf("fLiteMode %d\n", fLiteMode);
-    LogPrintf("nInstantSendDepth %d\n", nInstantSendDepth);
-
-
-    // ********************************************************* Step 11b: Load cache data
+    // ********************************************************* Step 11d: Load cache data
 
     // LOAD SERIALIZED DAT FILES INTO DATA CACHES FOR INTERNAL USE
 
@@ -1830,7 +1938,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
                 return InitError(_("Failed to load gateway payments cache from") + "\n" + (pathDB / strDBName).string());
             }
 
-        
+
         } else {
             uiInterface.InitMessage(_("Gateway cache is empty, skipping payments cache..."));
         }
@@ -1841,17 +1949,31 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         if(!flatdb4.Load(netfulfilledman)) {
             return InitError(_("Failed to load fulfilled requests cache from") + "\n" + (pathDB / strDBName).string());
         }
+
+        if(fEnableInstantSend)
+        {
+            strDBName = "instantsend.dat";
+            uiInterface.InitMessage(_("Loading InstantSend data cache..."));
+            CFlatDB<CInstantSend> flatdb5(strDBName, "magicInstantSendCache");
+            if(!flatdb5.Load(instantsend)) {
+                return InitError(_("Failed to load InstantSend data cache from") + "\n" + (pathDB / strDBName).string());
+            }
+        }
     }
 
-    // ********************************************************* Step 11c: update block tip in Soom modules
+    // ********************************************************* Step 11c: schedule Soom-specific tasks
 
-    // force UpdatedBlockTip to initialize nCachedBlockHeight for GW payments
-    // but don't call it directly to prevent triggering of other listeners like zmq etc.
-    // GetMainSignals().UpdatedBlockTip(chainActive.Tip());
-    pgwNotificationInterface->InitializeCurrentBlockTip();
-    // ********************************************************* Step 11d: start soom-gws threads
+    if (!fLiteMode) {
+        scheduler.scheduleEvery(boost::bind(&CNetFulfilledRequestManager::DoMaintenance, boost::ref(netfulfilledman)), 30);
+        scheduler.scheduleEvery(boost::bind(&CGatewaySync::DoMaintenance, boost::ref(gatewaySync), boost::ref(*g_connman)), 1);
+        scheduler.scheduleEvery(boost::bind(&CGatewayMan::DoMaintenance, boost::ref(gwnodeman), boost::ref(*g_connman)), 1);
+        scheduler.scheduleEvery(boost::bind(&CActiveLegacyGatewayManager::DoMaintenance, boost::ref(legacyActiveGatewayManager), boost::ref(*g_connman)), GATEWAY_MIN_GWP_SECONDS);
 
-    threadGroup.create_thread(boost::bind(&ThreadCheckGatewaySync, boost::ref(*g_connman)));
+        scheduler.scheduleEvery(boost::bind(&CGatewayPayments::DoMaintenance, boost::ref(gwpayments)), 30);
+
+        scheduler.scheduleEvery(boost::bind(&CInstantSend::DoMaintenance, boost::ref(instantsend)), 30);
+
+    }
 
     // ********************************************************* Step 12: start node
 

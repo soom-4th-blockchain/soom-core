@@ -25,6 +25,8 @@ BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAG
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
+BLS_LIBS=-lchiabls -lgmp
+
 LIBBITCOIN_SERVER=libsoom_server.a
 LIBBITCOIN_COMMON=libsoom_common.a
 LIBBITCOIN_CONSENSUS=libsoom_consensus.a
@@ -106,6 +108,13 @@ BITCOIN_CORE_H = \
   core_io.h \
   core_memusage.h \
   cuckoocache.h \
+  ctpl.h \
+  evo/evodb.h \
+  evo/specialtx.h \
+  evo/providertx.h \
+  evo/deterministicgws.h \
+  evo/cbtx.h \
+  evo/simplifiedgws.h \
   gwnotificationinterface.h \
   flat-database.h \
   hdchain.h \
@@ -119,6 +128,11 @@ BITCOIN_CORE_H = \
   keystore.h \
   dbwrapper.h \
   limitedmap.h \
+  llgq/quorums_commitment.h \
+  llgq/quorums_blockprocessor.h \
+  llgq/quorums_dummydkg.h \
+  llgq/quorums_utils.h \
+  llgq/quorums_init.h \
   gateway.h \
   gateway-payments.h \
   gateway-sync.h \
@@ -137,7 +151,6 @@ BITCOIN_CORE_H = \
   noui.h \
   policy/fees.h \
   policy/policy.h \
-  policy/rbf.h \
   pow.h \
   protocol.h \
   random.h \
@@ -153,6 +166,8 @@ BITCOIN_CORE_H = \
   script/ismine.h \
   spork.h \
   streams.h \
+  support/allocators/mt_pooled_secure.h \
+  support/allocators/pooled_secure.h \
   support/allocators/secure.h \
   support/allocators/zeroafterfree.h \
   support/cleanse.h \
@@ -205,11 +220,22 @@ libsoom_server_a_SOURCES = \
   chain.cpp \
   checkpoints.cpp \
   gwnotificationinterface.cpp \
+  evo/evodb.cpp \
+  evo/specialtx.cpp \
+  evo/providertx.cpp \
+  evo/deterministicgws.cpp \
+  evo/cbtx.cpp \
+  evo/simplifiedgws.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
   instantx.cpp \
   dbwrapper.cpp \
+  llgq/quorums_commitment.cpp \
+  llgq/quorums_blockprocessor.cpp \
+  llgq/quorums_dummydkg.cpp \
+  llgq/quorums_utils.cpp \
+  llgq/quorums_init.cpp \
   gateway.cpp \
   gateway-payments.cpp \
   gateway-sync.cpp \
@@ -232,6 +258,7 @@ libsoom_server_a_SOURCES = \
   rpc/misc.cpp \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
+  rpc/rpcevo.cpp \
   rpc/server.cpp \
   script/sigcache.cpp \
   script/ismine.cpp \
@@ -269,7 +296,6 @@ libsoom_wallet_a_SOURCES = \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
-  policy/rbf.cpp \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
@@ -326,6 +352,8 @@ libsoom_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
+  bls/bls.cpp \
+  bls/bls.h \
   consensus/merkle.cpp \
   consensus/merkle.h \
   consensus/params.h \
@@ -347,6 +375,7 @@ libsoom_consensus_a_SOURCES = \
   script/script_error.cpp \
   script/script_error.h \
   serialize.h \
+  streams.h \
   tinyformat.h \
   uint256.cpp \
   uint256.h \
@@ -384,6 +413,10 @@ libsoom_common_a_SOURCES = \
 libsoom_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libsoom_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libsoom_util_a_SOURCES = \
+  bls/bls_ies.cpp \
+  bls/bls_ies.h \
+  bls/bls_worker.cpp \
+  bls/bls_worker.h \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -439,7 +472,7 @@ soomd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-soomd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+soomd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
 
 # soom-cli binary #
 soom_cli_SOURCES = soom-cli.cpp
@@ -456,7 +489,7 @@ soom_cli_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
-soom_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+soom_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
 #
 
 # soom-tx binary #
@@ -477,7 +510,7 @@ soom_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-soom_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+soom_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
 #
 
 # soomconsensus library #
@@ -490,7 +523,7 @@ if GLIBC_BACK_COMPAT
 endif
 
 libsoomconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libsoomconsensus_la_LIBADD = $(LIBSECP256K1)
+libsoomconsensus_la_LIBADD = $(LIBSECP256K1) $(BLS_LIBS)
 libsoomconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
 libsoomconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
@@ -518,9 +551,12 @@ CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
 
+IMMER_DIST = immer
+
 DISTCLEANFILES = obj/build.h
 
 EXTRA_DIST = $(CTAES_DIST)
+EXTRA_DIST += $(IMMER_DIST)
 
 
 config/soom-config.h: config/stamp-h1

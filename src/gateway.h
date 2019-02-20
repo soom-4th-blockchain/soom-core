@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -9,17 +9,19 @@
 #include "key.h"
 #include "validation.h"
 #include "spork.h"
+#include "bls/bls.h"
 
+#include "evo/deterministicgws.h"
 class CGateway;
 class CGatewayBroadcast;
 class CConnman;
 
-static const int GATEWAY_CHECK_SECONDS               =   5;
-static const int GATEWAY_MIN_GWB_SECONDS             =   5 * 60;
-static const int GATEWAY_MIN_GWP_SECONDS             =  10 * 60;
-static const int GATEWAY_SENTINEL_PING_MAX_SECONDS   =  60 * 60;
-static const int GATEWAY_EXPIRATION_SECONDS          = 120 * 60;
-static const int GATEWAY_NEW_START_REQUIRED_SECONDS  = 180 * 60;
+static const int GATEWAY_CHECK_SECONDS               =  5;
+static const int GATEWAY_MIN_GWB_SECONDS             =  2 * 60;
+static const int GATEWAY_MIN_GWP_SECONDS             =  4 * 60;
+static const int GATEWAY_SENTINEL_PING_MAX_SECONDS   = 24 * 60;
+static const int GATEWAY_EXPIRATION_SECONDS          = 48 * 60;
+static const int GATEWAY_NEW_START_REQUIRED_SECONDS  = 72 * 60;
 
 static const int GATEWAY_POSE_BAN_MAX_SCORE          = 5;
 
@@ -43,7 +45,7 @@ public:
     // MSB is always 0, other 3 bits corresponds to x.x.x version scheme
     uint32_t nSentinelVersion{DEFAULT_SENTINEL_VERSION};
     uint32_t nDaemonVersion{DEFAULT_DAEMON_VERSION};
-   
+
     CGatewayPing() = default;
 
     CGatewayPing(const COutPoint& outpoint);
@@ -52,43 +54,15 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        int nVersion = s.GetVersion();
-        if (nVersion == 70209 && (s.GetType() & SER_NETWORK)) {
-            // converting from/to old format
-            CTxIn txin{};
-            if (ser_action.ForRead()) {
-                READWRITE(txin);
-                gatewayOutpoint = txin.prevout;
-            } else {
-                txin = CTxIn(gatewayOutpoint);
-                READWRITE(txin);
-            }
-        } else {
-            // using new format directly
-            READWRITE(gatewayOutpoint);
-        }
+        READWRITE(gatewayOutpoint);
         READWRITE(blockHash);
         READWRITE(sigTime);
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(vchSig);
         }
-        if(ser_action.ForRead() && s.size() == 0) {
-            // TODO: drop this after migration to 70209
-            fSentinelIsCurrent = false;
-            nSentinelVersion = DEFAULT_SENTINEL_VERSION;
-            nDaemonVersion = DEFAULT_DAEMON_VERSION;
-            return;
-        }
         READWRITE(fSentinelIsCurrent);
         READWRITE(nSentinelVersion);
-        if(ser_action.ForRead() && s.size() == 0) {
-            // TODO: drop this after migration to 70209
-            nDaemonVersion = DEFAULT_DAEMON_VERSION;
-            return;
-        }
-        if (!(nVersion == 70209 && (s.GetType() & SER_NETWORK))) {
-            READWRITE(nDaemonVersion);
-        }
+        READWRITE(nDaemonVersion);
     }
 
     uint256 GetHash() const;
@@ -96,11 +70,14 @@ public:
 
     bool IsExpired() const { return GetAdjustedTime() - sigTime > GATEWAY_NEW_START_REQUIRED_SECONDS; }
 
-    bool Sign(const CKey& keyGateway, const CPubKey& pubKeyGateway);
-    bool CheckSignature(const CPubKey& pubKeyGateway, int &nDos) const;
+    bool Sign(const CKey& keyGateway, const CKeyID& keyIDOperator);
+    bool CheckSignature(CKeyID& keyIDOperator, int &nDos) const;
     bool SimpleCheck(int& nDos);
     bool CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nDos, CConnman& connman);
     void Relay(CConnman& connman);
+
+    std::string GetSentinelString() const;
+    std::string GetDaemonString() const;
 
     explicit operator bool() const;
 };
@@ -128,12 +105,21 @@ struct gateway_info_t
     gateway_info_t(int activeState, int protoVer, int64_t sTime) :
         nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime} {}
 
+    // only called when the network is in legacy GW list mode
     gateway_info_t(int activeState, int protoVer, int64_t sTime,
                       COutPoint const& outpnt, CService const& addr,
                       CPubKey const& pkCollAddr, CPubKey const& pkGW) :
         nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
         outpoint{outpnt}, addr{addr},
-        pubKeyCollateralAddress{pkCollAddr}, pubKeyGateway{pkGW} {}
+        pubKeyCollateralAddress{pkCollAddr}, pubKeyGateway{pkGW}, keyIDCollateralAddress{pkCollAddr.GetID()}, keyIDOwner{pkGW.GetID()}, legacyKeyIDOperator{pkGW.GetID()}, keyIDVoting{pkGW.GetID()} {}
+
+    // only called when the network is in deterministic GW list mode
+    gateway_info_t(int activeState, int protoVer, int64_t sTime,
+                      COutPoint const& outpnt, CService const& addr,
+                      CKeyID const& pkCollAddr, CKeyID const& pkOwner, CBLSPublicKey const& pkOperator, CKeyID const& pkVoting) :
+        nActiveState{activeState}, nProtocolVersion{protoVer}, sigTime{sTime},
+        outpoint{outpnt}, addr{addr},
+        pubKeyCollateralAddress{}, pubKeyGateway{}, keyIDCollateralAddress{pkCollAddr}, keyIDOwner{pkOwner}, blsPubKeyOperator{pkOperator}, keyIDVoting{pkVoting} {}
 
     int nActiveState = 0;
     int nProtocolVersion = 0;
@@ -141,9 +127,14 @@ struct gateway_info_t
 
     COutPoint outpoint{};
     CService addr{};
-    CPubKey pubKeyCollateralAddress{};
-    CPubKey pubKeyGateway{};
- 
+    CPubKey pubKeyCollateralAddress{}; // this will be invalid/unset when the network switches to deterministic GWs (luckely it's only important for the broadcast hash)
+    CPubKey pubKeyGateway{}; // this will be invalid/unset when the network switches to deterministic GWs (luckely it's only important for the broadcast hash)
+    CKeyID keyIDCollateralAddress{}; // this is only used in compatibility code and won't be used when spork15 gets activated
+    CKeyID keyIDOwner{};
+    CKeyID legacyKeyIDOperator{};
+    CBLSPublicKey blsPubKeyOperator;
+    CKeyID keyIDVoting{};
+
     int64_t nTimeLastChecked = 0;
     int64_t nTimeLastPaid = 0;
     int64_t nTimeLastPing = 0; //* not in CGW
@@ -194,30 +185,22 @@ public:
     CGateway(const CGateway& other);
     CGateway(const CGatewayBroadcast& gwb);
     CGateway(CService addrNew, COutPoint outpointNew, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyGatewayNew, int nProtocolVersionIn);
+    CGateway(const uint256 &proTxHash, const CDeterministicGWCPtr& dgw);
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
         LOCK(cs);
-        int nVersion = s.GetVersion();
-        if (nVersion == 70209 && (s.GetType() & SER_NETWORK)) {
-            // converting from/to old format
-            CTxIn txin{};
-            if (ser_action.ForRead()) {
-                READWRITE(txin);
-                outpoint = txin.prevout;
-            } else {
-                txin = CTxIn(outpoint);
-                READWRITE(txin);
-            }
-        } else {
-            // using new format directly
-            READWRITE(outpoint);
-        }
+        READWRITE(outpoint);
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
         READWRITE(pubKeyGateway);
+        READWRITE(keyIDCollateralAddress);
+        READWRITE(keyIDOwner);
+        READWRITE(legacyKeyIDOperator);
+        READWRITE(blsPubKeyOperator);
+        READWRITE(keyIDVoting);
         READWRITE(lastPing);
         READWRITE(vchSig);
         READWRITE(sigTime);
@@ -237,8 +220,8 @@ public:
 
     bool UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman);
 
-    static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey);
-    static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet);
+    static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CKeyID& keyID);
+    static CollateralStatus CheckCollateral(const COutPoint& outpoint, const CKeyID& keyID, int& nHeightRet);
     void Check(bool fForce = false);
 
     bool IsBroadcastedWithin(int nSeconds) { return GetAdjustedTime() - sigTime < nSeconds; }
@@ -345,21 +328,7 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        int nVersion = s.GetVersion();
-        if (nVersion == 70209 && (s.GetType() & SER_NETWORK)) {
-            // converting from/to old format
-            CTxIn txin{};
-            if (ser_action.ForRead()) {
-                READWRITE(txin);
-                outpoint = txin.prevout;
-            } else {
-                txin = CTxIn(outpoint);
-                READWRITE(txin);
-            }
-        } else {
-            // using new format directly
-            READWRITE(outpoint);
-        }
+        READWRITE(outpoint);
         READWRITE(addr);
         READWRITE(pubKeyCollateralAddress);
         READWRITE(pubKeyGateway);
@@ -370,6 +339,13 @@ public:
         READWRITE(nProtocolVersion);
         if (!(s.GetType() & SER_GETHASH)) {
             READWRITE(lastPing);
+        }
+
+        if (ser_action.ForRead()) {
+            keyIDCollateralAddress = pubKeyCollateralAddress.GetID();
+            keyIDOwner = pubKeyGateway.GetID();
+            legacyKeyIDOperator = pubKeyGateway.GetID();
+            keyIDVoting = pubKeyGateway.GetID();
         }
     }
 
@@ -412,27 +388,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        int nVersion = s.GetVersion();
-        if (nVersion == 70209 && (s.GetType() & SER_NETWORK)) {
-            // converting from/to old format
-            CTxIn txin1{};
-            CTxIn txin2{};
-            if (ser_action.ForRead()) {
-                READWRITE(txin1);
-                READWRITE(txin2);
-                gatewayOutpoint1 = txin1.prevout;
-                gatewayOutpoint2 = txin2.prevout;
-            } else {
-                txin1 = CTxIn(gatewayOutpoint1);
-                txin2 = CTxIn(gatewayOutpoint2);
-                READWRITE(txin1);
-                READWRITE(txin2);
-            }
-        } else {
-            // using new format directly
-            READWRITE(gatewayOutpoint1);
-            READWRITE(gatewayOutpoint2);
-        }
+        READWRITE(gatewayOutpoint1);
+        READWRITE(gatewayOutpoint2);
         READWRITE(addr);
         READWRITE(nonce);
         READWRITE(nBlockHeight);

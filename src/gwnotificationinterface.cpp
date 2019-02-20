@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Soom Core developers 
+// Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,6 +10,9 @@
 #include "gateway-payments.h"
 #include "gateway-sync.h"
 
+#include "evo/deterministicgws.h"
+
+#include "llgq/quorums_dummydkg.h"
 void CGWNotificationInterface::InitializeCurrentBlockTip()
 {
     LOCK(cs_main);
@@ -31,7 +34,16 @@ void CGWNotificationInterface::UpdatedBlockTip(const CBlockIndex *pindexNew, con
     if (pindexNew == pindexFork) // blocks were disconnected without any new ones
         return;
 
+    deterministicGWManager->UpdatedBlockTip(pindexNew);
+    llgq::quorumDummyDKG->UpdatedBlockTip(pindexNew, fInitialDownload);
+
     gatewaySync.UpdatedBlockTip(pindexNew, fInitialDownload, connman);
+
+
+    // update instantsend autolock activation flag (we reuse the DIP3 deployment)
+    instantsend.isAutoLockBip9Active =
+            (VersionBitsState(pindexNew, Params().GetConsensus(), Consensus::DEPLOYMENT_DIP0003, versionbitscache) == THRESHOLD_ACTIVE);
+
 
     if (fInitialDownload)
         return;

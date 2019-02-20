@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -36,8 +36,8 @@ extern CGatewayPayments gwpayments;
 /// TODO: all 4 functions do not belong here really, they should be refactored/moved somewhere (main.cpp ?)
 bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockReward, std::string &strErrorRet);
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward);
-void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet);
-std::string GetRequiredPaymentsString(int nBlockHeight);
+void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, std::vector<CTxOut>& voutGatewayPaymentsRet, CTxOut& txoutFoundationRet);
+std::map<int, std::string> GetRequiredPaymentsStrings(int nStartHeight, int nEndHeight);
 bool IsFoundationTxValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward);
 
 class CGatewayPayee
@@ -135,21 +135,7 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        int nVersion = s.GetVersion();
-        if (nVersion == 70209 && (s.GetType() & SER_NETWORK)) {
-            // converting from/to old format
-            CTxIn txin{};
-            if (ser_action.ForRead()) {
-                READWRITE(txin);
-                gatewayOutpoint = txin.prevout;
-            } else {
-                txin = CTxIn(gatewayOutpoint);
-                READWRITE(txin);
-            }
-        } else {
-            // using new format directly
-            READWRITE(gatewayOutpoint);
-        }
+        READWRITE(gatewayOutpoint);
         READWRITE(nBlockHeight);
         READWRITE(*(CScriptBase*)(&payee));
         if (!(s.GetType() & SER_GETHASH)) {
@@ -161,7 +147,7 @@ public:
     uint256 GetSignatureHash() const;
 
     bool Sign();
-    bool CheckSignature(const CPubKey& pubKeyGateway, int nValidationHeight, int &nDos) const;
+    bool CheckSignature(const CKeyID& keyIDOperator, int nValidationHeight, int &nDos) const;
 
     bool IsValid(CNode* pnode, int nValidationHeight, std::string& strError, CConnman& connman) const;
     void Relay(CConnman& connman) const;
@@ -215,8 +201,8 @@ public:
     void RequestLowDataPaymentBlocks(CNode* pnode, CConnman& connman) const;
     void CheckAndRemove();
 
-    bool GetBlockPayee(int nBlockHeight, CScript& payeeRet) const;
-    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight) const;
+    bool GetBlockTxOuts(int nBlockHeight, CAmount blockReward, std::vector<CTxOut>& voutGatewayPaymentsRet) const;
+    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward) const;
     bool IsScheduled(const gateway_info_t& gwInfo, int nNotBlockHeight) const;
 
     bool UpdateLastVote(const CGatewayPaymentVote& vote);
@@ -224,7 +210,7 @@ public:
     int GetMinGatewayPaymentsProto() const;
     void ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman);
     std::string GetRequiredPaymentsString(int nBlockHeight) const;
-    void FillBlockPayee(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutGatewayRet, CTxOut& txoutFoundationRet) const;
+    bool GetGatewayTxOuts(int nBlockHeight, CAmount blockReward, std::vector<CTxOut>& voutGatewayPaymentsRet) const;
     std::string ToString() const;
 
     int GetBlockCount() const { return mapGatewayBlocks.size(); }
@@ -234,6 +220,8 @@ public:
     int GetStorageLimit() const;
 
     void UpdatedBlockTip(const CBlockIndex *pindex, CConnman& connman);
+
+    void DoMaintenance();
 };
 
 #endif

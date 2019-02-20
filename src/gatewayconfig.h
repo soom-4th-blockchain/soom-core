@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -36,40 +36,20 @@ public:
             return alias;
         }
 
-        void setAlias(const std::string& alias) {
-            this->alias = alias;
-        }
-
         const std::string& getOutputIndex() const {
             return outputIndex;
-        }
-
-        void setOutputIndex(const std::string& outputIndex) {
-            this->outputIndex = outputIndex;
         }
 
         const std::string& getPrivKey() const {
             return privKey;
         }
 
-        void setPrivKey(const std::string& privKey) {
-            this->privKey = privKey;
-        }
-
         const std::string& getTxHash() const {
             return txHash;
         }
 
-        void setTxHash(const std::string& txHash) {
-            this->txHash = txHash;
-        }
-
         const std::string& getIp() const {
             return ip;
-        }
-
-        void setIp(const std::string& ip) {
-            this->ip = ip;
         }
     };
 

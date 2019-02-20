@@ -260,6 +260,11 @@ extern const char *GWEG;
 extern const char *SYNCSTATUSCOUNT;
 
 extern const char *GWVERIFY;
+extern const char *GETGWLISTDIFF;
+extern const char *GWLISTDIFF;
+extern const char *QFCOMMITMENT;
+extern const char *QDCOMMITMENT;
+extern const char *QCONTRIB;
 };
 
 /* Get a vector of all valid message types (see above) */
@@ -346,14 +351,17 @@ enum GetDataMsg {
     MSG_TXLOCK_VOTE = 5,
     MSG_SPORK = 6,
     MSG_GATEWAY_PAYMENT_VOTE = 7,
-    MSG_GATEWAY_PAYMENT_BLOCK = 8, 
-    MSG_GATEWAY_QUORUM = 9, 
+    MSG_GATEWAY_PAYMENT_BLOCK = 8,
+    MSG_GATEWAY_QUORUM = 9, // not implemented
     MSG_GATEWAY_ANNOUNCE = 10,
     MSG_GATEWAY_PING = 11,
     MSG_GATEWAY_VERIFY = 12,
     // Nodes may always request a MSG_CMPCT_BLOCK in a getdata, however,
     // MSG_CMPCT_BLOCK should not appear in any invs except as a part of getdata.
     MSG_CMPCT_BLOCK = 13, //!< Defined in BIP152
+    MSG_QUORUM_FINAL_COMMITMENT = 14,
+    MSG_QUORUM_DUMMY_COMMITMENT = 15, // only valid on testnet/devnet/regtest
+    MSG_QUORUM_DUMMY_CONTRIBUTION = 16, // not a valid contribution and only allowed on testnet/devnet/regtest. Will later be replaced with the real contribution
 };
 /** inv message data */
 class CInv

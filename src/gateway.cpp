@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -19,16 +19,17 @@
 #include "wallet/wallet.h"
 #endif // ENABLE_WALLET
 
-#include <boost/lexical_cast.hpp>
+#include "evo/deterministicgws.h"
 
+#include <string>
 
 CGateway::CGateway() :
     gateway_info_t{ GATEWAY_ENABLED, PROTOCOL_VERSION, GetAdjustedTime()}
 {}
 
-CGateway::CGateway(CService addr, COutPoint outpoint, CPubKey pubKeyCollateralAddress, CPubKey pubKeyGateway, int nProtocolVersionIn) :
+CGateway::CGateway(CService addr, COutPoint outpoint, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyGatewayNew, int nProtocolVersionIn) :
     gateway_info_t{ GATEWAY_ENABLED, nProtocolVersionIn, GetAdjustedTime(),
-                       outpoint, addr, pubKeyCollateralAddress, pubKeyGateway}
+                       outpoint, addr, pubKeyCollateralAddressNew, pubKeyGatewayNew}
 {}
 
 CGateway::CGateway(const CGateway& other) :
@@ -49,6 +50,12 @@ CGateway::CGateway(const CGatewayBroadcast& gwb) :
     vchSig(gwb.vchSig)
 {}
 
+CGateway::CGateway(const uint256 &proTxHash, const CDeterministicGWCPtr& dgw) :
+    gateway_info_t{ GATEWAY_ENABLED, DGW_PROTO_VERSION, GetAdjustedTime(),
+                       dgw->collateralOutpoint, dgw->pdgwState->addr, CKeyID() /* not valid with DIP3 */, dgw->pdgwState->keyIDOwner, dgw->pdgwState->pubKeyOperator, dgw->pdgwState->keyIDVoting}
+{
+}
+
 //
 // When a new gateway broadcast is sent, update our information
 //
@@ -57,6 +64,9 @@ bool CGateway::UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman)
     if(gwb.sigTime <= sigTime && !gwb.fRecovery) return false;
 
     pubKeyGateway = gwb.pubKeyGateway;
+    keyIDOwner = gwb.pubKeyGateway.GetID();
+    legacyKeyIDOperator = gwb.pubKeyGateway.GetID();
+    keyIDVoting = gwb.pubKeyGateway.GetID();
     sigTime = gwb.sigTime;
     vchSig = gwb.vchSig;
     nProtocolVersion = gwb.nProtocolVersion;
@@ -70,11 +80,11 @@ bool CGateway::UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman)
         gwnodeman.mapSeenGatewayPing.insert(std::make_pair(lastPing.GetHash(), lastPing));
     }
     // if it matches our Gateway privkey...
-    if(fGatewayMode && pubKeyGateway == activeGateway.pubKeyGateway) {
+    if(fGatewayMode && legacyKeyIDOperator == activeGatewayInfo.legacyKeyIDOperator) {
         nPoSeBanScore = -GATEWAY_POSE_BAN_MAX_SCORE;
         if(nProtocolVersion == PROTOCOL_VERSION) {
             // ... and PROTOCOL_VERSION, then we've been remotely activated ...
-            activeGateway.ManageState(connman);
+            legacyActiveGatewayManager.ManageState(connman);
         } else {
             // ... otherwise we need to reactivate our node, do not add it to the list and do not relay
             // but also do not ban the node we get this message from
@@ -92,19 +102,21 @@ bool CGateway::UpdateFromNewBroadcast(CGatewayBroadcast& gwb, CConnman& connman)
 //
 arith_uint256 CGateway::CalculateScore(const uint256& blockHash) const
 {
+    // NOTE not called when deterministic gateways (spork15) are activated
+
     // Deterministically calculate a "score" for a Gateway based on any given (block)hash
     CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << outpoint << nCollateralMinConfBlockHash << blockHash;
     return UintToArith256(ss.GetHash());
 }
 
-CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey)
+CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CKeyID& keyID)
 {
     int nHeight;
-    return CheckCollateral(outpoint, pubkey, nHeight);
+    return CheckCollateral(outpoint, keyID, nHeight);
 }
 
-CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CPubKey& pubkey, int& nHeightRet)
+CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, const CKeyID& keyID, int& nHeightRet)
 {
     AssertLockHeld(cs_main);
 
@@ -113,11 +125,11 @@ CGateway::CollateralStatus CGateway::CheckCollateral(const COutPoint& outpoint, 
         return COLLATERAL_UTXO_NOT_FOUND;
     }
 
-    if(coin.out.nValue != 5000 * COIN) {
+    if(coin.out.nValue != COLLATERAL_COINS) {
         return COLLATERAL_INVALID_AMOUNT;
     }
 
-    if(pubkey == CPubKey() || coin.out.scriptPubKey != GetScriptForDestination(pubkey.GetID())) {
+    if(keyID.IsNull() || coin.out.scriptPubKey != GetScriptForDestination(keyID)) {
         return COLLATERAL_INVALID_PUBKEY;
     }
 
@@ -168,7 +180,7 @@ void CGateway::Check(bool fForce)
     }
 
     int nActiveStatePrev = nActiveState;
-    bool fOurGateway = fGatewayMode && activeGateway.pubKeyGateway == pubKeyGateway;
+    bool fOurGateway = fGatewayMode && activeGatewayInfo.legacyKeyIDOperator == legacyKeyIDOperator;
 
                    // gateway doesn't meet payment protocol requirements ...
     bool fRequireUpdate = nProtocolVersion < gwpayments.GetMinGatewayPaymentsProto() ||
@@ -312,11 +324,25 @@ std::string CGateway::GetStatus() const
 
 void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBack)
 {
+    AssertLockHeld(cs_main);
+
     if(!pindex) return;
+
+    if (deterministicGWManager->IsDeterministicGWsSporkActive(pindex->nHeight)) {
+        auto dgw = deterministicGWManager->GetListForBlock(pindex->GetBlockHash()).GetGWByCollateral(outpoint);
+        if (!dgw || dgw->pdgwState->nLastPaidHeight == -1) {
+            LogPrint("gateway", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- not found\n", outpoint.ToStringShort());
+        } else {
+            nBlockLastPaid = (int)dgw->pdgwState->nLastPaidHeight;
+            nTimeLastPaid = chainActive[nBlockLastPaid]->nTime;
+            LogPrint("gateway", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s -- found new %d\n", outpoint.ToStringShort(), nBlockLastPaid);
+        }
+        return;
+    }
 
     const CBlockIndex *BlockReading = pindex;
 
-    CScript gwpayee = GetScriptForDestination(pubKeyCollateralAddress.GetID());
+    CScript gwpayee = GetScriptForDestination(keyIDCollateralAddress);
     // LogPrint("gwpayments", "CGateway::UpdateLastPaidBlock -- searching for block with payment to %s\n", outpoint.ToStringShort());
 
     LOCK(cs_mapGatewayBlocks);
@@ -326,7 +352,7 @@ void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBac
             gwpayments.mapGatewayBlocks[BlockReading->nHeight].HasPayeeWithVotes(gwpayee, 2))
         {
             CBlock block;
-            if(!ReadBlockFromDisk(block, BlockReading, Params().GetConsensus())) 
+            if(!ReadBlockFromDisk(block, BlockReading, Params().GetConsensus()))
                 continue; // shouldn't really happen
 
             CAmount nGatewayPayment = GetGatewayPayment(BlockReading->nHeight, block.vtx[0]->GetValueOut());
@@ -340,7 +366,7 @@ void CGateway::UpdateLastPaid(const CBlockIndex *pindex, int nMaxBlocksToScanBac
                 }
         }
 
-        if (BlockReading->pprev == NULL) { assert(BlockReading); break; }
+        if (BlockReading->pprev == nullptr) { assert(BlockReading); break; }
         BlockReading = BlockReading->pprev;
     }
 
@@ -379,14 +405,16 @@ bool CGatewayBroadcast::Create(const std::string& strService, const std::string&
     if (!Lookup(strService.c_str(), service, 0, false))
         return Log(strprintf("Invalid address %s for gateway.", strService));
 	if(!fLocalGateWay)
-    {		
-    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        if (service.GetPort() != mainnetDefaultPort)
-            return Log(strprintf("Invalid port %u for gateway %s, only %d is supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
-    } else if (service.GetPort() == mainnetDefaultPort)
-        return Log(strprintf("Invalid port %u for gateway %s, %d is the only supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
-	}
+    {
+        int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+        if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
+            if (service.GetPort() != mainnetDefaultPort) {
+                return Log(strprintf("Invalid port %u for gateway %s, only %d is supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
+            }
+        } else if (service.GetPort() == mainnetDefaultPort) {
+            return Log(strprintf("Invalid port %u for gateway %s, %d is the only supported on mainnet.", service.GetPort(), strService, mainnetDefaultPort));
+        }
+   	}
     return Create(outpoint, service, keyCollateralAddressNew, pubKeyCollateralAddressNew, keyGatewayNew, pubKeyGatewayNew, strErrorRet, gwbRet);
 }
 
@@ -395,7 +423,7 @@ bool CGatewayBroadcast::Create(const COutPoint& outpoint, const CService& servic
     // wait for reindex and/or import to finish
     if (fImporting || fReindex) return false;
 
-    LogPrint("gateway", "CGatewayBroadcast::Create -- pubKeyCollateralAddressNew = %s, pubKeyGatewayNew.GetID() = %s\n",
+    LogPrint("gateway", "CGatewayBroadcast::Create -- pubKeyCollateralAddressNew = %s, keyIDOperator = %s\n",
              CBitcoinAddress(pubKeyCollateralAddressNew.GetID()).ToString(),
              pubKeyGatewayNew.GetID().ToString());
 
@@ -408,7 +436,7 @@ bool CGatewayBroadcast::Create(const COutPoint& outpoint, const CService& servic
     };
 
     CGatewayPing gwp(outpoint);
-    if (!gwp.Sign(keyGatewayNew, pubKeyGatewayNew))
+    if (!gwp.Sign(keyGatewayNew, pubKeyGatewayNew.GetID()))
         return Log(strprintf("Failed to sign ping, gateway=%s", outpoint.ToStringShort()));
 
     gwbRet = CGatewayBroadcast(service, outpoint, pubKeyCollateralAddressNew, pubKeyGatewayNew, PROTOCOL_VERSION);
@@ -431,7 +459,7 @@ bool CGatewayBroadcast::SimpleCheck(int& nDos)
     AssertLockHeld(cs_main);
 
     // make sure addr is valid
-    if(!IsValidNetAddr()) {
+    if (!IsValidNetAddr()) {
         LogPrintf("CGatewayBroadcast::SimpleCheck -- Invalid addr, rejected: gateway=%s  addr=%s\n",
                     outpoint.ToStringShort(), addr.ToString());
         return false;
@@ -445,40 +473,42 @@ bool CGatewayBroadcast::SimpleCheck(int& nDos)
     }
 
     // empty ping or incorrect sigTime/unknown blockhash
-    if(!lastPing || !lastPing.SimpleCheck(nDos)) {
+    if (!lastPing || !lastPing.SimpleCheck(nDos)) {
         // one of us is probably forked or smth, just mark it as expired and check the rest of the rules
         nActiveState = GATEWAY_EXPIRED;
     }
 
-    if(nProtocolVersion < gwpayments.GetMinGatewayPaymentsProto()) {
+    if (nProtocolVersion < gwpayments.GetMinGatewayPaymentsProto()) {
         LogPrintf("CGatewayBroadcast::SimpleCheck -- outdated Gateway: gateway=%s  nProtocolVersion=%d\n", outpoint.ToStringShort(), nProtocolVersion);
         nActiveState = GATEWAY_UPDATE_REQUIRED;
     }
 
     CScript pubkeyScript;
-    pubkeyScript = GetScriptForDestination(pubKeyCollateralAddress.GetID());
+    pubkeyScript = GetScriptForDestination(keyIDCollateralAddress);
 
-    if(pubkeyScript.size() != 25) {
-        LogPrintf("CGatewayBroadcast::SimpleCheck -- pubKeyCollateralAddress has the wrong size\n");
+    if (pubkeyScript.size() != 25) {
+        LogPrintf("CGatewayBroadcast::SimpleCheck -- keyIDCollateralAddress has the wrong size\n");
         nDos = 100;
         return false;
     }
 
     CScript pubkeyScript2;
-    pubkeyScript2 = GetScriptForDestination(pubKeyGateway.GetID());
+    pubkeyScript2 = GetScriptForDestination(legacyKeyIDOperator);
 
-    if(pubkeyScript2.size() != 25) {
-        LogPrintf("CGatewayBroadcast::SimpleCheck -- pubKeyGateway has the wrong size\n");
+    if (pubkeyScript2.size() != 25) {
+        LogPrintf("CGatewayBroadcast::SimpleCheck -- keyIDOperator has the wrong size\n");
         nDos = 100;
         return false;
     }
 
-	if(!fLocalGateWay)
+	if (!fLocalGateWay)
     {
-    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-    if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        if(addr.GetPort() != mainnetDefaultPort) return false;
-    } else if(addr.GetPort() == mainnetDefaultPort) return false;
+        int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+        if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
+            if(addr.GetPort() != mainnetDefaultPort) return false;
+        } else if (addr.GetPort() == mainnetDefaultPort) {
+            return false;
+        }
 	}
     return true;
 }
@@ -489,7 +519,7 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
 
     AssertLockHeld(cs_main);
 
-    if(pgw->sigTime == sigTime && !fRecovery) {
+    if (pgw->sigTime == sigTime && !fRecovery) {
         // mapSeenGatewayBroadcast in CGatewayMan::CheckGwbAndUpdateGatewayList should filter legit duplicates
         // but this still can happen if we just started, which is ok, just do nothing here.
         return false;
@@ -497,7 +527,7 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
 
     // this broadcast is older than the one that we already have - it's bad and should never happen
     // unless someone is doing something fishy
-    if(pgw->sigTime > sigTime) {
+    if (pgw->sigTime > sigTime) {
         LogPrintf("CGatewayBroadcast::Update -- Bad sigTime %d (existing broadcast is at %d) for Gateway %s %s\n",
                       sigTime, pgw->sigTime, outpoint.ToStringShort(), addr.ToString());
         return false;
@@ -506,14 +536,14 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
     pgw->Check();
 
     // gateway is banned by PoSe
-    if(pgw->IsPoSeBanned()) {
+    if (pgw->IsPoSeBanned()) {
         LogPrintf("CGatewayBroadcast::Update -- Banned by PoSe, gateway=%s\n", outpoint.ToStringShort());
         return false;
     }
 
     // IsVnAssociatedWithPubkey is validated once in CheckOutpoint, after that they just need to match
-    if(pgw->pubKeyCollateralAddress != pubKeyCollateralAddress) {
-        LogPrintf("CGatewayBroadcast::Update -- Got mismatched pubKeyCollateralAddress and outpoint\n");
+    if (pgw->keyIDCollateralAddress != keyIDCollateralAddress) {
+        LogPrintf("CGatewayBroadcast::Update -- Got mismatched keyIDCollateralAddress and outpoint\n");
         nDos = 33;
         return false;
     }
@@ -524,7 +554,7 @@ bool CGatewayBroadcast::Update(CGateway* pgw, int& nDos, CConnman& connman)
     }
 
     // if ther was no gateway broadcast recently or if it matches our Gateway privkey...
-    if(!pgw->IsBroadcastedWithin(GATEWAY_MIN_GWB_SECONDS) || (fGatewayMode && pubKeyGateway == activeGateway.pubKeyGateway)) {
+    if (!pgw->IsBroadcastedWithin(GATEWAY_MIN_GWB_SECONDS) || (fGatewayMode && legacyKeyIDOperator == activeGatewayInfo.legacyKeyIDOperator)) {
         // take the newest entry
         LogPrintf("CGatewayBroadcast::Update -- Got UPDATED Gateway entry: addr=%s\n", addr.ToString());
         if(pgw->UpdateFromNewBroadcast(*this, connman)) {
@@ -541,14 +571,14 @@ bool CGatewayBroadcast::CheckOutpoint(int& nDos)
 {
     // we are a gateway with the same outpoint (i.e. already activated) and this gwb is ours (matches our Gateway privkey)
     // so nothing to do here for us
-    if(fGatewayMode && outpoint == activeGateway.outpoint && pubKeyGateway == activeGateway.pubKeyGateway) {
+    if (fGatewayMode && outpoint == activeGatewayInfo.outpoint && legacyKeyIDOperator == activeGatewayInfo.legacyKeyIDOperator) {
         return false;
     }
 
     AssertLockHeld(cs_main);
 
     int nHeight;
-    CollateralStatus err = CheckCollateral(outpoint, pubKeyCollateralAddress, nHeight);
+    CollateralStatus err = CheckCollateral(outpoint, keyIDCollateralAddress, nHeight);
     if (err == COLLATERAL_UTXO_NOT_FOUND) {
         LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Failed to find Gateway UTXO, gateway=%s\n", outpoint.ToStringShort());
         return false;
@@ -560,13 +590,13 @@ bool CGatewayBroadcast::CheckOutpoint(int& nDos)
         return false;
     }
 
-    if(err == COLLATERAL_INVALID_PUBKEY) {
+    if (err == COLLATERAL_INVALID_PUBKEY) {
         LogPrint("gateway", "CGatewayBroadcast::CheckOutpoint -- Gateway UTXO should match pubKeyCollateralAddress, gateway=%s\n", outpoint.ToStringShort());
         nDos = 33;
         return false;
     }
 
-    if(chainActive.Height() - nHeight + 1 < Params().GetConsensus().nGatewayMinimumConfirmations) {
+    if (chainActive.Height() - nHeight + 1 < Params().GetConsensus().nGatewayMinimumConfirmations) {
         LogPrintf("CGatewayBroadcast::CheckOutpoint -- Gateway UTXO must have at least %d confirmations, gateway=%s\n",
                 Params().GetConsensus().nGatewayMinimumConfirmations, outpoint.ToStringShort());
         // UTXO is legit but has not enough confirmations.
@@ -581,7 +611,7 @@ bool CGatewayBroadcast::CheckOutpoint(int& nDos)
     // at which collateral became nGatewayMinimumConfirmations blocks deep.
     // NOTE: this is not accurate because block timestamp is NOT guaranteed to be 100% correct one.
     CBlockIndex* pRequiredConfIndex = chainActive[nHeight + Params().GetConsensus().nGatewayMinimumConfirmations - 1]; // block where tx got nGatewayMinimumConfirmations
-    if(pRequiredConfIndex->GetBlockTime() > sigTime) {
+    if (pRequiredConfIndex->GetBlockTime() > sigTime) {
         LogPrintf("CGatewayBroadcast::CheckOutpoint -- Bad sigTime %d (%d conf block is at %d) for Gateway %s %s\n",
                   sigTime, Params().GetConsensus().nGatewayMinimumConfirmations, pRequiredConfIndex->GetBlockTime(), outpoint.ToStringShort(), addr.ToString());
         return false;
@@ -636,21 +666,21 @@ bool CGatewayBroadcast::Sign(const CKey& keyCollateralAddress)
             return false;
         }
 
-        if (!CHashSigner::VerifyHash(hash, pubKeyCollateralAddress, vchSig, strError)) {
+        if (!CHashSigner::VerifyHash(hash, keyIDCollateralAddress, vchSig, strError)) {
             LogPrintf("CGatewayBroadcast::Sign -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
     } else {
-        std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
-                        pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
-                        boost::lexical_cast<std::string>(nProtocolVersion);
+        std::string strMessage = addr.ToString(false) + std::to_string(sigTime) +
+                        keyIDCollateralAddress.ToString() + legacyKeyIDOperator.ToString() +
+                        std::to_string(nProtocolVersion);
 
         if (!CMessageSigner::SignMessage(strMessage, vchSig, keyCollateralAddress)) {
             LogPrintf("CGatewayBroadcast::Sign -- SignMessage() failed\n");
             return false;
         }
 
-        if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)) {
+        if (!CMessageSigner::VerifyMessage(keyIDCollateralAddress, vchSig, strMessage, strError)) {
             LogPrintf("CGatewayBroadcast::Sign -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
@@ -667,13 +697,13 @@ bool CGatewayBroadcast::CheckSignature(int& nDos) const
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::VerifyHash(hash, pubKeyCollateralAddress, vchSig, strError)) {
+        if (!CHashSigner::VerifyHash(hash, keyIDCollateralAddress, vchSig, strError)) {
             // maybe it's in old format
-            std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
-                            pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
-                            boost::lexical_cast<std::string>(nProtocolVersion);
+            std::string strMessage = addr.ToString(false) + std::to_string(sigTime) +
+                            keyIDCollateralAddress.ToString() + legacyKeyIDOperator.ToString() +
+                            std::to_string(nProtocolVersion);
 
-            if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)){
+            if (!CMessageSigner::VerifyMessage(keyIDCollateralAddress, vchSig, strMessage, strError)){
                 // nope, not in old format either
                 LogPrintf("CGatewayBroadcast::CheckSignature -- Got bad Gateway announce signature, error: %s\n", strError);
                 nDos = 100;
@@ -681,11 +711,11 @@ bool CGatewayBroadcast::CheckSignature(int& nDos) const
             }
         }
     } else {
-        std::string strMessage = addr.ToString(false) + boost::lexical_cast<std::string>(sigTime) +
-                        pubKeyCollateralAddress.GetID().ToString() + pubKeyGateway.GetID().ToString() +
-                        boost::lexical_cast<std::string>(nProtocolVersion);
+        std::string strMessage = addr.ToString(false) + std::to_string(sigTime) +
+                        keyIDCollateralAddress.ToString() + legacyKeyIDOperator.ToString() +
+                        std::to_string(nProtocolVersion);
 
-        if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError)){
+        if (!CMessageSigner::VerifyMessage(keyIDCollateralAddress, vchSig, strMessage, strError)){
             LogPrintf("CGatewayBroadcast::CheckSignature -- Got bad Gateway announce signature, error: %s\n", strError);
             nDos = 100;
             return false;
@@ -743,7 +773,7 @@ CGatewayPing::CGatewayPing(const COutPoint& outpoint)
     nDaemonVersion = CLIENT_VERSION;
 }
 
-bool CGatewayPing::Sign(const CKey& keyGateway, const CPubKey& pubKeyGateway)
+bool CGatewayPing::Sign(const CKey& keyGateway, const CKeyID& keyIDOperator)
 {
     std::string strError;
 
@@ -757,20 +787,20 @@ bool CGatewayPing::Sign(const CKey& keyGateway, const CPubKey& pubKeyGateway)
             return false;
         }
 
-        if (!CHashSigner::VerifyHash(hash, pubKeyGateway, vchSig, strError)) {
+        if (!CHashSigner::VerifyHash(hash, keyIDOperator, vchSig, strError)) {
             LogPrintf("CGatewayPing::Sign -- VerifyHash() failed, error: %s\n", strError);
             return false;
         }
     } else {
         std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
-                    boost::lexical_cast<std::string>(sigTime);
+                    std::to_string(sigTime);
 
         if (!CMessageSigner::SignMessage(strMessage, vchSig, keyGateway)) {
             LogPrintf("CGatewayPing::Sign -- SignMessage() failed\n");
             return false;
         }
 
-        if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+        if (!CMessageSigner::VerifyMessage(keyIDOperator, vchSig, strMessage, strError)) {
             LogPrintf("CGatewayPing::Sign -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
@@ -779,19 +809,19 @@ bool CGatewayPing::Sign(const CKey& keyGateway, const CPubKey& pubKeyGateway)
     return true;
 }
 
-bool CGatewayPing::CheckSignature(const CPubKey& pubKeyGateway, int &nDos) const 
-{   
+bool CGatewayPing::CheckSignature(CKeyID& keyIDOperator, int &nDos) const
+{
     std::string strError = "";
     nDos = 0;
 
     if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::VerifyHash(hash, pubKeyGateway, vchSig, strError)) {
+        if (!CHashSigner::VerifyHash(hash, keyIDOperator, vchSig, strError)) {
             std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
-                        boost::lexical_cast<std::string>(sigTime);
+                        std::to_string(sigTime);
 
-            if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+            if (!CMessageSigner::VerifyMessage(keyIDOperator, vchSig, strMessage, strError)) {
                 LogPrintf("CGatewayPing::CheckSignature -- Got bad Gateway ping signature, gateway=%s, error: %s\n", gatewayOutpoint.ToStringShort(), strError);
                 nDos = 33;
                 return false;
@@ -799,9 +829,9 @@ bool CGatewayPing::CheckSignature(const CPubKey& pubKeyGateway, int &nDos) const
         }
     } else {
         std::string strMessage = CTxIn(gatewayOutpoint).ToString() + blockHash.ToString() +
-                    boost::lexical_cast<std::string>(sigTime);
+                    std::to_string(sigTime);
 
-        if (!CMessageSigner::VerifyMessage(pubKeyGateway, vchSig, strMessage, strError)) {
+        if (!CMessageSigner::VerifyMessage(keyIDOperator, vchSig, strMessage, strError)) {
             LogPrintf("CGatewayPing::CheckSignature -- Got bad Gateway ping signature, gateway=%s, error: %s\n", gatewayOutpoint.ToStringShort(), strError);
             nDos = 33;
             return false;
@@ -847,7 +877,7 @@ bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nD
         return false;
     }
 
-    if (pgw == NULL) {
+    if (pgw == nullptr) {
         LogPrint("gateway", "CGatewayPing::CheckAndUpdate -- Couldn't find Gateway entry, gateway=%s\n", gatewayOutpoint.ToStringShort());
         return false;
     }
@@ -884,7 +914,7 @@ bool CGatewayPing::CheckAndUpdate(CGateway* pgw, bool fFromNewBroadcast, int& nD
         return false;
     }
 
-    if (!CheckSignature(pgw->pubKeyGateway, nDos)) return false;
+    if (!CheckSignature(pgw->legacyKeyIDOperator, nDos)) return false;
 
     // so, ping seems to be ok
 
@@ -930,3 +960,12 @@ void CGatewayPing::Relay(CConnman& connman)
     connman.RelayInv(inv);
 }
 
+std::string CGatewayPing::GetSentinelString() const
+{
+    return nSentinelVersion > DEFAULT_SENTINEL_VERSION ? SafeIntVersionToString(nSentinelVersion) : "Unknown";
+}
+
+std::string CGatewayPing::GetDaemonString() const
+{
+    return nDaemonVersion > DEFAULT_DAEMON_VERSION ? FormatVersion(nDaemonVersion) : "Unknown";
+}

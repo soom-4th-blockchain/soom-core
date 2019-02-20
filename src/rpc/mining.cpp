@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Soom Core developers
+// Copyright (c) 2017-2019 The Soom Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,6 +27,9 @@
 
 #include "gateway-payments.h"
 #include "gateway-sync.h"
+#include "evo/deterministicgws.h"
+#include "evo/specialtx.h"
+#include "evo/cbtx.h"
 
 #include <memory>
 #include <stdint.h>
@@ -385,12 +388,15 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "  \"sizelimit\" : n,                  (numeric) limit of block size\n"
             "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
             "  \"bits\" : \"xxxxxxxx\",              (string) compressed target of next block\n"
+            "  \"previousbits\" : \"xxxxxxxx\",      (string) compressed target of current highest block\n"
             "  \"height\" : n                      (numeric) The height of the next block\n"
-            "  \"gateway\" : {                     (json object) required gateway payee that must be included in the next block\n"
-            "      \"payee\" : \"xxxx\",             (string) payee address\n"
-            "      \"script\" : \"xxxx\",            (string) payee scriptPubKey\n"
-            "      \"amount\": n                   (numeric) required amount to pay\n"
-            "  },\n"
+            "  \"gateway\" : [                     (array) required gateway payments that must be included in the next block\n"
+            "      {\n"
+            "         \"payee\" : \"xxxx\",          (string) payee address\n"
+            "         \"script\" : \"xxxx\",         (string) payee scriptPubKey\n"
+            "         \"amount\": n                (numeric) required amount to pay\n"
+            "      }\n"
+            "  ],\n"
             "  \"gateway_payments_started\" :  true|false, (boolean) true, if gateway payments started\n"
             "  \"gateway_payments_enforced\" : true|false, (boolean) true, if gateway payments are enforced\n"
             "  \"foundation\" : {                  (json object) required foundation payee \n"
@@ -399,6 +405,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "      \"amount\": n                   (numeric) required amount to pay\n"
             "  },\n"
  		    "  \"foundation_payments_started\" :  true|false, (boolean) true, if foundation payments started\n"
+            "  \"coinbase_payload\" : \"xxxxxxxx\"    (string) coinbase transaction payload data encoded in hexadecimal\n"
             "}\n"
             "\nExamples:\n"
             + HelpExampleCli("getblocktemplate", "")
@@ -485,10 +492,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     }
 
     // when enforcement is on we need information about a gateway payee or otherwise our block is going to be orphaned by the network
-    CScript payee;
+    std::vector<CTxOut> voutGatewayPayments;
     if (sporkManager.IsSporkActive(SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT)
         && !gatewaySync.IsWinnersListSynced()
-        && !gwpayments.GetBlockPayee(chainActive.Height() + 1, payee))
+        && !gwpayments.GetBlockTxOuts(chainActive.Height() + 1, 0, voutGatewayPayments))
             throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Soom Core is downloading gateway winners...");
 
 
@@ -686,36 +693,40 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.push_back(Pair("sizelimit", (int64_t)MaxBlockSize()));
     result.push_back(Pair("curtime", pblock->GetBlockTime()));
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
+    result.push_back(Pair("previousbits", strprintf("%08x", pblocktemplate->nPrevBits)));
     result.push_back(Pair("height", (int64_t)(pindexPrev->nHeight+1)));
 
-    UniValue gatewayObj(UniValue::VOBJ);
-    if(pblock->txoutGateway != CTxOut()) {
+    UniValue gatewayObj(UniValue::VARR);
+    for (const auto& txout : pblocktemplate->voutGatewayPayments) {
         CTxDestination address1;
-        ExtractDestination(pblock->txoutGateway.scriptPubKey, address1);
+        ExtractDestination(txout.scriptPubKey, address1);
         CBitcoinAddress address2(address1);
-        gatewayObj.push_back(Pair("payee", address2.ToString().c_str()));
-        gatewayObj.push_back(Pair("script", HexStr(pblock->txoutGateway.scriptPubKey)));
-        gatewayObj.push_back(Pair("amount", pblock->txoutGateway.nValue));
+        UniValue obj(UniValue::VOBJ);
+        obj.push_back(Pair("payee", address2.ToString().c_str()));
+        obj.push_back(Pair("script", HexStr(txout.scriptPubKey)));
+        obj.push_back(Pair("amount", txout.nValue));
+        gatewayObj.push_back(obj);
     }
     result.push_back(Pair("gateway", gatewayObj));
     result.push_back(Pair("gateway_payments_started", pindexPrev->nHeight + 1 > consensusParams.nGatewayPaymentsStartBlock));
-    result.push_back(Pair("gateway_payments_enforced", sporkManager.IsSporkActive(SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT)));
+    result.push_back(Pair("gateway_payments_enforced", deterministicGWManager->IsDeterministicGWsSporkActive() || sporkManager.IsSporkActive(SPORK_8_GATEWAY_PAYMENT_ENFORCEMENT)));
 
     UniValue foundationObj(UniValue::VOBJ);
     if(pindexPrev->nHeight + 1 >= consensusParams.nFoundationPaymentsStartBlock && (int64_t)pblock->vtx[0]->GetValueOut() != 0)
     {
-        if(pblock->txoutFoundation != CTxOut()) 
+        if(pblocktemplate->txoutFoundation != CTxOut())
         {
             CTxDestination address1;
-            ExtractDestination(pblock->txoutFoundation.scriptPubKey, address1);
+            ExtractDestination(pblocktemplate->txoutFoundation.scriptPubKey, address1);
             CBitcoinAddress address2(address1);
             foundationObj.push_back(Pair("payee", address2.ToString().c_str()));
-            foundationObj.push_back(Pair("script", HexStr(pblock->txoutFoundation.scriptPubKey)));
-            foundationObj.push_back(Pair("amount", pblock->txoutFoundation.nValue));    
-        }	
-    } 
+            foundationObj.push_back(Pair("script", HexStr(pblocktemplate->txoutFoundation.scriptPubKey)));
+            foundationObj.push_back(Pair("amount", pblocktemplate->txoutFoundation.nValue));
+        }
+    }
     result.push_back(Pair("foundation", foundationObj));
-    result.push_back(Pair("foundation_payments_started", pindexPrev->nHeight + 1 > consensusParams.nFoundationPaymentsStartBlock));
+    result.push_back(Pair("foundation_payments_started", pindexPrev->nHeight + 1 >= consensusParams.nFoundationPaymentsStartBlock));
+    result.push_back(Pair("coinbase_payload", HexStr(pblock->vtx[0]->vExtraPayload)));
 
     return result;
 }

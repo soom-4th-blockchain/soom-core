@@ -39,6 +39,12 @@
 #include "gateway-sync.h"
 #include "gatewayman.h"
 
+#include "evo/deterministicgws.h"
+#include "evo/simplifiedgws.h"
+#include "llgq/quorums_commitment.h"
+#include "llgq/quorums_dummydkg.h"
+#include "llgq/quorums_blockprocessor.h"
+
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
@@ -910,12 +916,12 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
     case MSG_BLOCK:
         return mapBlockIndex.count(inv.hash);
 
-    /* 
+    /*
         Soom Related Inventory Messages
 
         --
 
-        We shouldn't update the sync times for each of the messages when we already have it. 
+        We shouldn't update the sync times for each of the messages when we already have it.
         We're going to be asking many nodes upfront for the full inventory list, so we'll get duplicates of these.
         We want to only update the time on new hits, so that we can time out appropriately if needed.
     */
@@ -926,7 +932,10 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
         return instantsend.AlreadyHave(inv.hash);
 
     case MSG_SPORK:
-        return mapSporks.count(inv.hash);
+        {
+            CSporkMessage spork;
+            return sporkManager.GetSporkByHash(inv.hash, spork);
+        }
 
     case MSG_GATEWAY_PAYMENT_VOTE:
         return gwpayments.mapGatewayPaymentVotes.count(inv.hash);
@@ -942,9 +951,15 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 
     case MSG_GATEWAY_PING:
         return gwnodeman.mapSeenGatewayPing.count(inv.hash);
-    
+
     case MSG_GATEWAY_VERIFY:
         return gwnodeman.mapSeenGatewayVerification.count(inv.hash);
+    case MSG_QUORUM_FINAL_COMMITMENT:
+        return llgq::quorumBlockProcessor->HasMinableCommitment(inv.hash);
+    case MSG_QUORUM_DUMMY_COMMITMENT:
+        return llgq::quorumDummyDKG->HasDummyCommitment(inv.hash);
+    case MSG_QUORUM_DUMMY_CONTRIBUTION:
+        return llgq::quorumDummyDKG->HasDummyContribution(inv.hash);
     }
 
     // Don't know what it is, just say we already got one
@@ -1154,49 +1169,57 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                 }
 
                 if (!push && inv.type == MSG_SPORK) {
-                    if(mapSporks.count(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SPORK, mapSporks[inv.hash]));
+                    CSporkMessage spork;
+                    if(sporkManager.GetSporkByHash(inv.hash, spork)) {
+                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::SPORK, spork));
                         push = true;
                     }
                 }
 
                 if (!push && inv.type == MSG_GATEWAY_PAYMENT_VOTE) {
-                    if(gwpayments.HasVerifiedPaymentVote(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GATEWAYPAYMENTVOTE, gwpayments.mapGatewayPaymentVotes[inv.hash]));
-                        push = true;
+                    if (!deterministicGWManager->IsDeterministicGWsSporkActive()) {
+                        if(gwpayments.HasVerifiedPaymentVote(inv.hash)) {
+                            connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GATEWAYPAYMENTVOTE, gwpayments.mapGatewayPaymentVotes[inv.hash]));
+                            push = true;
+                        }
                     }
                 }
 
                 if (!push && inv.type == MSG_GATEWAY_PAYMENT_BLOCK) {
-                    BlockMap::iterator mi = mapBlockIndex.find(inv.hash);
-                    LOCK(cs_mapGatewayBlocks);
-                    if (mi != mapBlockIndex.end() && gwpayments.mapGatewayBlocks.count(mi->second->nHeight)) {
-                        BOOST_FOREACH(CGatewayPayee& payee, gwpayments.mapGatewayBlocks[mi->second->nHeight].vecPayees) {
-                            std::vector<uint256> vecVoteHashes = payee.GetVoteHashes();
-                            BOOST_FOREACH(uint256& hash, vecVoteHashes) {
-                                if(gwpayments.HasVerifiedPaymentVote(hash)) {
-                                    connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GATEWAYPAYMENTVOTE, gwpayments.mapGatewayPaymentVotes[hash]));
+                    if (!deterministicGWManager->IsDeterministicGWsSporkActive()) {
+                        BlockMap::iterator mi = mapBlockIndex.find(inv.hash);
+                        LOCK(cs_mapGatewayBlocks);
+                        if (mi != mapBlockIndex.end() && gwpayments.mapGatewayBlocks.count(mi->second->nHeight)) {
+                            BOOST_FOREACH(CGatewayPayee& payee, gwpayments.mapGatewayBlocks[mi->second->nHeight].vecPayees) {
+                                std::vector<uint256> vecVoteHashes = payee.GetVoteHashes();
+                                BOOST_FOREACH(uint256& hash, vecVoteHashes) {
+                                    if(gwpayments.HasVerifiedPaymentVote(hash)) {
+                                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GATEWAYPAYMENTVOTE, gwpayments.mapGatewayPaymentVotes[hash]));
+                                    }
                                 }
                             }
+                            push = true;
                         }
-                        push = true;
                     }
                 }
 
                 if (!push && inv.type == MSG_GATEWAY_ANNOUNCE) {
-                    if(gwnodeman.mapSeenGatewayBroadcast.count(inv.hash)){
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GWANNOUNCE, gwnodeman.mapSeenGatewayBroadcast[inv.hash].second));
-                        push = true;
+                    if (!deterministicGWManager->IsDeterministicGWsSporkActive()) {
+                        if(gwnodeman.mapSeenGatewayBroadcast.count(inv.hash)){
+                            connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GWANNOUNCE, gwnodeman.mapSeenGatewayBroadcast[inv.hash].second));
+                            push = true;
+                        }
                     }
                 }
 
                 if (!push && inv.type == MSG_GATEWAY_PING) {
-                    if(gwnodeman.mapSeenGatewayPing.count(inv.hash)) {
-                        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GWPING, gwnodeman.mapSeenGatewayPing[inv.hash]));
-                        push = true;
+                    if (!deterministicGWManager->IsDeterministicGWsSporkActive()) {
+                        if(gwnodeman.mapSeenGatewayPing.count(inv.hash)) {
+                            connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GWPING, gwnodeman.mapSeenGatewayPing[inv.hash]));
+                            push = true;
+                        }
                     }
                 }
-
 
                 if (!push && inv.type == MSG_GATEWAY_VERIFY) {
                     if(gwnodeman.mapSeenGatewayVerification.count(inv.hash)) {
@@ -1257,6 +1280,20 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         return true;
     }
 
+    // BEGIN TEMPORARY CODE
+    bool fDIP0003Active;
+    {
+        LOCK(cs_main);
+        fDIP0003Active = VersionBitsState(chainActive.Tip(), chainparams.GetConsensus(), Consensus::DEPLOYMENT_DIP0003, versionbitscache) == THRESHOLD_ACTIVE;
+    }
+    // TODO delete this in next release after v13
+    int nMinPeerProtoVersion = MIN_PEER_PROTO_VERSION;
+    if (fDIP0003Active) {
+        nMinPeerProtoVersion = MIN_PEER_PROTO_VERSION_DIP3;
+    }
+    // END TEMPORARY CODE
+
+
     if (!(pfrom->GetLocalServices() & NODE_BLOOM) &&
               (strCommand == NetMsgType::FILTERLOAD ||
                strCommand == NetMsgType::FILTERADD))
@@ -1273,27 +1310,38 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
     if (strCommand == NetMsgType::REJECT)
     {
-        if (fDebug) {
-            try {
+        std::string strMsg; unsigned char ccode; std::string strReason;
+        uint256 hash;
+        try {
                 std::string strMsg; unsigned char ccode; std::string strReason;
-                vRecv >> LIMITED_STRING(strMsg, CMessageHeader::COMMAND_SIZE) >> ccode >> LIMITED_STRING(strReason, MAX_REJECT_MESSAGE_LENGTH);
-
-                std::ostringstream ss;
-                ss << strMsg << " code " << itostr(ccode) << ": " << strReason;
-
-                if (strMsg == NetMsgType::BLOCK || strMsg == NetMsgType::TX)
-                {
-                    uint256 hash;
-                    vRecv >> hash;
-                    ss << ": hash " << hash.ToString();
-                }
-                LogPrint("net", "Reject %s\n", SanitizeString(ss.str()));
-            } catch (const std::ios_base::failure&) {
-                // Avoid feedback loops by preventing reject messages from triggering a new reject message.
-                LogPrint("net", "Unparseable reject message received\n");
+            vRecv >> LIMITED_STRING(strMsg, CMessageHeader::COMMAND_SIZE) >> ccode >> LIMITED_STRING(strReason, MAX_REJECT_MESSAGE_LENGTH);
+            if (strMsg == NetMsgType::BLOCK || strMsg == NetMsgType::TX) {
+                vRecv >> hash;
             }
+        } catch (const std::ios_base::failure&) {
+            // Avoid feedback loops by preventing reject messages from triggering a new reject message.
+            LogPrint("net", "Unparseable reject message received\n");
+        }
+
+        if (strMsg == NetMsgType::BLOCK) {
+            // The node requested a block from us and then rejected it, which indicates that it's most likely running
+            // on rules which are incompatible to ours. Better to ban him after some time as it might otherwise keep
+            // asking for the same block (if -addnode/-connect was used on the other side).
+            LOCK(cs_main);
+            Misbehaving(pfrom->id, 1);
+        }
+
+        if (fDebug) {
+            std::ostringstream ss;
+            ss << strMsg << " code " << itostr(ccode) << ": " << strReason;
+
+            if (strMsg == NetMsgType::BLOCK || strMsg == NetMsgType::TX) {
+                ss << ": hash " << hash.ToString();
+            }
+            LogPrint("net", "Reject %s\n", SanitizeString(ss.str()));
         }
     }
+
     else if (strCommand == NetMsgType::VERSION)
     {
         // Each connection can only send one version message
@@ -1334,12 +1382,12 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             return false;
         }
 
-        if (nVersion < MIN_PEER_PROTO_VERSION)
+        if (nVersion < nMinPeerProtoVersion)
         {
             // disconnect from peers older than this proto version
             LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->id, nVersion);
             connman.PushMessage(pfrom, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
-                               strprintf("Version must be %d or greater", MIN_PEER_PROTO_VERSION)));
+                               strprintf("Version must be %d or greater", nMinPeerProtoVersion)));
             pfrom->fDisconnect = true;
             return false;
         }
@@ -1466,6 +1514,18 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
     // At this point, the outgoing message serialization version can't change.
     const CNetMsgMaker msgMaker(pfrom->GetSendVersion());
+
+    // BEGIN TEMPORARY CODE
+    if (pfrom->nVersion < nMinPeerProtoVersion) {
+        // disconnect from peers with version < 70213 after DIP3 has activated through the BIP9 deployment
+        LogPrintf("peer=%d using obsolete version %i after DIP3 activation; disconnecting\n", pfrom->id, pfrom->GetSendVersion());
+        connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
+                strprintf("Version must be %d or greater", nMinPeerProtoVersion)));
+        pfrom->fDisconnect = true;
+        return false;
+    }
+    // END TEMPORARY CODE
+
 
     if (strCommand == NetMsgType::VERACK)
     {
@@ -1639,11 +1699,31 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             }
             else
             {
+                static std::set<int> legacyGWObjs = {
+                        MSG_GATEWAY_PAYMENT_VOTE,
+                        MSG_GATEWAY_PAYMENT_BLOCK,
+                        MSG_GATEWAY_ANNOUNCE,
+                        MSG_GATEWAY_PING,
+                        MSG_GATEWAY_VERIFY,
+                };
+                static std::set<int> allowWhileInIBDObjs = {
+                        MSG_SPORK
+                };
+                if (legacyGWObjs.count(inv.type) && deterministicGWManager->IsDeterministicGWsSporkActive()) {
+                    LogPrint("net", "ignoring (%s) inv of legacy type %d peer=%d\n", inv.hash.ToString(), inv.type, pfrom->id);
+                    continue;
+                }
+
                 pfrom->AddInventoryKnown(inv);
-                if (fBlocksOnly)
-                    LogPrint("net", "transaction (%s) inv sent in violation of protocol peer=%d\n", inv.hash.ToString(), pfrom->id);
-                else if (!fAlreadyHave && !fImporting && !fReindex && !IsInitialBlockDownload())
-                    pfrom->AskFor(inv);
+                if (fBlocksOnly) {
+                    LogPrint("net", "transaction (%s) inv sent in violation of protocol peer=%d\n", inv.hash.ToString(),
+                             pfrom->id);
+                } else if (!fAlreadyHave) {
+                    bool allowWhileInIBD = allowWhileInIBDObjs.count(inv.type);
+                    if (allowWhileInIBD || (!fImporting && !fReindex && !IsInitialBlockDownload())) {
+                        pfrom->AskFor(inv);
+                    }
+                }
             }
 
             // Track requests for our stuff
@@ -1857,40 +1937,48 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         CTransactionRef ptx;
         CTxLockRequest txLockRequest;
         int nInvType = MSG_TX;
+        bool fCanAutoLock = false;
 
         // Read data and assign inv type
         if(strCommand == NetMsgType::TX) {
             vRecv >> ptx;
+            txLockRequest = CTxLockRequest(ptx);
+            fCanAutoLock = CInstantSend::CanAutoLock() && txLockRequest.IsSimple();
         } else if(strCommand == NetMsgType::TXLOCKREQUEST) {
             vRecv >> txLockRequest;
             ptx = txLockRequest.tx;
             nInvType = MSG_TXLOCK_REQUEST;
-        }  
+        }
         const CTransaction& tx = *ptx;
 
         CInv inv(nInvType, tx.GetHash());
         pfrom->AddInventoryKnown(inv);
-        pfrom->setAskFor.erase(inv.hash);
+        {
+            LOCK(cs_main);
+            connman.RemoveAskFor(inv.hash);
+        }
 
         // Process custom logic, no matter if tx will be accepted to mempool later or not
-        if (strCommand == NetMsgType::TXLOCKREQUEST) {
+        if (strCommand == NetMsgType::TXLOCKREQUEST || fCanAutoLock) {
             if(!instantsend.ProcessTxLockRequest(txLockRequest, connman)) {
                 LogPrint("instantsend", "TXLOCKREQUEST -- failed %s\n", txLockRequest.GetHash().ToString());
-                return false;
+                // Should not really happen for "fCanAutoLock == true" but just in case:
+                if (!fCanAutoLock) {
+                    // Fail only for "true" IS here
+                    return false;
+                }
+                // Fallback for normal txes to process as usual
+                fCanAutoLock = false;
             }
-        } 
+        }
         LOCK(cs_main);
 
         bool fMissingInputs = false;
         CValidationState state;
 
-        mapAlreadyAskedFor.erase(inv.hash);
-
-        std::list<CTransactionRef> lRemovedTxn;
-
-        if (!AlreadyHave(inv) && AcceptToMemoryPool(mempool, state, ptx, true, &fMissingInputs, &lRemovedTxn)) {
+        if (!AlreadyHave(inv) && AcceptToMemoryPool(mempool, state, ptx, true, &fMissingInputs)) {
             // Process custom txes, this changes AlreadyHave to "true"
-            if (strCommand == NetMsgType::TXLOCKREQUEST) {
+            if (strCommand == NetMsgType::TXLOCKREQUEST || fCanAutoLock) {
                 LogPrintf("TXLOCKREQUEST -- Transaction Lock Request accepted, txid=%s, peer=%d\n",
                         tx.GetHash().ToString(), pfrom->id);
                 instantsend.AcceptLockRequest(txLockRequest);
@@ -1934,7 +2022,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
                     if (setMisbehaving.count(fromPeer))
                         continue;
-                    if (AcceptToMemoryPool(mempool, stateDummy, porphanTx, true, &fMissingInputs2, &lRemovedTxn)) {
+                    if (AcceptToMemoryPool(mempool, stateDummy, porphanTx, true, &fMissingInputs2)) {
                         LogPrint("mempool", "   accepted orphan tx %s\n", orphanHash.ToString());
                         connman.RelayTransaction(orphanTx);
                         for (unsigned int i = 0; i < orphanTx.vout.size(); i++) {
@@ -2036,9 +2124,6 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                 }
             }
         }
-
-        for (const CTransactionRef& removedTx : lRemovedTxn)
-            AddToCompactExtraTransactions(removedTx);
 
         int nDoS = 0;
         if (state.IsInvalid(nDoS))
@@ -2706,6 +2791,29 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
     }
 
 
+    else if (strCommand == NetMsgType::GETGWLISTDIFF) {
+        CGetSimplifiedGWListDiff cmd;
+        vRecv >> cmd;
+
+        LOCK(cs_main);
+
+        CSimplifiedGWListDiff gwListDiff;
+        std::string strError;
+        if (BuildSimplifiedGWListDiff(cmd.baseBlockHash, cmd.blockHash, gwListDiff, strError)) {
+            connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GWLISTDIFF, gwListDiff));
+        } else {
+            LogPrint("net", "getgwlistdiff failed for baseBlockHash=%s, blockHash=%s. error=%s\n", cmd.baseBlockHash.ToString(), cmd.blockHash.ToString(), strError);
+            Misbehaving(pfrom->id, 1);
+        }
+    }
+
+    else if (strCommand == NetMsgType::GWLISTDIFF) {
+        // we have never requested this
+        LOCK(cs_main);
+        Misbehaving(pfrom->id, 100);
+        LogPrint("net", "received not-requested gwlistdiff. peer=%d\n", pfrom->id);
+    }
+
     else if (strCommand == NetMsgType::NOTFOUND) {
         // We do not care about the NOTFOUND message, but logging an Unknown Command
         // message would be undesirable as we transmit it ourselves.
@@ -2729,7 +2837,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             instantsend.ProcessMessage(pfrom, strCommand, vRecv, connman);
             sporkManager.ProcessSpork(pfrom, strCommand, vRecv, connman);
             gatewaySync.ProcessMessage(pfrom, strCommand, vRecv);
-
+            llgq::quorumBlockProcessor->ProcessMessage(pfrom, strCommand, vRecv, connman);
+            llgq::quorumDummyDKG->ProcessMessage(pfrom, strCommand, vRecv, connman);
         }
         else
         {
@@ -3166,7 +3275,7 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
         std::vector<CInv> vInv;
         {
             LOCK(pto->cs_inventory);
-            vInv.reserve(std::max<size_t>(pto->vInventoryBlockToSend.size(), INVENTORY_BROADCAST_MAX));
+            vInv.reserve(std::max<size_t>(pto->vInventoryBlockToSend.size(), INVENTORY_BROADCAST_MAX_PER_1MB_BLOCK * MaxBlockSize() / 1000000));
 
             // Add blocks
             BOOST_FOREACH(const uint256& hash, pto->vInventoryBlockToSend) {
@@ -3179,11 +3288,14 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
             pto->vInventoryBlockToSend.clear();
 
             // Check whether periodic sends should happen
-            bool fSendTrickle = pto->fWhitelisted;
+            // Note: If this node is running in a Gateway mode, it makes no sense to delay outgoing txes
+            // because we never produce any txes ourselves i.e. no privacy is lost in this case.
+            bool fSendTrickle = pto->fWhitelisted|| fGatewayMode;
             if (pto->nNextInvSend < nNow) {
                 fSendTrickle = true;
                 // Use half the delay for outbound peers, as there is less privacy concern for them.
-                pto->nNextInvSend = PoissonNextSend(nNow, INVENTORY_BROADCAST_INTERVAL >> !pto->fInbound);
+                // and quarter the delay for Gateway outbound peers, as there is even less privacy concern in this case.
+                pto->nNextInvSend = PoissonNextSend(nNow, INVENTORY_BROADCAST_INTERVAL >> !pto->fInbound >> pto->fGateway);
             }
 
             // Time to send but the peer has requested we not relay transactions.
@@ -3235,7 +3347,7 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
                 // especially since we have many peers and some will draw much shorter delays.
                 unsigned int nRelayedTransactions = 0;
                 LOCK(pto->cs_filter);
-                while (!vInvTx.empty() && nRelayedTransactions < INVENTORY_BROADCAST_MAX) {
+                while (!vInvTx.empty() && nRelayedTransactions < INVENTORY_BROADCAST_MAX_PER_1MB_BLOCK * MaxBlockSize() / 1000000) {
                     // Fetch the top element from the heap
                     std::pop_heap(vInvTx.begin(), vInvTx.end(), compareInvMempoolOrder);
                     std::set<uint256>::iterator it = vInvTx.back();
@@ -3279,7 +3391,11 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
 
             // Send non-tx/non-block inventory items
             for (const auto& inv : pto->vInventoryOtherToSend) {
+                if (pto->filterInventoryKnown.contains(inv.hash)) {
+                    continue;
+                }
                 vInv.push_back(inv);
+                pto->filterInventoryKnown.insert(inv.hash);
                 if (vInv.size() == MAX_INV_SZ) {
                     connman.PushMessage(pto, msgMaker.Make(NetMsgType::INV, vInv));
                     vInv.clear();

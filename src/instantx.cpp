@@ -1,10 +1,11 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
 #include "activegateway.h"
+#include "init.h"
 #include "instantx.h"
 #include "key.h"
 #include "validation.h"
@@ -35,10 +36,13 @@ extern CWallet* pwalletMain;
 extern CTxMemPool mempool;
 
 bool fEnableInstantSend = true;
-int nInstantSendDepth = DEFAULT_INSTANTSEND_DEPTH;
 int nCompleteTXLocks;
 
+std::atomic<bool> CInstantSend::isAutoLockBip9Active{false};
+const double CInstantSend::AUTO_IX_MEMPOOL_THRESHOLD = 0.1;
+
 CInstantSend instantsend;
+const std::string CInstantSend::SERIALIZATION_VERSION_STRING = "CInstantSend-Version-1";
 
 // Transaction Locks
 //
@@ -58,8 +62,7 @@ void CInstantSend::ProcessMessage(CNode* pfrom, const std::string& strCommand, C
 
     // NOTE: NetMsgType::TXLOCKREQUEST is handled via ProcessMessage() in net_processing.cpp
 
-    if (strCommand == NetMsgType::TXLOCKVOTE) // InstantSend Transaction Lock Consensus Votes
-    {
+    if (strCommand == NetMsgType::TXLOCKVOTE) { // InstantSend Transaction Lock Consensus Votes
         if(pfrom->nVersion < MIN_INSTANTSEND_PROTO_VERSION) {
             LogPrint("instantsend", "TXLOCKVOTE -- peer=%d using obsolete version %i\n", pfrom->id, pfrom->nVersion);
             connman.PushMessage(pfrom, CNetMsgMaker(pfrom->GetSendVersion()).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
@@ -73,7 +76,10 @@ void CInstantSend::ProcessMessage(CNode* pfrom, const std::string& strCommand, C
 
         uint256 nVoteHash = vote.GetHash();
 
-        pfrom->setAskFor.erase(nVoteHash);
+        {
+            LOCK(cs_main);
+            connman.RemoveAskFor(nVoteHash);
+        }
 
         // Ignore any InstantSend messages until gateway list is synced
         if(!gatewaySync.IsGatewayListSynced()) return;
@@ -119,7 +125,13 @@ bool CInstantSend::ProcessTxLockRequest(const CTxLockRequest& txLockRequest, CCo
                 if(hash != txLockRequest.GetHash()) {
                     LogPrint("instantsend", "CInstantSend::ProcessTxLockRequest -- Double spend attempt! %s\n", txin.prevout.ToStringShort());
                     // do not fail here, let it go and see which one will get the votes to be locked
-                    // TODO: notify zmq+script
+                    // NOTIFY ZMQ
+                    CTransaction txCurrent = *txLockRequest.tx; // currently processed tx
+                    auto itPrevious = mapTxLockCandidates.find(hash);
+                    if (itPrevious != mapTxLockCandidates.end() && itPrevious->second.txLockRequest) {
+                        CTransaction txPrevious = *itPrevious->second.txLockRequest.tx; // previously locked one
+                        GetMainSignals().NotifyInstantSendDoubleSpendAttempt(txCurrent, txPrevious);
+                    }
                 }
             }
         }
@@ -224,35 +236,36 @@ void CInstantSend::Vote(CTxLockCandidate& txLockCandidate, CConnman& connman)
     if(mapLockRequestAccepted.find(txHash) == mapLockRequestAccepted.end()) return;
     // check if we need to vote on this candidate's outpoints,
     // it's possible that we need to vote for several of them
-    std::map<COutPoint, COutPointLock>::iterator itOutpointLock = txLockCandidate.mapOutPointLocks.begin();
-    while(itOutpointLock != txLockCandidate.mapOutPointLocks.end()) {
-
-        int nPrevoutHeight = GetUTXOHeight(itOutpointLock->first);
-        if(nPrevoutHeight == -1) {
-            LogPrint("instantsend", "CInstantSend::Vote -- Failed to find UTXO %s\n", itOutpointLock->first.ToStringShort());
+    for (auto& outpointLockPair : txLockCandidate.mapOutPointLocks) {
+        int nPrevoutHeight = GetUTXOHeight(outpointLockPair.first);
+        if (nPrevoutHeight == -1) {
+            LogPrint("instantsend", "CInstantSend::Vote -- Failed to find UTXO %s\n", outpointLockPair.first.ToStringShort());
             return;
         }
 
         int nLockInputHeight = nPrevoutHeight + Params().GetConsensus().nInstantSendConfirmationsRequired - 2;
 
         int nRank;
+        uint256 quorumModifierHash;
         int nMinRequiredProtocol = std::max(MIN_INSTANTSEND_PROTO_VERSION, gwpayments.GetMinGatewayPaymentsProto());
-        if(!gwnodeman.GetGatewayRank(activeGateway.outpoint, nRank, nLockInputHeight, nMinRequiredProtocol)) {
-            LogPrint("instantsend", "CInstantSend::Vote -- Can't calculate rank for gateway %s\n", activeGateway.outpoint.ToStringShort());
-            ++itOutpointLock;
+        if(!gwnodeman.GetGatewayRank(activeGatewayInfo.outpoint, nRank, quorumModifierHash, nLockInputHeight, nMinRequiredProtocol)) {
+            LogPrint("instantsend", "CInstantSend::Vote -- Can't calculate rank for gateway %s\n", activeGatewayInfo.outpoint.ToStringShort());
             continue;
+        }
+        if (!deterministicGWManager->IsDeterministicGWsSporkActive()) {
+            // not used until spork15 activation
+            quorumModifierHash = uint256();
         }
 
         int nSignaturesTotal = COutPointLock::SIGNATURES_TOTAL;
         if(nRank > nSignaturesTotal) {
             LogPrint("instantsend", "CInstantSend::Vote -- Gateway not in the top %d (%d)\n", nSignaturesTotal, nRank);
-            ++itOutpointLock;
             continue;
         }
 
         LogPrint("instantsend", "CInstantSend::Vote -- In the top %d (%d)\n", nSignaturesTotal, nRank);
 
-        std::map<COutPoint, std::set<uint256> >::iterator itVoted = mapVotedOutpoints.find(itOutpointLock->first);
+        std::map<COutPoint, std::set<uint256> >::iterator itVoted = mapVotedOutpoints.find(outpointLockPair.first);
 
         // Check to see if we already voted for this outpoint,
         // refuse to vote twice or to include the same outpoint in another tx
@@ -260,23 +273,23 @@ void CInstantSend::Vote(CTxLockCandidate& txLockCandidate, CConnman& connman)
         if(itVoted != mapVotedOutpoints.end()) {
             for (const auto& hash : itVoted->second) {
                 std::map<uint256, CTxLockCandidate>::iterator it2 = mapTxLockCandidates.find(hash);
-                if(it2->second.HasGatewayVoted(itOutpointLock->first, activeGateway.outpoint)) {
+                if(it2->second.HasGatewayVoted(outpointLockPair.first, activeGatewayInfo.outpoint)) {
                     // we already voted for this outpoint to be included either in the same tx or in a competing one,
                     // skip it anyway
                     fAlreadyVoted = true;
                     LogPrintf("CInstantSend::Vote -- WARNING: We already voted for this outpoint, skipping: txHash=%s, outpoint=%s\n",
-                            txHash.ToString(), itOutpointLock->first.ToStringShort());
+                            txHash.ToString(), outpointLockPair.first.ToStringShort());
                     break;
                 }
             }
         }
         if(fAlreadyVoted) {
-            ++itOutpointLock;
             continue; // skip to the next outpoint
         }
 
         // we haven't voted for this outpoint yet, let's try to do this now
-        CTxLockVote vote(txHash, itOutpointLock->first, activeGateway.outpoint);
+        // Please note that activeGatewayInfo.proTxHash is only valid after spork15 activation
+        CTxLockVote vote(txHash, outpointLockPair.first, activeGatewayInfo.outpoint, quorumModifierHash, activeGatewayInfo.proTxHash);
 
         if(!vote.Sign()) {
             LogPrintf("CInstantSend::Vote -- Failed to sign consensus vote\n");
@@ -290,27 +303,25 @@ void CInstantSend::Vote(CTxLockCandidate& txLockCandidate, CConnman& connman)
         // vote constructed sucessfully, let's store and relay it
         uint256 nVoteHash = vote.GetHash();
         mapTxLockVotes.insert(std::make_pair(nVoteHash, vote));
-        if(itOutpointLock->second.AddVote(vote)) {
+        if(outpointLockPair.second.AddVote(vote)) {
             LogPrintf("CInstantSend::Vote -- Vote created successfully, relaying: txHash=%s, outpoint=%s, vote=%s\n",
-                    txHash.ToString(), itOutpointLock->first.ToStringShort(), nVoteHash.ToString());
+                    txHash.ToString(), outpointLockPair.first.ToStringShort(), nVoteHash.ToString());
 
             if(itVoted == mapVotedOutpoints.end()) {
                 std::set<uint256> setHashes;
                 setHashes.insert(txHash);
-                mapVotedOutpoints.insert(std::make_pair(itOutpointLock->first, setHashes));
+                mapVotedOutpoints.insert(std::make_pair(outpointLockPair.first, setHashes));
             } else {
-                mapVotedOutpoints[itOutpointLock->first].insert(txHash);
-                if(mapVotedOutpoints[itOutpointLock->first].size() > 1) {
+                mapVotedOutpoints[outpointLockPair.first].insert(txHash);
+                if(mapVotedOutpoints[outpointLockPair.first].size() > 1) {
                     // it's ok to continue, just warn user
                     LogPrintf("CInstantSend::Vote -- WARNING: Vote conflicts with some existing votes: txHash=%s, outpoint=%s, vote=%s\n",
-                            txHash.ToString(), itOutpointLock->first.ToStringShort(), nVoteHash.ToString());
+                            txHash.ToString(), outpointLockPair.first.ToStringShort(), nVoteHash.ToString());
                 }
             }
 
             vote.Relay(connman);
         }
-
-        ++itOutpointLock;
     }
 }
 
@@ -512,8 +523,9 @@ void CInstantSend::UpdateLockedTransaction(const CTxLockCandidate& txLockCandida
     // cs_main, cs_wallet and cs_instantsend should be already locked
     AssertLockHeld(cs_main);
 #ifdef ENABLE_WALLET
-    if (pwalletMain)
+    if (pwalletMain) {
         AssertLockHeld(pwalletMain->cs_wallet);
+    }
 #endif
     AssertLockHeld(cs_instantsend);
 
@@ -549,11 +561,8 @@ void CInstantSend::LockTransactionInputs(const CTxLockCandidate& txLockCandidate
 
     if(!txLockCandidate.IsAllOutPointsReady()) return;
 
-    std::map<COutPoint, COutPointLock>::const_iterator it = txLockCandidate.mapOutPointLocks.begin();
-
-    while(it != txLockCandidate.mapOutPointLocks.end()) {
-        mapLockedOutpoints.insert(std::make_pair(it->first, txHash));
-        ++it;
+    for (const auto& pair : txLockCandidate.mapOutPointLocks) {
+        mapLockedOutpoints.insert(std::make_pair(pair.first, txHash));
     }
     LogPrint("instantsend", "CInstantSend::LockTransactionInputs -- done, txid=%s\n", txHash.ToString());
 }
@@ -651,10 +660,8 @@ int64_t CInstantSend::GetAverageGatewayOrphanVoteTime()
 
     std::map<COutPoint, int64_t>::iterator it = mapGatewayOrphanVotes.begin();
     int64_t total = 0;
-
-    while(it != mapGatewayOrphanVotes.end()) {
-        total+= it->second;
-        ++it;
+    for (const auto& pair : mapGatewayOrphanVotes) {
+        total += pair.second;
     }
 
     return total / mapGatewayOrphanVotes.size();
@@ -674,11 +681,10 @@ void CInstantSend::CheckAndRemove()
         uint256 txHash = txLockCandidate.GetHash();
         if(txLockCandidate.IsExpired(nCachedBlockHeight)) {
             LogPrintf("CInstantSend::CheckAndRemove -- Removing expired Transaction Lock Candidate: txid=%s\n", txHash.ToString());
-            std::map<COutPoint, COutPointLock>::iterator itOutpointLock = txLockCandidate.mapOutPointLocks.begin();
-            while(itOutpointLock != txLockCandidate.mapOutPointLocks.end()) {
-                mapLockedOutpoints.erase(itOutpointLock->first);
-                mapVotedOutpoints.erase(itOutpointLock->first);
-                ++itOutpointLock;
+
+            for (const auto& pair : txLockCandidate.mapOutPointLocks) {
+                mapLockedOutpoints.erase(pair.first);
+                mapVotedOutpoints.erase(pair.first);
             }
             mapLockRequestAccepted.erase(txHash);
             mapLockRequestRejected.erase(txHash);
@@ -787,16 +793,19 @@ bool CInstantSend::GetTxLockVote(const uint256& hash, CTxLockVote& txLockVoteRet
     return true;
 }
 
-bool CInstantSend::IsInstantSendReadyToLock(const uint256& txHash)
+void CInstantSend::Clear()
 {
-    if(!fEnableInstantSend || GetfLargeWorkForkFound() || GetfLargeWorkInvalidChainFound() ||
-        !sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED)) return false;
-
     LOCK(cs_instantsend);
-    // There must be a successfully verified lock request
-    // and all outputs must be locked (i.e. have enough signatures)
-    std::map<uint256, CTxLockCandidate>::iterator it = mapTxLockCandidates.find(txHash);
-    return it != mapTxLockCandidates.end() && it->second.IsAllOutPointsReady();
+
+    mapLockRequestAccepted.clear();
+    mapLockRequestRejected.clear();
+    mapTxLockVotes.clear();
+    mapTxLockVotesOrphan.clear();
+    mapTxLockCandidates.clear();
+    mapVotedOutpoints.clear();
+    mapLockedOutpoints.clear();
+    mapGatewayOrphanVotes.clear();
+    nCachedBlockHeight = 0;
 }
 
 bool CInstantSend::IsLockedInstantSendTransaction(const uint256& txHash)
@@ -814,11 +823,9 @@ bool CInstantSend::IsLockedInstantSendTransaction(const uint256& txHash)
     if(itLockCandidate->second.mapOutPointLocks.empty()) return false;
 
     // and all of these outputs must be included in mapLockedOutpoints with correct hash
-    std::map<COutPoint, COutPointLock>::iterator itOutpointLock = itLockCandidate->second.mapOutPointLocks.begin();
-    while(itOutpointLock != itLockCandidate->second.mapOutPointLocks.end()) {
+    for (const auto& pair : itLockCandidate->second.mapOutPointLocks) {
         uint256 hashLocked;
-        if(!GetLockedOutPointTxHash(itOutpointLock->first, hashLocked) || hashLocked != txHash) return false;
-        ++itOutpointLock;
+        if (!GetLockedOutPointTxHash(pair.first, hashLocked) || hashLocked != txHash) return false;
     }
 
     return true;
@@ -838,11 +845,6 @@ int CInstantSend::GetTransactionLockSignatures(const uint256& txHash)
     }
 
     return -1;
-}
-
-int CInstantSend::GetConfirmations(const uint256 &nTXHash)
-{
-    return IsLockedInstantSendTransaction(nTXHash) ? nInstantSendDepth : 0;
 }
 
 bool CInstantSend::IsTxLockCandidateTimedOut(const uint256& txHash)
@@ -898,42 +900,54 @@ void CInstantSend::SyncTransaction(const CTransaction& tx, const CBlockIndex *pi
                 txHash.ToString(), nHeightNew);
         itLockCandidate->second.SetConfirmedHeight(nHeightNew);
         // Loop through outpoint locks
-        std::map<COutPoint, COutPointLock>::iterator itOutpointLock = itLockCandidate->second.mapOutPointLocks.begin();
-        while(itOutpointLock != itLockCandidate->second.mapOutPointLocks.end()) {
+        for (const auto& pair : itLockCandidate->second.mapOutPointLocks) {
             // Check corresponding lock votes
-            std::vector<CTxLockVote> vVotes = itOutpointLock->second.GetVotes();
-            std::vector<CTxLockVote>::iterator itVote = vVotes.begin();
-            std::map<uint256, CTxLockVote>::iterator it;
-            while(itVote != vVotes.end()) {
-                uint256 nVoteHash = itVote->GetHash();
+            for (const auto& vote : pair.second.GetVotes()) {
+                uint256 nVoteHash = vote.GetHash();
                 LogPrint("instantsend", "CInstantSend::SyncTransaction -- txid=%s nHeightNew=%d vote %s updated\n",
                         txHash.ToString(), nHeightNew, nVoteHash.ToString());
-                it = mapTxLockVotes.find(nVoteHash);
-                if(it != mapTxLockVotes.end()) {
+                const auto& it = mapTxLockVotes.find(nVoteHash);
+                if (it != mapTxLockVotes.end()) {
                     it->second.SetConfirmedHeight(nHeightNew);
                 }
-                ++itVote;
             }
-            ++itOutpointLock;
         }
     }
 
     // check orphan votes
-    std::map<uint256, CTxLockVote>::iterator itOrphanVote = mapTxLockVotesOrphan.begin();
-    while(itOrphanVote != mapTxLockVotesOrphan.end()) {
-        if(itOrphanVote->second.GetTxHash() == txHash) {
+    for (const auto& pair : mapTxLockVotesOrphan) {
+        if (pair.second.GetTxHash() == txHash) {
             LogPrint("instantsend", "CInstantSend::SyncTransaction -- txid=%s nHeightNew=%d vote %s updated\n",
-                    txHash.ToString(), nHeightNew, itOrphanVote->first.ToString());
-            mapTxLockVotes[itOrphanVote->first].SetConfirmedHeight(nHeightNew);
+                    txHash.ToString(), nHeightNew, pair.first.ToString());
+            mapTxLockVotes[pair.first].SetConfirmedHeight(nHeightNew);
         }
-        ++itOrphanVote;
     }
 }
 
-std::string CInstantSend::ToString()
+std::string CInstantSend::ToString() const
 {
     LOCK(cs_instantsend);
     return strprintf("Lock Candidates: %llu, Votes %llu", mapTxLockCandidates.size(), mapTxLockVotes.size());
+}
+
+void CInstantSend::DoMaintenance()
+{
+    if (ShutdownRequested()) return;
+
+    CheckAndRemove();
+}
+
+bool CInstantSend::CanAutoLock()
+{
+
+    if (!isAutoLockBip9Active) {
+        return false;
+    }
+
+    if (!sporkManager.IsSporkActive(SPORK_16_INSTANTSEND_AUTOLOCKS)) {
+        return false;
+    }
+    return (mempool.UsedMemoryShare() < AUTO_IX_MEMPOOL_THRESHOLD);
 }
 
 //
@@ -987,7 +1001,7 @@ bool CTxLockRequest::IsValid() const
 
     CAmount nValueOut = tx->GetValueOut();
 
-    if(nValueIn - nValueOut < GetMinFee()) {
+    if (nValueIn - nValueOut < GetMinFee(false)) {
         LogPrint("instantsend", "CTxLockRequest::IsValid -- did not include enough fees in transaction: fees=%d, tx=%s", nValueOut - nValueIn, ToString());
         return false;
     }
@@ -995,8 +1009,11 @@ bool CTxLockRequest::IsValid() const
     return true;
 }
 
-CAmount CTxLockRequest::GetMinFee() const
+CAmount CTxLockRequest::GetMinFee(bool fForceMinFee) const
 {
+    if (!fForceMinFee && CInstantSend::CanAutoLock() && IsSimple()) {
+        return CAmount();
+    }
     CAmount nMinFee = MIN_FEE;
     return std::max(nMinFee, CAmount(tx->vin.size() * nMinFee));
 }
@@ -1004,6 +1021,11 @@ CAmount CTxLockRequest::GetMinFee() const
 int CTxLockRequest::GetMaxSignatures() const
 {
     return tx->vin.size() * COutPointLock::SIGNATURES_TOTAL;
+}
+
+bool CTxLockRequest::IsSimple() const
+{
+    return (tx->vin.size() <= MAX_INPUTS_FOR_AUTO_IX);
 }
 
 //
@@ -1018,6 +1040,19 @@ bool CTxLockVote::IsValid(CNode* pnode, CConnman& connman) const
         return false;
     }
 
+    // Verify that gatewayProTxHash belongs to the same GW referred by the collateral
+    // Only v13 nodes will send us locks with this field set, and only after spork15 activation
+    if (!gatewayProTxHash.IsNull()) {
+        gateway_info_t gwInfo;
+        if (!gwnodeman.GetGatewayInfo(gatewayProTxHash, gwInfo) || gwInfo.outpoint != outpointGateway) {
+            LogPrint("instantsend", "CTxLockVote::IsValid -- invalid gatewayProTxHash %s\n", gatewayProTxHash.ToString());
+            return false;
+        }
+    } else if (deterministicGWManager->IsDeterministicGWsSporkActive()) {
+        LogPrint("instantsend", "CTxLockVote::IsValid -- missing gatewayProTxHash while DIP3 is active\n");
+        return false;
+    }
+
     Coin coin;
     if(!GetUTXOCoin(outpoint, coin)) {
         LogPrint("instantsend", "CTxLockVote::IsValid -- Failed to find UTXO %s\n", outpoint.ToStringShort());
@@ -1027,12 +1062,23 @@ bool CTxLockVote::IsValid(CNode* pnode, CConnman& connman) const
     int nLockInputHeight = coin.nHeight + Params().GetConsensus().nInstantSendConfirmationsRequired - 2;
 
     int nRank;
+    uint256 expectedQuorumModifierHash;
     int nMinRequiredProtocol = std::max(MIN_INSTANTSEND_PROTO_VERSION, gwpayments.GetMinGatewayPaymentsProto());
-    if(!gwnodeman.GetGatewayRank(outpointGateway, nRank, nLockInputHeight, nMinRequiredProtocol)) {
+    if(!gwnodeman.GetGatewayRank(outpointGateway, nRank, expectedQuorumModifierHash, nLockInputHeight, nMinRequiredProtocol)) {
         //can be caused by past versions trying to vote with an invalid protocol
         LogPrint("instantsend", "CTxLockVote::IsValid -- Can't calculate rank for gateway %s\n", outpointGateway.ToStringShort());
         return false;
     }
+    if (!quorumModifierHash.IsNull()) {
+        if (quorumModifierHash != expectedQuorumModifierHash) {
+            LogPrint("instantsend", "CTxLockVote::IsValid -- invalid quorumModifierHash %s, expected %s\n", quorumModifierHash.ToString(), expectedQuorumModifierHash.ToString());
+            return false;
+        }
+    } else if (deterministicGWManager->IsDeterministicGWsSporkActive()) {
+        LogPrint("instantsend", "CTxLockVote::IsValid -- missing quorumModifierHash while DIP3 is active\n");
+        return false;
+    }
+
     LogPrint("instantsend", "CTxLockVote::IsValid -- Gateway %s, rank=%d\n", outpointGateway.ToStringShort(), nRank);
 
     int nSignaturesTotal = COutPointLock::SIGNATURES_TOTAL;
@@ -1071,13 +1117,22 @@ bool CTxLockVote::CheckSignature() const
         return false;
     }
 
-    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+    if (deterministicGWManager->IsDeterministicGWsSporkActive()) {
         uint256 hash = GetSignatureHash();
 
-        if (!CHashSigner::VerifyHash(hash, infoGw.pubKeyGateway, vchGatewaySignature, strError)) {
+        CBLSSignature sig;
+        sig.SetBuf(vchGatewaySignature);
+        if (!sig.IsValid() || !sig.VerifyInsecure(infoGw.blsPubKeyOperator, hash)) {
+            LogPrintf("CTxLockVote::CheckSignature -- VerifyInsecure() failed\n");
+            return false;
+        }
+    } else if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
+
+        if (!CHashSigner::VerifyHash(hash, infoGw.legacyKeyIDOperator, vchGatewaySignature, strError)) {
             // could be a signature in old format
             std::string strMessage = txHash.ToString() + outpoint.ToStringShort();
-            if(!CMessageSigner::VerifyMessage(infoGw.pubKeyGateway, vchGatewaySignature, strMessage, strError)) {
+            if(!CMessageSigner::VerifyMessage(infoGw.legacyKeyIDOperator, vchGatewaySignature, strMessage, strError)) {
                 // nope, not in old format either
                 LogPrintf("CTxLockVote::CheckSignature -- VerifyMessage() failed, error: %s\n", strError);
                 return false;
@@ -1085,7 +1140,7 @@ bool CTxLockVote::CheckSignature() const
         }
     } else {
         std::string strMessage = txHash.ToString() + outpoint.ToStringShort();
-        if(!CMessageSigner::VerifyMessage(infoGw.pubKeyGateway, vchGatewaySignature, strMessage, strError)) {
+        if(!CMessageSigner::VerifyMessage(infoGw.legacyKeyIDOperator, vchGatewaySignature, strMessage, strError)) {
             LogPrintf("CTxLockVote::CheckSignature -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
@@ -1098,27 +1153,35 @@ bool CTxLockVote::Sign()
 {
     std::string strError;
 
-    if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+    if (deterministicGWManager->IsDeterministicGWsSporkActive()) {
         uint256 hash = GetSignatureHash();
 
-        if(!CHashSigner::SignHash(hash, activeGateway.keyGateway, vchGatewaySignature)) {
+        CBLSSignature sig = activeGatewayInfo.blsKeyOperator->Sign(hash);
+        if (!sig.IsValid()) {
+            return false;
+        }
+        sig.GetBuf(vchGatewaySignature);
+    } else if (sporkManager.IsSporkActive(SPORK_6_NEW_SIGS)) {
+        uint256 hash = GetSignatureHash();
+
+        if(!CHashSigner::SignHash(hash, activeGatewayInfo.legacyKeyOperator, vchGatewaySignature)) {
             LogPrintf("CTxLockVote::Sign -- SignHash() failed\n");
             return false;
         }
 
-        if (!CHashSigner::VerifyHash(hash, activeGateway.pubKeyGateway, vchGatewaySignature, strError)) {
+        if (!CHashSigner::VerifyHash(hash, activeGatewayInfo.legacyKeyIDOperator, vchGatewaySignature, strError)) {
             LogPrintf("CTxLockVote::Sign -- VerifyHash() failed, error: %s\n", strError);
             return false;
         }
     } else {
         std::string strMessage = txHash.ToString() + outpoint.ToStringShort();
 
-        if(!CMessageSigner::SignMessage(strMessage, vchGatewaySignature, activeGateway.keyGateway)) {
+        if(!CMessageSigner::SignMessage(strMessage, vchGatewaySignature, activeGatewayInfo.legacyKeyOperator)) {
             LogPrintf("CTxLockVote::Sign -- SignMessage() failed\n");
             return false;
         }
 
-        if(!CMessageSigner::VerifyMessage(activeGateway.pubKeyGateway, vchGatewaySignature, strMessage, strError)) {
+        if(!CMessageSigner::VerifyMessage(activeGatewayInfo.legacyKeyIDOperator, vchGatewaySignature, strMessage, strError)) {
             LogPrintf("CTxLockVote::Sign -- VerifyMessage() failed, error: %s\n", strError);
             return false;
         }
@@ -1130,7 +1193,12 @@ bool CTxLockVote::Sign()
 void CTxLockVote::Relay(CConnman& connman) const
 {
     CInv inv(MSG_TXLOCK_VOTE, GetHash());
-    connman.RelayInv(inv);
+    CTxLockRequest request;
+    if (instantsend.GetTxLockRequest(txHash, request) && request) {
+        connman.RelayInvFiltered(inv, *request.tx);
+    } else {
+        connman.RelayInvFiltered(inv, txHash);
+    }
 }
 
 bool CTxLockVote::IsExpired(int nHeight) const
@@ -1155,19 +1223,14 @@ bool CTxLockVote::IsFailed() const
 
 bool COutPointLock::AddVote(const CTxLockVote& vote)
 {
-    if(mapGatewayVotes.count(vote.GetGatewayOutpoint()))
-        return false;
-    mapGatewayVotes.insert(std::make_pair(vote.GetGatewayOutpoint(), vote));
-    return true;
+    return mapGatewayVotes.emplace(vote.GetGatewayOutpoint(), vote).second;
 }
 
 std::vector<CTxLockVote> COutPointLock::GetVotes() const
 {
     std::vector<CTxLockVote> vRet;
-    std::map<COutPoint, CTxLockVote>::const_iterator itVote = mapGatewayVotes.begin();
-    while(itVote != mapGatewayVotes.end()) {
-        vRet.push_back(itVote->second);
-        ++itVote;
+    for (const auto& pair : mapGatewayVotes) {
+        vRet.push_back(pair.second);
     }
     return vRet;
 }
@@ -1179,10 +1242,8 @@ bool COutPointLock::HasGatewayVoted(const COutPoint& outpointGatewayIn) const
 
 void COutPointLock::Relay(CConnman& connman) const
 {
-    std::map<COutPoint, CTxLockVote>::const_iterator itVote = mapGatewayVotes.begin();
-    while(itVote != mapGatewayVotes.end()) {
-        itVote->second.Relay(connman);
-        ++itVote;
+    for (const auto& pair : mapGatewayVotes) {
+        pair.second.Relay(connman);
     }
 }
 
@@ -1213,10 +1274,8 @@ bool CTxLockCandidate::IsAllOutPointsReady() const
 {
     if(mapOutPointLocks.empty()) return false;
 
-    std::map<COutPoint, COutPointLock>::const_iterator it = mapOutPointLocks.begin();
-    while(it != mapOutPointLocks.end()) {
-        if(!it->second.IsReady()) return false;
-        ++it;
+    for (const auto& pair : mapOutPointLocks) {
+        if (!pair.second.IsReady()) return false;
     }
     return true;
 }
@@ -1231,10 +1290,8 @@ int CTxLockCandidate::CountVotes() const
 {
     // Note: do NOT use vote count to figure out if tx is locked, use IsAllOutPointsReady() instead
     int nCountVotes = 0;
-    std::map<COutPoint, COutPointLock>::const_iterator it = mapOutPointLocks.begin();
-    while(it != mapOutPointLocks.end()) {
-        nCountVotes += it->second.CountVotes();
-        ++it;
+    for (const auto& pair : mapOutPointLocks) {
+        nCountVotes += pair.second.CountVotes();
     }
     return nCountVotes;
 }
@@ -1253,9 +1310,7 @@ bool CTxLockCandidate::IsTimedOut() const
 void CTxLockCandidate::Relay(CConnman& connman) const
 {
     connman.RelayTransaction(*txLockRequest.tx);
-    std::map<COutPoint, COutPointLock>::const_iterator itOutpointLock = mapOutPointLocks.begin();
-    while(itOutpointLock != mapOutPointLocks.end()) {
-        itOutpointLock->second.Relay(connman);
-        ++itOutpointLock;
+    for (const auto& pair : mapOutPointLocks) {
+        pair.second.Relay(connman);
     }
 }

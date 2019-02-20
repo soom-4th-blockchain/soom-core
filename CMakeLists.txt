@@ -74,6 +74,8 @@ file(GLOB SOURCE_FILES
         src/*.h
         src/evo/*.h
         src/evo/*.cpp
+        src/llgq/*.h
+        src/llgq/*.cpp
         src/rpc/*.cpp
         src/rpc/*.h
         )

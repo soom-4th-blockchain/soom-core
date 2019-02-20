@@ -40,11 +40,11 @@
 #ifdef ENABLE_SOOM_DEBUG
 #define DBG( x ) x
 #else
-#define DBG( x ) 
+#define DBG( x )
 #endif
 
 //Soom only features
-extern bool fLocalGateWay; // add hcdo 180611 for test gateway in local 
+extern bool fLocalGateWay; // add hcdo 180611 for test gateway in local
 extern bool fGatewayMode;
 extern bool fLiteMode;
 extern int nWalletBackups;
@@ -95,20 +95,33 @@ bool LogAcceptCategory(const char* category);
 /** Send a string to the log output */
 int LogPrintStr(const std::string &str);
 
+/** Formats a string without throwing exceptions. Instead, it'll return an error string instead of formatted string. */
+template<typename... Args>
+std::string SafeStringFormat(const std::string& fmt, const Args&... args)
+{
+    try {
+        return tinyformat::format(fmt, args...);
+    } catch (std::runtime_error& e) {
+        std::string message = tinyformat::format("\n****TINYFORMAT ERROR****\n    err=\"%s\"\n    fmt=\"%s\"\n", e.what(), fmt);
+        fprintf(stderr, "%s", message.c_str());
+        return message;
+    }
+}
+
 #define LogPrint(category, ...) do { \
     if (LogAcceptCategory((category))) { \
-        LogPrintStr(tinyformat::format(__VA_ARGS__)); \
+        LogPrintStr(SafeStringFormat(__VA_ARGS__)); \
     } \
 } while(0)
 
 #define LogPrintf(...) do { \
-    LogPrintStr(tinyformat::format(__VA_ARGS__)); \
+    LogPrintStr(SafeStringFormat(__VA_ARGS__)); \
 } while(0)
 
 template<typename... Args>
 bool error(const char* fmt, const Args&... args)
 {
-    LogPrintStr("ERROR: " + tinyformat::format(fmt, args...) + "\n");
+    LogPrintStr("ERROR: " + SafeStringFormat(fmt, args...) + "\n");
     return false;
 }
 
@@ -130,7 +143,7 @@ boost::filesystem::path GetGatewayConfigFile();
 boost::filesystem::path GetPidFile();
 void CreatePidFile(const boost::filesystem::path &path, pid_t pid);
 #endif
-void createConf(const std::string& confPath);  
+void createConf(const std::string& confPath);
 void ReadConfigFile(const std::string& confPath);
 #ifdef WIN32
 boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
@@ -232,6 +245,11 @@ int GetNumCores();
 
 void RenameThread(const char* name);
 std::string GetThreadName();
+
+namespace ctpl {
+    class thread_pool;
+}
+void RenameThreadPool(ctpl::thread_pool& tp, const char* baseName);
 
 /**
  * .. and a wrapper that just calls func once

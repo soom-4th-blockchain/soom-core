@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Dash Core developers 
+// Copyright (c) 2014-2017 The Dash Core developers
 // Copyright (c) 2017-2018 The Soom Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -25,7 +25,7 @@ bool CGatewayConfig::read(std::string& strErrRet) {
 
     if (!streamConfig.good()) {
         FILE* configFile = fopen(pathGatewayConfigFile.string().c_str(), "a");
-        if (configFile != NULL) {
+        if (configFile != nullptr) {
             std::string strHeader = "# Gateway config file\n"
                           "# Format: alias IP:port gatewayprivkey collateral_output_txid collateral_output_index\n"
                           "# Example: gw1 127.0.0.2:16999 94HbYCVUCYjEMeeK1Y3sCDLBMDZE1Cd1E46xhpgX12tGCDWL8Xg 2afd3d74f84f87aeg36b4a53567c91235a04f6e1832g3s0b84e0f0162343e64c 0\n";
@@ -68,25 +68,26 @@ bool CGatewayConfig::read(std::string& strErrRet) {
             streamConfig.close();
             return false;
         }
+
       	if(!fLocalGateWay)
     	{
-	    int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
-        if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
-            if(port != mainnetDefaultPort) {
-                strErrRet = _("Invalid port detected in gateway.conf") + "\n" +
+            int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+            if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
+                if(port != mainnetDefaultPort) {
+                    strErrRet = _("Invalid port detected in gateway.conf") + "\n" +
                         strprintf(_("Port: %d"), port) + "\n" +
                         strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
                         strprintf(_("(must be %d for mainnet)"), mainnetDefaultPort);
+                    streamConfig.close();
+                    return false;
+                }
+            } else if(port == mainnetDefaultPort) {
+                strErrRet = _("Invalid port detected in gateway.conf") + "\n" +
+                    strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
+                    strprintf(_("(%d could be used only on mainnet)"), mainnetDefaultPort);
                 streamConfig.close();
                 return false;
             }
-        } else if(port == mainnetDefaultPort) {
-            strErrRet = _("Invalid port detected in gateway.conf") + "\n" +
-                    strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                    strprintf(_("(%d could be used only on mainnet)"), mainnetDefaultPort);
-            streamConfig.close();
-            return false;
-        }
 		}
 
         add(alias, ip, privKey, txHash, outputIndex);

@@ -76,8 +76,6 @@ public:
     std::vector<CTransactionRef> vtx;
 
     // memory only
-    mutable CTxOut txoutGateway; // gateway payment
-    mutable CTxOut txoutFoundation; // Foundation payment
     mutable bool fChecked;
 
     CBlock()
@@ -103,8 +101,6 @@ public:
     {
         CBlockHeader::SetNull();
         vtx.clear();
-        txoutGateway = CTxOut();
-        txoutFoundation = CTxOut();
         fChecked = false;
     }
 
