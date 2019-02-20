@@ -679,10 +679,10 @@ bool ContextualCheckTransaction(const CTransaction& tx, CValidationState &state,
             }
             if (tx.IsCoinBase() && tx.nType != TRANSACTION_COINBASE)
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-cb-type");
-    } else if (tx.nType != TRANSACTION_NORMAL) {
-        return state.DoS(100, false, REJECT_INVALID, "bad-txns-type");
+        } else if (tx.nType != TRANSACTION_NORMAL) {
+            return state.DoS(100, false, REJECT_INVALID, "bad-txns-type");
+        }
     }
-
     // Size limits
     if (::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION) > MAX_STANDARD_TX_SIZE)
         return state.DoS(100, false, REJECT_INVALID, "bad-txns-oversize");
